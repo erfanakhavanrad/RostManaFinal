@@ -43,7 +43,7 @@ public class Fragment_Plant_Details extends Fragment {
                 "soil", "potasium manure", "twice a week"));
 
 
-        plantDetailListArray.add(new PlantDetailClass("rose", "12", R.drawable.ic_launcher_foreground, "native",
+        plantDetailListArray.add(new PlantDetailClass("rose", "12", R.drawable.ic_seasonalflowers, "native",
                 12, "wet", "itSprinkles", "twice a month", "natural light",
                 "soil", "potasium manure", "twice a week"));
 

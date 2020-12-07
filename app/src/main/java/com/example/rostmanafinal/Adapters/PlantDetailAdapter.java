@@ -5,12 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.rostmanafinal.Pojo.PlantDetailClass;
 import com.example.rostmanafinal.R;
+
 import java.util.ArrayList;
 
 public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostmanafinal.Adapters.PlantDetailAdapter.ViewHolder> {
@@ -30,7 +34,7 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.fragment_plant_details, parent, false);
+        View view = inflater.inflate(R.layout.sweeping_plant_recycler, parent, false);
         com.example.rostmanafinal.Adapters.PlantDetailAdapter.ViewHolder holder = new ViewHolder(view);
         return holder;
 
@@ -41,16 +45,17 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         PlantDetailClass plantdetailsClass = plantDetailsList2.get(position);
-//        holder.imageView.setImageResource(plantdetailsClass.getPic());
         //        holder.imageView.setImageResource(R.drawable.s_one);
+        holder.imageView.setImageResource(plantdetailsClass.getPic());
+        holder.txtTitle.setText(plantdetailsClass.getpName());
+        holder.txtDescription.setText(plantdetailsClass.getLight());
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Toast.makeText(context, "clicked" + position, Toast.LENGTH_SHORT).show();
-
-//                app.set_fragment2((FragmentActivity) context, R.id.fragment_Structure_Detail, null);
             }
         });
 
@@ -65,27 +70,21 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-
+        TextView txtDescription, txtTitle;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
-
-            imageView = itemView.findViewById(R.id.image_Structure);
+            txtDescription = itemView.findViewById(R.id.txtDescription);
+            txtTitle = itemView.findViewById(R.id.txtTitle);
+            imageView = itemView.findViewById(R.id.imageCard);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     PlantDetailClass item = plantDetailsList2.get(getAdapterPosition());
-//If shit happened remove the below line
-//                    Intent intentStructure = new Intent(itemView.getContext(), MainActivity.class);
-//                    intentStructure.putExtra("id", item.getId());
-//                    itemView.getContext().startActivity(intentStructure);
-
-//                    Toast.makeText(itemView.getContext(), "position is " + item.getId(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(itemView.getContext(), "position is " + item.getId(), Toast.LENGTH_SHORT).show();
                 }
             });
 
         }
     }
-
 }
