@@ -43,11 +43,24 @@ public class Fragment_Plant_Details extends Fragment {
                 "soil", "potasium manure", "twice a week"));
 
 
-        plantDetailListArray.add(new PlantDetailClass("rose", "12", R.drawable.ic_seasonalflowers, "native",
+        plantDetailListArray.add(new PlantDetailClass("lilly", "12", R.drawable.ic_seasonalflowers, "native",
                 12, "wet", "itSprinkles", "twice a month", "natural light",
                 "soil", "potasium manure", "twice a week"));
 
-        plantDetailListArray.add(new PlantDetailClass("rose", "12", R.drawable.ic_launcher_background, "native",
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.limo, "native",
+                12, "wet", "itSprinkles", "twice a month", "natural light",
+                "soil", "potasium manure", "twice a week"));
+
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.benjamin, "native",
+                12, "wet", "itSprinkles", "twice a month", "natural light",
+                "soil", "potasium manure", "twice a week"));
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.ic_seasonalflowers, "native",
+                12, "wet", "itSprinkles", "twice a month", "natural light",
+                "soil", "potasium manure", "twice a week"));
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.benjamin, "native",
+                12, "wet", "itSprinkles", "twice a month", "natural light",
+                "soil", "potasium manure", "twice a week"));
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.limo, "native",
                 12, "wet", "itSprinkles", "twice a month", "natural light",
                 "soil", "potasium manure", "twice a week"));
 
@@ -57,7 +70,7 @@ public class Fragment_Plant_Details extends Fragment {
         recyclerPlantDetail.setAdapter(plantDetailAdapter);
 //        recyclerPlantDetail.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         recyclerPlantDetail.setLayoutManager(new LinearLayoutManager(getContext()
-                , RecyclerView.HORIZONTAL, false));
+                , RecyclerView.VERTICAL, false));
         return view;
 
 

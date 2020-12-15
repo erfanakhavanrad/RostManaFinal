@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.rostmanafinal.Fragments.FirstFragment;
+import com.example.rostmanafinal.Fragments.Fragment_Plant_Details;
 import com.example.rostmanafinal.Fragments.SecondFragment;
 import com.example.rostmanafinal.Fragments.ThirdFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
                         FragmentManager fragmentManager3 = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
-                        ThirdFragment fn3 = new ThirdFragment();
+                        Fragment_Plant_Details fn3 = new Fragment_Plant_Details();
                         fragmentTransaction3.replace(R.id.nav_host_fragment, fn3);
 
                         fragmentTransaction3.commit();

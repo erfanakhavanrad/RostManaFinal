@@ -35,17 +35,17 @@ public class FirstFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        firstText = getView().findViewById(R.id.firstText);
-        firstText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        firstText = getView().findViewById(R.id.firstText);
+//        firstText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 
 //                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_secondFragment2);
 
                 //NavHostFragment.findNavController(SecondFragment);
 //                Navigation.findNavController(Activity, @IdRes int viewId)
 //                Navigation.findNavController(View)
-            }
-        });
+//            }
+//        });
     }
 }
