@@ -1,9 +1,12 @@
 package com.example.rostmanafinal.Fragments;
 
 import android.os.Bundle;
+import android.os.Trace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +27,9 @@ public class FragmentEnterSerialNumber extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        EditText serialEntered = view.findViewById(R.id.serialEntered);
+        serialEntered.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        serialEntered.isSingleLine();
 
 
     }
