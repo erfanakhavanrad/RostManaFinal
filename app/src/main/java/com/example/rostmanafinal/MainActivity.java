@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.rostmanafinal.Fragments.FirstFragment;
+import com.example.rostmanafinal.Fragments.FragmentViewPagerTabbed;
 import com.example.rostmanafinal.Fragments.Fragment_Plant_Details;
 import com.example.rostmanafinal.Fragments.SecondFragment;
 import com.example.rostmanafinal.Fragments.ThirdFragment;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Left", Toast.LENGTH_SHORT).show();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        FirstFragment fn = new FirstFragment();
+                        FragmentViewPagerTabbed fn = new FragmentViewPagerTabbed();
                         fragmentTransaction.replace(R.id.nav_host_fragment, fn);
                         fragmentTransaction.commit();
 

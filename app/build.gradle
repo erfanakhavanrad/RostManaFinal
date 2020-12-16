@@ -37,11 +37,16 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    //    Navigation Component
+    //Navigation Component
     implementation "androidx.navigation:navigation-fragment:2.3.2"
     implementation "androidx.navigation:navigation-ui:2.3.2"
 
-    //circular image
+    //Circular image
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
+    //QR
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation 'com.karumi:dexter:6.1.2'
+    implementation 'com.google.android.material:material:1.2.1'
 
 }
