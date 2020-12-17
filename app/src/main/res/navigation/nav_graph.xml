@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentViewPagerTabbed">
+    app:startDestination="@id/fragmentHome">
 
     <fragment
         android:id="@+id/firstFragment2"
@@ -15,14 +15,7 @@
         tools:layout="@layout/fragment_second"
         android:id="@+id/secondFragment2"
         android:name="com.example.rostmanafinal.Fragments.SecondFragment"
-        android:label="SecondFragment" >
-        <action
-            android:id="@+id/action_secondFragment2_to_thirdFragment2"
-            app:destination="@id/thirdFragment2" />
-        <action
-            android:id="@+id/action_secondFragment2_to_fragment_Plant_Details"
-            app:destination="@id/fragment_Plant_Details" />
-    </fragment>
+        android:label="SecondFragment" />
     <fragment
         tools:layout="@layout/fragment_third"
         android:id="@+id/thirdFragment2"
@@ -37,7 +30,26 @@
         android:name="com.example.rostmanafinal.Fragments.FragmentViewPagerTabbed"
         android:label="FragmentViewPagerTabbed" >
         <action
-            android:id="@+id/action_fragmentViewPagerTabbed_to_thirdFragment2"
-            app:destination="@id/thirdFragment2" />
+            android:id="@+id/action_fragmentViewPagerTabbed_to_fragmentScanQR"
+            app:destination="@id/fragmentScanQR" />
+        <action
+            android:id="@+id/action_fragmentViewPagerTabbed_to_fragmentEnterSerialNumber"
+            app:destination="@id/fragmentEnterSerialNumber" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.rostmanafinal.Fragments.FragmentHome"
+        android:label="FragmentHome" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentViewPagerTabbed"
+            app:destination="@id/fragmentViewPagerTabbed" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEnterSerialNumber"
+        android:name="com.example.rostmanafinal.Fragments.FragmentEnterSerialNumber"
+        android:label="FragmentEnterSerialNumber" />
+    <fragment
+        android:id="@+id/fragmentScanQR"
+        android:name="com.example.rostmanafinal.Fragments.FragmentScanQR"
+        android:label="FragmentScanQR" />
 </navigation>
