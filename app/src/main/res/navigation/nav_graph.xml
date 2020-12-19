@@ -10,7 +10,11 @@
         android:name="com.example.rostmanafinal.Fragments.FirstFragment"
         android:label="FirstFragment"
         tools:layout="@layout/fragment_first"
-        />
+        >
+        <action
+            android:id="@+id/action_firstFragment2_to_fragmentCactus"
+            app:destination="@id/fragmentCactus" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_second"
         android:id="@+id/secondFragment2"
@@ -50,9 +54,21 @@
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"
         android:name="com.example.rostmanafinal.Fragments.FragmentEnterSerialNumber"
-        android:label="FragmentEnterSerialNumber" />
+        android:label="FragmentEnterSerialNumber" >
+        <action
+            android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment2"
+            app:destination="@id/firstFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentScanQR"
         android:name="com.example.rostmanafinal.Fragments.FragmentScanQR"
-        android:label="FragmentScanQR" />
+        android:label="FragmentScanQR" >
+        <action
+            android:id="@+id/action_fragmentScanQR_to_firstFragment2"
+            app:destination="@id/firstFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCactus"
+        android:name="com.example.rostmanafinal.Fragments.FragmentCactus"
+        android:label="FragmentCactus" />
 </navigation>

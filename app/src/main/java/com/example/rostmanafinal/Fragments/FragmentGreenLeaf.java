@@ -17,16 +17,15 @@ import com.example.rostmanafinal.R;
 
 import java.util.ArrayList;
 
-public class FragmentSeasonalFlowers extends Fragment {
+public class FragmentGreenLeaf extends Fragment {
     RecyclerView recycler;
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View viewSeasonal = inflater.inflate(R.layout.recycler_for_flowers, container, false);
+        View viewGreenLeaf = inflater.inflate(R.layout.recycler_for_flowers, container, false);
 
-        return viewSeasonal;
+        return viewGreenLeaf;
     }
 
     @Override

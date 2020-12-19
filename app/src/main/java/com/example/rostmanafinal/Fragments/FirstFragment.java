@@ -22,6 +22,7 @@ public class FirstFragment extends Fragment {
 
     TextView firstText;
     ImageView image_seasonal, image_cactus, image_greenLeaf, image_organic, image_shrub;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class FirstFragment extends Fragment {
 
 //                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_secondFragment2);
 
-                //NavHostFragment.findNavController(SecondFragment);
+    //NavHostFragment.findNavController(SecondFragment);
 //                Navigation.findNavController(Activity, @IdRes int viewId)
 //                Navigation.findNavController(View)
 //            }
@@ -65,10 +66,11 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         image_seasonal = view.findViewById(R.id.image_seasonal);
-        image_cactus= view.findViewById(R.id.image_cactus);
-        image_greenLeaf= view.findViewById(R.id.image_greenLeaf);
-        image_organic= view.findViewById(R.id.image_organic);
-        image_shrub= view.findViewById(R.id.image_shrub);
+        image_cactus = view.findViewById(R.id.image_cactus);
+        image_greenLeaf = view.findViewById(R.id.image_greenLeaf);
+        image_organic = view.findViewById(R.id.image_organic);
+        image_shrub = view.findViewById(R.id.image_shrub);
+
         image_seasonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +85,49 @@ public class FirstFragment extends Fragment {
 
             }
         });
-
-
-
+        image_cactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().getSupportFragmentManager();
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentCactus fn = new FragmentCactus();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+                fragmentTransaction.commit();
+            }
+        });
+image_greenLeaf.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        requireActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentGreenLeaf fn = new FragmentGreenLeaf();
+        fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+        fragmentTransaction.commit();
+    }
+});
+image_organic.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        requireActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentOrganic fn = new FragmentOrganic();
+        fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+        fragmentTransaction.commit();
+    }
+});
+image_shrub.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        requireActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentShrub fn = new FragmentShrub();
+        fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+        fragmentTransaction.commit();
+    }
+});
     }
 }

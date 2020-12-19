@@ -1,6 +1,7 @@
 package com.example.rostmanafinal.Fragments;
 
 import android.os.Bundle;
+import android.text.method.ReplacementTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +16,19 @@ import com.example.rostmanafinal.Adapters.FlowersAdapter;
 import com.example.rostmanafinal.Pojo.FlowerListClass;
 import com.example.rostmanafinal.R;
 
+import java.lang.annotation.Retention;
 import java.util.ArrayList;
 
-public class FragmentSeasonalFlowers extends Fragment {
-    RecyclerView recycler;
+import kotlin.contracts.Returns;
 
+public class FragmentOrganic extends Fragment {
+    RecyclerView recycler;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View viewSeasonal = inflater.inflate(R.layout.recycler_for_flowers, container, false);
-
-        return viewSeasonal;
+        View viewOrganic = inflater.inflate(R.layout.recycler_for_flowers, container, false);
+        return viewOrganic;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.rostmanafinal.Fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +18,21 @@ import com.example.rostmanafinal.R;
 
 import java.util.ArrayList;
 
-public class FragmentSeasonalFlowers extends Fragment {
-    RecyclerView recycler;
+public class FragmentCactus extends Fragment {
 
+    RecyclerView recycler;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View viewSeasonal = inflater.inflate(R.layout.recycler_for_flowers, container, false);
-
-        return viewSeasonal;
+        View ViewCactus = inflater.inflate(R.layout.recycler_for_flowers, container, false);
+        return ViewCactus;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         recycler = view.findViewById(R.id.recycler);
         ArrayList<FlowerListClass> names = new ArrayList();
         names.add(new FlowerListClass("اپونتیا", R.drawable.limo));
@@ -45,20 +46,17 @@ public class FragmentSeasonalFlowers extends Fragment {
         names.add(new FlowerListClass("ژمینوکالیسیم", R.drawable.ic_greenleaf));
         names.add(new FlowerListClass("سانسوریا", R.drawable.ic_shrub));
         names.add(new FlowerListClass("سولکو", R.drawable.ic_cactus));
-        names.add(new FlowerListClass("فرو", R.drawable.ic_organic));
-        names.add(new FlowerListClass("ماملاریا", R.drawable.ic_shrub));
-        names.add(new FlowerListClass("نولآبی", R.drawable.limo));
-        names.add(new FlowerListClass("نازقرمز", R.drawable.ic_seasonalflowers));
-        names.add(new FlowerListClass("نخل ماداگاسکار", R.drawable.benjamin));
-        names.add(new FlowerListClass("هاورتیا گورخری", R.drawable.ic_organic));
 
 
         //Adapter
         FlowersAdapter adapter = new FlowersAdapter(names, requireActivity());
         recycler.setAdapter(adapter);
-
         recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-
-
     }
 }
+//       names.add(new FlowerListClass("فرو", R.drawable.ic_organic));
+//               names.add(new FlowerListClass("ماملاریا", R.drawable.ic_shrub));
+//               names.add(new FlowerListClass("نولآبی", R.drawable.limo));
+//               names.add(new FlowerListClass("نازقرمز", R.drawable.ic_seasonalflowers));
+//               names.add(new FlowerListClass("نخل ماداگاسکار", R.drawable.benjamin));
+//               names.add(new FlowerListClass("هاورتیا گورخری", R.drawable.ic_organic));
