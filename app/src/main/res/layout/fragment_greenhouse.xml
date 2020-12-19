@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/circularimage"
+        android:layout_width="200sp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:elevation="50dp"
+        android:isScrollContainer="true"
+        android:src="@drawable/limo"
+        app:civ_border_color="@color/teal_200"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="#2CA356"
+        app:civ_shadow_radius="10dp"
+        app:layout_anchor="@+id/recyclerView"
+        app:layout_anchorGravity="top|center" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</LinearLayout>
