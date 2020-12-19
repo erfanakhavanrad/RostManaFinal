@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rostmanafinal.R;
 
@@ -31,6 +34,22 @@ public class FragmentEnterSerialNumber extends Fragment {
         serialEntered.setImeOptions(EditorInfo.IME_ACTION_DONE);
         serialEntered.isSingleLine();
 
+        Button btnConfirm = view.findViewById(R.id.btnConfirm);
+
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                requireActivity().getSupportFragmentManager();
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FirstFragment fn = new FirstFragment();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+                fragmentTransaction.commit();
+
+            }
+        });
 
     }
 }

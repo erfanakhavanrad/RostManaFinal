@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentViewPagerTabbed"
             app:destination="@id/fragmentViewPagerTabbed" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragment_Plant_Details"
+            app:destination="@id/fragment_Plant_Details" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"

@@ -55,6 +55,7 @@
 
 
     <ImageView
+
         android:id="@+id/image_greenLeaf"
         android:layout_width="360dp"
         android:layout_height="174dp"
@@ -93,9 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:gravity="right"
-
             >
-
             <ImageView
                 android:id="@+id/image_shrub"
                 android:layout_width="180dp"
