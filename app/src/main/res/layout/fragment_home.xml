@@ -8,6 +8,7 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:layout_width="297dp"
         android:layout_height="277dp"
@@ -32,6 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.027" />
+
 
     <ImageView
         android:id="@+id/imageAddUser"

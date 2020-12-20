@@ -6,33 +6,42 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_message"
-            android:icon="@drawable/ic_user"
-            android:title="message" />
+
+            android:id="@+id/callUs"
+            android:icon="@drawable/limo"
+            android:title="تماس با ما" />
         <item
-            android:id="@+id/nav_chat"
+            android:id="@+id/aboutUs"
             android:icon="@drawable/ic_user"
-            android:title="chat" />
+            android:title="درباره ما" />
         <item
-            android:id="@+id/nav_profile"
+            android:id="@+id/update"
             android:icon="@drawable/ic_user"
-            android:title="profile" />
+            android:title="به روز رسانی" />
+        <item
+            android:id="@+id/exitProfile"
+            android:icon="@drawable/ic_user"
+            android:title="خروج از حساب کاربری" />
+        <item
+            android:id="@+id/exitApplication"
+            android:icon="@drawable/ic_user"
+            android:title="خروج از برنامه" />
 
     </group>
 
-    <item android:title="commuticate">
+<!--    <item android:title="commuticate">-->
 
-        <menu>
-            <item
-                android:id="@+id/nave_share"
-                android:title="share" />
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/nave_share"-->
+<!--                android:title="share" />-->
 
-            <item
-                android:id="@+id/nave_send"
-                android:title="send" />
+<!--            <item-->
+<!--                android:id="@+id/nave_send"-->
+<!--                android:title="send" />-->
 
-        </menu>
+<!--        </menu>-->
 
-    </item>
+<!--    </item>-->
 
 </menu>

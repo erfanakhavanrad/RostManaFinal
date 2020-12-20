@@ -38,12 +38,15 @@ public class SecondFragment extends Fragment {
 //                ft.replace(R.id., newFragment);
 //                ft.commit();
 //                getSup().beginTransaction().replace(R.id.fragment_Plant_Details, new Fragment_Plant_Details()).addToBackStack(null).commit();
-           requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Fragment_Plant_Details fn = new Fragment_Plant_Details();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
-                fragmentTransaction.commit();
+
+//           requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                Fragment_Plant_Details fn = new Fragment_Plant_Details();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                fragmentTransaction.commit();
+
+                Navigation.findNavController(view).navigate(R.id.fragment_Plant_Details);
 
             }
         });

@@ -21,6 +21,7 @@ public class FragmentViewPagerTabbed extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewVP = inflater.inflate(R.layout.fragment_viewpager_tabbed, container, false);
 
+
         return viewVP;
     }
 
@@ -36,6 +37,10 @@ ViewPager viewPager = view.findViewById(R.id.viewPager);
         PagerAdapter pagerAdapter = new PagerAdapter(getParentFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
 
+
+//        (FragmentViewPagerTabbed) PagerAdapter.instantiateItem(pagerAdapter, pagerAdapter.getItemPosition());
+
+//        (BookPageFragment) mBookPagerAdapter.instantiateItem(mBookPager, mBookPager.getCurrentItem());
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -2,20 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#fff">
     <item
-        android:id="@+id/firstFragment"
+        android:id="@+id/secondFragment2"
         android:icon="@drawable/ic_monitoring"
-        android:title="Monitoring"
-
-        />
+        android:title="Monitoring" />
     <item
-        android:id="@+id/secondFragment"
+        android:id="@+id/fragmentViewPagerTabbed"
         android:icon="@drawable/ic_baseline_add_24"
         android:title="Add" />
     <item
-        android:id="@+id/thirdFragment"
+        android:id="@+id/fragmentHome"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="home"
-        />
+        android:title="home" />
 
 
 </menu>

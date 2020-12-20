@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import com.example.rostmanafinal.R;
 
 public class FragmentHome extends Fragment {
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

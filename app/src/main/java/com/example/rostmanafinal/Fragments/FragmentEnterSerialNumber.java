@@ -48,6 +48,8 @@ public class FragmentEnterSerialNumber extends Fragment {
                 fragmentTransaction.replace(R.id.nav_host_fragment, fn);
                 fragmentTransaction.commit();
 
+
+
             }
         });
 

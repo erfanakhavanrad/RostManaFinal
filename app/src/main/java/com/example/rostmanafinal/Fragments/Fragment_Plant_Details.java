@@ -64,6 +64,16 @@ public class Fragment_Plant_Details extends Fragment {
                 12, "wet", "itSprinkles", "twice a month", "natural light",
                 "soil", "potasium manure", "twice a week"));
 
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.limo, "native",
+                12, "wet", "itSprinkles", "twice a month", "natural light",
+                "soil", "potasium manure", "twice a week"));
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.limo, "native",
+                12, "wet", "itSprinkles", "twice a month", "natural light",
+                "soil", "potasium manure", "twice a week"));
+        plantDetailListArray.add(new PlantDetailClass("tulips", "12", R.drawable.limo, "native",
+                12, "wet", "itSprinkles", "twice a month", "natural light",
+                "soil", "potasium manure", "twice a week"));
+
 
         recyclerPlantDetail = view.findViewById(R.id.recyclerPlantDetail);
         PlantDetailAdapter plantDetailAdapter = new PlantDetailAdapter(plantDetailListArray, getActivity());

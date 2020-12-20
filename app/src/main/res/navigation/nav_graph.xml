@@ -26,10 +26,12 @@
         android:name="com.example.rostmanafinal.Fragments.ThirdFragment"
         android:label="ThirdFragment" />
     <fragment
+        tools:layout="@layout/fragment_plant_details"
         android:id="@+id/fragment_Plant_Details"
         android:name="com.example.rostmanafinal.Fragments.Fragment_Plant_Details"
         android:label="Fragment_Plant_Details" />
     <fragment
+        tools:layout="@layout/fragment_viewpager_tabbed"
         android:id="@+id/fragmentViewPagerTabbed"
         android:name="com.example.rostmanafinal.Fragments.FragmentViewPagerTabbed"
         android:label="FragmentViewPagerTabbed" >
@@ -41,6 +43,7 @@
             app:destination="@id/fragmentEnterSerialNumber" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_home"
         android:id="@+id/fragmentHome"
         android:name="com.example.rostmanafinal.Fragments.FragmentHome"
         android:label="FragmentHome" >
@@ -50,8 +53,12 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragment_Plant_Details"
             app:destination="@id/fragment_Plant_Details" />
+        <action
+            android:id="@+id/action_fragmentHome_to_secondFragment2"
+            app:destination="@id/secondFragment2" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_enter_serialnumber"
         android:id="@+id/fragmentEnterSerialNumber"
         android:name="com.example.rostmanafinal.Fragments.FragmentEnterSerialNumber"
         android:label="FragmentEnterSerialNumber" >
@@ -60,6 +67,7 @@
             app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_scan_qr"
         android:id="@+id/fragmentScanQR"
         android:name="com.example.rostmanafinal.Fragments.FragmentScanQR"
         android:label="FragmentScanQR" >
@@ -68,6 +76,7 @@
             app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
+        tools:layout="@layout/recycler_for_flowers"
         android:id="@+id/fragmentCactus"
         android:name="com.example.rostmanafinal.Fragments.FragmentCactus"
         android:label="FragmentCactus" />
