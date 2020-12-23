@@ -72,6 +72,12 @@
         <action
             android:id="@+id/action_fragmentHome_to_secondFragment2"
             app:destination="@id/secondFragment2" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmnetCallUs"
+            app:destination="@id/fragmnetCallUs" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentAboutUs"
+            app:destination="@id/fragmentAboutUs" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_enter_serialnumber"
@@ -107,4 +113,20 @@
         android:id="@+id/fragmentGreenHouse"
         android:name="com.example.rostmanafinal.Fragments.FragmentGreenHouse"
         android:label="FragmentGreenHouse" />
+    <fragment
+        android:id="@+id/fragmnetCallUs"
+        android:name="com.example.rostmanafinal.Fragments.FragmnetCallUs"
+        android:label="FragmnetCallUs" >
+        <action
+            android:id="@+id/action_fragmnetCallUs_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAboutUs"
+        android:name="com.example.rostmanafinal.Fragments.FragmentAboutUs"
+        android:label="FragmentAboutUs" >
+        <action
+            android:id="@+id/action_fragmentAboutUs_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
 </navigation>
