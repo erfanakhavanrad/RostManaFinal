@@ -14,7 +14,7 @@
         android:fontFamily="@font/iransans"
         android:gravity="center"
         android:padding="5dp"
-        android:text="لطفا شماره سریال هک شده روی دستگاه را وارد نمایید"
+        android:text="لطفا شماره سریال حک شده روی دستگاه را وارد نمایید"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,10 +38,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:text="Confirm"
         android:id="@+id/btnConfirm"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/iransans"
+        android:text="تایید"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

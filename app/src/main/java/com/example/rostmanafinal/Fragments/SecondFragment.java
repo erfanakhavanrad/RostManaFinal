@@ -46,7 +46,7 @@ public class SecondFragment extends Fragment {
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
 
-                Navigation.findNavController(view).navigate(R.id.fragment_Plant_Details);
+                Navigation.findNavController(view).navigate(R.id.action_secondFragment2_to_fragmentGreenHouse);
 
             }
         });

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,8 @@ import com.example.rostmanafinal.Adapters.PagerAdapter;
 import com.example.rostmanafinal.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+
+import static android.os.Build.VERSION_CODES.N;
 
 public class FragmentViewPagerTabbed extends Fragment {
     @Nullable
@@ -32,13 +35,18 @@ public class FragmentViewPagerTabbed extends Fragment {
         TabItem tabChats, tabStatus;
         tabChats = view.findViewById(R.id.tabChats);
         tabStatus = view.findViewById(R.id.tabStatus);
-ViewPager viewPager = view.findViewById(R.id.viewPager);
+        ViewPager viewPager = view.findViewById(R.id.viewPager);
+
+        viewPager.setOffscreenPageLimit(N);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getParentFragmentManager(), tabLayout.getTabCount());
+
+//       PagerAdapter.instantiateItem(viewPager, viewPager.getCurrentItem());
+
         viewPager.setAdapter(pagerAdapter);
 
 
-//        (FragmentViewPagerTabbed) PagerAdapter.instantiateItem(pagerAdapter, pagerAdapter.getItemPosition());
+//        (FragmentViewPagerTabbed) PagerAdapter.instantiateItem(pagerAdapter, pagerAdapter.get
 
 //        (BookPageFragment) mBookPagerAdapter.instantiateItem(mBookPager, mBookPager.getCurrentItem());
 
@@ -62,5 +70,23 @@ ViewPager viewPager = view.findViewById(R.id.viewPager);
 
         viewPager.addOnPageChangeListener(new TabLayout
                 .TabLayoutOnPageChangeListener(tabLayout));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toast.makeText(getContext(), "onResume", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Toast.makeText(getContext(), "onStop", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getContext(), "onDestroy", Toast.LENGTH_SHORT).show();
     }
 }

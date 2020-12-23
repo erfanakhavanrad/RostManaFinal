@@ -14,12 +14,25 @@
         <action
             android:id="@+id/action_firstFragment2_to_fragmentCactus"
             app:destination="@id/fragmentCactus" />
+        <action
+            android:id="@+id/action_firstFragment2_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+        <action
+            android:id="@+id/action_firstFragment2_to_fragmentEnterSerialNumber"
+            app:destination="@id/fragmentEnterSerialNumber" />
+        <action
+            android:id="@+id/action_firstFragment2_to_secondFragment2"
+            app:destination="@id/secondFragment2" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_second"
         android:id="@+id/secondFragment2"
         android:name="com.example.rostmanafinal.Fragments.SecondFragment"
-        android:label="SecondFragment" />
+        android:label="SecondFragment" >
+        <action
+            android:id="@+id/action_secondFragment2_to_fragmentGreenHouse"
+            app:destination="@id/fragmentGreenHouse" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_third"
         android:id="@+id/thirdFragment2"
@@ -41,6 +54,9 @@
         <action
             android:id="@+id/action_fragmentViewPagerTabbed_to_fragmentEnterSerialNumber"
             app:destination="@id/fragmentEnterSerialNumber" />
+        <action
+            android:id="@+id/action_fragmentViewPagerTabbed_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_home"
@@ -65,6 +81,9 @@
         <action
             android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment2"
             app:destination="@id/firstFragment2" />
+        <action
+            android:id="@+id/action_fragmentEnterSerialNumber_to_fragmentViewPagerTabbed"
+            app:destination="@id/fragmentViewPagerTabbed" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_scan_qr"
@@ -79,5 +98,13 @@
         tools:layout="@layout/recycler_for_flowers"
         android:id="@+id/fragmentCactus"
         android:name="com.example.rostmanafinal.Fragments.FragmentCactus"
-        android:label="FragmentCactus" />
+        android:label="FragmentCactus" >
+        <action
+            android:id="@+id/action_fragmentCactus_to_firstFragment2"
+            app:destination="@id/firstFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGreenHouse"
+        android:name="com.example.rostmanafinal.Fragments.FragmentGreenHouse"
+        android:label="FragmentGreenHouse" />
 </navigation>
