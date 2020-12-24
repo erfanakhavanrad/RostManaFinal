@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_monitoring"
         android:title="Monitoring" />
     <item
-        android:id="@+id/fragmentViewPagerTabbed"
+        android:id="@+id/fragmentViewPagerTabbed23"
         android:icon="@drawable/ic_baseline_add_24"
         android:title="Add" />
     <item

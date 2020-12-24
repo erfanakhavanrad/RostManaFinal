@@ -34,38 +34,15 @@
             app:destination="@id/fragmentGreenHouse" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_third"
-        android:id="@+id/thirdFragment2"
-        android:name="com.example.rostmanafinal.Fragments.ThirdFragment"
-        android:label="ThirdFragment" />
-    <fragment
         tools:layout="@layout/fragment_plant_details"
         android:id="@+id/fragment_Plant_Details"
         android:name="com.example.rostmanafinal.Fragments.Fragment_Plant_Details"
         android:label="Fragment_Plant_Details" />
     <fragment
-        tools:layout="@layout/fragment_viewpager_tabbed"
-        android:id="@+id/fragmentViewPagerTabbed"
-        android:name="com.example.rostmanafinal.Fragments.FragmentViewPagerTabbed"
-        android:label="FragmentViewPagerTabbed" >
-        <action
-            android:id="@+id/action_fragmentViewPagerTabbed_to_fragmentScanQR"
-            app:destination="@id/fragmentScanQR" />
-        <action
-            android:id="@+id/action_fragmentViewPagerTabbed_to_fragmentEnterSerialNumber"
-            app:destination="@id/fragmentEnterSerialNumber" />
-        <action
-            android:id="@+id/action_fragmentViewPagerTabbed_to_fragmentHome"
-            app:destination="@id/fragmentHome" />
-    </fragment>
-    <fragment
         tools:layout="@layout/fragment_home"
         android:id="@+id/fragmentHome"
         android:name="com.example.rostmanafinal.Fragments.FragmentHome"
         android:label="FragmentHome" >
-        <action
-            android:id="@+id/action_fragmentHome_to_fragmentViewPagerTabbed"
-            app:destination="@id/fragmentViewPagerTabbed" />
         <action
             android:id="@+id/action_fragmentHome_to_fragment_Plant_Details"
             app:destination="@id/fragment_Plant_Details" />
@@ -78,6 +55,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentAboutUs"
             app:destination="@id/fragmentAboutUs" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentAddToHome"
+            app:destination="@id/fragmentViewPagerTabbed23" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_enter_serialnumber"
@@ -87,9 +67,6 @@
         <action
             android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment2"
             app:destination="@id/firstFragment2" />
-        <action
-            android:id="@+id/action_fragmentEnterSerialNumber_to_fragmentViewPagerTabbed"
-            app:destination="@id/fragmentViewPagerTabbed" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_scan_qr"
@@ -128,5 +105,16 @@
         <action
             android:id="@+id/action_fragmentAboutUs_to_fragmentHome"
             app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentViewPagerTabbed23"
+        android:name="com.example.rostmanafinal.Fragments.FragmentAddToHome"
+        android:label="FragmentAddToHome" >
+        <action
+            android:id="@+id/action_fragmentAddToHome_to_fragmentEnterSerialNumber"
+            app:destination="@id/fragmentEnterSerialNumber" />
+        <action
+            android:id="@+id/action_fragmentAddToHome_to_fragmentScanQR"
+            app:destination="@id/fragmentScanQR" />
     </fragment>
 </navigation>
