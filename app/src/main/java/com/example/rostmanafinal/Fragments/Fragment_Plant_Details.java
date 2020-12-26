@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.rostmanafinal.Adapters.PlantDetailAdapter;
 import com.example.rostmanafinal.Pojo.PlantDetailClass;
 import com.example.rostmanafinal.R;
@@ -19,6 +23,7 @@ import java.util.ArrayList;
 public class Fragment_Plant_Details extends Fragment {
 
     RecyclerView recyclerPlantDetail;
+    ImageView image_check, image_cancel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +37,31 @@ public class Fragment_Plant_Details extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_plant_details, container, false);
+
+        return view;
+
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        image_cancel = view.findViewById(R.id.image_cancel);
+        image_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_firstFragment2);
+            }
+        });
+
+        image_check = view.findViewById(R.id.image_check);
+        image_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_fragmentHome);
+            }
+        });
 
 
         PlantDetailClass plantDetailClass;
@@ -81,8 +111,5 @@ public class Fragment_Plant_Details extends Fragment {
 //        recyclerPlantDetail.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         recyclerPlantDetail.setLayoutManager(new LinearLayoutManager(getContext()
                 , RecyclerView.VERTICAL, false));
-        return view;
-
-
     }
 }

@@ -22,7 +22,7 @@ import com.example.rostmanafinal.R;
 
 public class FragmentHome extends Fragment {
     DrawerLayout containerd;
-    ImageView menuIconImage, imageClose;
+    ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fifthItem;
 
     @Nullable
@@ -50,6 +50,14 @@ public class FragmentHome extends Fragment {
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
                 System.exit(0);
+            }
+        });
+
+        imageAddUser = view.findViewById(R.id.imageAddUser);
+        imageAddUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentLoginRegister);
             }
         });
 

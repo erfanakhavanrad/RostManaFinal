@@ -9,8 +9,7 @@
         android:id="@+id/firstFragment2"
         android:name="com.example.rostmanafinal.Fragments.FirstFragment"
         android:label="FirstFragment"
-        tools:layout="@layout/fragment_first"
-        >
+        tools:layout="@layout/fragment_first">
         <action
             android:id="@+id/action_firstFragment2_to_fragmentCactus"
             app:destination="@id/fragmentCactus" />
@@ -28,24 +27,31 @@
             app:destination="@id/fragmentShrub" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_second"
         android:id="@+id/secondFragment2"
         android:name="com.example.rostmanafinal.Fragments.SecondFragment"
-        android:label="SecondFragment" >
+        android:label="SecondFragment"
+        tools:layout="@layout/fragment_second">
         <action
             android:id="@+id/action_secondFragment2_to_fragmentGreenHouse"
             app:destination="@id/fragmentGreenHouse" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_plant_details"
         android:id="@+id/fragment_Plant_Details"
         android:name="com.example.rostmanafinal.Fragments.Fragment_Plant_Details"
-        android:label="Fragment_Plant_Details" />
+        android:label="Fragment_Plant_Details"
+        tools:layout="@layout/fragment_plant_details">
+        <action
+            android:id="@+id/action_fragment_Plant_Details_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+        <action
+            android:id="@+id/action_fragment_Plant_Details_to_firstFragment2"
+            app:destination="@id/firstFragment2" />
+    </fragment>
     <fragment
-        tools:layout="@layout/fragment_home"
         android:id="@+id/fragmentHome"
         android:name="com.example.rostmanafinal.Fragments.FragmentHome"
-        android:label="FragmentHome" >
+        android:label="FragmentHome"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_fragmentHome_to_secondFragment2"
             app:destination="@id/secondFragment2" />
@@ -58,62 +64,65 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmnetCallUs"
             app:destination="@id/fragmnetCallUs" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentLoginRegister"
+            app:destination="@id/fragmentLoginRegister" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_enter_serialnumber"
         android:id="@+id/fragmentEnterSerialNumber"
         android:name="com.example.rostmanafinal.Fragments.FragmentEnterSerialNumber"
-        android:label="FragmentEnterSerialNumber" >
+        android:label="FragmentEnterSerialNumber"
+        tools:layout="@layout/fragment_enter_serialnumber">
         <action
             android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment22"
             app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_scan_qr"
         android:id="@+id/fragmentScanQR"
         android:name="com.example.rostmanafinal.Fragments.FragmentScanQR"
-        android:label="FragmentScanQR" >
+        android:label="FragmentScanQR"
+        tools:layout="@layout/fragment_scan_qr">
         <action
             android:id="@+id/action_fragmentScanQR_to_firstFragment2"
             app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
-        tools:layout="@layout/recycler_for_flowers"
         android:id="@+id/fragmentCactus"
         android:name="com.example.rostmanafinal.Fragments.FragmentCactus"
-        android:label="FragmentCactus" >
+        android:label="FragmentCactus"
+        tools:layout="@layout/recycler_for_flowers">
         <action
             android:id="@+id/action_fragmentCactus_to_fragment_Plant_Details"
             app:destination="@id/fragment_Plant_Details" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_greenhouse"
         android:id="@+id/fragmentGreenHouse"
         android:name="com.example.rostmanafinal.Fragments.FragmentGreenHouse"
-        android:label="FragmentGreenHouse" />
+        android:label="FragmentGreenHouse"
+        tools:layout="@layout/fragment_greenhouse" />
     <fragment
-        tools:layout="@layout/fragment_callus"
         android:id="@+id/fragmnetCallUs"
         android:name="com.example.rostmanafinal.Fragments.FragmnetCallUs"
-        android:label="FragmnetCallUs" >
+        android:label="FragmnetCallUs"
+        tools:layout="@layout/fragment_callus">
         <action
             android:id="@+id/action_fragmnetCallUs_to_fragmentHome"
             app:destination="@id/fragmentHome" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_about_us"
         android:id="@+id/fragmentAboutUs"
         android:name="com.example.rostmanafinal.Fragments.FragmentAboutUs"
-        android:label="FragmentAboutUs" >
+        android:label="FragmentAboutUs"
+        tools:layout="@layout/fragment_about_us">
         <action
             android:id="@+id/action_fragmentAboutUs_to_fragmentHome"
             app:destination="@id/fragmentHome" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_viewpager_tabbed"
         android:id="@+id/fragmentViewPagerTabbed23"
         android:name="com.example.rostmanafinal.Fragments.FragmentAddToHome"
-        android:label="FragmentAddToHome" >
+        android:label="FragmentAddToHome"
+        tools:layout="@layout/fragment_viewpager_tabbed">
         <action
             android:id="@+id/action_fragmentViewPagerTabbed23_to_fragmentScanQR"
             app:destination="@id/fragmentScanQR" />
@@ -122,9 +131,10 @@
             app:destination="@id/fragmentEnterSerialNumber" />
     </fragment>
     <fragment
+
         android:id="@+id/fragmentSeasonalFlowers"
         android:name="com.example.rostmanafinal.Fragments.FragmentSeasonalFlowers"
-        android:label="FragmentSeasonalFlowers" >
+        android:label="FragmentSeasonalFlowers">
         <action
             android:id="@+id/action_fragmentSeasonalFlowers_to_fragment_Plant_Details"
             app:destination="@id/fragment_Plant_Details" />
@@ -132,7 +142,7 @@
     <fragment
         android:id="@+id/fragmentGreenLeaf"
         android:name="com.example.rostmanafinal.Fragments.FragmentGreenLeaf"
-        android:label="FragmentGreenLeaf" >
+        android:label="FragmentGreenLeaf">
         <action
             android:id="@+id/action_fragmentGreenLeaf_to_fragment_Plant_Details2"
             app:destination="@id/fragment_Plant_Details" />
@@ -140,7 +150,7 @@
     <fragment
         android:id="@+id/fragmentOrganic2"
         android:name="com.example.rostmanafinal.Fragments.FragmentOrganic"
-        android:label="FragmentOrganic" >
+        android:label="FragmentOrganic">
         <action
             android:id="@+id/action_fragmentOrganic2_to_fragment_Plant_Details"
             app:destination="@id/fragment_Plant_Details" />
@@ -148,9 +158,13 @@
     <fragment
         android:id="@+id/fragmentShrub"
         android:name="com.example.rostmanafinal.Fragments.FragmentShrub"
-        android:label="FragmentShrub" >
+        android:label="FragmentShrub">
         <action
             android:id="@+id/action_fragmentShrub_to_fragment_Plant_Details"
             app:destination="@id/fragment_Plant_Details" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentLoginRegister"
+        android:name="com.example.rostmanafinal.Fragments.FragmentLoginRegister"
+        android:label="FragmentLoginRegister" />
 </navigation>
