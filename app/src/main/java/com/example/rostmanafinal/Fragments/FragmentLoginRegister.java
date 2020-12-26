@@ -20,13 +20,14 @@ import com.example.rostmanafinal.R;
 
 public class FragmentLoginRegister extends Fragment {
     Button btn_register, btn_login, btn_forgetPassword_label;
-    EditText etxt_fname, etxt_lname, etxt_username_login, etxt_password_login, etxt_username_register, etxt_password_register,
-            etxt_forgetPassword_label, etxt_phonenumber_register;
-    TextView txt_lname, txt_fname, txt_username_login, txt_password_login, txt_username_register, txt_password_register, txt_forgetPassword,
-            txt_forgetPassword_label, txt_phonenumber_register;
+    EditText eTxt_firstName, eTxt_lName , eTxt_password_login, eTxt_username_register, eTxt_password_register,
+            eTxt_forgetPassword_label, eTxt_phoneNumber_register, eTxt_phoneNumber_login;
+    TextView txt_lName, txt_fName,  txt_password_login, txt_username_register, txt_password_register, txt_forgetPassword,
+            txt_forgetPassword_label, txt_phoneNumber_register, txt_phoneNumber_login, txt_cPassword_register, eTxt_cPassword_register;
     ImageView image_check, image_cancel;
     Integer statement = 1;
 
+//    eTxt_username_loginو txt_username_login,
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,26 +49,26 @@ public class FragmentLoginRegister extends Fragment {
         image_cancel = view.findViewById(R.id.image_cancel);
 
         //      Login Views
-        etxt_username_login = view.findViewById(R.id.etxt_username_login);
-        txt_username_login = view.findViewById(R.id.txt_username_login);
+        eTxt_phoneNumber_login = view.findViewById(R.id.etxt_phonenumber_login);
+        txt_phoneNumber_login = view.findViewById(R.id.txt_phonenumber_login);
         txt_password_login = view.findViewById(R.id.txt_password_login);
-        etxt_password_login = view.findViewById(R.id.etxt_password_login);
+        eTxt_password_login = view.findViewById(R.id.etxt_password_login);
         txt_forgetPassword = view.findViewById(R.id.txt_forgetPassword);
 
 //        Register Views
-        txt_username_register = view.findViewById(R.id.txt_username_register);
-        etxt_username_register = view.findViewById(R.id.etxt_username_register);
+        txt_username_register = view.findViewById(R.id.txt_cPassword_register);
+        eTxt_username_register = view.findViewById(R.id.etxt_cPassword_register);
         txt_password_register = view.findViewById(R.id.txt_password_register);
-        etxt_password_register = view.findViewById(R.id.etxt_password_register);
-        etxt_fname = view.findViewById(R.id.etxt_fname);
-        etxt_lname = view.findViewById(R.id.etxt_lname);
-        txt_fname = view.findViewById(R.id.txt_fname);
-        txt_lname = view.findViewById(R.id.txt_lname);
-        etxt_phonenumber_register = view.findViewById(R.id.etxt_phonenumber_register);
-        txt_phonenumber_register = view.findViewById(R.id.txt_phonenumber_register);
+        eTxt_password_register = view.findViewById(R.id.etxt_password_register);
+        eTxt_firstName = view.findViewById(R.id.etxt_fname);
+        eTxt_lName = view.findViewById(R.id.etxt_lname);
+        txt_fName = view.findViewById(R.id.txt_fname);
+        txt_lName = view.findViewById(R.id.txt_lname);
+        eTxt_phoneNumber_register = view.findViewById(R.id.etxt_phonenumber_register);
+        txt_phoneNumber_register = view.findViewById(R.id.txt_phonenumber_register);
 
 //        forget password
-        etxt_forgetPassword_label = view.findViewById(R.id.etxt_forgetPassword_label);
+        eTxt_forgetPassword_label = view.findViewById(R.id.etxt_forgetPassword_label);
         txt_forgetPassword_label = view.findViewById(R.id.txt_forgetPassword_label);
         btn_forgetPassword_label = view.findViewById(R.id.btn_forgetPassword_label);
         statement = 1;
@@ -92,12 +93,12 @@ public class FragmentLoginRegister extends Fragment {
             @Override
             public void onClick(View v) {
                 //Hide everything
-                etxt_forgetPassword_label.setVisibility(View.VISIBLE);
+                eTxt_forgetPassword_label.setVisibility(View.VISIBLE);
                 txt_forgetPassword_label.setVisibility(View.VISIBLE);
                 btn_forgetPassword_label.setVisibility(View.VISIBLE);
-                etxt_password_login.setVisibility(View.INVISIBLE);
-                etxt_username_login.setVisibility(View.INVISIBLE);
-                txt_username_login.setVisibility(View.INVISIBLE);
+                eTxt_password_login.setVisibility(View.INVISIBLE);
+                eTxt_phoneNumber_login.setVisibility(View.INVISIBLE);
+                txt_phoneNumber_login.setVisibility(View.INVISIBLE);
                 txt_password_login.setVisibility(View.INVISIBLE);
                 txt_forgetPassword.setVisibility(View.INVISIBLE);
 
@@ -113,36 +114,36 @@ public class FragmentLoginRegister extends Fragment {
                 btn_login.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.lGreen2OnSelected));
                 btn_register.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.lGreen2));
 
-                etxt_forgetPassword_label.setVisibility(View.GONE);
+                eTxt_forgetPassword_label.setVisibility(View.GONE);
                 txt_forgetPassword_label.setVisibility(View.GONE);
                 btn_forgetPassword_label.setVisibility(View.GONE);
-                etxt_fname.setVisibility(View.VISIBLE);
-                txt_fname.setVisibility(View.VISIBLE);
-                etxt_lname.setVisibility(View.VISIBLE);
-                txt_lname.setVisibility(View.VISIBLE);
-                etxt_phonenumber_register.setVisibility(View.VISIBLE);
-                txt_phonenumber_register.setVisibility(View.VISIBLE);
+                eTxt_firstName.setVisibility(View.VISIBLE);
+                txt_fName.setVisibility(View.VISIBLE);
+                eTxt_lName.setVisibility(View.VISIBLE);
+                txt_lName.setVisibility(View.VISIBLE);
+                eTxt_phoneNumber_register.setVisibility(View.VISIBLE);
+                txt_phoneNumber_register.setVisibility(View.VISIBLE);
 
 
                 txt_password_register.setVisibility(View.VISIBLE);
-                etxt_password_register.setVisibility(View.VISIBLE);
+                eTxt_password_register.setVisibility(View.VISIBLE);
                 txt_username_register.setVisibility(View.VISIBLE);
-                etxt_username_register.setVisibility(View.VISIBLE);
-                etxt_password_login.setVisibility(View.GONE);
-                etxt_username_login.setVisibility(View.GONE);
-                txt_username_login.setVisibility(View.GONE);
+                eTxt_username_register.setVisibility(View.VISIBLE);
+                eTxt_password_login.setVisibility(View.GONE);
+                eTxt_phoneNumber_login.setVisibility(View.GONE);
+               txt_phoneNumber_login.setVisibility(View.GONE);
                 txt_password_login.setVisibility(View.GONE);
                 txt_forgetPassword.setVisibility(View.GONE);
 
-                if (!etxt_fname.getText().toString().equals("") &&
-                        !etxt_lname.getText().toString().equals("") &&
-                        !etxt_password_register.getText().toString().equals("") &&
-                        !etxt_username_register.getText().toString().equals("")
+                if (!eTxt_firstName.getText().toString().equals("") &&
+                        !eTxt_lName.getText().toString().equals("") &&
+                        !eTxt_password_register.getText().toString().equals("") &&
+                        !eTxt_username_register.getText().toString().equals("")
                 ) {
-                    String firstName = etxt_fname.getText().toString();
-                    String lastName = etxt_lname.getText().toString();
-                    String passwordRegister = etxt_password_register.getText().toString();
-                    String userRegister = etxt_username_register.getText().toString();
+                    String firstName = eTxt_firstName.getText().toString();
+                    String lastName = eTxt_lName.getText().toString();
+                    String passwordRegister = eTxt_password_register.getText().toString();
+                    String userRegister = eTxt_username_register.getText().toString();
 
                     Intent intentUser = new Intent(getContext(), FragmentHome.class);
                     intentUser.putExtra("firstName", firstName);
@@ -165,24 +166,24 @@ public class FragmentLoginRegister extends Fragment {
                 btn_login.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.lGreen2));
 //                btn_register.setBackgroundColor(Color.lg);
 
-                etxt_forgetPassword_label.setVisibility(View.GONE);
+                eTxt_forgetPassword_label.setVisibility(View.GONE);
                 txt_forgetPassword_label.setVisibility(View.GONE);
                 btn_forgetPassword_label.setVisibility(View.GONE);
-                etxt_fname.setVisibility(View.GONE);
-                txt_fname.setVisibility(View.GONE);
-                etxt_lname.setVisibility(View.GONE);
-                txt_lname.setVisibility(View.GONE);
+                eTxt_firstName.setVisibility(View.GONE);
+                txt_fName.setVisibility(View.GONE);
+                eTxt_lName.setVisibility(View.GONE);
+                txt_lName.setVisibility(View.GONE);
                 txt_password_register.setVisibility(View.GONE);
-                etxt_password_register.setVisibility(View.GONE);
+                eTxt_password_register.setVisibility(View.GONE);
                 txt_username_register.setVisibility(View.GONE);
-                etxt_username_register.setVisibility(View.GONE);
-                txt_phonenumber_register.setVisibility(View.GONE);
-                etxt_phonenumber_register.setVisibility(View.GONE);
+                eTxt_username_register.setVisibility(View.GONE);
+                txt_phoneNumber_register.setVisibility(View.GONE);
+                eTxt_phoneNumber_register.setVisibility(View.GONE);
 
 
-                etxt_password_login.setVisibility(View.VISIBLE);
-                etxt_username_login.setVisibility(View.VISIBLE);
-                txt_username_login.setVisibility(View.VISIBLE);
+                eTxt_password_login.setVisibility(View.VISIBLE);
+                eTxt_phoneNumber_login.setVisibility(View.VISIBLE);
+                txt_phoneNumber_login.setVisibility(View.VISIBLE);
                 txt_password_login.setVisibility(View.VISIBLE);
                 txt_forgetPassword.setVisibility(View.VISIBLE);
 
@@ -214,8 +215,8 @@ public class FragmentLoginRegister extends Fragment {
                 switch (statement) {
                     case 1:
 // it starts here
-                        String data = etxt_password_login.getText().toString();
-                        String data2 = etxt_username_login.getText().toString();
+                        String data = eTxt_password_login.getText().toString();
+                        String data2 = eTxt_phoneNumber_login.getText().toString();
                         if (data.isEmpty() || data2.isEmpty()) {
                             Toast.makeText(getContext(), "لطفا تمام کادرها را پر کنید", Toast.LENGTH_SHORT).show();
                         } else {
@@ -231,10 +232,10 @@ public class FragmentLoginRegister extends Fragment {
                     case 2:
                         // it starts here
 
-                        String data3 = etxt_username_register.getText().toString();
-                        String data4 = etxt_password_register.getText().toString();
-                        String data5 = etxt_fname.getText().toString();
-                        String data7 = etxt_lname.getText().toString();
+                        String data3 = eTxt_username_register.getText().toString();
+                        String data4 = eTxt_password_register.getText().toString();
+                        String data5 = eTxt_firstName.getText().toString();
+                        String data7 = eTxt_lName.getText().toString();
                         if (data3.isEmpty() || data4.isEmpty() | data5.isEmpty() || data7.isEmpty()) {
                             Toast.makeText(getContext(), "لطفا تمام کادرها را پر کنید", Toast.LENGTH_SHORT).show();
                         } else {

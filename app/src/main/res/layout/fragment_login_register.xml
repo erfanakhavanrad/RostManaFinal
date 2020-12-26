@@ -162,25 +162,25 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/txt_username_login"
+        android:id="@+id/txt_phonenumber_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:fontFamily="@font/iransans"
-        android:text="نام کاربری"
+        android:text="شماره موبایل"
         android:textSize="17sp" />
 
     <EditText
-        android:id="@+id/etxt_username_login"
+        android:id="@+id/etxt_phonenumber_login"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/iransans"
         android:gravity="center"
-        android:hint="نام کاربری خود را وارد کنید"
+        android:hint="شماره موبایل خود را وارد کنید"
         android:inputType="textEmailAddress"
         android:textSize="15sp" />
     <!--   sddasdadsad -->
@@ -245,31 +245,6 @@
         android:visibility="gone" />
     <!-- عسثق-->
     <TextView
-        android:id="@+id/txt_username_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="20dp"
-        android:fontFamily="@font/iransans"
-        android:text="نام کاربری"
-        android:textSize="17sp"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/etxt_username_register"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/iransans"
-        android:gravity="center"
-        android:hint="نام کاربری خود را وارد کنید"
-        android:inputType="textEmailAddress"
-        android:textSize="15sp"
-        android:visibility="gone" />
-
-    <TextView
         android:id="@+id/txt_password_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -277,7 +252,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:fontFamily="@font/iransans"
-        android:text="کلمه عبور"
+        android:text="رمز عبور"
         android:textSize="17sp"
         android:visibility="gone" />
 
@@ -289,7 +264,32 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/iransans"
         android:gravity="center"
-        android:hint="کلمه عبور خود را وارد کنید"
+        android:hint="رمز عبور خود را وارد کنید"
+        android:inputType="textEmailAddress"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txt_cPassword_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/iransans"
+        android:text="تایید کلمه عبور"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/etxt_cPassword_register"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/iransans"
+        android:gravity="center"
+        android:hint="کلمه عبور خود را دوباره وارد کنید"
         android:inputType="textPassword"
         android:textSize="15sp"
         android:visibility="gone" />
