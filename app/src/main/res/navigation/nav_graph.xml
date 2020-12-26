@@ -15,14 +15,17 @@
             android:id="@+id/action_firstFragment2_to_fragmentCactus"
             app:destination="@id/fragmentCactus" />
         <action
-            android:id="@+id/action_firstFragment2_to_fragmentHome"
-            app:destination="@id/fragmentHome" />
+            android:id="@+id/action_firstFragment2_to_fragmentSeasonalFlowers"
+            app:destination="@id/fragmentSeasonalFlowers" />
         <action
-            android:id="@+id/action_firstFragment2_to_fragmentEnterSerialNumber"
-            app:destination="@id/fragmentEnterSerialNumber" />
+            android:id="@+id/action_firstFragment2_to_fragmentGreenLeaf"
+            app:destination="@id/fragmentGreenLeaf" />
         <action
-            android:id="@+id/action_firstFragment2_to_secondFragment2"
-            app:destination="@id/secondFragment2" />
+            android:id="@+id/action_firstFragment2_to_fragmentOrganic2"
+            app:destination="@id/fragmentOrganic2" />
+        <action
+            android:id="@+id/action_firstFragment2_to_fragmentShrub"
+            app:destination="@id/fragmentShrub" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_second"
@@ -44,20 +47,17 @@
         android:name="com.example.rostmanafinal.Fragments.FragmentHome"
         android:label="FragmentHome" >
         <action
-            android:id="@+id/action_fragmentHome_to_fragment_Plant_Details"
-            app:destination="@id/fragment_Plant_Details" />
-        <action
             android:id="@+id/action_fragmentHome_to_secondFragment2"
             app:destination="@id/secondFragment2" />
         <action
-            android:id="@+id/action_fragmentHome_to_fragmnetCallUs"
-            app:destination="@id/fragmnetCallUs" />
+            android:id="@+id/action_fragmentHome_to_fragmentViewPagerTabbed23"
+            app:destination="@id/fragmentViewPagerTabbed23" />
         <action
             android:id="@+id/action_fragmentHome_to_fragmentAboutUs"
             app:destination="@id/fragmentAboutUs" />
         <action
-            android:id="@+id/action_fragmentHome_to_fragmentAddToHome"
-            app:destination="@id/fragmentViewPagerTabbed23" />
+            android:id="@+id/action_fragmentHome_to_fragmnetCallUs"
+            app:destination="@id/fragmnetCallUs" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_enter_serialnumber"
@@ -65,7 +65,7 @@
         android:name="com.example.rostmanafinal.Fragments.FragmentEnterSerialNumber"
         android:label="FragmentEnterSerialNumber" >
         <action
-            android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment2"
+            android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment22"
             app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
@@ -83,14 +83,16 @@
         android:name="com.example.rostmanafinal.Fragments.FragmentCactus"
         android:label="FragmentCactus" >
         <action
-            android:id="@+id/action_fragmentCactus_to_firstFragment2"
-            app:destination="@id/firstFragment2" />
+            android:id="@+id/action_fragmentCactus_to_fragment_Plant_Details"
+            app:destination="@id/fragment_Plant_Details" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_greenhouse"
         android:id="@+id/fragmentGreenHouse"
         android:name="com.example.rostmanafinal.Fragments.FragmentGreenHouse"
         android:label="FragmentGreenHouse" />
     <fragment
+        tools:layout="@layout/fragment_callus"
         android:id="@+id/fragmnetCallUs"
         android:name="com.example.rostmanafinal.Fragments.FragmnetCallUs"
         android:label="FragmnetCallUs" >
@@ -99,6 +101,7 @@
             app:destination="@id/fragmentHome" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_about_us"
         android:id="@+id/fragmentAboutUs"
         android:name="com.example.rostmanafinal.Fragments.FragmentAboutUs"
         android:label="FragmentAboutUs" >
@@ -107,14 +110,47 @@
             app:destination="@id/fragmentHome" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_viewpager_tabbed"
         android:id="@+id/fragmentViewPagerTabbed23"
         android:name="com.example.rostmanafinal.Fragments.FragmentAddToHome"
         android:label="FragmentAddToHome" >
         <action
-            android:id="@+id/action_fragmentAddToHome_to_fragmentEnterSerialNumber"
-            app:destination="@id/fragmentEnterSerialNumber" />
-        <action
-            android:id="@+id/action_fragmentAddToHome_to_fragmentScanQR"
+            android:id="@+id/action_fragmentViewPagerTabbed23_to_fragmentScanQR"
             app:destination="@id/fragmentScanQR" />
+        <action
+            android:id="@+id/action_fragmentViewPagerTabbed23_to_fragmentEnterSerialNumber"
+            app:destination="@id/fragmentEnterSerialNumber" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSeasonalFlowers"
+        android:name="com.example.rostmanafinal.Fragments.FragmentSeasonalFlowers"
+        android:label="FragmentSeasonalFlowers" >
+        <action
+            android:id="@+id/action_fragmentSeasonalFlowers_to_fragment_Plant_Details"
+            app:destination="@id/fragment_Plant_Details" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGreenLeaf"
+        android:name="com.example.rostmanafinal.Fragments.FragmentGreenLeaf"
+        android:label="FragmentGreenLeaf" >
+        <action
+            android:id="@+id/action_fragmentGreenLeaf_to_fragment_Plant_Details2"
+            app:destination="@id/fragment_Plant_Details" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentOrganic2"
+        android:name="com.example.rostmanafinal.Fragments.FragmentOrganic"
+        android:label="FragmentOrganic" >
+        <action
+            android:id="@+id/action_fragmentOrganic2_to_fragment_Plant_Details"
+            app:destination="@id/fragment_Plant_Details" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentShrub"
+        android:name="com.example.rostmanafinal.Fragments.FragmentShrub"
+        android:label="FragmentShrub" >
+        <action
+            android:id="@+id/action_fragmentShrub_to_fragment_Plant_Details"
+            app:destination="@id/fragment_Plant_Details" />
     </fragment>
 </navigation>

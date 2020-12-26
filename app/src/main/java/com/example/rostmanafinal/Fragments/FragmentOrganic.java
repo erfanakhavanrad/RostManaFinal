@@ -9,10 +9,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Adapters.FlowersAdapter;
+import com.example.rostmanafinal.Interfaces.ChangingFragmentsInterface;
 import com.example.rostmanafinal.Pojo.FlowerListClass;
 import com.example.rostmanafinal.R;
 
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 
 import kotlin.contracts.Returns;
 
-public class FragmentOrganic extends Fragment {
+public class FragmentOrganic extends Fragment implements ChangingFragmentsInterface {
     RecyclerView recycler;
 
     @Nullable
@@ -56,11 +59,17 @@ public class FragmentOrganic extends Fragment {
 
 
         //Adapter
-        FlowersAdapter adapter = new FlowersAdapter(names, requireActivity());
+        FlowersAdapter adapter = new FlowersAdapter(names, requireActivity(), this);
         recycler.setAdapter(adapter);
 
         recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
 
 
+    }
+
+    @Override
+    public void onItemSelected() {
+        NavController navController = NavHostFragment.findNavController(FragmentOrganic.this);
+        navController.navigate(R.id.fragment_Plant_Details);
     }
 }

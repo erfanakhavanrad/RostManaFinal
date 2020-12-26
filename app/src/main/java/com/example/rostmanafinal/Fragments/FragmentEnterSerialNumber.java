@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.R;
 
@@ -41,13 +43,17 @@ public class FragmentEnterSerialNumber extends Fragment {
             public void onClick(View v) {
 
 
-                requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FirstFragment fn = new FirstFragment();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
-                fragmentTransaction.commit();
+//                requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                FirstFragment fn = new FirstFragment();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                fragmentTransaction.commit();
 
+
+//                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.action_fragmentViewPagerTabbed23_to_fragmentEnterSerialNumber);
+                Navigation.findNavController(view).navigate(R.id.action_fragmentEnterSerialNumber_to_firstFragment22);
 
 
             }

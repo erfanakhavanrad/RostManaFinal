@@ -76,57 +76,62 @@ public class FirstFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
 
-                requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentSeasonalFlowers fn = new FragmentSeasonalFlowers();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
-                fragmentTransaction.commit();
-
+//                requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentSeasonalFlowers fn = new FragmentSeasonalFlowers();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                fragmentTransaction.commit();
+                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentSeasonalFlowers);
             }
         });
         image_cactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentCactus fn = new FragmentCactus();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
-                fragmentTransaction.commit();
+//                requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentCactus fn = new FragmentCactus();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                fragmentTransaction.commit();
+     Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentCactus);
+
             }
         });
         image_greenLeaf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentGreenLeaf fn = new FragmentGreenLeaf();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
-                fragmentTransaction.commit();
+//                requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentGreenLeaf fn = new FragmentGreenLeaf();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                fragmentTransaction.commit();
+                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentGreenLeaf);
             }
         });
         image_organic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentOrganic fn = new FragmentOrganic();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
-                fragmentTransaction.commit();
+//                requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentOrganic fn = new FragmentOrganic();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                fragmentTransaction.commit();
+                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentOrganic2);
             }
         });
         image_shrub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentGreenHouse fn = new FragmentGreenHouse();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
-                fragmentTransaction.commit();
+//                requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentGreenHouse fn = new FragmentGreenHouse();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                fragmentTransaction.commit();
+                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentShrub);
             }
         });
     }
