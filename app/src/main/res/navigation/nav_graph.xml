@@ -163,5 +163,13 @@
         tools:layout="@layout/fragment_monitoring"
         android:id="@+id/fragmentMonitoring"
         android:name="com.example.rostmanafinal.Fragments.FragmentMonitoring"
-        android:label="FragmentMonitoring" />
+        android:label="FragmentMonitoring" >
+        <action
+            android:id="@+id/action_fragmentMonitoring_to_fragmentTables"
+            app:destination="@id/fragmentTables" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTables"
+        android:name="com.example.rostmanafinal.Fragments.FragmentTables"
+        android:label="FragmentTables" />
 </navigation>
