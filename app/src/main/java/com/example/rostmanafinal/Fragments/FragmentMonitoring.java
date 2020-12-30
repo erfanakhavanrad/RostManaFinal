@@ -27,14 +27,21 @@ import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
 public class FragmentMonitoring extends Fragment {
-    LineChartView lineChartView;
+    LineChartView lineChartView, lineChartView2;
+
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
-    String[] AxisDataHum = {"0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"};
+
     Button btnclicl;
     private static final String TAG = "FragmentMonitoring";
+
+    //    First Chart
     private HashMap<String, String[]> exampleDays = new HashMap<String, String[]>();
     private HashMap<String, float[]> exampleHum = new HashMap<String, float[]>();
 
+    //    Second Chart
+//    private HashMap<String, String[]> exampleDaysSecond = new HashMap<String, String[]>();
+//    private HashMap<String, float[]> exampleHumSecond = new HashMap<String, float[]>();
+    private HashMap<String, float[]> exampleTemp = new HashMap<String, float[]>();
 
     @Nullable
     @Override
@@ -48,14 +55,15 @@ public class FragmentMonitoring extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
-
         lineChartView = view.findViewById(R.id.chart);
-
+        lineChartView2 = view.findViewById(R.id.chart2);
         List yAxisValues = new ArrayList();
         List axisValues = new ArrayList();
 
-        Line line = new Line(yAxisValues).setColor(Color.parseColor("#ff0000"));
+
+        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+
+        Line line = new Line(yAxisValues).setColor(Color.parseColor("#018786"));
 
         for (int i = 0; i < axisDataDays.length; i++) {
             axisValues.add(i, new AxisValue(i).setLabel(axisDataDays[i]));
@@ -65,7 +73,6 @@ public class FragmentMonitoring extends Fragment {
             yAxisValues.add(new PointValue(i, exampleHum.get("hum")[i]));
 
         }
-        int i = 0;
 
         List lines = new ArrayList();
         lines.add(line);
@@ -82,9 +89,9 @@ public class FragmentMonitoring extends Fragment {
         data.setAxisXBottom(axis);
 
         Axis yAxis = new Axis();
-//        yAxis.setName("رطوبت");
+//        yAxis2.setName("رطوبت");
         yAxis.setTextColor(Color.parseColor("#000000"));
-//        yAxis.setTextSize(16);
+//        yAxis2.setTextSize(16);
         data.setAxisYLeft(yAxis);
 
         lineChartView.setLineChartData(data);
@@ -94,14 +101,59 @@ public class FragmentMonitoring extends Fragment {
         lineChartView.setCurrentViewport(viewport);
 
 
-        btnclicl = view.findViewById(R.id.btnclicl);
-        btnclicl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentTables);
-            }
-        });
+//        btnclicl = view.findViewById(R.id.btnclicl);
+//        btnclicl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentTables);
+//            }
+//        });
+//     222222222222222222 SECOND CHART
 
+        List yAxisValues2 = new ArrayList();
+        List axisValues2 = new ArrayList();
+
+
+        exampleTemp.put("temp", new float[]{4, 95, 76, 3, 90, 20, 10});
+
+        Line line2 = new Line(yAxisValues2).setColor(Color.parseColor("#ff0000"));
+
+        for (int i = 0; i < axisDataDays.length; i++) {
+            axisValues2.add(i, new AxisValue(i).setLabel(axisDataDays[i]));
+        }
+
+        for (int i = 0; i < exampleTemp.get("temp").length; i++) {
+            yAxisValues2.add(new PointValue(i, exampleTemp.get("temp")[i]));
+
+        }
+
+        List lines2 = new ArrayList();
+        lines2.add(line2);
+
+        LineChartData data2 = new LineChartData();
+        data2.setLines(lines2);
+
+        Axis axis2 = new Axis();
+
+        axis2.setValues(axisValues2);
+        axis2.setName("دما");
+        axis2.setTextSize(16);
+        axis2.setTextColor(Color.parseColor("#000000"));
+        data2.setAxisXBottom(axis2);
+
+        Axis yAxis2 = new Axis();
+//        yAxis2.setName("رطوبت");
+        yAxis2.setTextColor(Color.parseColor("#000000"));
+//        yAxis2.setTextSize(16);
+        data2.setAxisYLeft(yAxis2);
+
+        lineChartView2.setLineChartData(data2);
+        Viewport viewport2 = new Viewport(lineChartView2.getMaximumViewport());
+        viewport2.top = 100;
+        lineChartView2.setMaximumViewport(viewport2);
+        lineChartView2.setCurrentViewport(viewport2);
+
+//     2222222222222222222   END OF SECOND CHART
     }
 
 }
