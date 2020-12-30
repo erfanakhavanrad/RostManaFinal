@@ -7,6 +7,11 @@ public class TableModel {
     private String element;
     private String lighting;
     private String fogger;
+    private String[] datesOfWeek;
+
+    public String[] getDatesOfWeek() {
+        return datesOfWeek;
+    }
 
     public TableModel(String Watering, String Fan, String Element, String Lighting, String fogger) {
         this.watering = Watering;
