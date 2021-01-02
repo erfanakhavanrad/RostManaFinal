@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +32,7 @@ public class FragmentMonitoring extends Fragment {
 
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
 
-    Button btnclicl;
+    TextView btnclicl;
     private static final String TAG = "FragmentMonitoring";
 
     //    First Chart
@@ -101,14 +102,15 @@ public class FragmentMonitoring extends Fragment {
         lineChartView.setCurrentViewport(viewport);
 
 
-//        btnclicl = view.findViewById(R.id.btnclicl);
-//        btnclicl.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentTables);
-//            }
-//        });
-//     222222222222222222 SECOND CHART
+        btnclicl = view.findViewById(R.id.btnclicl);
+        btnclicl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentTables);
+            }
+        });
+
+        //     222222222222222222 SECOND CHART
 
         List yAxisValues2 = new ArrayList();
         List axisValues2 = new ArrayList();
