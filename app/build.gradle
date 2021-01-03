@@ -59,4 +59,6 @@ dependencies {
 //Chart
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 
+//    Async
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 }

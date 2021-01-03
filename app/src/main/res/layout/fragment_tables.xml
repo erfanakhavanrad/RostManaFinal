@@ -1,123 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
-    <!--    tools:context=".ScrollingActivity"-->
+    android:id="@+id/tableReport"
+    android:stretchColumns="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+    <TableRow>
+        <TextView
+            android:id="@+id/txtRow"
+            android:layout_column="1"
+            android:text="شنبه"
+            android:layout_gravity="center"
+            android:padding="1dp" />
+        <TextView
+            android:layout_column="2"
+            android:layout_gravity="center"
 
-            <Button
-                android:id="@+id/btnFetchPrevious"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:background="@drawable/ic_baseline_arrow_left_24"
-                />
+            android:text="یک شنبه"
+            android:padding="3dip" />
+        <TextView
+            android:layout_column="3"
+            android:text="دو شنبه"
+            android:layout_gravity="center"
 
-            <Button
-                android:id="@+id/btnFetchNext"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-               android:background="@drawable/ic_baseline_arrow_right_24"
-                />
-        </LinearLayout>
+            android:padding="3dip" />
+        <TextView
+            android:layout_column="4"
+            android:text="سه شنبه"
+            android:layout_gravity="center"
 
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/relativeLayout1"-->
-    <!--        android:layout_width="fill_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@color/blue">-->
+            android:padding="3dip" />
+        <TextView
+            android:layout_column="5"
+            android:text="چهار شنبه"
+            android:layout_gravity="center"
 
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="جمعه"-->
-    <!--            android:textColor="#ffffff" />-->
+            android:padding="3dip" />
+        <TextView
+            android:layout_column="6"
+            android:layout_gravity="center"
 
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="پنجشنبه"-->
-    <!--            android:textColor="#ffffff" />-->
+            android:text="پنج شنبه"
+            android:padding="3dip" />
+        <TextView
+            android:layout_column="7"
+            android:text="جمعه"
+            android:layout_gravity="center"
 
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1.25"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="چهارشنبه"-->
-    <!--            android:textColor="#ffffff" />-->
+            android:padding="3dip" />
+        <TextView
+            android:layout_gravity="center"
 
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="سه شنبه"-->
-    <!--            android:textColor="#ffffff" />-->
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="دوشنبه"-->
-    <!--            android:textColor="#ffffff" />-->
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="یکشنبه"-->
-    <!--            android:textColor="#ffffff" />-->
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="شنبه"-->
-    <!--            android:textColor="#ffffff" />-->
+            android:layout_column="8"
+            android:text="عملیات"
+            android:padding="3dip" />
+    </TableRow>
 
-    <!--        <TextView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:gravity="center"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:text="روزهای هفته"-->
-    <!--            android:textColor="#ffffff" />-->
-    <!--    </LinearLayout>-->
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null" />
-    <!--<HorizontalScrollView-->
-    <!--    android:scrollbars="horizontal"-->
-    <!--    android:fillViewport="true"-->
-    <!--    android:layout_width="match_parent"-->
-    <!--    android:layout_height="match_parent">-->
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        >-->
+    <TableRow>
+        <TextView
+            android:id="@+id/shanbeC"
+            android:layout_column="1"
+            android:text="Save..."
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/yekshabeC"
+            android:layout_column="2"
+            android:text="Save..."
+            android:padding="3dip" />
+    </TableRow>
 
-    <!--    </LinearLayout>-->
-    <!--</HorizontalScrollView>-->
-</LinearLayout>
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Save "
+            android:layout_gravity="center"
+
+            android:padding="3dip" />
+        <TextView
+            android:text="Ctrl"
+            android:layout_gravity="center"
+
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+
+
+</TableLayout>

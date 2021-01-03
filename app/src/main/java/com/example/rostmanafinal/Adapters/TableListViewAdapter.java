@@ -14,23 +14,23 @@ import java.util.ArrayList;
 
 public class TableListViewAdapter extends BaseAdapter {
 
-    public ArrayList<TableModel> productList;
+    public ArrayList<TableModel> dataList;
     Activity activity;
 
-    public TableListViewAdapter(Activity activity, ArrayList<TableModel> productList) {
+    public TableListViewAdapter(Activity activity, ArrayList<TableModel> dataList) {
         super();
         this.activity = activity;
-        this.productList = productList;
+        this.dataList = dataList;
     }
 
     @Override
     public int getCount() {
-        return productList.size();
+        return dataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return productList.get(position);
+        return dataList.get(position);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class TableListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        TableModel item = productList.get(position);
+        TableModel item = dataList.get(position);
         holder.mSNo.setText(item.getWatering().toString());
         holder.mProduct.setText(item.getFan().toString());
         holder.mCategory.setText(item.getElement().toString());

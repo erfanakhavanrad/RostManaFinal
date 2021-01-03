@@ -1,50 +1,47 @@
 package com.example.rostmanafinal.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.rostmanafinal.Adapters.TableListViewAdapter;
-import com.example.rostmanafinal.Pojo.DaysOfWeek;
-import com.example.rostmanafinal.Pojo.TableModel;
+import com.example.rostmanafinal.Pojo.AmirJson;
+import com.example.rostmanafinal.Pojo.Fridayday;
+import com.example.rostmanafinal.Pojo.Res;
 import com.example.rostmanafinal.R;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.impl.cookie.PublicSuffixFilter;
 
 public class FragmentTables extends Fragment {
-    //    Map<String, String> watering = new HashMap<String, String>();
-//    HashMap<String,Person> persons = new  HashMap<String,Person>();
-//    Map<String, String[]> fan = new HashMap<String, String>();
-//    Map<String, String[]> element = new HashMap<String, String>();
-//    Map<String, String[]> lighting = new HashMap<String, String>();
-//    Map<String, String[]> fogger = new HashMap<String, String>();
+    private static final String TAG = "FragmentTables";
+    TableLayout tableLayout;
+    TextView shanbeC, yekshanbe, txtRow;
+    JsonParser jParser;
+    TableLayout tableReport;
 
-
-    private ArrayList<TableModel> productList;
-    private ArrayList<DaysOfWeek> days;
-
-    Map<String, String[]> daysHash = new HashMap<String, String[]>();
-    Map<String, String[]> watering = new HashMap<String, String[]>();
-    Map<String, String[]> fan = new HashMap<String, String[]>();
-    Map<String, String[]> element = new HashMap<String, String[]>();
-    Map<String, String[]> lighting = new HashMap<String, String[]>();
-    Map<String, String[]> fogger = new HashMap<String, String[]>();
-
-    Button btnFetchNext, btnFetchPrevious;
-    int CountNumberOfTables = 0, NumberOfTables = 0;
 
     @Nullable
     @Override
@@ -54,141 +51,135 @@ public class FragmentTables extends Fragment {
         return viewTables;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        daysHash.put("days", new String[]{"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"});
-        watering.put("milk", new String[]{"1", "3", "2"});
+        yekshanbe = view.findViewById(R.id.yekshabeC);
+        shanbeC = view.findViewById(R.id.shanbeC);
+        shanbeC.setText("sdfsff22323q2323");
+        String address = "{\"status\":\"200\",\"info\":[{\"userName\": \"sandeep\",\"age\":\"30\"},{\"userName\": \"vivan\",\"age\":\"5\"}]}";
+        txtRow = view.findViewById(R.id.txtRow);
+        tableReport = view.findViewById(R.id.tableReport);
+        String temp = "\n" +
+                "   {\n" +
+                "      \"res\":{\n" +
+                "         \"status\":\"200\",\n" +
+                "         \"info\":[\n" +
+                "            {\n" +
+                "               \"day\":{\n" +
+                "                  \"watering\":20,\n" +
+                "                  \"fan\":435,\n" +
+                "                  \"element\":20,\n" +
+                "                  \"slight\":85,\n" +
+                "                  \"sfogger\":45\n" +
+                "               }\n" +
+                "            },\n" +
+                "            {\n" +
+                "               \"day\":{\n" +
+                "                  \"watering\":40,\n" +
+                "                  \"fan\":15,\n" +
+                "                  \"element\":36,\n" +
+                "                  \"sulight\":55,\n" +
+                "                  \"sfogger\":45\n" +
+                "               }\n" +
+                "            },\n" +
+                "            {\n" +
+                "               \"day\":{\n" +
+                "                  \"watering\":20,\n" +
+                "                  \"fan\":75,\n" +
+                "                  \"element\":0,\n" +
+                "                  \"mlight\":44,\n" +
+                "                  \"sfogger\":45\n" +
+                "               }\n" +
+                "            },\n" +
+                "            {\n" +
+                "               \"day\":{\n" +
+                "                  \"watering\":29,\n" +
+                "                  \"fan\":4,\n" +
+                "                  \"element\":2,\n" +
+                "                  \"tlight\":45,\n" +
+                "                  \"sfogger\":45\n" +
+                "               }\n" +
+                "            },\n" +
+                "            {\n" +
+                "               \"day\":{\n" +
+                "                  \"watering\":20,\n" +
+                "                  \"fan\":65,\n" +
+                "                  \"element\":230,\n" +
+                "                  \"wlight\":45,\n" +
+                "                  \"sfogger\":45\n" +
+                "               }\n" +
+                "            },\n" +
+                "            {\n" +
+                "               \"day\":{\n" +
+                "                  \"watering\":10,\n" +
+                "                  \"fan\":75,\n" +
+                "                  \"element\":206,\n" +
+                "                  \"thlight\":15,\n" +
+                "                  \"sfogger\":45\n" +
+                "               }\n" +
+                "            },\n" +
+                "            {\n" +
+                "               \"day\":{\n" +
+                "                  \"watering\":3,\n" +
+                "                  \"fan\":49,\n" +
+                "                  \"element\":220,\n" +
+                "                  \"flight\":95,\n" +
+                "                  \"sfogger\":45\n" +
+                "               }\n" +
+                "            }\n" +
+                "         ]\n" +
+                "      }\n" +
+                "   }\n" +
+                "";
+
+        try {
+            String in = "[]";
+            JSONObject reader = new JSONObject(temp);
+            JSONObject sys = reader.getJSONObject("res");
+            if (sys.getInt("status") == 200) {
+                JSONArray days = sys.getJSONArray("info");
+                for (int i = 0; i <= days.length(); i++) {
+
+                    JSONObject day = days.getJSONObject(i);
+                    TableLayout table = view.findViewById(R.id.tableReport);
+
+//            Object val=day.get("saturday");
+                    setRowTable("day",day,table );
 
 
-//        watering.put("sunday", "sec");
-//fan.put("sunday", {},);
-
-
-        ListView lview = (ListView) view.findViewById(R.id.listview);
-        btnFetchPrevious = view.findViewById(R.id.btnFetchPrevious);
-        btnFetchPrevious.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                days = new ArrayList<DaysOfWeek>();
-//                TableListViewAdapter adapter2 = new TableListViewAdapter(getActivity(), productList);
-
-
-                productList = new ArrayList<TableModel>();
-                TableListViewAdapter adapter = new TableListViewAdapter(getActivity(), productList);
-                lview.setAdapter(adapter);
-                populateList();
-                adapter.notifyDataSetChanged();
+                }
+                System.out.println("");
             }
-        });
-
-
-        btnFetchNext = view.findViewById(R.id.btnFetchNext);
-        btnFetchNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                days = new ArrayList<DaysOfWeek>();
-                productList = new ArrayList<TableModel>();
-                TableListViewAdapter adapter = new TableListViewAdapter(getActivity(), productList);
-                lview.setAdapter(adapter);
-                setDays();
-                populateList2();
-                adapter.notifyDataSetChanged();
-            }
-        });
-
-
-        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-
-                String sno = ((TextView) view.findViewById(R.id.sNo)).getText().toString();
-                String product = ((TextView) view.findViewById(R.id.product)).getText().toString();
-                String category = ((TextView) view.findViewById(R.id.category)).getText().toString();
-                String price = ((TextView) view.findViewById(R.id.price)).getText().toString();
-
-                Toast.makeText(getContext(),
-                        "S no : " + sno + "\n"
-                                + "Product : " + product + "\n"
-                                + "Category : " + category + "\n"
-                                + "Price : " + price, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-//        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                                    int position, long id) {
-//
-//                String sno = ((TextView)view.findViewById(R.id.sNo)).getText().toString();
-//                String product = ((TextView)view.findViewById(R.id.product)).getText().toString();
-//                String category = ((TextView)view.findViewById(R.id.category)).getText().toString();
-//                String price = ((TextView)view.findViewById(R.id.price)).getText().toString();
-//
-//                Toast.makeText(getApplicationContext(),
-//                        "S no : " + sno +"\n"
-//                                +"Product : " + product +"\n"
-//                                +"Category : " +category +"\n"
-//                                +"Price : " +price, Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        } catch (Exception e) {
+            System.out.println(e);
+            Log.d(TAG, "onViewCreated: " + e.getMessage());
+        }
 
     }
 
-    public void setDays() {
-        DaysOfWeek day1, day2, day3, day4, day5, day6, day7;
-        day1 = new DaysOfWeek("شنبه", " 1", "2", "2", "3", "4", "5");
-        days.add(day1);
-    }
+    public void setRowTable(String Dayn, JSONObject day, TableLayout tableLayout) throws JSONException {
+        JSONObject row = day.getJSONObject(Dayn);
+        Object water = row.get("watering");
+        Object fan=row.get("fan");
+        Object element=row.get("element");
+//        Object water=row.get("watering");
+//        Object water=row.get("watering");
+//        Object water=row.get("watering");
 
+        for (int j = 0; j < 5; j++) {
 
-    private void populateList() {
-//        CountNumberOfTables ++1;
-//productList.clear();
-        TableModel item1, item2, item3, item4, item5;
-
-        item1 = new TableModel("1", "Apple (Northern Spy)", "Fruits", "₹. 200", "fogger");
-        productList.add(item1);
-
-        item2 = new TableModel("2", "Orange (Sunkist navel)", "Fruits", "₹. 100", "fogger");
-        productList.add(item2);
-
-        item3 = new TableModel("3", "Tomato", "Vegetable", "₹. 50", "fogger");
-        productList.add(item3);
-
-        item4 = new TableModel("4", "Carrot", "Vegetable", "₹. 80", "fogger");
-        productList.add(item4);
-
-        item5 = new TableModel("5", "Banana (Cavendish)", "Fruits", "₹. 100", "fogger");
-        productList.add(item5);
-    }
-//    Map<String>
-
-
-    private void populateList2() {
-//        days
-        TableModel item1, item2, item3, item4, item5;
-
-        productList.clear();
-
-        item1 = new TableModel("50", "dadaaawdawd (Northern Spy)", "Fruits", "₹. 200", "fogger");
-        productList.add(item1);
-
-        item2 = new TableModel("100", "Osefefsfscel)", "Frvdfvfdvdfvdvdvfvuits", "₹. 1bb00", "fogger");
-        productList.add(item2);
-
-        item3 = new TableModel("300", "fsdfsdfsdfsdf", "Vegetable", "₹. 50", "fogger");
-        productList.add(item3);
-
-        item4 = new TableModel("400", "efee423", "dffdvfdvvfd", "₹. 8bbb0", "fogger");
-        productList.add(item4);
-
-        item5 = new TableModel("500", "77544terdvc", "trhrtrgbits", "₹. 10bbb0", "fogger");
-        productList.add(item5);
+            TableRow rowTable = new TableRow(getContext());
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+            rowTable.setLayoutParams(lp);
+            TextView textView = new TextView(getContext());
+            textView.setText("watering" + " " + j);
+            EditText editText = new EditText(getContext());
+            rowTable.addView(textView);
+            tableLayout.addView(rowTable);
+        }
+        txtRow.setText(water.toString());
     }
 
 
