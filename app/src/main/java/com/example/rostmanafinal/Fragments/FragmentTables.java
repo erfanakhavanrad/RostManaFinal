@@ -14,26 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.rostmanafinal.Pojo.AmirJson;
-import com.example.rostmanafinal.Pojo.Fridayday;
-import com.example.rostmanafinal.Pojo.Res;
 import com.example.rostmanafinal.R;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.impl.cookie.PublicSuffixFilter;
 
 public class FragmentTables extends Fragment {
     private static final String TAG = "FragmentTables";
