@@ -1,87 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableReport"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/tableReport"
     android:stretchColumns="1">
 
     <TableRow>
+
         <TextView
             android:id="@+id/txtRow"
             android:layout_column="1"
-            android:text="شنبه"
             android:layout_gravity="center"
-            android:padding="1dp" />
+            android:padding="1dp"
+            android:text="شنبه" />
+
         <TextView
             android:layout_column="2"
             android:layout_gravity="center"
 
-            android:text="یک شنبه"
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:text="یک شنبه" />
+
         <TextView
             android:layout_column="3"
-            android:text="دو شنبه"
             android:layout_gravity="center"
+            android:padding="3dip"
 
-            android:padding="3dip" />
+            android:text="دو شنبه" />
+
         <TextView
             android:layout_column="4"
-            android:text="سه شنبه"
             android:layout_gravity="center"
+            android:padding="3dip"
 
-            android:padding="3dip" />
+            android:text="سه شنبه" />
+
         <TextView
             android:layout_column="5"
-            android:text="چهار شنبه"
             android:layout_gravity="center"
+            android:padding="3dip"
 
-            android:padding="3dip" />
+            android:text="چهار شنبه" />
+
         <TextView
             android:layout_column="6"
             android:layout_gravity="center"
 
-            android:text="پنج شنبه"
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:text="پنج شنبه" />
+
         <TextView
             android:layout_column="7"
-            android:text="جمعه"
             android:layout_gravity="center"
+            android:padding="3dip"
 
-            android:padding="3dip" />
+            android:text="جمعه" />
+
         <TextView
-            android:layout_gravity="center"
-
             android:layout_column="8"
-            android:text="عملیات"
-            android:padding="3dip" />
+
+            android:layout_gravity="center"
+            android:padding="3dip"
+            android:text="عملیات" />
     </TableRow>
 
     <TableRow>
+
         <TextView
             android:id="@+id/shanbeC"
             android:layout_column="1"
-            android:text="Save..."
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:text="Save..." />
+
         <TextView
             android:id="@+id/yekshabeC"
             android:layout_column="2"
-            android:text="Save..."
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:text="Save..." />
     </TableRow>
 
     <TableRow>
+
         <TextView
             android:layout_column="1"
-            android:text="Save "
             android:layout_gravity="center"
+            android:padding="3dip"
 
-            android:padding="3dip" />
+            android:text="Save " />
+
         <TextView
-            android:text="Ctrl"
             android:layout_gravity="center"
-
             android:gravity="right"
-            android:padding="3dip" />
+
+            android:padding="3dip"
+            android:text="Ctrl" />
     </TableRow>
 
 
