@@ -105,7 +105,8 @@ public class FragmentMonitoring extends Fragment {
         txtMoreDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentTables);
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentTables);
+           Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentParent);
             }
         });
 

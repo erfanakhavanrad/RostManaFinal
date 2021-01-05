@@ -3,98 +3,10 @@
     android:id="@+id/tableReport"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="1">
 
-    <TableRow>
 
-        <TextView
-            android:id="@+id/txtRow"
-            android:layout_column="1"
-            android:layout_gravity="center"
-            android:padding="1dp"
-            android:text="شنبه" />
+    >
 
-        <TextView
-            android:layout_column="2"
-            android:layout_gravity="center"
-
-            android:padding="3dip"
-            android:text="یک شنبه" />
-
-        <TextView
-            android:layout_column="3"
-            android:layout_gravity="center"
-            android:padding="3dip"
-
-            android:text="دو شنبه" />
-
-        <TextView
-            android:layout_column="4"
-            android:layout_gravity="center"
-            android:padding="3dip"
-
-            android:text="سه شنبه" />
-
-        <TextView
-            android:layout_column="5"
-            android:layout_gravity="center"
-            android:padding="3dip"
-
-            android:text="چهار شنبه" />
-
-        <TextView
-            android:layout_column="6"
-            android:layout_gravity="center"
-
-            android:padding="3dip"
-            android:text="پنج شنبه" />
-
-        <TextView
-            android:layout_column="7"
-            android:layout_gravity="center"
-            android:padding="3dip"
-
-            android:text="جمعه" />
-
-        <TextView
-            android:layout_column="8"
-
-            android:layout_gravity="center"
-            android:padding="3dip"
-            android:text="عملیات" />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/shanbeC"
-            android:layout_column="1"
-            android:padding="3dip"
-            android:text="Save..." />
-
-        <TextView
-            android:id="@+id/yekshabeC"
-            android:layout_column="2"
-            android:padding="3dip"
-            android:text="Save..." />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:layout_column="1"
-            android:layout_gravity="center"
-            android:padding="3dip"
-
-            android:text="Save " />
-
-        <TextView
-            android:layout_gravity="center"
-            android:gravity="right"
-
-            android:padding="3dip"
-            android:text="Ctrl" />
-    </TableRow>
 
 
 </TableLayout>

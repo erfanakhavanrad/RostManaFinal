@@ -165,11 +165,25 @@
         android:name="com.example.rostmanafinal.Fragments.FragmentMonitoring"
         android:label="FragmentMonitoring" >
         <action
+            android:id="@+id/action_fragmentMonitoring_to_fragmentParent"
+            app:destination="@id/fragmentParent" />
+        <action
             android:id="@+id/action_fragmentMonitoring_to_fragmentTables"
             app:destination="@id/fragmentTables" />
+        <action
+            android:id="@+id/action_fragmentMonitoring_to_fragmentVeryParent"
+            app:destination="@id/fragmentVeryParent" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTables"
         android:name="com.example.rostmanafinal.Fragments.FragmentTables"
         android:label="FragmentTables" />
+    <fragment
+        android:id="@+id/fragmentParent"
+        android:name="com.example.rostmanafinal.Fragments.FragmentParent"
+        android:label="FragmentParent" />
+    <fragment
+        android:id="@+id/fragmentVeryParent"
+        android:name="com.example.rostmanafinal.Fragments.FragmentVeryParent"
+        android:label="FragmentVeryParent" />
 </navigation>
