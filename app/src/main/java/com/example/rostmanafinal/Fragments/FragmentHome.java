@@ -25,7 +25,7 @@ public class FragmentHome extends Fragment {
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fifthItem;
-    Button btnGet;
+    Button btnGet, btnPost;
 
     @Nullable
     @Override
@@ -43,6 +43,15 @@ public class FragmentHome extends Fragment {
         imageClose = view.findViewById(R.id.imageClose);
         firstItem = view.findViewById(R.id.firstItem);
         secondItem = view.findViewById(R.id.secondItem);
+        btnPost = view.findViewById(R.id.btnPost);
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentPostTest);
+            }
+        });
+
+
         btnGet = view.findViewById(R.id.btnGet);
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
