@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class FragmentHome extends Fragment {
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fifthItem;
+    Button btnGet;
 
     @Nullable
     @Override
@@ -41,6 +43,15 @@ public class FragmentHome extends Fragment {
         imageClose = view.findViewById(R.id.imageClose);
         firstItem = view.findViewById(R.id.firstItem);
         secondItem = view.findViewById(R.id.secondItem);
+        btnGet = view.findViewById(R.id.btnGet);
+        btnGet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentMainTest);
+            }
+        });
+
+
         fifthItem = view.findViewById(R.id.fifthItem);
         fifthItem.setOnClickListener(new View.OnClickListener() {
             @Override
