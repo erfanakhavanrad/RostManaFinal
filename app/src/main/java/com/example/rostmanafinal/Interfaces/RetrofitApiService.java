@@ -11,7 +11,6 @@ import retrofit2.http.POST;
 
 public interface RetrofitApiService {
 
-
     @GET("hello")
     Call<GetHello> getHellovalue();
 
