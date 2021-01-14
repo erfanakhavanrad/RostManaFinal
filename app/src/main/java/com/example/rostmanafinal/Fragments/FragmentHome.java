@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
@@ -20,12 +22,15 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.R;
+import com.example.rostmanafinal.UserManager;
 
 public class FragmentHome extends Fragment {
+    UserManager userManager;
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fifthItem;
     Button btnGet, btnPost;
+    TextView textView7, textView8;
 
     @Nullable
     @Override
@@ -33,16 +38,25 @@ public class FragmentHome extends Fragment {
         View viewHome = inflater.inflate(R.layout.fragment_home, container, false);
 
         return viewHome;
+
+
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        userManager = new UserManager(getContext());
         containerd = view.findViewById(R.id.containerd);
         imageClose = view.findViewById(R.id.imageClose);
         firstItem = view.findViewById(R.id.firstItem);
         secondItem = view.findViewById(R.id.secondItem);
+        textView7 = view.findViewById(R.id.textView7);
+        textView8 = view.findViewById(R.id.textView8);
+//        fullname.setText(usermanager.getfullname);
+        textView7.setText(userManager.getFullName());
+        textView8.setText(userManager.getEmail());
+
         btnPost = view.findViewById(R.id.btnPost);
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,4 +125,8 @@ public class FragmentHome extends Fragment {
         });
 
     }
+
+//    onBackpressed
+//    getActivity().moveTaskToBack(true);
+//    getActivity().finish();
 }

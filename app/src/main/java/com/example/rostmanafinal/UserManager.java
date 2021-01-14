@@ -8,7 +8,6 @@ public class UserManager {
 
     public UserManager(Context context) {
         sharedPreferences = context.getSharedPreferences("user_information", Context.MODE_PRIVATE);
-
     }
 
     public void saveUserInformation(String fullName, String email, String token) {
@@ -20,15 +19,15 @@ public class UserManager {
     }
 
     public String getFullName() {
-        return sharedPreferences.getString("full_name", "");
+        return sharedPreferences.getString("full_name", null);
     }
 
     public String getEmail() {
-        return sharedPreferences.getString("email", "");
+        return sharedPreferences.getString("email", null);
     }
 
     public String getToken() {
-        return sharedPreferences.getString("token", "");
+        return sharedPreferences.getString("token", null);
     }
 
 }
