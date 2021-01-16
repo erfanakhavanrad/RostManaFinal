@@ -21,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.rostmanafinal.LoginRegisterActivity;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.UserManager;
 
@@ -28,7 +29,7 @@ public class FragmentHome extends Fragment {
     UserManager userManager;
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser;
-    LinearLayout firstItem, secondItem, fifthItem;
+    LinearLayout firstItem, secondItem, fourthItem, fifthItem;
     Button btnGet, btnPost;
     TextView textView7, textView8;
 
@@ -50,6 +51,7 @@ public class FragmentHome extends Fragment {
         containerd = view.findViewById(R.id.containerd);
         imageClose = view.findViewById(R.id.imageClose);
         firstItem = view.findViewById(R.id.firstItem);
+        fourthItem = view.findViewById(R.id.fourthItem);
         secondItem = view.findViewById(R.id.secondItem);
         textView7 = view.findViewById(R.id.textView7);
         textView8 = view.findViewById(R.id.textView8);
@@ -74,6 +76,20 @@ public class FragmentHome extends Fragment {
             }
         });
 
+        fourthItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+userManager.clearAllInformation();
+
+                Intent i = new Intent(getActivity(), LoginRegisterActivity.class);
+                Toast.makeText(getContext(), "از حساب خود خارج شدید", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
+                startActivity(i);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
+
+            }
+        });
+
 
         fifthItem = view.findViewById(R.id.fifthItem);
         fifthItem.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +100,7 @@ public class FragmentHome extends Fragment {
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
                 System.exit(0);
+
             }
         });
 

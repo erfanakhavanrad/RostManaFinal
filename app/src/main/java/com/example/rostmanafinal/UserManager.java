@@ -30,4 +30,10 @@ public class UserManager {
         return sharedPreferences.getString("token", null);
     }
 
+    public void clearAllInformation(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
 }
