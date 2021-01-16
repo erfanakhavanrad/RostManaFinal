@@ -45,14 +45,16 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="نام کابری"
+            android:hint="شماره موبایل 09xxxxxxxxx"
             android:layoutDirection="rtl"
-            app:startIconDrawable="@drawable/ic_baseline_person_24">
+            app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtUsername"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="11" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -98,6 +100,7 @@
                 android:fontFamily="@font/iransans"
                 android:text="ورود" />
         </LinearLayout>
+
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
