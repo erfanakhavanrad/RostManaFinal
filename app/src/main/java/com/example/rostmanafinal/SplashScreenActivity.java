@@ -3,9 +3,7 @@ package com.example.rostmanafinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
@@ -15,8 +13,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.IllegalFormatCodePointException;
-
 public class SplashScreenActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 1500;
@@ -25,7 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView imageSplash1;
     TextView textSlogan;
-    UserManager userManager;
+    UserManagerSharedPrefs userManagerSharedPrefs;
     String full_name;
 
     @Override
@@ -74,7 +70,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void configSharedP() {
 
-        this.userManager = new UserManager(this);
-        full_name = userManager.getFullName();
+        this.userManagerSharedPrefs = new UserManagerSharedPrefs(this);
+        full_name = userManagerSharedPrefs.getFullName();
     }
 }

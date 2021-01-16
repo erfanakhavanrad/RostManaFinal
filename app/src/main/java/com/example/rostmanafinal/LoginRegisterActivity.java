@@ -2,7 +2,6 @@ package com.example.rostmanafinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
@@ -18,18 +16,6 @@ import com.example.rostmanafinal.Pojo.Users;
 import com.example.rostmanafinal.Retrofit.APIClient;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
-import cz.msebera.android.httpclient.HttpResponse;
-import cz.msebera.android.httpclient.NameValuePair;
-import cz.msebera.android.httpclient.client.HttpClient;
-import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
-import cz.msebera.android.httpclient.message.BasicNameValuePair;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +23,7 @@ import retrofit2.Response;
 public class LoginRegisterActivity extends AppCompatActivity {
     Button btnEnter;
     TextInputEditText edtUsername, edtPassword;
-    UserManager userManager;
+    UserManagerSharedPrefs userManagerSharedPrefs;
     String token, url = "http://192.168.88.134:8000/api/";
     SharedPreferences sharedPreferences;
     RetrofitApiService request;
@@ -51,22 +37,27 @@ public class LoginRegisterActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         edtUsername = findViewById(R.id.edtUsername);
         request = APIClient.getApiClient(url).create(RetrofitApiService.class);
-        userManager = new UserManager(this);
+        userManagerSharedPrefs = new UserManagerSharedPrefs(this);
 
 
         btnEnter = findViewById(R.id.btnEnter);
         btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 String user = edtUsername.getText().toString();
                 String pass = edtPassword.getText().toString();
-
+                if (TextUtils.isEmpty(pass) || TextUtils.isEmpty(user)) {
+                    Toast.makeText(LoginRegisterActivity.this, "لطفا تمام کادرها را پر کنید", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Call<Users> call = request.getUserPostToken(user, pass);
                 call.enqueue(new Callback<Users>() {
                     @Override
                     public void onResponse(Call<Users> call, Response<Users> response) {
-                        Toast.makeText(LoginRegisterActivity.this, "token" + response, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(LoginRegisterActivity.this, "token" + response, Toast.LENGTH_SHORT).show();
 
                         Users users = response.body();
 
@@ -82,6 +73,17 @@ public class LoginRegisterActivity extends AppCompatActivity {
 //                           } else {
 //                               Toast.makeText(MainActivity.this, "Welcome " + loginResponse.getFirstName(), Toast.LENGTH_SHORT).show();
 //                           }
+//                          String token =   users.getAccess_token();
+
+                            token = users.getAccess_token();
+                            Log.d(TAG, "onResponse: "+ token);
+                            userManagerSharedPrefs.saveUserInformation(edtUsername.getText().toString(),
+                                    edtPassword.getText().toString(),
+                                    token);
+
+//                            Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
+//                            startActivity(i);
+//                            finish();
                         }
 
                     }
@@ -117,19 +119,12 @@ public class LoginRegisterActivity extends AppCompatActivity {
 //                });
 //
 //
-//                if (TextUtils.isEmpty(pass) || TextUtils.isEmpty(user)) {
-//                    Toast.makeText(LoginRegisterActivity.this, "لطفا تمام کادرها را پر کنید", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//
-//                userManager.saveUserInformation(edtUsername.getText().toString(),
-//                        edtPassword.getText().toString(),
-//                        token);
 
 
-//                Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
-//                startActivity(i);
-//                finish();
+
+//userManagerSharedPrefs.saveUserInformation(token);
+
+
             }
 
         });

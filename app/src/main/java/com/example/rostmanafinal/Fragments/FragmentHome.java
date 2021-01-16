@@ -2,6 +2,7 @@ package com.example.rostmanafinal.Fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
@@ -23,15 +23,15 @@ import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.LoginRegisterActivity;
 import com.example.rostmanafinal.R;
-import com.example.rostmanafinal.UserManager;
+import com.example.rostmanafinal.UserManagerSharedPrefs;
 
 public class FragmentHome extends Fragment {
-    UserManager userManager;
+    UserManagerSharedPrefs userManagerSharedPrefs;
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fourthItem, fifthItem;
     Button btnGet, btnPost;
-    TextView textView7, textView8;
+    TextView textView7, textView8,txtToken;
 
     @Nullable
     @Override
@@ -47,7 +47,7 @@ public class FragmentHome extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        userManager = new UserManager(getContext());
+        userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
         containerd = view.findViewById(R.id.containerd);
         imageClose = view.findViewById(R.id.imageClose);
         firstItem = view.findViewById(R.id.firstItem);
@@ -55,9 +55,14 @@ public class FragmentHome extends Fragment {
         secondItem = view.findViewById(R.id.secondItem);
         textView7 = view.findViewById(R.id.textView7);
         textView8 = view.findViewById(R.id.textView8);
+        txtToken = view.findViewById(R.id.txtToken);
+        Toast.makeText(getContext(), "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
 //        fullname.setText(usermanager.getfullname);
-        textView7.setText(userManager.getFullName());
-        textView8.setText(userManager.getEmail());
+        textView7.setText(userManagerSharedPrefs.getFullName());
+        textView8.setText(userManagerSharedPrefs.getEmail());
+        txtToken.setText(userManagerSharedPrefs.getToken());
+
+
 
         btnPost = view.findViewById(R.id.btnPost);
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +84,7 @@ public class FragmentHome extends Fragment {
         fourthItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-userManager.clearAllInformation();
+userManagerSharedPrefs.clearAllInformation();
 
                 Intent i = new Intent(getActivity(), LoginRegisterActivity.class);
                 Toast.makeText(getContext(), "از حساب خود خارج شدید", Toast.LENGTH_SHORT).show();

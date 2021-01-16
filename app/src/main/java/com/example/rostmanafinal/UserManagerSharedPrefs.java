@@ -3,10 +3,10 @@ package com.example.rostmanafinal;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class UserManager {
+public class UserManagerSharedPrefs {
     private SharedPreferences sharedPreferences;
 
-    public UserManager(Context context) {
+    public UserManagerSharedPrefs(Context context) {
         sharedPreferences = context.getSharedPreferences("user_information", Context.MODE_PRIVATE);
     }
 
