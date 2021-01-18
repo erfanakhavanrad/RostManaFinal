@@ -21,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginRegisterActivity extends AppCompatActivity {
-    Button btnEnter;
+    Button btnEnter, btnGuest;
     TextInputEditText edtUsername, edtPassword;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String token, url = "http://192.168.88.134:8000/api/";
@@ -38,6 +38,15 @@ public class LoginRegisterActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.edtUsername);
         request = APIClient.getApiClient(url).create(RetrofitApiService.class);
         userManagerSharedPrefs = new UserManagerSharedPrefs(this);
+        btnGuest = findViewById(R.id.btnGuest);
+        btnGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
 
         btnEnter = findViewById(R.id.btnEnter);
@@ -81,9 +90,9 @@ public class LoginRegisterActivity extends AppCompatActivity {
                                     edtPassword.getText().toString(),
                                     token);
 
-//                            Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
-//                            startActivity(i);
-//                            finish();
+                            Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
+                            startActivity(i);
+                            finish();
                         }
 
                     }
@@ -122,8 +131,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
 
 
-//userManagerSharedPrefs.saveUserInformation(token);
-
+//userManagerSharedPrefs.saveUserInformation(token);.
 
             }
 

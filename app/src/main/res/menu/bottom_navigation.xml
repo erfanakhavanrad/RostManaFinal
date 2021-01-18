@@ -4,6 +4,7 @@
     <item
         android:id="@+id/fragmentMonitoring"
         android:icon="@drawable/ic_monitoring"
+
         android:title="Monitoring" />
     <item
         android:id="@+id/fragmentViewPagerTabbed23"
