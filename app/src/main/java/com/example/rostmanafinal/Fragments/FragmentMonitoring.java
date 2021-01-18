@@ -27,13 +27,15 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
+import pl.droidsonroids.gif.GifImageView;
 
 public class FragmentMonitoring extends Fragment {
     LineChartView lineChartView, lineChartView2;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
 //    ImageView ;
-    TextView txtMoreDetails, imageLogo;
+    TextView txtMoreDetails;
+    GifImageView imageLogo;
     private static final String TAG = "FragmentMonitoring";
 
     //    First Chart
