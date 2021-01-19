@@ -113,7 +113,7 @@ userManagerSharedPrefs.clearAllInformation();
         imageAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentLoginRegister);
+                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentProfile);
             }
         });
 

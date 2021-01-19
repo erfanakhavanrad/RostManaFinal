@@ -48,7 +48,7 @@
             app:layout_constraintHorizontal_bias="0.911"
             app:layout_constraintStart_toEndOf="@+id/message"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_user" />
+            app:srcCompat="@drawable/ic_baseline_person_24" />
 
         <ImageView
             android:id="@+id/menuIconImage"

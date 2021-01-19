@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentPostTest"
             app:destination="@id/fragmentPostTest" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentProfile"
+            app:destination="@id/fragmentProfile" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"
@@ -193,4 +196,12 @@
         android:id="@+id/fragmentPostTest"
         android:name="com.example.rostmanafinal.Fragments.FragmentPostTest"
         android:label="FragmentPostTest" />
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.rostmanafinal.Fragments.FragmentProfile"
+        android:label="FragmentProfile" >
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
 </navigation>
