@@ -4,9 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,7 +17,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,12 +28,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.MainActivity;
 import com.example.rostmanafinal.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
+
+import ir.hamsaa.persiandatepicker.Listener;
+import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
+import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -37,7 +48,8 @@ public class FragmentProfile extends Fragment {
     MaterialButtonToggleGroup materialButtonToggleGroup;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
-
+    private PersianDatePickerDialog picker;
+    TextView mStart;
 
     @Nullable
     @Override
@@ -46,26 +58,60 @@ public class FragmentProfile extends Fragment {
         return viewProfile;
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         imageViewReturn = view.findViewById(R.id.imageViewReturn);
         circularImageView2 = view.findViewById(R.id.circularImageView2);
+        mStart = view.findViewById(R.id.txtBirthday);
+
+        mStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PersianCalendar initDate = new PersianCalendar();
+                initDate.setPersianDate(1370, 3, 13);
+
+                picker = new PersianDatePickerDialog(getContext())
+                        .setPositiveButtonString("باشه")
+                        .setNegativeButton("بیخیال")
+                        .setTodayButton("امروز")
+                        .setTodayButtonVisible(true)
+                        .setMinYear(1300)
+                        .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+                        .setInitDate(initDate)
+                        .setActionTextColor(Color.GRAY)
+//                        .setTypeFace(typeface)
+                        .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+                        .setShowInBottomSheet(false)
+                        .setListener(new Listener() {
+                            @Override
+                            public void onDateSelected(PersianCalendar persianCalendar) {
+                                Toast.makeText(getContext(), persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
+                                mStart.setText(persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay());
+                            }
+
+                            @Override
+                            public void onDismissed() {
+
+                            }
+                        });
+
+                picker.show();
+            }
+        });
 
 
-//        circularImageView2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-//                startActivityForResult(intent, 0);
+//        public void showCalendar(View v) {
+//            Typeface typeface = Typeface.createFromAsset(assetManager, "Shabnam-Light-FD.ttf");
 //
-//            }
-//        });
+//
+//        }
 
-        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+
+        final CharSequence[] options = {"عکس با دوربین", "انتخاب از گالری", "لغو"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Choose your profile picture");
+        builder.setTitle("انتخاب عکس پروفایل");
 
         circularImageView2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,17 +123,17 @@ public class FragmentProfile extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
 
-                        if (options[item].equals("Take Photo")) {
+                        if (options[item].equals("عکس با دوربین")) {
                             Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                             startActivityForResult(takePicture, 0);
 //circularImageView2.setImageResource();
-                        } else if (options[item].equals("Choose from Gallery")) {
+                        } else if (options[item].equals("انتخاب از گالری")) {
 //                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 //                    startActivityForResult(pickPhoto , 1);
                             openGallery();
 
 
-                        } else if (options[item].equals("Cancel")) {
+                        } else if (options[item].equals("لغو")) {
                             dialog.dismiss();
                         }
                     }
@@ -110,10 +156,12 @@ public class FragmentProfile extends Fragment {
 
     }
 
+
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -123,4 +171,6 @@ public class FragmentProfile extends Fragment {
             circularImageView2.setImageURI(imageUri);
         }
     }
+
+
 }

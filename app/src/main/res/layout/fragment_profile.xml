@@ -61,8 +61,8 @@
         android:id="@+id/circularImageView2"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
         android:background="@color/white"
         android:src="@drawable/ic_logocirlce"
         app:civ_shadow="true"
@@ -70,15 +70,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
-
     <ImageView
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="28dp"
         android:src="@drawable/ic_choose"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/circularImageView2" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleButton"
@@ -86,9 +85,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="55dp"
+        android:focusedByDefault="true"
+        app:checkedButton="@+id/button1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        android:focusedByDefault="true"
         app:singleSelection="true">
 
         <Button
@@ -97,6 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
+            android:pointerIcon="cell"
             android:text="مرد" />
 
         <Button
@@ -112,12 +113,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="210dp"
+        android:layout_width="390dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="208dp"
         android:gravity="right"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -126,6 +128,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginLeft="2dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
@@ -137,13 +140,13 @@
                 android:id="@+id/etxtUsername"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/lgray"
+                android:layout_weight="0.75"
+                android:background="@drawable/curved_button2"
                 android:fontFamily="@font/iransans"
                 android:gravity="center"
-                android:hint="مثال: امیر"
+                android:hint="مثال: مرادی"
                 android:inputType="text"
-                android:maxLength="11"
+                android:maxLength="15"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="10sp"
@@ -158,8 +161,8 @@
                 android:background="@color/white"
                 android:fontFamily="@font/iransans"
                 android:gravity="center"
-                android:padding="5dp"
-                android:text="نام کاربر"
+                android:padding="1dp"
+                android:text="نام خانوداگی"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -169,23 +172,27 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:gravity="center"
+
             android:orientation="horizontal"
             tools:layout_editor_absoluteY="192dp">
 
             <EditText
+
                 android:id="@+id/etxtUsername2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/lgray"
+                android:background="@drawable/curved_button2"
                 android:fontFamily="@font/iransans"
                 android:gravity="center"
                 android:hint="مثال: امیر"
                 android:inputType="text"
                 android:maxLength="11"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -195,12 +202,13 @@
                 android:id="@+id/txtUsername2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:layout_weight="0.80"
                 android:background="@color/white"
                 android:fontFamily="@font/iransans"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="نام کاربر"
+                android:padding="1dp"
+                android:text="نام"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -223,7 +231,7 @@
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
@@ -231,13 +239,14 @@
         android:id="@+id/etxtAddress"
         android:layout_width="350dp"
         android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/lgray"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/curved_button2"
         android:fontFamily="@font/iransans"
-        android:gravity="center"
+        android:gravity="right"
         android:hint="تهران، میدان آزادی"
+        android:inputType="textMultiLine"
         android:maxLength="300"
-        android:padding="10dp"
+        android:padding="15dp"
         android:textColor="@color/black"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -252,7 +261,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="31dp"
-        android:background="@color/lgray"
+        android:background="@drawable/curved_button2"
         android:fontFamily="@font/iransans"
         android:gravity="center"
         android:hint="09XXXXXXXXX"
@@ -269,8 +278,8 @@
         android:id="@+id/txtAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
         android:background="@color/white"
         android:fontFamily="@font/iransans"
         android:padding="10dp"
@@ -280,5 +289,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxtPhoneNumber" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/iransans"
+        android:padding="5dp"
+        android:text="انتخاب تاریخ تولد"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxtAddress" />
+
+    <TextView
+        android:id="@+id/txtBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/curved_button2"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="1360/12/25"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxtAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

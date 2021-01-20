@@ -26,6 +26,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -61,4 +68,7 @@ dependencies {
     implementation 'com.loopj.android:android-async-http:1.4.9'
 //    Gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+//    Calender
+    implementation 'com.github.aliab:Persian-Date-Picker-Dialog:1.5.2'
+
 }
