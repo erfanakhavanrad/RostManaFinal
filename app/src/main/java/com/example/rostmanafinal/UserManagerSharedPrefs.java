@@ -30,7 +30,7 @@ public class UserManagerSharedPrefs {
         return sharedPreferences.getString("token", null);
     }
 
-    public void clearAllInformation(){
+    public void clearAllInformation() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();

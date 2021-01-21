@@ -56,14 +56,12 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
 public class FragmentProfile extends Fragment {
-    ImageView imageViewReturn, circularImageView2, avatar;
-    Button btn_male, btn_female, btnAmir;
+    ImageView imageViewReturn, circularImageView2;
     MaterialButtonToggleGroup materialButtonToggleGroup;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     private PersianDatePickerDialog picker;
     TextView mStart, txttext;
-String fuck;
 
     @Nullable
     @Override
@@ -78,17 +76,7 @@ String fuck;
         imageViewReturn = view.findViewById(R.id.imageViewReturn);
         circularImageView2 = view.findViewById(R.id.circularImageView2);
         mStart = view.findViewById(R.id.txtBirthday);
-        btnAmir = view.findViewById(R.id.btnAmir);
-        avatar = view.findViewById(R.id.circularImageView2);
         txttext = view.findViewById(R.id.txttext);
-        btnAmir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                txttext.setText(encoder);
-            }
-        });
-
-
 
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,14 +113,6 @@ String fuck;
             }
         });
 
-
-//        public void showCalendar(View v) {
-//            Typeface typeface = Typeface.createFromAsset(assetManager, "Shabnam-Light-FD.ttf");
-//
-//
-//        }
-
-
         final CharSequence[] options = {"عکس با دوربین", "انتخاب از گالری", "لغو"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("انتخاب عکس پروفایل");
@@ -150,10 +130,8 @@ String fuck;
                         if (options[item].equals("عکس با دوربین")) {
                             Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                             startActivityForResult(takePicture, 0);
-//circularImageView2.setImageResource();
+
                         } else if (options[item].equals("انتخاب از گالری")) {
-//                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                    startActivityForResult(pickPhoto , 1);
                             openGallery();
 
 
@@ -202,25 +180,25 @@ String fuck;
             }
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
             String image = ConvertBitmapToString(resizedBitmap);
-
             //decode base64 string to image
 //            Log.d(TAG, "onActivityResult: "+ imageUri.toString());
-            Log.i(TAG, "onActivityResult: " + imageUri.toString());
-            Log.i(TAG, "onActivityResult: " + circularImageView2.toString());
+            Log.i(TAG, "onActivityResult: " + image.toString());
+//            Log.i(TAG, "onActivityResult: " + circularImageView2.toString());
 
         }
     }
-    public static String ConvertBitmapToString(Bitmap bitmap){
+
+    public static String ConvertBitmapToString(Bitmap bitmap) {
         String encodedImage = "";
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         try {
-            encodedImage= URLEncoder.encode(Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT), "UTF-8");
-//            Toast.makeText(FragmentProfile.clas
-//            s, "", Toast.LENGTH_SHORT).show();
+            encodedImage = URLEncoder.encode(Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT), "UTF-8");
+
             Log.i(TAG, "ConvertBitmapToString: " + encodedImage);
-//          String encodedImage2 = encodedImage;
+
+            String encodedImage2 = encodedImage;
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

@@ -47,11 +47,11 @@ public class SplashScreenActivity extends AppCompatActivity {
 //                startActivity(intent1);
 //                finish();
 
-                if (full_name != null){
+                if (full_name != null) {
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-                }else {
+                } else {
                     Pair[] pairs = new Pair[2];
                     pairs[0] = new Pair<View, String>(imageSplash1, "logo_image");
                     pairs[1] = new Pair<View, String>(textSlogan, "logo_text");
