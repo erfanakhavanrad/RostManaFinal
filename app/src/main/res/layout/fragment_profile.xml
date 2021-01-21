@@ -64,7 +64,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="28dp"
         android:background="@color/white"
-        android:src="@drawable/ic_logocirlce"
+        android:src="@drawable/limo"
         app:civ_shadow="true"
         app:civ_shadow_radius="1dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +146,7 @@
                 android:gravity="center"
                 android:hint="مثال: مرادی"
                 android:inputType="text"
-                android:maxLength="15"
+                android:maxLength="17"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="10sp"
@@ -191,7 +191,7 @@
                 android:gravity="center"
                 android:hint="مثال: امیر"
                 android:inputType="text"
-                android:maxLength="11"
+                android:maxLength="13"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="10sp"
@@ -292,8 +292,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/iransans"
         android:padding="5dp"
         android:text="انتخاب تاریخ تولد"
@@ -306,16 +306,34 @@
         android:id="@+id/txtBirthday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginStart="104dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/curved_button2"
-        android:gravity="center"
+        android:fontFamily="@font/iransanpha"
+        android:foregroundGravity="right"
+        android:gravity="right"
         android:padding="5dp"
         android:text="1360/12/25"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxtAddress" />
+
+    <Button
+        android:id="@+id/btnAmir"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/txttext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularImageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

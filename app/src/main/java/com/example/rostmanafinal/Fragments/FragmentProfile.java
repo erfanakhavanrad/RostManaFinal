@@ -13,6 +13,10 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.sax.EndElementListener;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,20 +40,30 @@ import com.example.rostmanafinal.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLEncoder;
+
 import ir.hamsaa.persiandatepicker.Listener;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 public class FragmentProfile extends Fragment {
-    ImageView imageViewReturn, circularImageView2;
-    Button btn_male, btn_female;
+    ImageView imageViewReturn, circularImageView2, avatar;
+    Button btn_male, btn_female, btnAmir;
     MaterialButtonToggleGroup materialButtonToggleGroup;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     private PersianDatePickerDialog picker;
-    TextView mStart;
+    TextView mStart, txttext;
+String fuck;
 
     @Nullable
     @Override
@@ -64,6 +78,17 @@ public class FragmentProfile extends Fragment {
         imageViewReturn = view.findViewById(R.id.imageViewReturn);
         circularImageView2 = view.findViewById(R.id.circularImageView2);
         mStart = view.findViewById(R.id.txtBirthday);
+        btnAmir = view.findViewById(R.id.btnAmir);
+        avatar = view.findViewById(R.id.circularImageView2);
+        txttext = view.findViewById(R.id.txttext);
+        btnAmir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                txttext.setText(encoder);
+            }
+        });
+
+
 
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,14 +98,13 @@ public class FragmentProfile extends Fragment {
                 initDate.setPersianDate(1370, 3, 13);
 
                 picker = new PersianDatePickerDialog(getContext())
-                        .setPositiveButtonString("باشه")
-                        .setNegativeButton("بیخیال")
-                        .setTodayButton("امروز")
-                        .setTodayButtonVisible(true)
+                        .setPositiveButtonString("تایید")
+                        .setNegativeButton("لغو")
+                        .setTodayButtonVisible(false)
                         .setMinYear(1300)
                         .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
                         .setInitDate(initDate)
-                        .setActionTextColor(Color.GRAY)
+                        .setActionTextColor(Color.BLACK)
 //                        .setTypeFace(typeface)
                         .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
                         .setShowInBottomSheet(false)
@@ -159,6 +183,7 @@ public class FragmentProfile extends Fragment {
 
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+
         startActivityForResult(gallery, PICK_IMAGE);
     }
 
@@ -169,8 +194,39 @@ public class FragmentProfile extends Fragment {
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
             circularImageView2.setImageURI(imageUri);
+            Bitmap bitmap = null;
+            try {
+                bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(imageUri));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
+            String image = ConvertBitmapToString(resizedBitmap);
+
+            //decode base64 string to image
+//            Log.d(TAG, "onActivityResult: "+ imageUri.toString());
+            Log.i(TAG, "onActivityResult: " + imageUri.toString());
+            Log.i(TAG, "onActivityResult: " + circularImageView2.toString());
+
         }
     }
+    public static String ConvertBitmapToString(Bitmap bitmap){
+        String encodedImage = "";
 
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        try {
+            encodedImage= URLEncoder.encode(Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT), "UTF-8");
+//            Toast.makeText(FragmentProfile.clas
+//            s, "", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "ConvertBitmapToString: " + encodedImage);
+//          String encodedImage2 = encodedImage;
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return encodedImage;
+    }
 
 }
