@@ -62,6 +62,7 @@ public class FragmentProfile extends Fragment {
     Uri imageUri;
     private PersianDatePickerDialog picker;
     TextView mStart, txttext;
+    Button buttonMaleGender, buttonFemaleGender;
 
     @Nullable
     @Override
@@ -77,6 +78,22 @@ public class FragmentProfile extends Fragment {
         circularImageView2 = view.findViewById(R.id.circularImageView2);
         mStart = view.findViewById(R.id.txtBirthday);
         txttext = view.findViewById(R.id.txttext);
+
+        buttonMaleGender = view.findViewById(R.id.buttonMaleGender);
+        buttonFemaleGender = view.findViewById(R.id.buttonFemaleGender);
+        buttonMaleGender.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getContext(), "Male", Toast.LENGTH_SHORT).show();
+    }
+});
+        buttonFemaleGender.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getContext(), "Female", Toast.LENGTH_SHORT).show();
+    }
+});
+
 
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override

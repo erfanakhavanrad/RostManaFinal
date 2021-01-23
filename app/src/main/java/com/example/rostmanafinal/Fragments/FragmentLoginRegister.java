@@ -56,6 +56,7 @@ public class FragmentLoginRegister extends Fragment {
         txt_forgetPassword = view.findViewById(R.id.txt_forgetPassword);
 
 //        Register Views
+//        Remove everything except password, confirm and  phone number
         txt_username_register = view.findViewById(R.id.txt_cPassword_register);
         eTxt_username_register = view.findViewById(R.id.etxt_cPassword_register);
         txt_password_register = view.findViewById(R.id.txt_password_register);

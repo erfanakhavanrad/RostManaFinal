@@ -92,7 +92,7 @@
         app:singleSelection="true">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonMaleGender"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -101,7 +101,7 @@
             android:text="مرد" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonFemaleGender"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
