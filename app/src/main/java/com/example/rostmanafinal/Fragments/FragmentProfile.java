@@ -73,7 +73,7 @@ public class FragmentProfile extends Fragment {
     Button buttonMaleGender, buttonFemaleGender;
     EditText nameETxtUsername2, lastNameETxtUsername, eTxtPhoneNumber, eTxtAddress;
     String image;
-boolean gender;
+    boolean gender;
     RetrofitApiService request;
 
     @Nullable
@@ -92,7 +92,6 @@ boolean gender;
         eTxtPhoneNumber = view.findViewById(R.id.etxtPhoneNumber); // PhoneNumber
         eTxtAddress = view.findViewById(R.id.etxtAddress);  // Address
         txtBirthday = view.findViewById(R.id.txtBirthday); // birth
-
 
 
 //       Gendre
@@ -216,7 +215,7 @@ boolean gender;
             @Override
             public void onResponse(Call<ModelEditProfile> call, Response<ModelEditProfile> response) {
                 ModelEditProfile modelEditProfile = response.body();
-                if (modelEditProfile != null){
+                if (modelEditProfile != null) {
                     Toast.makeText(getContext(), "" + modelEditProfile.getSex(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -226,8 +225,6 @@ boolean gender;
                 Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
 
     }
