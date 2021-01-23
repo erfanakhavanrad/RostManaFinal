@@ -36,7 +36,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
+import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.MainActivity;
+import com.example.rostmanafinal.Pojo.ModelEditProfile;
 import com.example.rostmanafinal.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -52,9 +54,14 @@ import java.net.URLEncoder;
 import ir.hamsaa.persiandatepicker.Listener;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
+
+// TODO: 1/23/2021 makeImage global so it can pass the data and get gender boolean 
 
 public class FragmentProfile extends Fragment {
     ImageView imageViewReturn, circularImageView2;
@@ -62,10 +69,12 @@ public class FragmentProfile extends Fragment {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     private PersianDatePickerDialog picker;
-    TextView txttext, txtBirthday;
+    TextView txtBirthday;
     Button buttonMaleGender, buttonFemaleGender;
-EditText nameETxtUsername2, lastNameETxtUsername, eTxtPhoneNumber, eTxtAddress;
+    EditText nameETxtUsername2, lastNameETxtUsername, eTxtPhoneNumber, eTxtAddress;
     String image;
+boolean gender;
+    RetrofitApiService request;
 
     @Nullable
     @Override
@@ -78,16 +87,19 @@ EditText nameETxtUsername2, lastNameETxtUsername, eTxtPhoneNumber, eTxtAddress;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-nameETxtUsername2 = view.findViewById(R.id.etxtUsername2); // First name
-lastNameETxtUsername = view.findViewById(R.id.etxtUsername); // Last name
-        eTxtPhoneNumber = view.findViewById(R.id.etxtPhoneNumber); // Phonenumber
+        nameETxtUsername2 = view.findViewById(R.id.etxtUsername2); // First name
+        lastNameETxtUsername = view.findViewById(R.id.etxtUsername); // Last name
+        eTxtPhoneNumber = view.findViewById(R.id.etxtPhoneNumber); // PhoneNumber
         eTxtAddress = view.findViewById(R.id.etxtAddress);  // Address
         txtBirthday = view.findViewById(R.id.txtBirthday); // birth
 
 
+
+//       Gendre
+//        image  profileimage
+
         imageViewReturn = view.findViewById(R.id.imageViewReturn);
         circularImageView2 = view.findViewById(R.id.circularImageView2);
-        txttext = view.findViewById(R.id.txttext);
 
 //        buttonMaleGender = view.findViewById(R.id.buttonMaleGender);
 //        buttonFemaleGender = view.findViewById(R.id.buttonFemaleGender);
@@ -185,6 +197,39 @@ lastNameETxtUsername = view.findViewById(R.id.etxtUsername); // Last name
 
 
 //        Toast.makeText(getContext(), "" + image, Toast.LENGTH_SHORT).show();
+
+// TODO: 1/23/2021 remove these lines
+//        imageViewReturn = view.findViewById(R.id.imageViewReturn);
+//        circularImageView2 = view.findViewById(R.id.circularImageView2);
+
+
+        String firstName = nameETxtUsername2.getText().toString();
+        String lastName = lastNameETxtUsername.getText().toString();
+        String phoneNumber = eTxtPhoneNumber.getText().toString();
+        String address = eTxtAddress.getText().toString();
+        String birth = txtBirthday.getText().toString();
+
+
+        Call<ModelEditProfile> call = request.PostEditProfileAPIService(gender, image,
+                firstName, lastName, phoneNumber, address, birth);
+        call.enqueue(new Callback<ModelEditProfile>() {
+            @Override
+            public void onResponse(Call<ModelEditProfile> call, Response<ModelEditProfile> response) {
+                ModelEditProfile modelEditProfile = response.body();
+                if (modelEditProfile != null){
+                    Toast.makeText(getContext(), "" + modelEditProfile.getSex(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelEditProfile> call, Throwable t) {
+                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
     }
 
 
@@ -234,7 +279,7 @@ lastNameETxtUsername = view.findViewById(R.id.etxtUsername); // Last name
 
             Log.i(TAG, "ConvertBitmapToString: " + encodedImage);
 
-            String encodedImage2 = encodedImage;
+//            String encodedImage2 = encodedImage;
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
