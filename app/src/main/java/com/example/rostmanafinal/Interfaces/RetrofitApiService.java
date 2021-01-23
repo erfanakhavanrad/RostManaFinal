@@ -1,6 +1,7 @@
 package com.example.rostmanafinal.Interfaces;
 
 import com.example.rostmanafinal.Pojo.GetHello;
+import com.example.rostmanafinal.Pojo.ModelEditProfile;
 import com.example.rostmanafinal.Pojo.Users;
 import com.google.gson.annotations.SerializedName;
 
@@ -26,6 +27,18 @@ public interface RetrofitApiService {
     @POST("login")
     Call<Users> getUserPostToken(@Field("phonenumber") String phoneNumber,
                                  @Field("password") String password);
+
+
+    @FormUrlEncoded
+    @POST("editprofil")
+    Call<ModelEditProfile> PostEditProfileAPIService(@Field("sex") Boolean sex,
+                                                     @Field("profileImage") String profileImage,
+                                                     @Field("name") String name,
+                                                     @Field("lastName") String lastName,
+                                                     @Field("phonenumber") String phonenumber,
+                                                     @Field("address") String address,
+                                                     @Field("birth") String birth
+    );
 
 //    @FormUrlEncoded
 //    @POST(URL) Call<ResponseBody> getdata(@Field("jdata") String jdata);

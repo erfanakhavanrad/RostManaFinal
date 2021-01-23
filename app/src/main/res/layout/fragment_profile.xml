@@ -86,18 +86,20 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="55dp"
         android:focusedByDefault="true"
+        android:defaultFocusHighlightEnabled="true"
         app:checkedButton="@+id/button1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:singleSelection="true">
 
         <Button
+            android:defaultFocusHighlightEnabled="true"
             android:id="@+id/buttonMaleGender"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
-            android:pointerIcon="cell"
+            android:focusedByDefault="true"
             android:text="مرد" />
 
         <Button
@@ -318,15 +320,6 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxtAddress" />
-
-    <Button
-        android:id="@+id/btnAmir"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/txttext"

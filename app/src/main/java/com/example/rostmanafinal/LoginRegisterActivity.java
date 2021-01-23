@@ -78,7 +78,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
 //                        Toast.makeText(LoginRegisterActivity.this, "token" + response, Toast.LENGTH_SHORT).show();
 
                         Users users = response.body();
-
                         Log.e("keshav", "loginResponse 1 --> " + users);
                         if (users != null) {
 //                           Log.e("keshav", "getUserId          -->  " + users.getAccess_token());

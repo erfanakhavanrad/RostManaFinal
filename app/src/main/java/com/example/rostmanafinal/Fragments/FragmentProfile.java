@@ -79,20 +79,21 @@ public class FragmentProfile extends Fragment {
         mStart = view.findViewById(R.id.txtBirthday);
         txttext = view.findViewById(R.id.txttext);
 
-        buttonMaleGender = view.findViewById(R.id.buttonMaleGender);
-        buttonFemaleGender = view.findViewById(R.id.buttonFemaleGender);
-        buttonMaleGender.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(getContext(), "Male", Toast.LENGTH_SHORT).show();
-    }
-});
-        buttonFemaleGender.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(getContext(), "Female", Toast.LENGTH_SHORT).show();
-    }
-});
+//        buttonMaleGender = view.findViewById(R.id.buttonMaleGender);
+//        buttonFemaleGender = view.findViewById(R.id.buttonFemaleGender);
+//
+//        buttonMaleGender.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View v) {
+//        Toast.makeText(getContext(), "Male", Toast.LENGTH_SHORT).show();
+//    }
+//});
+//        buttonFemaleGender.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View v) {
+//        Toast.makeText(getContext(), "Female", Toast.LENGTH_SHORT).show();
+//    }
+//});
 
 
         mStart.setOnClickListener(new View.OnClickListener() {
