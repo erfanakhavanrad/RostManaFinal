@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -61,8 +62,10 @@ public class FragmentProfile extends Fragment {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     private PersianDatePickerDialog picker;
-    TextView mStart, txttext;
+    TextView txttext, txtBirthday;
     Button buttonMaleGender, buttonFemaleGender;
+EditText nameETxtUsername2, lastNameETxtUsername, eTxtPhoneNumber, eTxtAddress;
+    String image;
 
     @Nullable
     @Override
@@ -74,9 +77,16 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+nameETxtUsername2 = view.findViewById(R.id.etxtUsername2); // First name
+lastNameETxtUsername = view.findViewById(R.id.etxtUsername); // Last name
+        eTxtPhoneNumber = view.findViewById(R.id.etxtPhoneNumber); // Phonenumber
+        eTxtAddress = view.findViewById(R.id.etxtAddress);  // Address
+        txtBirthday = view.findViewById(R.id.txtBirthday); // birth
+
+
         imageViewReturn = view.findViewById(R.id.imageViewReturn);
         circularImageView2 = view.findViewById(R.id.circularImageView2);
-        mStart = view.findViewById(R.id.txtBirthday);
         txttext = view.findViewById(R.id.txttext);
 
 //        buttonMaleGender = view.findViewById(R.id.buttonMaleGender);
@@ -95,8 +105,7 @@ public class FragmentProfile extends Fragment {
 //    }
 //});
 
-
-        mStart.setOnClickListener(new View.OnClickListener() {
+        txtBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -118,7 +127,7 @@ public class FragmentProfile extends Fragment {
                             @Override
                             public void onDateSelected(PersianCalendar persianCalendar) {
                                 Toast.makeText(getContext(), persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
-                                mStart.setText(persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay());
+                                txtBirthday.setText(persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay());
                             }
 
                             @Override
@@ -174,6 +183,8 @@ public class FragmentProfile extends Fragment {
             }
         });
 
+
+//        Toast.makeText(getContext(), "" + image, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -197,13 +208,20 @@ public class FragmentProfile extends Fragment {
                 e.printStackTrace();
             }
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
-            String image = ConvertBitmapToString(resizedBitmap);
+            image = ConvertBitmapToString(resizedBitmap);
             //decode base64 string to image
 //            Log.d(TAG, "onActivityResult: "+ imageUri.toString());
+//            Base 64 is here
             Log.i(TAG, "onActivityResult: " + image.toString());
 //            Log.i(TAG, "onActivityResult: " + circularImageView2.toString());
 
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Toast.makeText(getContext(), "" + image, Toast.LENGTH_SHORT).show();
     }
 
     public static String ConvertBitmapToString(Bitmap bitmap) {
