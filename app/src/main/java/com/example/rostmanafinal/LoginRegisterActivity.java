@@ -29,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginRegisterActivity extends AppCompatActivity {
-    Button btnEnter, btnGuest;
+    Button btnEnter, btnGuest, btnRegister;
     TextInputEditText edtUsername, edtPassword;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String token, url = "http://192.168.88.134:8000/api/";
@@ -42,6 +42,17 @@ public class LoginRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
+        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginRegisterActivity.this, RegisterFromActivity.class);
+                startActivity(i);
+//                finish();
+            }
+        });
+
+
         edtPassword = findViewById(R.id.edtPassword);
         edtUsername = findViewById(R.id.edtUsername);
         request = APIClient.getApiClient(url).create(RetrofitApiService.class);
@@ -111,35 +122,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
                     }
                 });
 
-
-//                Call<Users> call = request.getUserPostToken(user, pass);
-//                call.enqueue(new Callback<Users>() {
-//                    @Override
-//                    public void onResponse(Call<Users> call, Response<Users> response) {
-
-//                        if (response.body().getDataResponse().equals("access_token")) {
-//                            Toast.makeText(LoginRegisterActivity.this, "login success", Toast.LENGTH_SHORT).show();
-//                        } else if (response.body().getDataResponse().equals("expires_at")) {
-//                            Toast.makeText(LoginRegisterActivity.this, "", Toast.LENGTH_SHORT).show();
-//                        } else if (response.body().getDataResponse().equals("WRONG")){
-//                            Toast.makeText(LoginRegisterActivity.this, "wrong username or password", Toast.LENGTH_SHORT).show();
-//                        }
-//                        Toast.makeText(LoginRegisterActivity.this, "token" + response, Toast.LENGTH_SHORT).show();
-//                    }
-
-
-//                    @Override
-//                    public void onFailure(Call<Users> call, Throwable t) {
-//                        Toast.makeText(LoginRegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-//                        Log.d(TAG, t.getMessage());
-//                    }
-//                });
-//
-//
-
-
-
-//userManagerSharedPrefs.saveUserInformation(token);.
 
             }
 
