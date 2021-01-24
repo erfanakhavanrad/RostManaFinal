@@ -64,7 +64,7 @@ import static android.content.ContentValues.TAG;
 // TODO: 1/23/2021 makeImage global so it can pass the data and get gender boolean 
 
 public class FragmentProfile extends Fragment {
-    ImageView imageViewReturn, circularImageView2;
+    ImageView imageViewReturn, circularImageView2, imgCheck;
     MaterialButtonToggleGroup materialButtonToggleGroup;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
@@ -72,7 +72,7 @@ public class FragmentProfile extends Fragment {
     TextView txtBirthday;
     Button buttonMaleGender, buttonFemaleGender;
     EditText nameETxtUsername2, lastNameETxtUsername, eTxtPhoneNumber, eTxtAddress;
-    String image;
+    String image,lastName;
     boolean gender;
     RetrofitApiService request;
 
@@ -86,13 +86,12 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         nameETxtUsername2 = view.findViewById(R.id.etxtUsername2); // First name
         lastNameETxtUsername = view.findViewById(R.id.etxtUsername); // Last name
         eTxtPhoneNumber = view.findViewById(R.id.etxtPhoneNumber); // PhoneNumber
         eTxtAddress = view.findViewById(R.id.etxtAddress);  // Address
         txtBirthday = view.findViewById(R.id.txtBirthday); // birth
-
+        imgCheck = view.findViewById(R.id.imgCheck);
 
 //       Gendre
 //        image  profileimage
@@ -115,6 +114,8 @@ public class FragmentProfile extends Fragment {
 //        Toast.makeText(getContext(), "Female", Toast.LENGTH_SHORT).show();
 //    }
 //});
+
+
 
         txtBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,29 +203,39 @@ public class FragmentProfile extends Fragment {
 //        circularImageView2 = view.findViewById(R.id.circularImageView2);
 
 
-        String firstName = nameETxtUsername2.getText().toString();
-        String lastName = lastNameETxtUsername.getText().toString();
-        String phoneNumber = eTxtPhoneNumber.getText().toString();
-        String address = eTxtAddress.getText().toString();
-        String birth = txtBirthday.getText().toString();
 
 
-        Call<ModelEditProfile> call = request.PostEditProfileAPIService(gender, image,
-                firstName, lastName, phoneNumber, address, birth);
-        call.enqueue(new Callback<ModelEditProfile>() {
+        imgCheck.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<ModelEditProfile> call, Response<ModelEditProfile> response) {
-                ModelEditProfile modelEditProfile = response.body();
-                if (modelEditProfile != null) {
-                    Toast.makeText(getContext(), "" + modelEditProfile.getSex(), Toast.LENGTH_SHORT).show();
-                }
-            }
+            public void onClick(View v) {
+                String firstName = nameETxtUsername2.getText().toString();
+                lastName= lastNameETxtUsername.getText().toString();
+                String phoneNumber = eTxtPhoneNumber.getText().toString();
+                String address = eTxtAddress.getText().toString();
+                String birth = txtBirthday.getText().toString();
+                Toast.makeText(getContext(), firstName.toString() + lastName + phoneNumber + address, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "fuck" + lastName.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), ""  + txtBirthday.toString(), Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onFailure(Call<ModelEditProfile> call, Throwable t) {
-                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+//        Call<ModelEditProfile> call = request.PostEditProfileAPIService(gender, image,
+//                firstName, lastName, phoneNumber, address, birth);
+//        call.enqueue(new Callback<ModelEditProfile>() {
+//            @Override
+//            public void onResponse(Call<ModelEditProfile> call, Response<ModelEditProfile> response) {
+//                ModelEditProfile modelEditProfile = response.body();
+//                if (modelEditProfile != null) {
+//                    Toast.makeText(getContext(), "" + modelEditProfile.getSex(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ModelEditProfile> call, Throwable t) {
+//                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
     }
@@ -263,7 +274,7 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Toast.makeText(getContext(), "" + image, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "" + image, Toast.LENGTH_SHORT).show();
     }
 
     public static String ConvertBitmapToString(Bitmap bitmap) {

@@ -56,7 +56,7 @@ public class FragmentHome extends Fragment {
         textView7 = view.findViewById(R.id.textView7);
         textView8 = view.findViewById(R.id.textView8);
         txtToken = view.findViewById(R.id.txtToken);
-        Toast.makeText(getContext(), "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
 //        fullname.setText(usermanager.getfullname);
         textView7.setText(userManagerSharedPrefs.getFullName());
         textView8.setText(userManagerSharedPrefs.getEmail());
