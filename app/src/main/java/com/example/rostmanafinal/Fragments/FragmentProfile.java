@@ -1,54 +1,41 @@
 package com.example.rostmanafinal.Fragments;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.sax.EndElementListener;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
-import com.example.rostmanafinal.MainActivity;
+import com.example.rostmanafinal.Pojo.GetHello;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
 import com.example.rostmanafinal.R;
+import com.example.rostmanafinal.UserManagerSharedPrefs;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.net.URLEncoder;
 
 import ir.hamsaa.persiandatepicker.Listener;
@@ -57,11 +44,13 @@ import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
-// TODO: 1/23/2021 makeImage global so it can pass the data and get gender boolean 
+// TODO: 1/23/2021 makeImage global so it can pass the data and get gender boolean
 
 public class FragmentProfile extends Fragment {
     ImageView imageViewReturn, circularImageView2, imgCheck;
@@ -72,9 +61,11 @@ public class FragmentProfile extends Fragment {
     TextView txtBirthday;
     Button buttonMaleGender, buttonFemaleGender;
     EditText nameETxtUsername2, lastNameETxtUsername, eTxtPhoneNumber, eTxtAddress;
-    String image,lastName;
+    String imageb64, lastName, token;
     boolean gender;
-    RetrofitApiService request;
+    //    RetrofitApiService request;
+    private static final String BASE_URL = "http://192.168.88.134:8000/api/Mobile/";
+    UserManagerSharedPrefs userManagerSharedPrefs;
 
     @Nullable
     @Override
@@ -85,6 +76,7 @@ public class FragmentProfile extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
         super.onViewCreated(view, savedInstanceState);
         nameETxtUsername2 = view.findViewById(R.id.etxtUsername2); // First name
         lastNameETxtUsername = view.findViewById(R.id.etxtUsername); // Last name
@@ -116,7 +108,6 @@ public class FragmentProfile extends Fragment {
 //});
 
 
-
         txtBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +129,7 @@ public class FragmentProfile extends Fragment {
                         .setListener(new Listener() {
                             @Override
                             public void onDateSelected(PersianCalendar persianCalendar) {
-                                Toast.makeText(getContext(), persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getContext(), persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
                                 txtBirthday.setText(persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay());
                             }
 
@@ -203,19 +194,41 @@ public class FragmentProfile extends Fragment {
 //        circularImageView2 = view.findViewById(R.id.circularImageView2);
 
 
-
-
         imgCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                token = userManagerSharedPrefs.getToken();
                 String firstName = nameETxtUsername2.getText().toString();
-                lastName= lastNameETxtUsername.getText().toString();
+                lastName = lastNameETxtUsername.getText().toString();
                 String phoneNumber = eTxtPhoneNumber.getText().toString();
                 String address = eTxtAddress.getText().toString();
                 String birth = txtBirthday.getText().toString();
-                Toast.makeText(getContext(), firstName.toString() + lastName + phoneNumber + address, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "fuck" + lastName.toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), ""  + txtBirthday.toString(), Toast.LENGTH_SHORT).show();
+                String avatar = imageb64;
+                Toast.makeText(getContext(), "CLICKED", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), firstName.toString() + lastName + phoneNumber + address, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "fuck" + lastName.toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), ""  + txtBirthday.toString(), Toast.LENGTH_SHORT).show();
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                RetrofitApiService retrofitApiService = retrofit.create(RetrofitApiService.class);
+                retrofitApiService.PostEditProfileAPIService(token, gender, imageb64, firstName, lastName,
+                        phoneNumber, address, birth
+                ).enqueue(new Callback<ModelEditProfile>() {
+                    @Override
+                    public void onResponse(Call<ModelEditProfile> call, Response<ModelEditProfile> response) {
+                        ModelEditProfile modelEditProfile = response.body();
+                        if (modelEditProfile != null) {
+                            Toast.makeText(getContext(), "" + modelEditProfile.getBirth(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ModelEditProfile> call, Throwable t) {
+                        Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
             }
         });
@@ -261,11 +274,11 @@ public class FragmentProfile extends Fragment {
                 e.printStackTrace();
             }
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
-            image = ConvertBitmapToString(resizedBitmap);
+            imageb64 = ConvertBitmapToString(resizedBitmap);
             //decode base64 string to image
 //            Log.d(TAG, "onActivityResult: "+ imageUri.toString());
 //            Base 64 is here
-            Log.i(TAG, "onActivityResult: " + image.toString());
+            Log.i(TAG, "onActivityResult: " + imageb64.toString());
 //            Log.i(TAG, "onActivityResult: " + circularImageView2.toString());
 
         }

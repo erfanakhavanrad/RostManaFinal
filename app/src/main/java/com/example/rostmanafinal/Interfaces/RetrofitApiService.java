@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -30,8 +31,9 @@ public interface RetrofitApiService {
 
 
     @FormUrlEncoded
-    @POST("editprofil")
-    Call<ModelEditProfile> PostEditProfileAPIService(@Field("sex") Boolean sex,
+    @POST("Updatauser")
+    Call<ModelEditProfile> PostEditProfileAPIService(@Header("Dynamic-Header") String header,
+                                                     @Field("sex") Boolean sex,
                                                      @Field("profileImage") String profileImage,
                                                      @Field("name") String name,
                                                      @Field("lastName") String lastName,
