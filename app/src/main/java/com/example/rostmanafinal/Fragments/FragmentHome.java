@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,16 +33,16 @@ public class FragmentHome extends Fragment {
     ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fourthItem, fifthItem;
     Button btnGet, btnPost;
-    TextView textView7, textView8,txtToken;
+    TextView textView7, textView8, txtToken;
+    boolean doubleBackToExitPressedOnce = false;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewHome = inflater.inflate(R.layout.fragment_home, container, false);
 
-        return viewHome;
-
-
+return viewHome;
     }
 
 
@@ -63,7 +65,6 @@ public class FragmentHome extends Fragment {
         txtToken.setText(userManagerSharedPrefs.getToken());
 
 
-
         btnPost = view.findViewById(R.id.btnPost);
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +85,7 @@ public class FragmentHome extends Fragment {
         fourthItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-userManagerSharedPrefs.clearAllInformation();
+                userManagerSharedPrefs.clearAllInformation();
 
                 Intent i = new Intent(getActivity(), LoginRegisterActivity.class);
                 Toast.makeText(getContext(), "از حساب خود خارج شدید", Toast.LENGTH_SHORT).show();
@@ -147,8 +148,8 @@ userManagerSharedPrefs.clearAllInformation();
         });
 
     }
-
 //    onBackpressed
 //    getActivity().moveTaskToBack(true);
 //    getActivity().finish();
 }
+

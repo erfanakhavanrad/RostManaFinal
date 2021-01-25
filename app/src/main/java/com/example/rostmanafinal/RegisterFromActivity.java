@@ -2,7 +2,10 @@ package com.example.rostmanafinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -54,17 +57,20 @@ createPost();
     }
     private void createPost(){
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("091255554671", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09125471362", "123456", "123456");
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
                 if (!response.isSuccessful()){
                     Toast.makeText(RegisterFromActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(RegisterFromActivity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
                     return;
                 }
                 ModelRegister modelRegister1 = response.body();
                 Toast.makeText(RegisterFromActivity.this, "" + modelRegister1.getToken(), Toast.LENGTH_SHORT).show();
-            
+
             }
 
             @Override
@@ -73,4 +79,9 @@ createPost();
             }
         });
     }
+
+
+
+
+
 }
