@@ -7,6 +7,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
@@ -53,7 +54,7 @@ createPost();
     }
     private void createPost(){
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("0915355471", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage("091255554671", "123456", "123456");
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
@@ -63,6 +64,7 @@ createPost();
                 }
                 ModelRegister modelRegister1 = response.body();
                 Toast.makeText(RegisterFromActivity.this, "" + modelRegister1.getToken(), Toast.LENGTH_SHORT).show();
+            
             }
 
             @Override

@@ -11,6 +11,17 @@ public class ModelEditProfile {
     private String name;
     @SerializedName("lastName")
     private String lastName;
+
+    public ModelEditProfile(Boolean sex, String profileImage, String name, String lastName, String phonenumber, String address, String birth) {
+        this.sex = sex;
+        this.profileImage = profileImage;
+        this.name = name;
+        this.lastName = lastName;
+        this.phonenumber = phonenumber;
+        this.address = address;
+        this.birth = birth;
+    }
+
     @SerializedName("phonenumber")
     private String phonenumber;
     @SerializedName("address")
