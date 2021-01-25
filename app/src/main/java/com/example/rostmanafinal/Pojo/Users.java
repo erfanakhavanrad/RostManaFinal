@@ -9,6 +9,15 @@ public class Users {
     private String password;
     @SerializedName("expires_at")
     private String expires_at;
+    @SerializedName("access_token")
+    private String access_token;
+
+    public Users(String phonenumber, String password, String expires_at, String access_token) {
+        this.phonenumber = phonenumber;
+        this.password = password;
+        this.expires_at = expires_at;
+        this.access_token = access_token;
+    }
 
     public String getExpires_at() {
         return expires_at;
@@ -26,8 +35,7 @@ public class Users {
         this.access_token = access_token;
     }
 
-    @SerializedName("access_token")
-    private String access_token;
+
 
     public String getPhonenumber() {
         return phonenumber;
