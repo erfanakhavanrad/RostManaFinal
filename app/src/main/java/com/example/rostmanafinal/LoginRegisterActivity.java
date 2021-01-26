@@ -130,7 +130,9 @@ public class LoginRegisterActivity extends AppCompatActivity {
                         Log.e("keshav", "loginResponse 1 --> " + users);
                         if (users != null) {
 //                           Log.e("keshav", "getUserId          -->  " + users.getAccess_token());
-                            Toast.makeText(LoginRegisterActivity.this, "" + users.getAccess_token(), Toast.LENGTH_SHORT).show();
+                      /** here you get token and do shit */
+//                            Toast.makeText(LoginRegisterActivity.this, "خوش آمدید", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(LoginRegisterActivity.this, "" + users.getAccess_token(), Toast.LENGTH_SHORT).show();
 //                           String responseCode = users.getResponseCode();
 //                           Log.e("keshav", "getResponseCode  -->  " + users.getResponseCode());
 //                           Log.e("keshav", "getResponseMessage  -->  " + users.getResponseMessage());

@@ -32,8 +32,8 @@ public class FragmentHome extends Fragment {
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fourthItem, fifthItem;
-    Button btnGet, btnPost;
-    TextView textView7, textView8, txtToken;
+//    Button btnGet, btnPost;
+//    TextView textView7, textView8, txtToken;
     boolean doubleBackToExitPressedOnce = false;
 
 
@@ -55,32 +55,32 @@ return viewHome;
         firstItem = view.findViewById(R.id.firstItem);
         fourthItem = view.findViewById(R.id.fourthItem);
         secondItem = view.findViewById(R.id.secondItem);
-        textView7 = view.findViewById(R.id.textView7);
-        textView8 = view.findViewById(R.id.textView8);
-        txtToken = view.findViewById(R.id.txtToken);
+//        textView7 = view.findViewById(R.id.textView7);
+//        textView8 = view.findViewById(R.id.textView8);
+//        txtToken = view.findViewById(R.id.txtToken);
 //        Toast.makeText(getContext(), "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
 //        fullname.setText(usermanager.getfullname);
-        textView7.setText(userManagerSharedPrefs.getFullName());
-        textView8.setText(userManagerSharedPrefs.getEmail());
-        txtToken.setText(userManagerSharedPrefs.getToken());
+//        textView7.setText(userManagerSharedPrefs.getFullName());
+//        textView8.setText(userManagerSharedPrefs.getEmail());
+//        txtToken.setText(userManagerSharedPrefs.getToken());
 
 
-        btnPost = view.findViewById(R.id.btnPost);
-        btnPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentPostTest);
-            }
-        });
-
-
-        btnGet = view.findViewById(R.id.btnGet);
-        btnGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentMainTest);
-            }
-        });
+//        btnPost = view.findViewById(R.id.btnPost);
+//        btnPost.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentPostTest);
+//            }
+//        });
+//
+//
+//        btnGet = view.findViewById(R.id.btnGet);
+//        btnGet.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentMainTest);
+//            }
+//        });
 
         fourthItem.setOnClickListener(new View.OnClickListener() {
             @Override
