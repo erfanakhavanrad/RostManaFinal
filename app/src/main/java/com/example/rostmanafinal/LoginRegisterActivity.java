@@ -50,7 +50,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     private Context context;
     boolean doubleBackToExitPressedOnce = false;
     ConstraintLayout constraintProgress;
-    private int duration = Toast.LENGTH_LONG;
+    private int duration = Toast.LENGTH_SHORT;
     TextView txtForgotPassword;
     private CardView cardView;
 
@@ -66,10 +66,8 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.custom_toast, cardView);
-
                 TextView text = layout.findViewById(R.id.text);
                 text.setText(R.string.custom_toast_message);
-
                 Toast toast = new Toast(LoginRegisterActivity.this);
                 toast.setGravity(Gravity.BOTTOM, 0, 40);
                 toast.setDuration(duration);
@@ -182,8 +180,14 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
         this.doubleBackToExitPressedOnce = true;
 //        Toast.makeText(this, "برای خروج دوباره بازگشت را بزنید", Toast.LENGTH_SHORT).show();
-        Toast toast = Toast.makeText(LoginRegisterActivity.this, Html.fromHtml("<font color='#26a653' ><b>" + "برای خروج دوباره بازگشت را بزنید" + "</b></font>"), Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.BOTTOM, 0, 50);
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast_exit, cardView);
+        TextView text = layout.findViewById(R.id.text);
+        text.setText(R.string.exitApp);
+        Toast toast = new Toast(LoginRegisterActivity.this);
+        toast.setGravity(Gravity.BOTTOM, 0, 165);
+        toast.setDuration(duration);
+        toast.setView(layout);
         toast.show();
 
 

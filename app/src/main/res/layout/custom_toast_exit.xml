@@ -4,7 +4,7 @@
     android:id="@+id/custom_toast_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#DAAA"
+    app:cardBackgroundColor="#DDFFFFFF"
     app:cardCornerRadius="5dp"
     app:cardElevation="8dp"
     app:contentPadding="8dp">
@@ -17,17 +17,18 @@
         <TextView
             android:fontFamily="@font/iransans"
             android:id="@+id/text"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="@color/lGreen2"
-             />
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_logocirlce"
-            android:contentDescription="@string/app_name" />
+            android:textColor="@color/black"
+            />
+<!--        <ImageView-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:src="@drawable/ic_baseline_warning_24"-->
+<!--            android:contentDescription="@string/app_name" />-->
     </LinearLayout>
 </androidx.cardview.widget.CardView>

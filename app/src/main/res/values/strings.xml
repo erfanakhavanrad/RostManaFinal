@@ -18,4 +18,5 @@
     </string>
     <string name="more_details"><u>جزییات بیشتر</u></string>
     <string name="custom_toast_message">روی دکمه فراموشی رمز کلیک شد</string>
+    <string name="exitApp">برای خروج دوباره بازگشت را بزنید</string>
 </resources>
