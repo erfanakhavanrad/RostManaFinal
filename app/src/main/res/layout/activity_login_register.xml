@@ -46,13 +46,13 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_name" />
 
     <LinearLayout
-        android:paddingLeft="20sp"
-        android:paddingRight="20sp"
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slogan_name">
@@ -151,6 +151,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintProgress"
