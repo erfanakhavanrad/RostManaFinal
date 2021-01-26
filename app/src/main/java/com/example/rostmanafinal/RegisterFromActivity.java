@@ -54,12 +54,12 @@ public class RegisterFromActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(RegisterFromActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-//                createPost();
+                number = false;
+                showLoading();
+                createPost();
 //                Toast.makeText(RegisterFromActivity.this, registerPhoneNumber.getText().toString()+
 //                        registerPassword.getText().toString()+
 //                        registerConfirmPassword.getText().toString(), Toast.LENGTH_SHORT).show();
-                showLoading();
-                number = false;
 
             }
         });
@@ -102,6 +102,8 @@ public class RegisterFromActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ModelRegister> call, Throwable t) {
                 Toast.makeText(RegisterFromActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                number = true;
+                showLoading();
             }
         });
     }
