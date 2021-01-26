@@ -18,6 +18,9 @@ public class UserManagerSharedPrefs {
         editor.apply();
     }
 
+
+
+
     public String getFullName() {
         return sharedPreferences.getString("full_name", null);
     }

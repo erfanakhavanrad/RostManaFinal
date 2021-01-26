@@ -1,6 +1,7 @@
 package com.example.rostmanafinal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -13,8 +14,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -39,12 +42,15 @@ public class LoginRegisterActivity extends AppCompatActivity {
     RetrofitApiService request;
     private String TAG;
     Users users;
+    Boolean number = true;
     boolean doubleBackToExitPressedOnce = false;
+    ConstraintLayout constraintProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
+        constraintProgress = findViewById(R.id.constraintProgress);
         btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +90,8 @@ public class LoginRegisterActivity extends AppCompatActivity {
                     Toast.makeText(LoginRegisterActivity.this, "لطفا تمام کادرها را پر کنید", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                number = false;
+                showLoading();
                 Call<Users> call = request.getUserPostToken(user, pass);
                 call.enqueue(new Callback<Users>() {
                     @Override
@@ -107,7 +114,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
 //                          String token =   users.getAccess_token();
 
                             token = users.getAccess_token();
-                            Log.d(TAG, "onResponse: "+ token);
+                            Log.d(TAG, "onResponse: " + token);
                             userManagerSharedPrefs.saveUserInformation(edtUsername.getText().toString(),
                                     edtPassword.getText().toString(),
                                     token);
@@ -122,6 +129,8 @@ public class LoginRegisterActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Users> call, Throwable t) {
                         Toast.makeText(LoginRegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        number = true;
+                        showLoading();
                     }
                 });
 
@@ -134,7 +143,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -143,7 +151,11 @@ public class LoginRegisterActivity extends AppCompatActivity {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "برای خروج دوباره بازگشت را بزنید", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "برای خروج دوباره بازگشت را بزنید", Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(LoginRegisterActivity.this, Html.fromHtml("<font color='#26a653' ><b>" + "برای خروج دوباره بازگشت را بزنید" + "</b></font>"), Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.BOTTOM, 0, 50);
+        toast.show();
+
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 
@@ -153,5 +165,16 @@ public class LoginRegisterActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
+    private void showLoading() {
+
+        if (number) {
+            constraintProgress.setVisibility(View.GONE);
+
+        } else {
+            constraintProgress.setVisibility(View.VISIBLE);
+        }
+    }
+
 
 }
