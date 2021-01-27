@@ -1,11 +1,14 @@
 package com.example.rostmanafinal.Fragments;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,23 +21,43 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.LoginRegisterActivity;
+import com.example.rostmanafinal.Pojo.ModelLogedinUser;
+import com.example.rostmanafinal.Pojo.ResponseObj;
 import com.example.rostmanafinal.R;
+import com.example.rostmanafinal.Retrofit.APIClient;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class FragmentHome extends Fragment {
     UserManagerSharedPrefs userManagerSharedPrefs;
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser;
     LinearLayout firstItem, secondItem, fourthItem, fifthItem;
-//    Button btnGet, btnPost;
+    //    Button btnGet, btnPost;
 //    TextView textView7, textView8, txtToken;
     boolean doubleBackToExitPressedOnce = false;
+    String token, url = "http://192.168.88.134:8000/api/";
+    RetrofitApiService request;
+    Boolean number = true;
+    ConstraintLayout constraintProgress;
 
 
     @Nullable
@@ -42,7 +65,7 @@ public class FragmentHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewHome = inflater.inflate(R.layout.fragment_home, container, false);
 
-return viewHome;
+        return viewHome;
     }
 
 
@@ -55,34 +78,77 @@ return viewHome;
         firstItem = view.findViewById(R.id.firstItem);
         fourthItem = view.findViewById(R.id.fourthItem);
         secondItem = view.findViewById(R.id.secondItem);
+        constraintProgress = view.findViewById(R.id.constraintProgress);
 
 
-        //        textView7 = view.findViewById(R.id.textView7);
-//        textView8 = view.findViewById(R.id.textView8);
-//        txtToken = view.findViewById(R.id.txtToken);
-//        Toast.makeText(getContext(), "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
-//        fullname.setText(usermanager.getfullname);
-//        textView7.setText(userManagerSharedPrefs.getFullName());
-//        textView8.setText(userManagerSharedPrefs.getEmail());
-//        txtToken.setText(userManagerSharedPrefs.getToken());
+        request = APIClient.getApiClient(url).create(RetrofitApiService.class);
+        token = userManagerSharedPrefs.getToken();
+
+//        Toast.makeText(getContext(), "" + token, Toast.LENGTH_SHORT).show();
+//token = userManagerSharedPrefs.getToken();
+
+        number = true;
+        showLoading();
+        Call<ResponseObj> call = request.postLoggedInUser(token);
+        call.enqueue(new Callback<ResponseObj>() {
+            @Override
+            public void onResponse(Call<ResponseObj> call, Response<ResponseObj> response) {
+                if (response.isSuccessful()) {
+                    ResponseObj responseObj;
+                    responseObj = response.body();
+                    Toast.makeText(getContext(), "" + responseObj, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "onResponse", Toast.LENGTH_SHORT).show();
+                }
+
+//              ResponseObj responseObj = response.body();
+//                Log.e(TAG, "onResponse: " +  response);
+//                if (responseObj != null){
+//                    String name;
+//                    List list;
+//                    list = responseObj.getBuilder();
+//                    list.get(1);
+//                    Toast.makeText(getContext(), "" + list.get(1), Toast.LENGTH_SHORT).show();
+//                    Log.d(TAG, "onResponse: " + name);
+//                    Toast.makeText(getContext(), ""+ name, Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    Toast.makeText(getContext(), "error onResponse", Toast.LENGTH_SHORT).show();
+//                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseObj> call, Throwable t) {
+
+            }
+        });
 
 
-//        btnPost = view.findViewById(R.id.btnPost);
-//        btnPost.setOnClickListener(new View.OnClickListener() {
+//        call.enqueue(new Callback<ResponseObj>() {
 //            @Override
-//            public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentPostTest);
+//            public void onResponse(Call<ModelLogedinUser> call, Response<ModelLogedinUser> response) {
+//                ModelLogedinUser modelLogedinUser = response.body();
+//                Log.e(TAG, "onResponse: " +  modelLogedinUser);
+//                if (modelLogedinUser != null){
+//                    String name;
+//                    name = modelLogedinUser.getName();
+//                    Log.d(TAG, "onResponse: " + name);
+//                    Toast.makeText(getContext(), ""+ name, Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    Toast.makeText(getContext(), "error onResponse", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ModelLogedinUser> call, Throwable t) {
+//                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+//                number = true;
+//                showLoading();
 //            }
 //        });
 //
-//
-//        btnGet = view.findViewById(R.id.btnGet);
-//        btnGet.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentMainTest);
-//            }
-//        });
+
 
         fourthItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,6 +215,17 @@ return viewHome;
             }
         });
 
+    }
+
+
+    private void showLoading() {
+
+        if (number) {
+            constraintProgress.setVisibility(View.GONE);
+
+        } else {
+            constraintProgress.setVisibility(View.VISIBLE);
+        }
     }
 //    onBackpressed
 //    getActivity().moveTaskToBack(true);

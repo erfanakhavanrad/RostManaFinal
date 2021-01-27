@@ -2,7 +2,9 @@ package com.example.rostmanafinal.Interfaces;
 
 import com.example.rostmanafinal.Pojo.GetHello;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
+import com.example.rostmanafinal.Pojo.ModelLogedinUser;
 import com.example.rostmanafinal.Pojo.ModelRegister;
+import com.example.rostmanafinal.Pojo.ResponseObj;
 import com.example.rostmanafinal.Pojo.Users;
 import com.google.gson.annotations.SerializedName;
 
@@ -19,22 +21,22 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface RetrofitApiService {
-// GET test
+    // GET test
     @GET("hello")
     Call<GetHello> getHellovalue();
-// POST test
+
+    // POST test
     @POST("goodbye")
     Call<GetHello> postGoodbyeValue();
 
 
-
-// This is for the login page
+    // This is for the login page
     @FormUrlEncoded
     @POST("login")
     Call<Users> getUserPostToken(@Field("phonenumber") String phoneNumber,
                                  @Field("password") String password);
 
-// This is for the EditProfile page
+    // This is for the EditProfile page
     @FormUrlEncoded
     @POST("Updatauser")
     Call<ModelEditProfile> PostEditProfileAPIService(@Header("Dynamic-Header") String header,
@@ -47,20 +49,24 @@ public interface RetrofitApiService {
                                                      @Field("birth") String birth
     );
 
-//This is for register page
+    //This is for register page
     @FormUrlEncoded
     @POST("register")
-    Call<ModelRegister> postRegisterPage (@Field("phonenumber") String phonenumber,
-                                          @Field("password") String password,
-                                          @Field("c_password") String c_password
-                                          );
-// This is for logged in user to receive data
+    Call<ModelRegister> postRegisterPage(@Field("phonenumber") String phonenumber,
+                                         @Field("password") String password,
+                                         @Field("c_password") String c_password
+    );
+
+
+    // This is for logged in User to receive data
 //    @FormUrlEncoded
-//    @POST("loggedinuser")
-//    Call<>
 
+    @POST("Mobile/User")
+    Call<ResponseObj> postLoggedInUser(@Header("access_token") String token);
 
-
+    //    @FormUrlEncoded
+//    @POST("Mobile/User")
+//    Call<List<ModelLogedinUser>> postLoggedInUser(@Header("access_token") String token);
 //    @FormUrlEncoded
 //    @POST(URL) Call<ResponseBody> getdata(@Field("jdata") String jdata);
 }

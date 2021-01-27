@@ -42,7 +42,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     TextInputEditText edtUsername, edtPassword;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String token, url = "http://192.168.88.134:8000/api/";
-    SharedPreferences sharedPreferences;
+//    SharedPreferences sharedPreferences;
     RetrofitApiService request;
     private String TAG;
     Users users;
