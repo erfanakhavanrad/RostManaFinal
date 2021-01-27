@@ -55,7 +55,9 @@ return viewHome;
         firstItem = view.findViewById(R.id.firstItem);
         fourthItem = view.findViewById(R.id.fourthItem);
         secondItem = view.findViewById(R.id.secondItem);
-//        textView7 = view.findViewById(R.id.textView7);
+
+
+        //        textView7 = view.findViewById(R.id.textView7);
 //        textView8 = view.findViewById(R.id.textView8);
 //        txtToken = view.findViewById(R.id.txtToken);
 //        Toast.makeText(getContext(), "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();

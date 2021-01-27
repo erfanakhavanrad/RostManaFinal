@@ -47,14 +47,17 @@ public interface RetrofitApiService {
                                                      @Field("birth") String birth
     );
 
-
+//This is for register page
     @FormUrlEncoded
     @POST("register")
     Call<ModelRegister> postRegisterPage (@Field("phonenumber") String phonenumber,
                                           @Field("password") String password,
                                           @Field("c_password") String c_password
                                           );
-
+// This is for logged in user to receive data
+//    @FormUrlEncoded
+//    @POST("loggedinuser")
+//    Call<>
 
 
 
