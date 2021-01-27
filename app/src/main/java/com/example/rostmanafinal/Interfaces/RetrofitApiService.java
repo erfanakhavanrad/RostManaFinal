@@ -62,8 +62,8 @@ public interface RetrofitApiService {
 //    @FormUrlEncoded
 
     @POST("Mobile/User")
-    Call<ResponseObj> postLoggedInUser(@Header("access_token") String token);
-
+    Call<ResponseObj> postLoggedInUser();
+//    @Header("access_token") String token
     //    @FormUrlEncoded
 //    @POST("Mobile/User")
 //    Call<List<ModelLogedinUser>> postLoggedInUser(@Header("access_token") String token);

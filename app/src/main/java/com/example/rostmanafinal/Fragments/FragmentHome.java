@@ -33,6 +33,7 @@ import com.example.rostmanafinal.Pojo.ModelLogedinUser;
 import com.example.rostmanafinal.Pojo.ResponseObj;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.APIClient;
+import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,9 +41,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.content.ContentValues.TAG;
 
@@ -81,22 +85,35 @@ public class FragmentHome extends Fragment {
         constraintProgress = view.findViewById(R.id.constraintProgress);
 
 
-        request = APIClient.getApiClient(url).create(RetrofitApiService.class);
+/**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
+
         token = userManagerSharedPrefs.getToken();
+        TokenInterceptor interceptor=new TokenInterceptor(token);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+            .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        request = retrofit.create(RetrofitApiService.class);
 
 //        Toast.makeText(getContext(), "" + token, Toast.LENGTH_SHORT).show();
 //token = userManagerSharedPrefs.getToken();
 
         number = true;
         showLoading();
-        Call<ResponseObj> call = request.postLoggedInUser(token);
+        Call<ResponseObj> call = request.postLoggedInUser();
         call.enqueue(new Callback<ResponseObj>() {
             @Override
             public void onResponse(Call<ResponseObj> call, Response<ResponseObj> response) {
                 if (response.isSuccessful()) {
                     ResponseObj responseObj;
                     responseObj = response.body();
-                    Toast.makeText(getContext(), "" + responseObj, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "" + responseObj.toString(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "onResponse", Toast.LENGTH_SHORT).show();
                 }
@@ -119,7 +136,7 @@ public class FragmentHome extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseObj> call, Throwable t) {
-
+                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
