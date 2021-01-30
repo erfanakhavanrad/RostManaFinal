@@ -76,14 +76,9 @@ public class RegisterFromActivity extends AppCompatActivity {
 //                } else {
 //                    registerConfirmPassword.setError("doesn't match");
 //                }
-
-
                 number = false;
 //                showLoading();
                 createPost();
-//                Toast.makeText(RegisterFromActivity.this, registerPhoneNumber.getText().toString()+
-//                        registerPassword.getText().toString()+
-//                        registerConfirmPassword.getText().toString(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -101,34 +96,20 @@ public class RegisterFromActivity extends AppCompatActivity {
 
     private void createPost() {
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09141111227", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09141111228", "123456", "123456");
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
-//                Toast.makeText(RegisterFromActivity.this, "" + response.body(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(RegisterFromActivity.this, "" + response.message(), Toast.LENGTH_SHORT).show();
-//                if (!response.isSuccessful()) {
-//                    ModelRegister modelRegister1 = response.body();
-//                    Toast.makeText(RegisterFromActivity.this, response.message(), Toast.LENGTH_SHORT).show();
-
-                userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken());
-//                Toast.makeText(RegisterFromActivity.this, "", Toast.LENGTH_SHORT).show();
-//                Toast.makeText(RegisterFromActivity.this, "" + response.body().getToken(), Toast.LENGTH_SHORT).show();
-//                ModelRegister modelRegister1;
-//                modelRegister1 = response.body();
-//                token = modelRegister1.getToken();
-//                userManagerSharedPrefs.saveUserInformation("name", "lname", token);
-                Intent i = new Intent(RegisterFromActivity.this, MainActivity.class);
-                number = true;
-                startActivity(i);
-                finish();
-//                    return;
-//                } else {
-//                    Toast.makeText(RegisterFromActivity.this, "there was an error", Toast.LENGTH_SHORT).show();
-//                }
-
-//                Toast.makeText(RegisterFromActivity.this, "" + modelRegister1.getToken(), Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(RegisterFromActivity.this, "" + response.message(), Toast.LENGTH_SHORT).show();
+//                userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken());
+                if (response.isSuccessful()) {
+                    Intent i = new Intent(RegisterFromActivity.this, SubmitSmsFromRegisterActivity.class);
+                    number = true;
+                    startActivity(i);
+                    finish();
+                } else{
+                    Toast.makeText(RegisterFromActivity.this, "there was an error", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
