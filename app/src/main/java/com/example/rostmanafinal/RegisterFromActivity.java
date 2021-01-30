@@ -60,14 +60,14 @@ public class RegisterFromActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(RegisterFromActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-                if (registerPhoneNumber.length() !=11 ) {
-showMSG("difference");
-                        return;
-                }
-                if(registerPassword!=registerConfirmPassword || registerPassword.length()<=6) {
-                    Toast.makeText(RegisterFromActivity.this, "must be longer", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (registerPhoneNumber.length() !=11 ) {
+//showMSG("difference");
+//                        return;
+//                }
+//                if(registerPassword!=registerConfirmPassword || registerPassword.length() <= 6) {
+//                    Toast.makeText(RegisterFromActivity.this, "must be longer", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
 //                if (registerPassword.getText().toString().equals(registerConfirmPassword.getText().toString())) {
 //                    Toast.makeText(RegisterFromActivity.this, "the same", Toast.LENGTH_SHORT).show();
@@ -78,9 +78,9 @@ showMSG("difference");
 //                }
 
 
-                /**number = false;
-                 showLoading();
-                 createPost(); */
+                number = false;
+//                showLoading();
+                createPost();
 //                Toast.makeText(RegisterFromActivity.this, registerPhoneNumber.getText().toString()+
 //                        registerPassword.getText().toString()+
 //                        registerConfirmPassword.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -101,23 +101,31 @@ showMSG("difference");
 
     private void createPost() {
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09312653165", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09141111227", "123456", "123456");
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
-                if (!response.isSuccessful()) {
-                    ModelRegister modelRegister1 = response.body();
-                    Toast.makeText(RegisterFromActivity.this, response.message(), Toast.LENGTH_SHORT).show();
-//                    userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken());
-//                    token = modelRegister1.getToken();
-//                  userManagerSharedPrefs.saveUserInformation("name", "lname", token);
-//                    Intent i = new Intent(RegisterFromActivity.this, MainActivity.class);
-//                    startActivity(i);
-//                    finish();
-                    return;
-                } else {
-                    Toast.makeText(RegisterFromActivity.this, "there was an error", Toast.LENGTH_SHORT).show();
-                }
+//                Toast.makeText(RegisterFromActivity.this, "" + response.body(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterFromActivity.this, "" + response.message(), Toast.LENGTH_SHORT).show();
+//                if (!response.isSuccessful()) {
+//                    ModelRegister modelRegister1 = response.body();
+//                    Toast.makeText(RegisterFromActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+
+                userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken());
+//                Toast.makeText(RegisterFromActivity.this, "", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RegisterFromActivity.this, "" + response.body().getToken(), Toast.LENGTH_SHORT).show();
+//                ModelRegister modelRegister1;
+//                modelRegister1 = response.body();
+//                token = modelRegister1.getToken();
+//                userManagerSharedPrefs.saveUserInformation("name", "lname", token);
+                Intent i = new Intent(RegisterFromActivity.this, MainActivity.class);
+                number = true;
+                startActivity(i);
+                finish();
+//                    return;
+//                } else {
+//                    Toast.makeText(RegisterFromActivity.this, "there was an error", Toast.LENGTH_SHORT).show();
+//                }
 
 //                Toast.makeText(RegisterFromActivity.this, "" + modelRegister1.getToken(), Toast.LENGTH_SHORT).show();
 
@@ -131,7 +139,8 @@ showMSG("difference");
             }
         });
     }
-    public void showMSG(String message){
+
+    public void showMSG(String message) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast_exit, cardView);
         TextView text = layout.findViewById(R.id.text);

@@ -115,8 +115,11 @@ public class FragmentHome extends Fragment {
                     Example example;
                     example = response.body();
 //                    Toast.makeText(getContext(), "" + example.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getContext(), ""+ example.getProfile().getFirstname(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), ""+ example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+                    if(example.getProfile()==null){
+                        Toast.makeText(getContext(), "nistg", Toast.LENGTH_SHORT).show();
 
+                    }
                 } else {
                     Toast.makeText(getContext(), "onResponseError", Toast.LENGTH_SHORT).show();
                 }

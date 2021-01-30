@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RostManaFinal"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegisterFromActivity"></activity>
+        <activity android:name=".SubmitSmsFromRegisterActivity"></activity>
+        <activity android:name=".RegisterFromActivity" />
         <activity android:name=".LoginRegisterActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
