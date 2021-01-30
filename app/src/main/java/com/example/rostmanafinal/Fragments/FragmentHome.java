@@ -136,8 +136,10 @@ public class FragmentHome extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseObj> call, Throwable t) {
+                if (getContext() != null){
                 Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+                }
+                }
         });
 
 

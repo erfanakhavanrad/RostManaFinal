@@ -84,6 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:passwordToggleEnabled="true"
+
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -91,7 +92,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/iransans"
-            android:maxLength="25" />
+            android:maxLength="20"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,7 +116,8 @@
             android:id="@+id/registerConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="25" />
+            android:maxLength="20"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

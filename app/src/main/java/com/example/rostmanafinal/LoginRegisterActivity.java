@@ -118,6 +118,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                     Toast.makeText(LoginRegisterActivity.this, "لطفا تمام کادرها را پر کنید", Toast.LENGTH_SHORT).show();
                     return;
                 }
+//                else if (edtPassword.getText().toString() >)
                 number = false;
                 showLoading();
                 Call<Users> call = request.getUserPostToken(user, pass);

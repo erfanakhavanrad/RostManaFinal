@@ -1,6 +1,7 @@
 package com.example.rostmanafinal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.BoringLayout;
 import android.view.Display;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +37,9 @@ public class RegisterFromActivity extends AppCompatActivity {
     ConstraintLayout constraintProgress;
     Boolean number = true;
 
+    private int duration = Toast.LENGTH_SHORT;
+    private CardView cardView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +60,27 @@ public class RegisterFromActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(RegisterFromActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-                number = false;
-                showLoading();
-                createPost();
+                if (registerPhoneNumber.length() !=11 ) {
+showMSG("difference");
+                        return;
+                }
+                if(registerPassword!=registerConfirmPassword || registerPassword.length()<=6) {
+                    Toast.makeText(RegisterFromActivity.this, "must be longer", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+//                if (registerPassword.getText().toString().equals(registerConfirmPassword.getText().toString())) {
+//                    Toast.makeText(RegisterFromActivity.this, "the same", Toast.LENGTH_SHORT).show();
+//                } else if (registerPassword.length() < 7 || registerConfirmPassword.length() < 7) {
+//                    Toast.makeText(RegisterFromActivity.this, "password too short", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    registerConfirmPassword.setError("doesn't match");
+//                }
+
+
+                /**number = false;
+                 showLoading();
+                 createPost(); */
 //                Toast.makeText(RegisterFromActivity.this, registerPhoneNumber.getText().toString()+
 //                        registerPassword.getText().toString()+
 //                        registerConfirmPassword.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -106,6 +130,17 @@ public class RegisterFromActivity extends AppCompatActivity {
                 showLoading();
             }
         });
+    }
+    public void showMSG(String message){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast_exit, cardView);
+        TextView text = layout.findViewById(R.id.text);
+        text.setText(message);
+        Toast toast = new Toast(RegisterFromActivity.this);
+        toast.setGravity(Gravity.BOTTOM, 0, 165);
+        toast.setDuration(duration);
+        toast.setView(layout);
+        toast.show();
     }
 
 
