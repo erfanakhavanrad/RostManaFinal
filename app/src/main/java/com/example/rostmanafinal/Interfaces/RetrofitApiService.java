@@ -4,6 +4,7 @@ import com.example.rostmanafinal.Pojo.GetHello;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
 import com.example.rostmanafinal.Pojo.ModelRegister;
+import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.Pojo.ResponseObj;
 import com.example.rostmanafinal.Pojo.Users;
 import com.google.gson.annotations.SerializedName;
@@ -62,7 +63,7 @@ public interface RetrofitApiService {
 //    @FormUrlEncoded
 
     @POST("Mobile/User")
-    Call<ResponseObj> postLoggedInUser();
+    Call<Example> postLoggedInUser();
 //    @Header("access_token") String token
     //    @FormUrlEncoded
 //    @POST("Mobile/User")

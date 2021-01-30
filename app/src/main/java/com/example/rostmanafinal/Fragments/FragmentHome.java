@@ -30,6 +30,7 @@ import androidx.navigation.Navigation;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.LoginRegisterActivity;
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
+import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.Pojo.ResponseObj;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.APIClient;
@@ -106,41 +107,53 @@ public class FragmentHome extends Fragment {
 
         number = true;
         showLoading();
-        Call<ResponseObj> call = request.postLoggedInUser();
-        call.enqueue(new Callback<ResponseObj>() {
+        Call<Example> call = request.postLoggedInUser();
+        call.enqueue(new Callback<Example>() {
             @Override
-            public void onResponse(Call<ResponseObj> call, Response<ResponseObj> response) {
-                if (response.isSuccessful()) {
-                    ResponseObj responseObj;
-                    responseObj = response.body();
-                    Toast.makeText(getContext(), "" + responseObj.toString(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "onResponse", Toast.LENGTH_SHORT).show();
-                }
+            public void onResponse(Call<Example> call, Response<Example> response) {
+                if (response.isSuccessful()){
+                    Example example;
+                    example = response.body();
+//                    Toast.makeText(getContext(), "" + example.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), ""+ example.getProfile().getFirstname(), Toast.LENGTH_SHORT).show();
 
-//              ResponseObj responseObj = response.body();
-//                Log.e(TAG, "onResponse: " +  response);
-//                if (responseObj != null){
-//                    String name;
-//                    List list;
-//                    list = responseObj.getBuilder();
-//                    list.get(1);
-//                    Toast.makeText(getContext(), "" + list.get(1), Toast.LENGTH_SHORT).show();
-//                    Log.d(TAG, "onResponse: " + name);
-//                    Toast.makeText(getContext(), ""+ name, Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Toast.makeText(getContext(), "error onResponse", Toast.LENGTH_SHORT).show();
-//                }
+                } else {
+                    Toast.makeText(getContext(), "onResponseError", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<ResponseObj> call, Throwable t) {
-                if (getContext() != null){
-                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-                }
+            public void onFailure(Call<Example> call, Throwable t) {
+                Toast.makeText(getContext(), ""+ t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
+
+
+
+
+
+//        Call<ResponseObj> call = request.postLoggedInUser();
+//        call.enqueue(new Callback<ResponseObj>() {
+//            @Override
+//            public void onResponse(Call<ResponseObj> call, Response<ResponseObj> response) {
+//                if (response.isSuccessful()) {
+//                    ResponseObj responseObj;
+//                    responseObj = response.body();
+//                    Toast.makeText(getContext(), "" + responseObj.toString(), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getContext(), "onResponse", Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseObj> call, Throwable t) {
+//                if (getContext() != null){
+//                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//                }
+//        });
 
 
 //        call.enqueue(new Callback<ResponseObj>() {
