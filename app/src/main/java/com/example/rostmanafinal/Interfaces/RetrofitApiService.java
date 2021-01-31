@@ -61,9 +61,14 @@ public interface RetrofitApiService {
 
     // This is for logged in User to receive data
 //    @FormUrlEncoded
-
     @POST("Mobile/User")
     Call<Example> postLoggedInUser();
+
+    //    This is for the register SMS Activity
+    @FormUrlEncoded
+    @POST("Mobile/vitrified")
+    Call<ModelRegister> post6DigitsCode(@Field("vcode") Integer vcode
+    );
 //    @Header("access_token") String token
     //    @FormUrlEncoded
 //    @POST("Mobile/User")

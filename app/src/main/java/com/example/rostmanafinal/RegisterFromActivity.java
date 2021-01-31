@@ -36,7 +36,6 @@ public class RegisterFromActivity extends AppCompatActivity {
     String token;
     ConstraintLayout constraintProgress;
     Boolean number = true;
-
     private int duration = Toast.LENGTH_SHORT;
     private CardView cardView;
 
@@ -96,18 +95,19 @@ public class RegisterFromActivity extends AppCompatActivity {
 
     private void createPost() {
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09141111228", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09151111248", "123456", "123456");
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
 //                Toast.makeText(RegisterFromActivity.this, "" + response.message(), Toast.LENGTH_SHORT).show();
-//                userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken());
                 if (response.isSuccessful()) {
+                    userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken());
+//                    Toast.makeText(RegisterFromActivity.this, "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(RegisterFromActivity.this, SubmitSmsFromRegisterActivity.class);
-                    number = true;
+//                    number = true;
                     startActivity(i);
                     finish();
-                } else{
+                } else {
                     Toast.makeText(RegisterFromActivity.this, "there was an error", Toast.LENGTH_SHORT).show();
                 }
             }
