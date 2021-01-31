@@ -2,24 +2,18 @@ package com.example.rostmanafinal.Interfaces;
 
 import com.example.rostmanafinal.Pojo.GetHello;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
-import com.example.rostmanafinal.Pojo.ModelLogedinUser;
 import com.example.rostmanafinal.Pojo.ModelRegister;
+import com.example.rostmanafinal.Pojo.ModelSMS.User;
+import com.example.rostmanafinal.Pojo.ModelSMS.VerifyModel;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
-import com.example.rostmanafinal.Pojo.ResponseObj;
 import com.example.rostmanafinal.Pojo.Users;
-import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface RetrofitApiService {
     // GET test
@@ -66,8 +60,8 @@ public interface RetrofitApiService {
 
     //    This is for the register SMS Activity
     @FormUrlEncoded
-    @POST("Mobile/vitrified")
-    Call<ModelRegister> post6DigitsCode(@Field("vcode") Integer vcode
+    @POST("Mobile/vitrifiedChk")
+    Call<VerifyModel> post6DigitsCode(@Field("vcode") Integer vCode
     );
 //    @Header("access_token") String token
     //    @FormUrlEncoded

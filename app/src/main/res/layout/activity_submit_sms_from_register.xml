@@ -30,6 +30,7 @@
         android:background="@drawable/enter_serial_shape"
         android:gravity="center"
         android:hint="123456"
+        android:singleLine="true"
         android:inputType="number"
         android:maxLength="6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,5 +50,14 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serialEnteredActivity" />
+
+    <TextView
+        android:id="@+id/txtSmsTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="61dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfirmActivity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

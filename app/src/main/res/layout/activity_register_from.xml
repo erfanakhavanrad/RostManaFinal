@@ -66,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/iransanpha"
+            android:singleLine="true"
             android:inputType="number"
             android:maxLength="11" />
     </com.google.android.material.textfield.TextInputLayout>
