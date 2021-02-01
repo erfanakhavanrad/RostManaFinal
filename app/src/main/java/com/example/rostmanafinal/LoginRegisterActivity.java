@@ -148,7 +148,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                             Log.d(TAG, "onResponse: " + token);
                             userManagerSharedPrefs.saveUserInformation(edtUsername.getText().toString(),
                                     edtPassword.getText().toString(),
-                                    token);
+                                    token, "null");
 
                             Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
                             startActivity(i);

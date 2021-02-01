@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 1500;
+    private static int SPLASH_SCREEN = 1000;
 
     //Variables
     Animation topAnim, bottomAnim;

@@ -35,7 +35,7 @@ public class FragmentMonitoring extends Fragment {
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
 //    ImageView ;
     TextView txtMoreDetails;
-    GifImageView imageLogo;
+    ImageView imageLogo;
     private static final String TAG = "FragmentMonitoring";
 
     //    First Chart

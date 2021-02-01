@@ -95,13 +95,13 @@ public class RegisterFromActivity extends AppCompatActivity {
 
     private void createPost() {
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09151111259", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09151111261", "123456", "123456");
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
 //                Toast.makeText(RegisterFromActivity.this, "" + response.message(), Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
-                    userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken());
+                    userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken(), "null");
 //                    Toast.makeText(RegisterFromActivity.this, "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(RegisterFromActivity.this, SubmitSmsFromRegisterActivity.class);
 //                    number = true;
