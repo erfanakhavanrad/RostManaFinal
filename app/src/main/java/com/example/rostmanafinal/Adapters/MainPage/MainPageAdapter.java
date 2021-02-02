@@ -22,6 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.MainPageViewHolder> {
+    ArrayList<HeydariTest> myList;
+    public MainPageAdapter(ArrayList<HeydariTest> list) {
+        myList = list;
+    }
+
     @NonNull
     @Override
     public MainPageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,28 +40,23 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.MainPa
 
     @Override
     public void onBindViewHolder(@NonNull MainPageViewHolder holder, int position) {
-       /** FlowerListClass flower = mylist.get(position);
-        holder.flowerName.setText(flower.getName());
-        holder.iamgeEach.setImageResource(flower.getPic()); */
+        /** FlowerListClass flower = mylist.get(position);
+         holder.flowerName.setText(flower.getName());
+         holder.iamgeEach.setImageResource(flower.getPic()); */
 //        HeydariTest heydariTest = mylist.get(position);
 //        holder.itemView
-        switch (position){
-            case 0:
-                holder.imageView.setImageResource(R.drawable.limo);
-                break;
-            case 1:
-                holder.imageView.setImageResource(R.drawable.benjamin);
-                break;
-        }
+        HeydariTest heydari = myList.get(position);
+        holder.imageView.setImageResource(heydari.getPic());
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return myList.size();
     }
 
     public class MainPageViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
+
         public MainPageViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.itemImageFlowerMainPage);

@@ -99,7 +99,11 @@ public class FragmentHome extends Fragment {
 //        HeydariTest heydariTest2 = new HeydariTest(R.drawable.benjamin);
 //        HeydariTest heydariTest3 = new HeydariTest(R.drawable.limo);
 //        recylcerView1.setAdapter(new MainPageAdapter(array_image));
-        MainPageAdapter mainPageAdapter = new MainPageAdapter();
+//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
+        ArrayList<HeydariTest> heydariTests = new ArrayList<>();
+        heydariTests.add(new HeydariTest(R.drawable.limo));
+        heydariTests.add(new HeydariTest(R.drawable.benjamin));
+        MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
         recylcerView1.setAdapter(mainPageAdapter);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 

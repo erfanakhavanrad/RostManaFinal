@@ -70,5 +70,6 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 //    Calender
     implementation 'com.github.aliab:Persian-Date-Picker-Dialog:1.5.2'
-
+//    Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
