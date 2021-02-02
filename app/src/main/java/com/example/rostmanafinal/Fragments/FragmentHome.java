@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.ColorSpace;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,6 +14,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,9 +28,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rostmanafinal.Adapters.MainPage.MainPageAdapter;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.LoginRegisterActivity;
+import com.example.rostmanafinal.Pojo.HeydariTest;
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.Pojo.ResponseObj;
@@ -36,6 +42,7 @@ import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.APIClient;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -54,7 +61,7 @@ import static android.content.ContentValues.TAG;
 public class FragmentHome extends Fragment {
     UserManagerSharedPrefs userManagerSharedPrefs;
     DrawerLayout containerd;
-    ImageView menuIconImage, imageClose, imageAddUser;
+    ImageView menuIconImage, imageClose, imageAddUser, image1;
     LinearLayout firstItem, secondItem, fourthItem, fifthItem;
     //    Button btnGet, btnPost;
 //    TextView textView7, textView8, txtToken;
@@ -63,7 +70,7 @@ public class FragmentHome extends Fragment {
     RetrofitApiService request;
     Boolean number = true;
     ConstraintLayout constraintProgress;
-
+    RecyclerView recylcerView1;
 
     @Nullable
     @Override
@@ -83,17 +90,25 @@ public class FragmentHome extends Fragment {
         firstItem = view.findViewById(R.id.firstItem);
         fourthItem = view.findViewById(R.id.fourthItem);
         secondItem = view.findViewById(R.id.secondItem);
+        image1 = view.findViewById(R.id.image1);
         constraintProgress = view.findViewById(R.id.constraintProgress);
-
-
+        Picasso.get().load("http://i.imgur.com/DvpvklR.png").placeholder(R.drawable.logo).into(image1);
+        recylcerView1 = view.findViewById(R.id.recylcerView1);
+        recylcerView1.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
+//        HeydariTest heydariTest2 = new HeydariTest(R.drawable.benjamin);
+//        HeydariTest heydariTest3 = new HeydariTest(R.drawable.limo);
+//        recylcerView1.setAdapter(new MainPageAdapter(array_image));
+        MainPageAdapter mainPageAdapter = new MainPageAdapter();
+        recylcerView1.setAdapter(mainPageAdapter);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 
         token = userManagerSharedPrefs.getToken();
-        TokenInterceptor interceptor=new TokenInterceptor(token);
+        TokenInterceptor interceptor = new TokenInterceptor(token);
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
-            .build();
+                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
@@ -111,12 +126,12 @@ public class FragmentHome extends Fragment {
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Example example;
                     example = response.body();
 //                    Toast.makeText(getContext(), "" + example.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getContext(), ""+ example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
-                    if(example.getProfile()==null){
+                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+                    if (example.getProfile() == null) {
                         Toast.makeText(getContext(), "nistg", Toast.LENGTH_SHORT).show();
 
                     }
@@ -127,12 +142,9 @@ public class FragmentHome extends Fragment {
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
-                Toast.makeText(getContext(), ""+ t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
 
 
 //        Call<ResponseObj> call = request.postLoggedInUser();

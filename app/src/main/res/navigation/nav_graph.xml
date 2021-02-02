@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_fragment_Plant_Details_to_fragmentHome"
             app:destination="@id/fragmentHome" />
+        <action
+            android:id="@+id/action_fragment_Plant_Details_to_fragmentGreenHouse2"
+            app:destination="@id/fragmentGreenHouse" />
     </fragment>
     <fragment
         android:id="@+id/fragmentHome"

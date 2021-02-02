@@ -59,7 +59,8 @@ public class Fragment_Plant_Details extends Fragment {
         image_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_fragmentHome);
+//                Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_fragmentHome);
+            Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_fragmentGreenHouse2);
             }
         });
 
