@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,11 +32,15 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rostmanafinal.Adapters.MainPage.DifferentViewsAdapter;
 import com.example.rostmanafinal.Adapters.MainPage.MainPageAdapter;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.LoginRegisterActivity;
 import com.example.rostmanafinal.Pojo.HeydariTest;
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
+import com.example.rostmanafinal.Pojo.ModelMainPage.Item;
+import com.example.rostmanafinal.Pojo.ModelMainPage.ModelAddItem;
+import com.example.rostmanafinal.Pojo.ModelMainPage.ModelFlowersMainPage;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.Pojo.ResponseObj;
 import com.example.rostmanafinal.R;
@@ -100,11 +105,24 @@ public class FragmentHome extends Fragment {
 //        HeydariTest heydariTest3 = new HeydariTest(R.drawable.limo);
 //        recylcerView1.setAdapter(new MainPageAdapter(array_image));
 //        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
+        /**
         ArrayList<HeydariTest> heydariTests = new ArrayList<>();
         heydariTests.add(new HeydariTest(R.drawable.limo));
         heydariTests.add(new HeydariTest(R.drawable.benjamin));
         MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
-        recylcerView1.setAdapter(mainPageAdapter);
+        */
+         List<Item> items = new ArrayList<>();
+//         ModelClass1 modelClass1= new fsdfsfffsf;
+//         modelClass1.add(new Item(1, modelClass1));
+        ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
+        items.add(new Item(0, modelFlowersMainPage));
+
+        ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
+        items.add(new Item(1, modelAddItem));
+
+
+recylcerView1.setAdapter(new DifferentViewsAdapter(items));
+//         recylcerView1.setAdapter(mainPageAdapter);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 
         token = userManagerSharedPrefs.getToken();
@@ -125,7 +143,7 @@ public class FragmentHome extends Fragment {
 //token = userManagerSharedPrefs.getToken();
 
         number = false;
-        showLoading();
+//        showLoading();
         Call<Example> call = request.postLoggedInUser();
         call.enqueue(new Callback<Example>() {
             @Override

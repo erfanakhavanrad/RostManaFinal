@@ -95,8 +95,9 @@ public class GreenHouseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     static class AdsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView textAdsTitle, textAds;
-        private ImageView  imageAds;
+        private ImageView imageAds;
         private SwitchCompat onOrOff;
+
         public AdsViewHolder(@NonNull View itemView) {
             super(itemView);
 //            textAdsTitle = itemView.findViewById(R.id.textAdsTitle);
