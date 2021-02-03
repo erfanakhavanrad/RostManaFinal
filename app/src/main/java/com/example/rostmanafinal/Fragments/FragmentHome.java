@@ -91,7 +91,7 @@ public class FragmentHome extends Fragment {
         fourthItem = view.findViewById(R.id.fourthItem);
         secondItem = view.findViewById(R.id.secondItem);
         image1 = view.findViewById(R.id.image1);
-        constraintProgress = view.findViewById(R.id.constraintProgress);
+        constraintProgress = view.findViewById(R.id.constraintLoading);
         Picasso.get().load("http://i.imgur.com/DvpvklR.png").placeholder(R.drawable.logo).into(image1);
         recylcerView1 = view.findViewById(R.id.recylcerView1);
         recylcerView1.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
@@ -124,29 +124,42 @@ public class FragmentHome extends Fragment {
 //        Toast.makeText(getContext(), "" + token, Toast.LENGTH_SHORT).show();
 //token = userManagerSharedPrefs.getToken();
 
-        number = true;
+        number = false;
         showLoading();
         Call<Example> call = request.postLoggedInUser();
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 if (response.isSuccessful()) {
+//                    number = true;
+//                    showLoading();
                     Example example;
                     example = response.body();
 //                    Toast.makeText(getContext(), "" + example.toString(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+//                    number = false;
+//                    showLoading();
+                    constraintProgress.setVisibility(View.GONE);
                     if (example.getProfile() == null) {
                         Toast.makeText(getContext(), "nistg", Toast.LENGTH_SHORT).show();
-
+//                        number = true;
+//                        showLoading();
+                    } else if (response.code() == 400) {
+                        Toast.makeText(getContext(), "user exists", Toast.LENGTH_SHORT).show();
                     }
+
                 } else {
                     Toast.makeText(getContext(), "onResponseError", Toast.LENGTH_SHORT).show();
+//                    number = true;
+//                    showLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
                 Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//                number = true;
+//                showLoading();
             }
         });
 

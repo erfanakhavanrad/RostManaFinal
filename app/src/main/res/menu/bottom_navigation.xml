@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#fff">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
+    app:menu="@menu/bottom_navigation"
+    app:itemIconSize="@dimen/bottom_navigation_icon_size">
+
     <item
         android:id="@+id/fragmentMonitoring"
-        android:icon="@drawable/ic_monitoring"
+        android:icon="@drawable/ic_instagram_icon4"
 
         android:title="Monitoring" />
     <item
@@ -12,7 +16,7 @@
         android:title="Add" />
     <item
         android:id="@+id/fragmentHome"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_home"
         android:title="home" />
 
 

@@ -147,8 +147,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ProgressBar
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/progressBar2"
+            android:src="@drawable/tenor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

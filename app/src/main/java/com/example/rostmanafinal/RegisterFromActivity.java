@@ -76,7 +76,7 @@ public class RegisterFromActivity extends AppCompatActivity {
 //                    registerConfirmPassword.setError("doesn't match");
 //                }
                 number = false;
-//                showLoading();
+                showLoading();
                 createPost();
 
             }
@@ -101,14 +101,17 @@ public class RegisterFromActivity extends AppCompatActivity {
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
 //                Toast.makeText(RegisterFromActivity.this, "" + response.message(), Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
-                    userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken(), "null");
+                    userManagerSharedPrefs.saveUserInformation("null", "null", response.body().getToken(), response.body().getExpires_at());
 //                    Toast.makeText(RegisterFromActivity.this, "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(RegisterFromActivity.this, SubmitSmsFromRegisterActivity.class);
 //                    number = true;
                     startActivity(i);
                     finish();
+                } else if (response.code() == 400) {
+                    Toast.makeText(RegisterFromActivity.this, "user exists", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(RegisterFromActivity.this, "there was an error", Toast.LENGTH_SHORT).show();
+                    constraintProgress.setVisibility(View.GONE);
                 }
             }
 

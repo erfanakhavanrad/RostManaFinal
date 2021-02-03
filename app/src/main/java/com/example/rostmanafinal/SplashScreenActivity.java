@@ -22,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     ImageView imageSplash1;
     TextView textSlogan;
     UserManagerSharedPrefs userManagerSharedPrefs;
-    String full_name;
+    String token, verifiedAt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 //                startActivity(intent1);
 //                finish();
 
-                if (full_name != null) {
+                if (token != null && verifiedAt != null) {
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -71,6 +71,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private void configSharedP() {
 
         this.userManagerSharedPrefs = new UserManagerSharedPrefs(this);
-        full_name = userManagerSharedPrefs.getFullName();
+        token = userManagerSharedPrefs.getFullName();
+        verifiedAt = userManagerSharedPrefs.getVerifiedAt();
     }
 }

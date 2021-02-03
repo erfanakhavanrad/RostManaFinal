@@ -1,6 +1,7 @@
 package com.example.rostmanafinal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +31,7 @@ public class SubmitSmsFromRegisterActivity extends AppCompatActivity {
     String url = "http://192.168.88.134:8000/api/";
     //    RetrofitApiService retrofitApiService;
     TextView txtSmsTest;
-
+ConstraintLayout constraintLoading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class SubmitSmsFromRegisterActivity extends AppCompatActivity {
         btnConfirmActivity = findViewById(R.id.btnConfirmActivity);
 //        String token = userManagerSharedPrefs.getToken();
         txtSmsTest = findViewById(R.id.txtSmsTest);
+        constraintLoading = findViewById(R.id.constraintLoading);
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjEyMTk1ODFiNDEzMTBmOTQyYzFhYjllZTY3ZDE4ZTM0ZjMyMWQ2ZjhiZjM0NjcxNzBmNWI4NmI1ZjQ1ODkzMjU1ODQ0N2Q0MWUxNmM2NjciLCJpYXQiOjE2MTIwODk3OTIsIm5iZiI6MTYxMjA4OTc5MiwiZXhwIjoxNjQzNjI1NzkyLCJzdWIiOiIxNDUiLCJzY29wZXMiOltdfQ.MvtTLEhl4cNARTvyj1E6h7gdFupNxhP3WLNcGJo1FcFQa9Ab_mNf5dOB4CE_6_sxB0SUuTX744SHcMzK3xEWH5lqX5j1nPjRS0-buGwgkbPzTdFfjnYYL4O0AcbA6bV9GBtTiIM9s1nObZmzWPLBIehH1F2YTH_n3eKuYGd6qtgB98ddUXHPCiLu_4MvkKN3VYnr2OPgqvN2T2LxwZvDS1si2pVHxthcJ1A4ZOAXG8XHBIP39j8BUvgTVlJnW3oeNCXp6l05d1kHXvR8IuqrTZh1x2rZgDwU3Sz9lq8DUKV2JRnLR9CTgWgoBvM8Xdt6hPT7hGwl9eC3_XG4CwX-lcNMsUyPsFyj1-c97hGma9I4GPd_Lu56NnA3_il7q7Tc8DCzu5xGyM_JNGYmfthb2GB_m7YV2tUDTnrf4JTeBStDwaCgnNiaKZLRyPW3EVjVysbEqQlrfgmlNXYv_OQ6fz23npuE49DdgncczS21k6ll8fMfyCYSigpREhdfLdUHoYeaxN4uzRbzd4bItIujKvblqYoN05WGxDkTrv2dMek_DMclSEh1oyA4SwOVpJkcdISB5_PIHiSmjC4sAJ1zKzpuAtmKDtduJLPEhE1IV5QlaTYsJe79mhjBqwHIkRG0L0sM1Uq37hnY9dqpU68efXUNOI5ClovyycfP3zfYqxY";
 
         TokenInterceptor interceptor = new TokenInterceptor(token);
@@ -66,6 +68,7 @@ public class SubmitSmsFromRegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                userManagerSharedPrefs = new UserManagerSharedPrefs(SubmitSmsFromRegisterActivity.this);
 //                Toast.makeText(SubmitSmsFromRegisterActivity.this, "" + userManagerSharedPrefs.getToken(), Toast.LENGTH_SHORT).show();
+                constraintLoading.setVisibility(View.VISIBLE);
                 createPost();
 
             }
@@ -84,14 +87,20 @@ public class SubmitSmsFromRegisterActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     txtSmsTest.setText(response.body().getUser().getEmailVerifiedAt());
+                    constraintLoading.setVisibility(View.GONE);
+
                 } else {
                     Toast.makeText(SubmitSmsFromRegisterActivity.this, "onRespnse", Toast.LENGTH_SHORT).show();
+                    constraintLoading.setVisibility(View.GONE);
+
                 }
             }
 
             @Override
             public void onFailure(Call<VerifyModel> call, Throwable t) {
                 txtSmsTest.setText(t.getMessage());
+                constraintLoading.setVisibility(View.GONE);
+
             }
         });
     }

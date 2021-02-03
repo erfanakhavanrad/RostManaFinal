@@ -41,7 +41,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     Button btnEnter, btnGuest, btnRegister;
     TextInputEditText edtUsername, edtPassword;
     UserManagerSharedPrefs userManagerSharedPrefs;
-    String token, url = "http://192.168.88.134:8000/api/";
+    String token, verifiedAt, url = "http://192.168.88.134:8000/api/";
 //    SharedPreferences sharedPreferences;
     RetrofitApiService request;
     private String TAG;
@@ -145,10 +145,11 @@ public class LoginRegisterActivity extends AppCompatActivity {
 //                          String token =   users.getAccess_token();
 
                             token = users.getAccess_token();
+                            verifiedAt = users.getExpires_at();
                             Log.d(TAG, "onResponse: " + token);
                             userManagerSharedPrefs.saveUserInformation(edtUsername.getText().toString(),
                                     edtPassword.getText().toString(),
-                                    token, "null");
+                                    token, verifiedAt);
 
                             Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
                             startActivity(i);
