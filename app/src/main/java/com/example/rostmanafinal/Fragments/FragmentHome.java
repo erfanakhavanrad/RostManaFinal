@@ -106,12 +106,12 @@ public class FragmentHome extends Fragment {
 //        recylcerView1.setAdapter(new MainPageAdapter(array_image));
 //        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
         /**
-        ArrayList<HeydariTest> heydariTests = new ArrayList<>();
-        heydariTests.add(new HeydariTest(R.drawable.limo));
-        heydariTests.add(new HeydariTest(R.drawable.benjamin));
-        MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
-        */
-         List<Item> items = new ArrayList<>();
+         ArrayList<HeydariTest> heydariTests = new ArrayList<>();
+         heydariTests.add(new HeydariTest(R.drawable.limo));
+         heydariTests.add(new HeydariTest(R.drawable.benjamin));
+         MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
+         */
+        List<Item> items = new ArrayList<>();
 //         ModelClass1 modelClass1= new fsdfsfffsf;
 //         modelClass1.add(new Item(1, modelClass1));
         ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
@@ -121,7 +121,7 @@ public class FragmentHome extends Fragment {
         items.add(new Item(1, modelAddItem));
 
 
-recylcerView1.setAdapter(new DifferentViewsAdapter(items));
+        recylcerView1.setAdapter(new DifferentViewsAdapter(items));
 //         recylcerView1.setAdapter(mainPageAdapter);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 

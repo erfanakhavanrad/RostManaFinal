@@ -157,7 +157,8 @@
         android:elevation="10dp"
         android:visibility="gone">
 
-        <ProgressBar
+        <pl.droidsonroids.gif.GifImageView
+            android:src="@drawable/tenor"
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -173,7 +174,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/iransans"
             android:padding="1dp"
-            android:text="لطفا منتظر بمانید"
+            android:text="در حال ورود، لطفا منتظر بمانید"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

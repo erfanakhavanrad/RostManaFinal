@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fbfbfb"
     tools:context=".MainActivity">
 
     <TextView
@@ -55,7 +56,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="#fbfbfb"
         android:clickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,20 +64,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:alpha="0.8"
             android:id="@+id/imageLogo"
             android:layout_width="350dp"
             android:layout_height="350dp"
-            android:scaleType="centerCrop"
-            android:background="@color/white"
+            android:alpha="0.8"
+            android:background="#fbfbfb"
             android:fontFamily="@font/iransans"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_plzlogin"
             android:textSize="20sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.433" />
 
         <TextView
             android:layout_width="wrap_content"

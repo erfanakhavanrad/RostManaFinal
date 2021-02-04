@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,6 +70,13 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public FlowersViewHolder(@NonNull View itemView) {
             super(itemView);
             imageFlowers = itemView.findViewById(R.id.itemImageFlowerMainPage);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    ModelFlowersMainPage modelFlowersMainPage = items.get(getAdapterPosition());
+                    Toast.makeText(itemView.getContext(), "clicked"  , Toast.LENGTH_SHORT).show();
+                }
+            });
 //
         }
 

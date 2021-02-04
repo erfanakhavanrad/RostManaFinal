@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/fragmentMonitoring"
-        android:icon="@drawable/ic_instagram_icon4"
+        android:icon="@drawable/ic_amirali_monitoring_to_queue_24"
 
         android:title="Monitoring" />
     <item
@@ -16,7 +16,7 @@
         android:title="Add" />
     <item
         android:id="@+id/fragmentHome"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_home_black_24dp"
         android:title="home" />
 
 
