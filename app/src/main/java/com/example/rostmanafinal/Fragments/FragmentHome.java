@@ -38,6 +38,7 @@ import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.LoginRegisterActivity;
 import com.example.rostmanafinal.Pojo.HeydariTest;
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
+import com.example.rostmanafinal.Pojo.ModelMainPage.Car;
 import com.example.rostmanafinal.Pojo.ModelMainPage.Item;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelAddItem;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelFlowersMainPage;
@@ -120,8 +121,11 @@ public class FragmentHome extends Fragment {
         ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
         items.add(new Item(1, modelAddItem));
 
-
-//        recylcerView1.setAdapter(new DifferentViewsAdapter(items));
+//        Car car = new Car();
+        List<Car> cars = new ArrayList<>();
+//       cars.set()
+        cars.add(new Car(R.drawable.benjamin));
+        recylcerView1.setAdapter(new DifferentViewsAdapter(items, cars));
 //         recylcerView1.setAdapter(mainPageAdapter);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 

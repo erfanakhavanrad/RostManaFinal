@@ -15,6 +15,7 @@ import com.example.rostmanafinal.Pojo.ModelMainPage.Item;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelAddItem;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelFlowersMainPage;
 import com.example.rostmanafinal.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -23,7 +24,8 @@ import retrofit2.http.POST;
 public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Item> items;
-private List<Car> cars;
+    private List<Car> cars;
+
     public DifferentViewsAdapter(List<Item> items, List<Car> cars) {
         this.items = items;
         this.cars = cars;
@@ -44,9 +46,22 @@ private List<Car> cars;
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (getItemViewType(position) == 0){
+        if (getItemViewType(position) == 0) {
+//            Car car = new Car(position);
+//            ModelFlowersMainPage modelFlowersMainPage = (ModelFlowersMainPage) items.get(position).getObject();
+//            ((FlowersViewHolder) holder).setFlowerData(car);
+            Car car = new Car(position);
             ModelFlowersMainPage modelFlowersMainPage = (ModelFlowersMainPage) items.get(position).getObject();
-           ((FlowersViewHolder) holder).setFlowerData(modelFlowersMainPage);
+            car.setImage(R.drawable.benjamin);
+            ((FlowersViewHolder) holder).setFlowerData(car);
+
+
+
+
+//      Car car = items.get(position);
+//            Picasso.get().load("http://i.imgur.com/DvpvklR.png")
+//                    .fit().into(setFlo);
+
         } else {
             ModelAddItem modelAddItem = (ModelAddItem) items.get(position).getObject();
             ((AddViewHolder) holder).setAddData(modelAddItem);
@@ -60,7 +75,7 @@ private List<Car> cars;
 
     @Override
     public int getItemViewType(int position) {
-        
+
         return items.get(position).getType();
     }
 
@@ -77,33 +92,36 @@ private List<Car> cars;
                 @Override
                 public void onClick(View v) {
 //                    ModelFlowersMainPage modelFlowersMainPage = items.get(getAdapterPosition());
-                    Toast.makeText(itemView.getContext(), "clicked"  , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(), "clicked", Toast.LENGTH_SHORT).show();
                 }
             });
 //
         }
 
-        void setFlowerData(ModelFlowersMainPage modelFlowersMainPage) {
-            imageFlowers.setImageResource(modelFlowersMainPage.getPic());
+        void setFlowerData(Car car) {
+            imageFlowers.setImageResource(car.getImage());
+        }
+//        void setFlowerData(ModelFlowersMainPage modelFlowersMainPage) {
+//            imageFlowers.setImageResource(modelFlowersMainPage.getPic());
 //            imageAdd.setImageResource(R.drawable.ic_baseline_add_24);
-        }
     }
-
-    /**
-     * Second Class (+)
-     */
-    static class AddViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageAdd;
-
-        public AddViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageAdd = itemView.findViewById(R.id.itemImageAddMainPage);
-        }
-
-        void setAddData(ModelAddItem modelAddItem) {
-            imageAdd.setImageResource(modelAddItem.getPic());
-
-        }
-    }
-
 }
+
+/**
+ * Second Class (+)
+ */
+class AddViewHolder extends RecyclerView.ViewHolder {
+    private ImageView imageAdd;
+
+    public AddViewHolder(@NonNull View itemView) {
+        super(itemView);
+        imageAdd = itemView.findViewById(R.id.itemImageAddMainPage);
+    }
+
+    void setAddData(ModelAddItem modelAddItem) {
+        imageAdd.setImageResource(modelAddItem.getPic());
+
+    }
+}
+
+

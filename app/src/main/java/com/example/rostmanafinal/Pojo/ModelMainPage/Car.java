@@ -4,7 +4,20 @@ public class Car {
     private int id;
     private String title;
     private String content;
-    private String image;
+//    private String image;
+private int image;
+
+    public Car(int image) {
+        this.image = image;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
 
     public int getId() {
         return id;
@@ -30,11 +43,5 @@ public class Car {
         this.content = content;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 }
