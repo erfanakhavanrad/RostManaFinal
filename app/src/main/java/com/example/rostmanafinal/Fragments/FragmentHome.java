@@ -54,6 +54,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.ToDoubleBiFunction;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -77,7 +78,7 @@ public class FragmentHome extends Fragment {
     Boolean number = true;
     ConstraintLayout constraintProgress;
     RecyclerView recylcerView1;
-
+ImageView imageView2;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -98,35 +99,7 @@ public class FragmentHome extends Fragment {
         secondItem = view.findViewById(R.id.secondItem);
         image1 = view.findViewById(R.id.image1);
         constraintProgress = view.findViewById(R.id.constraintLoading);
-        Picasso.get().load("http://i.imgur.com/DvpvklR.png").placeholder(R.drawable.logo).into(image1);
-        recylcerView1 = view.findViewById(R.id.recylcerView1);
-        recylcerView1.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
-//        HeydariTest heydariTest2 = new HeydariTest(R.drawable.benjamin);
-//        HeydariTest heydariTest3 = new HeydariTest(R.drawable.limo);
-//        recylcerView1.setAdapter(new MainPageAdapter(array_image));
-//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
-        /**
-         ArrayList<HeydariTest> heydariTests = new ArrayList<>();
-         heydariTests.add(new HeydariTest(R.drawable.limo));
-         heydariTests.add(new HeydariTest(R.drawable.benjamin));
-         MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
-         */
-        List<Item> items = new ArrayList<>();
-//         ModelClass1 modelClass1= new fsdfsfffsf;
-//         modelClass1.add(new Item(1, modelClass1));
-        ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
-        items.add(new Item(0, modelFlowersMainPage));
-
-        ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
-        items.add(new Item(1, modelAddItem));
-
-//        Car car = new Car();
-        List<Car> cars = new ArrayList<>();
-//       cars.set()
-        cars.add(new Car(R.drawable.benjamin));
-        recylcerView1.setAdapter(new DifferentViewsAdapter(items, cars));
-//         recylcerView1.setAdapter(mainPageAdapter);
+        imageView2 = view.findViewById(R.id.imageView2);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 
         token = userManagerSharedPrefs.getToken();
@@ -155,10 +128,69 @@ public class FragmentHome extends Fragment {
                 if (response.isSuccessful()) {
 //                    number = true;
 //                    showLoading();
+                    /**
+                     *
+                     * End of success
+                     *
+                     * */
+
                     Example example;
                     example = response.body();
 //                    Toast.makeText(getContext(), "" + example.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "" + example.getUser().getId(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "" + example.getProfile().getLastname(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "" + example.getProfile().getSex(), Toast.LENGTH_SHORT).show();
+                    imageView2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String data2 = "http://192.168.88.134:8000";
+//                            Toast.makeText(getContext(), "" + example.getProfile().getLastname(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getContext(), data2 + example.getProfile().getAvatar(), Toast.LENGTH_SHORT).show();
+
+//                        Picasso.get().load()
+                        }
+                    });
+//String data2 = "http://192.168.88.134:8000";
+//                    String imageUrl =data2+example.getProfile().getAvatar();
+//                    Picasso.get().load("http://i.imgur.com/DvpvklR.png").placeholder(R.drawable.logo).into(image1);
+//                    Picasso.get().load(imageUrl).placeholder(R.drawable.logo).into(image1);
+//                    Toast.makeText(getContext(), "" + example.getUser().getProfile().getAvatar(), Toast.LENGTH_SHORT).show();
+                    recylcerView1 = view.findViewById(R.id.recylcerView1);
+                    recylcerView1.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
+//        HeydariTest heydariTest2 = new HeydariTest(R.drawable.benjamin);
+//        HeydariTest heydariTest3 = new HeydariTest(R.drawable.limo);
+//        recylcerView1.setAdapter(new MainPageAdapter(array_image));
+//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
+                    /**
+                     ArrayList<HeydariTest> heydariTests = new ArrayList<>();
+                     heydariTests.add(new HeydariTest(R.drawable.limo));
+                     heydariTests.add(new HeydariTest(R.drawable.benjamin));
+                     MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
+                     */
+                    List<Item> items = new ArrayList<>();
+//         ModelClass1 modelClass1= new fsdfsfffsf;
+//         modelClass1.add(new Item(1, modelClass1));
+                    ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
+                    items.add(new Item(0, modelFlowersMainPage));
+
+                    ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
+                    items.add(new Item(1, modelAddItem));
+
+//        Car car = new Car();
+                    List<Car> cars = new ArrayList<>();
+//       cars.set()
+                    cars.add(new Car(R.drawable.benjamin));
+                    recylcerView1.setAdapter(new DifferentViewsAdapter(items, cars));
+//         recylcerView1.setAdapter(mainPageAdapter);
+                    /**
+                     *
+                     * End of onSuccess
+                     *
+                     * */
+
+
 //                    number = false;
 //                    showLoading();
                     constraintProgress.setVisibility(View.GONE);

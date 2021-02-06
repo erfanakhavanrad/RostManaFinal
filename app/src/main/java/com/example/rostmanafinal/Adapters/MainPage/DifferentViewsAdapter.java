@@ -14,6 +14,7 @@ import com.example.rostmanafinal.Pojo.ModelMainPage.Car;
 import com.example.rostmanafinal.Pojo.ModelMainPage.Item;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelAddItem;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelFlowersMainPage;
+import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.R;
 import com.squareup.picasso.Picasso;
 
@@ -52,6 +53,8 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 //            ((FlowersViewHolder) holder).setFlowerData(car);
             Car car = new Car(position);
             ModelFlowersMainPage modelFlowersMainPage = (ModelFlowersMainPage) items.get(position).getObject();
+            Example example = new Example();
+//            example.getUser().getProfile();
             car.setImage(R.drawable.benjamin);
             ((FlowersViewHolder) holder).setFlowerData(car);
 
