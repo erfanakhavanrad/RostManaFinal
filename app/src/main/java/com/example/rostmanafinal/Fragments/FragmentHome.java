@@ -121,7 +121,7 @@ public class FragmentHome extends Fragment {
         items.add(new Item(1, modelAddItem));
 
 
-        recylcerView1.setAdapter(new DifferentViewsAdapter(items));
+//        recylcerView1.setAdapter(new DifferentViewsAdapter(items));
 //         recylcerView1.setAdapter(mainPageAdapter);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 

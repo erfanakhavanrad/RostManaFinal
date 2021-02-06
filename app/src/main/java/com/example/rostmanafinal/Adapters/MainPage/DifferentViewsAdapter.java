@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
+import com.example.rostmanafinal.Pojo.ModelMainPage.Car;
 import com.example.rostmanafinal.Pojo.ModelMainPage.Item;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelAddItem;
 import com.example.rostmanafinal.Pojo.ModelMainPage.ModelFlowersMainPage;
@@ -22,9 +23,10 @@ import retrofit2.http.POST;
 public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Item> items;
-
-    public DifferentViewsAdapter(List<Item> items) {
+private List<Car> cars;
+    public DifferentViewsAdapter(List<Item> items, List<Car> cars) {
         this.items = items;
+        this.cars = cars;
     }
 
     @NonNull
@@ -58,6 +60,7 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemViewType(int position) {
+        
         return items.get(position).getType();
     }
 
