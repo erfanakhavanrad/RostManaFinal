@@ -17,6 +17,7 @@ import com.example.rostmanafinal.Pojo.ModelMainPage.ModelFlowersMainPage;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.R;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.List;
 
@@ -55,9 +56,14 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             ModelFlowersMainPage modelFlowersMainPage = (ModelFlowersMainPage) items.get(position).getObject();
             Example example = new Example();
 //            example.getUser().getProfile();
-            car.setImage(R.drawable.benjamin);
-            ((FlowersViewHolder) holder).setFlowerData(car);
+//            Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(car.setImage(););
 
+//         car.setImage(Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(ImageView););
+//            car.setImage(R.drawable.benjamin);
+//            ((FlowersViewHolder) holder).setFlowerData(car);
+//String coverURl = ((String) cars.get(position).getImage());
+//String url = "192.168.88.134:8000";
+//            Picasso.get().load(url + example.getProfile().getAvatar().toString()).into((Target) holder);
 
 
 

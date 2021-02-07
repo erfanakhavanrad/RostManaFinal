@@ -14,23 +14,29 @@
         android:transitionName="logo_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145"
+        app:layout_constraintVertical_bias="0.009"
         app:srcCompat="@drawable/ic_logocirlce" />
 
     <TextView
         android:id="@+id/textSlogan"
-        android:layout_width="300dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="160dp"
-        android:fontFamily="@font/iransansblack"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="164dp"
+        android:fontFamily="@font/iransans"
+        android:gravity="center"
+        android:padding="5dp"
         android:text="تحقق رویش ماندگار"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="35sp"
         android:transitionName="logo_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageSplash1"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -78,7 +78,8 @@ public class FragmentHome extends Fragment {
     Boolean number = true;
     ConstraintLayout constraintProgress;
     RecyclerView recylcerView1;
-ImageView imageView2;
+    ImageView imageView2, imageViewtest;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -100,6 +101,7 @@ ImageView imageView2;
         image1 = view.findViewById(R.id.image1);
         constraintProgress = view.findViewById(R.id.constraintLoading);
         imageView2 = view.findViewById(R.id.imageView2);
+        imageViewtest = view.findViewById(R.id.imageViewtest);
 /**        request = APIClient.getApiClient(url).create(RetrofitApiService.class);*/
 
         token = userManagerSharedPrefs.getToken();
@@ -137,17 +139,20 @@ ImageView imageView2;
                     Example example;
                     example = response.body();
 //                    Toast.makeText(getContext(), "" + example.toString(), Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(getContext(), "" + example.getUser().getId(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(getContext(), "" + example.getProfile().getLastname(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(getContext(), "" + example.getProfile().getSex(), Toast.LENGTH_SHORT).show();
                     imageView2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            String data2 = "http://192.168.88.134:8000";
-//                            Toast.makeText(getContext(), "" + example.getProfile().getLastname(), Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(getContext(), data2 + example.getProfile().getAvatar(), Toast.LENGTH_SHORT).show();
+                            String data = "192.168.88.134:8000" + example.getProfile().getAvatar();
+                            Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 
+                            Picasso.get().load("https://raw.githubusercontent.com/square/picasso/master/website/static/sample.png").placeholder(R.drawable.logo).into(imageViewtest);
+//                            Integer foo = Integer.parseInt(data);
+
+//                            imageViewtest.setImageResource(foo);
 //                        Picasso.get().load()
                         }
                     });
@@ -175,6 +180,11 @@ ImageView imageView2;
                     ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
                     items.add(new Item(0, modelFlowersMainPage));
 
+
+//                    items.add(new Item(0, data));
+//                  ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
+//                  items.add(0, modelFlowersMainPage);
+
                     ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
                     items.add(new Item(1, modelAddItem));
 
@@ -189,7 +199,12 @@ ImageView imageView2;
                      * End of onSuccess
                      *
                      * */
-
+//                    String data2 = "http://192.168.88.134:8000";
+//                            Toast.makeText(getContext(), "" + example.getProfile().getLastname(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), data2 + example.getProfile().getAvatar(), Toast.LENGTH_SHORT).show();
+//                    String data3 = data2 + example.getProfile().getAvatar();
+                    Picasso.get().load("https://raw.githubusercontent.com/square/picasso/master/website/static/sample.png").placeholder(R.drawable.logo).into(image1);
+//                    Toast.makeText(getContext(), "" + data3, Toast.LENGTH_SHORT).show();
 
 //                    number = false;
 //                    showLoading();
@@ -216,57 +231,6 @@ ImageView imageView2;
 //                showLoading();
             }
         });
-
-
-//        Call<ResponseObj> call = request.postLoggedInUser();
-//        call.enqueue(new Callback<ResponseObj>() {
-//            @Override
-//            public void onResponse(Call<ResponseObj> call, Response<ResponseObj> response) {
-//                if (response.isSuccessful()) {
-//                    ResponseObj responseObj;
-//                    responseObj = response.body();
-//                    Toast.makeText(getContext(), "" + responseObj.toString(), Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(getContext(), "onResponse", Toast.LENGTH_SHORT).show();
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseObj> call, Throwable t) {
-//                if (getContext() != null){
-//                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-//                }
-//                }
-//        });
-
-
-//        call.enqueue(new Callback<ResponseObj>() {
-//            @Override
-//            public void onResponse(Call<ModelLogedinUser> call, Response<ModelLogedinUser> response) {
-//                ModelLogedinUser modelLogedinUser = response.body();
-//                Log.e(TAG, "onResponse: " +  modelLogedinUser);
-//                if (modelLogedinUser != null){
-//                    String name;
-//                    name = modelLogedinUser.getName();
-//                    Log.d(TAG, "onResponse: " + name);
-//                    Toast.makeText(getContext(), ""+ name, Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Toast.makeText(getContext(), "error onResponse", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ModelLogedinUser> call, Throwable t) {
-//                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-//                number = true;
-//                showLoading();
-//            }
-//        });
-//
-
 
         fourthItem.setOnClickListener(new View.OnClickListener() {
             @Override

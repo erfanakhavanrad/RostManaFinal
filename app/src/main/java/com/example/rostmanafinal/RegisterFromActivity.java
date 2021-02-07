@@ -95,7 +95,7 @@ public class RegisterFromActivity extends AppCompatActivity {
 
     private void createPost() {
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09151111261", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09151111264", "123456", "123456");
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {
@@ -109,6 +109,7 @@ public class RegisterFromActivity extends AppCompatActivity {
                     finish();
                 } else if (response.code() == 400) {
                     Toast.makeText(RegisterFromActivity.this, "user exists", Toast.LENGTH_SHORT).show();
+                    constraintProgress.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(RegisterFromActivity.this, "there was an error", Toast.LENGTH_SHORT).show();
                     constraintProgress.setVisibility(View.GONE);
