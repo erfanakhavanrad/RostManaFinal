@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentProfile"
             app:destination="@id/fragmentProfile" />
+        <action
+            android:id="@+id/action_fragmentHome_to_firstFragment2"
+            app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"

@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
@@ -101,7 +102,8 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 @Override
                 public void onClick(View v) {
 //                    ModelFlowersMainPage modelFlowersMainPage = items.get(getAdapterPosition());
-                    Toast.makeText(itemView.getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(), "Flower", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(itemView).navigate(R.id.action_fragmentHome_to_firstFragment2);
                 }
             });
 //
@@ -125,6 +127,12 @@ class AddViewHolder extends RecyclerView.ViewHolder {
     public AddViewHolder(@NonNull View itemView) {
         super(itemView);
         imageAdd = itemView.findViewById(R.id.itemImageAddMainPage);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(itemView.getContext(), "Plus", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     void setAddData(ModelAddItem modelAddItem) {

@@ -70,8 +70,6 @@ public class FragmentHome extends Fragment {
     DrawerLayout containerd;
     ImageView menuIconImage, imageClose, imageAddUser, image1;
     LinearLayout firstItem, secondItem, fourthItem, fifthItem;
-    //    Button btnGet, btnPost;
-//    TextView textView7, textView8, txtToken;
     boolean doubleBackToExitPressedOnce = false;
     String token, url = "http://192.168.88.134:8000/api/";
     RetrofitApiService request;
@@ -79,6 +77,7 @@ public class FragmentHome extends Fragment {
     ConstraintLayout constraintProgress;
     RecyclerView recylcerView1;
     ImageView imageView2, imageViewtest;
+    int saveRequest = 0;
 
     @Nullable
     @Override
@@ -118,120 +117,105 @@ public class FragmentHome extends Fragment {
                 .build();
         request = retrofit.create(RetrofitApiService.class);
 
-//        Toast.makeText(getContext(), "" + token, Toast.LENGTH_SHORT).show();
-//token = userManagerSharedPrefs.getToken();
-
         number = false;
-//        showLoading();
+        showLoading();
         Call<Example> call = request.postLoggedInUser();
-        call.enqueue(new Callback<Example>() {
-            @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
-                if (response.isSuccessful()) {
+        if (saveRequest == 0) {
+            call.enqueue(new Callback<Example>() {
+                @Override
+                public void onResponse(Call<Example> call, Response<Example> response) {
+                    if (response.isSuccessful()) {
+                        saveRequest = 1;
 //                    number = true;
 //                    showLoading();
-                    /**
-                     *
-                     * End of success
-                     *
-                     * */
+                        /**
+                         *
+                         * End of success
+                         *
+                         * */
 
-                    Example example;
-                    example = response.body();
-//                    Toast.makeText(getContext(), "" + example.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getContext(), "" + example.getUser().getId(), Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getContext(), "" + example.getProfile().getLastname(), Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getContext(), "" + example.getProfile().getSex(), Toast.LENGTH_SHORT).show();
-                    imageView2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String data = "192.168.88.134:8000" + example.getProfile().getAvatar();
-                            Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
+                        Example example;
+                        example = response.body();
+                        Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+                        number = true;
+                        showLoading();
+                        imageView2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String data = "192.168.88.134:8000" + example.getProfile().getAvatar();
+                                Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 
-                            Picasso.get().load("https://raw.githubusercontent.com/square/picasso/master/website/static/sample.png").placeholder(R.drawable.logo).into(imageViewtest);
-//                            Integer foo = Integer.parseInt(data);
-
-//                            imageViewtest.setImageResource(foo);
-//                        Picasso.get().load()
-                        }
-                    });
-//String data2 = "http://192.168.88.134:8000";
-//                    String imageUrl =data2+example.getProfile().getAvatar();
-//                    Picasso.get().load("http://i.imgur.com/DvpvklR.png").placeholder(R.drawable.logo).into(image1);
-//                    Picasso.get().load(imageUrl).placeholder(R.drawable.logo).into(image1);
-//                    Toast.makeText(getContext(), "" + example.getUser().getProfile().getAvatar(), Toast.LENGTH_SHORT).show();
-                    recylcerView1 = view.findViewById(R.id.recylcerView1);
-                    recylcerView1.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+                                Picasso.get().load("https://raw.githubusercontent.com/square/picasso/master/website/static/sample.png").placeholder(R.drawable.logo).into(imageViewtest);
+                            }
+                        });
+                        recylcerView1 = view.findViewById(R.id.recylcerView1);
+                        recylcerView1.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 //        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
 //        HeydariTest heydariTest2 = new HeydariTest(R.drawable.benjamin);
 //        HeydariTest heydariTest3 = new HeydariTest(R.drawable.limo);
 //        recylcerView1.setAdapter(new MainPageAdapter(array_image));
 //        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
-                    /**
-                     ArrayList<HeydariTest> heydariTests = new ArrayList<>();
-                     heydariTests.add(new HeydariTest(R.drawable.limo));
-                     heydariTests.add(new HeydariTest(R.drawable.benjamin));
-                     MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
-                     */
-                    List<Item> items = new ArrayList<>();
+                        /**
+                         ArrayList<HeydariTest> heydariTests = new ArrayList<>();
+                         heydariTests.add(new HeydariTest(R.drawable.limo));
+                         heydariTests.add(new HeydariTest(R.drawable.benjamin));
+                         MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
+                         */
+                        List<Item> items = new ArrayList<>();
 //         ModelClass1 modelClass1= new fsdfsfffsf;
 //         modelClass1.add(new Item(1, modelClass1));
-                    ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
-                    items.add(new Item(0, modelFlowersMainPage));
+                        ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
+                        items.add(new Item(0, modelFlowersMainPage));
 
 
 //                    items.add(new Item(0, data));
 //                  ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
 //                  items.add(0, modelFlowersMainPage);
 
-                    ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
-                    items.add(new Item(1, modelAddItem));
+                        ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
+                        items.add(new Item(1, modelAddItem));
 
 //        Car car = new Car();
-                    List<Car> cars = new ArrayList<>();
+                        List<Car> cars = new ArrayList<>();
 //       cars.set()
-                    cars.add(new Car(R.drawable.benjamin));
-                    recylcerView1.setAdapter(new DifferentViewsAdapter(items, cars));
+                        cars.add(new Car(R.drawable.benjamin));
+                        recylcerView1.setAdapter(new DifferentViewsAdapter(items, cars));
 //         recylcerView1.setAdapter(mainPageAdapter);
-                    /**
-                     *
-                     * End of onSuccess
-                     *
-                     * */
-//                    String data2 = "http://192.168.88.134:8000";
-//                            Toast.makeText(getContext(), "" + example.getProfile().getLastname(), Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(getContext(), data2 + example.getProfile().getAvatar(), Toast.LENGTH_SHORT).show();
-//                    String data3 = data2 + example.getProfile().getAvatar();
-                    Picasso.get().load("https://raw.githubusercontent.com/square/picasso/master/website/static/sample.png").placeholder(R.drawable.logo).into(image1);
-//                    Toast.makeText(getContext(), "" + data3, Toast.LENGTH_SHORT).show();
+                        /**
+                         *
+                         * End of onSuccess
+                         *
+                         * */
+                        Picasso.get().load("https://raw.githubusercontent.com/square/picasso/master/website/static/sample.png").placeholder(R.drawable.logo).into(image1);
 
 //                    number = false;
 //                    showLoading();
-                    constraintProgress.setVisibility(View.GONE);
-                    if (example.getProfile() == null) {
-                        Toast.makeText(getContext(), "nistg", Toast.LENGTH_SHORT).show();
+                        constraintProgress.setVisibility(View.GONE);
+                        if (example.getProfile() == null) {
+                            Toast.makeText(getContext(), "nistg", Toast.LENGTH_SHORT).show();
 //                        number = true;
 //                        showLoading();
-                    } else if (response.code() == 400) {
-                        Toast.makeText(getContext(), "user exists", Toast.LENGTH_SHORT).show();
-                    }
+                        } else if (response.code() == 400) {
+                            Toast.makeText(getContext(), "user exists", Toast.LENGTH_SHORT).show();
+                        }
 
-                } else {
-                    Toast.makeText(getContext(), "onResponseError", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "onResponseError", Toast.LENGTH_SHORT).show();
 //                    number = true;
 //                    showLoading();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Example> call, Throwable t) {
-                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                @Override
+                public void onFailure(Call<Example> call, Throwable t) {
+                    Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
 //                number = true;
 //                showLoading();
-            }
-        });
-
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "already sent", Toast.LENGTH_SHORT).show();
+        }
         fourthItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
