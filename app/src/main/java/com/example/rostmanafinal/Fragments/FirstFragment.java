@@ -22,6 +22,11 @@ public class FirstFragment extends Fragment {
 
     TextView firstText;
     ImageView image_seasonal, image_cactus, image_greenLeaf, image_organic, image_shrub;
+    static String SEASONAL_URL = "192.168.88.134:8000/api/Category/1";
+    static String CACTUS_URL = "192.168.88.134:8000/api/Category/2";
+    static String GREENLEAF_URL = "192.168.88.134:8000/api/Category/3";
+    static String SHRUB_URL = "192.168.88.134:8000/api/Category/4";
+    static String ORGANIC_URL = "192.168.88.134:8000/api/Category/5";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +87,7 @@ public class FirstFragment extends Fragment {
 //                FragmentSeasonalFlowers fn = new FragmentSeasonalFlowers();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentSeasonalFlowers);
+//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentSeasonalFlowers);
             }
         });
         image_cactus.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +99,7 @@ public class FirstFragment extends Fragment {
 //                FragmentCactus fn = new FragmentCactus();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-     Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentCactus);
+//     Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentCactus);
 
             }
         });
@@ -107,7 +112,7 @@ public class FirstFragment extends Fragment {
 //                FragmentGreenLeaf fn = new FragmentGreenLeaf();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentGreenLeaf);
+//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentGreenLeaf);
             }
         });
         image_organic.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +124,7 @@ public class FirstFragment extends Fragment {
 //                FragmentOrganic fn = new FragmentOrganic();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentOrganic2);
+//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentOrganic2);
             }
         });
         image_shrub.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +136,7 @@ public class FirstFragment extends Fragment {
 //                FragmentGreenHouse fn = new FragmentGreenHouse();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentShrub);
+//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentShrub);
             }
         });
     }

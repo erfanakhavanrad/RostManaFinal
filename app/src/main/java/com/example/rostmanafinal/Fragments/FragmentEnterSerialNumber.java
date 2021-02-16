@@ -69,7 +69,7 @@ public class FragmentEnterSerialNumber extends Fragment {
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit(); */
 
-                FragmentGreenHouse nextFrag= new FragmentGreenHouse();
+                FirstFragment nextFrag= new FirstFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, nextFrag, "findThisFragment")
                         .addToBackStack(null)

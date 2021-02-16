@@ -58,6 +58,9 @@ public interface RetrofitApiService {
     @POST("Mobile/User")
     Call<Example> postLoggedInUser();
 
+    @GET()
+
+
     //    This is for the register SMS Activity
     @FormUrlEncoded
     @POST("Mobile/vitrifiedChk")
