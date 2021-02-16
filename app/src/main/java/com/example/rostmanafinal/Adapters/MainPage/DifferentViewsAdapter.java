@@ -1,5 +1,6 @@
 package com.example.rostmanafinal.Adapters.MainPage;
 
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,11 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.cars = cars;
     }
 
+    public void addNewFlower(Item newItem) {
+        items.add(newItem);
+        notifyItemInserted(0);
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -65,7 +71,6 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 //String coverURl = ((String) cars.get(position).getImage());
 //String url = "192.168.88.134:8000";
 //            Picasso.get().load(url + example.getProfile().getAvatar().toString()).into((Target) holder);
-
 
 
 //      Car car = items.get(position);
@@ -103,7 +108,7 @@ public class DifferentViewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 public void onClick(View v) {
 //                    ModelFlowersMainPage modelFlowersMainPage = items.get(getAdapterPosition());
                     Toast.makeText(itemView.getContext(), "Flower", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(itemView).navigate(R.id.action_fragmentHome_to_firstFragment2);
+//                    Navigation.findNavController(itemView).navigate(R.id.action_fragmentHome_to_firstFragment2);
                 }
             });
 //

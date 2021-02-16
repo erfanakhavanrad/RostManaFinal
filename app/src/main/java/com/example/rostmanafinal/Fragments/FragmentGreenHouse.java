@@ -89,4 +89,9 @@ public class FragmentGreenHouse extends Fragment {
         recyclerView.setAdapter(new GreenHouseAdapter(items));
 
     }
+//    @Override
+//    public void onBackPressed(){
+//        super.onBackPressed();
+//        drawer.close();
+//    }
 }

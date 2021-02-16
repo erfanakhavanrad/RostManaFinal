@@ -20,6 +20,9 @@ import androidx.navigation.Navigation;
 import com.example.rostmanafinal.R;
 
 public class FragmentEnterSerialNumber extends Fragment {
+
+//    final FragmentManager fm = getActivity().getSupportFragmentManager();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,9 +55,25 @@ public class FragmentEnterSerialNumber extends Fragment {
 
 
 //                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.action_fragmentViewPagerTabbed23_to_fragmentEnterSerialNumber);
-                Navigation.findNavController(view).navigate(R.id.action_fragmentEnterSerialNumber_to_firstFragment22);
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentViewPagerTabbed23_to_fragmentEnterSerialNumber);
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentEnterSerialNumber_to_firstFragment22);
 
+//                fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit();
+//                fm.beginTransaction().hide(active).show(fragment2).commit();
+//                active = fragment2;
+                /**
+                FirstFragment fragment = new FirstFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentEnterSerialNumber, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit(); */
+
+                FragmentGreenHouse nextFrag= new FragmentGreenHouse();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
 
             }
         });
