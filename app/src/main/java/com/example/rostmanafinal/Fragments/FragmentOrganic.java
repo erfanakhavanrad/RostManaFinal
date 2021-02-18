@@ -38,31 +38,31 @@ public class FragmentOrganic extends Fragment implements ChangingFragmentsInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recycler = view.findViewById(R.id.recycler);
-        ArrayList<FlowerListClass> names = new ArrayList();
-        names.add(new FlowerListClass("اپونتیا", R.drawable.limo));
-        names.add(new FlowerListClass("اچینو", R.drawable.benjamin));
-        names.add(new FlowerListClass("استرافینوم", R.drawable.ic_seasonalflowers));
-        names.add(new FlowerListClass("افوربیا لاکتی", R.drawable.benjamin));
-        names.add(new FlowerListClass("آلوئه ورا", R.drawable.ic_cactus));
-        names.add(new FlowerListClass("پایه چرمی", R.drawable.benjamin));
-        names.add(new FlowerListClass("خورشیدی", R.drawable.limo));
-        names.add(new FlowerListClass("ژمینو", R.drawable.limo));
-        names.add(new FlowerListClass("ژمینوکالیسیم", R.drawable.ic_greenleaf));
-        names.add(new FlowerListClass("سانسوریا", R.drawable.ic_shrub));
-        names.add(new FlowerListClass("سولکو", R.drawable.ic_cactus));
-        names.add(new FlowerListClass("فرو", R.drawable.ic_organic));
-        names.add(new FlowerListClass("ماملاریا", R.drawable.ic_shrub));
-        names.add(new FlowerListClass("نولآبی", R.drawable.limo));
-        names.add(new FlowerListClass("نازقرمز", R.drawable.ic_seasonalflowers));
-        names.add(new FlowerListClass("نخل ماداگاسکار", R.drawable.benjamin));
-        names.add(new FlowerListClass("هاورتیا گورخری", R.drawable.ic_organic));
-
-
-        //Adapter
-        FlowersAdapter adapter = new FlowersAdapter(names, requireActivity(), this);
-        recycler.setAdapter(adapter);
-
-        recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+//        ArrayList<FlowerListClass> names = new ArrayList();
+//        names.add(new FlowerListClass("اپونتیا", R.drawable.limo));
+//        names.add(new FlowerListClass("اچینو", R.drawable.benjamin));
+//        names.add(new FlowerListClass("استرافینوم", R.drawable.ic_seasonalflowers));
+//        names.add(new FlowerListClass("افوربیا لاکتی", R.drawable.benjamin));
+//        names.add(new FlowerListClass("آلوئه ورا", R.drawable.ic_cactus));
+//        names.add(new FlowerListClass("پایه چرمی", R.drawable.benjamin));
+//        names.add(new FlowerListClass("خورشیدی", R.drawable.limo));
+//        names.add(new FlowerListClass("ژمینو", R.drawable.limo));
+//        names.add(new FlowerListClass("ژمینوکالیسیم", R.drawable.ic_greenleaf));
+//        names.add(new FlowerListClass("سانسوریا", R.drawable.ic_shrub));
+//        names.add(new FlowerListClass("سولکو", R.drawable.ic_cactus));
+//        names.add(new FlowerListClass("فرو", R.drawable.ic_organic));
+//        names.add(new FlowerListClass("ماملاریا", R.drawable.ic_shrub));
+//        names.add(new FlowerListClass("نولآبی", R.drawable.limo));
+//        names.add(new FlowerListClass("نازقرمز", R.drawable.ic_seasonalflowers));
+//        names.add(new FlowerListClass("نخل ماداگاسکار", R.drawable.benjamin));
+//        names.add(new FlowerListClass("هاورتیا گورخری", R.drawable.ic_organic));
+//
+//
+//        //Adapter
+//        FlowersAdapter adapter = new FlowersAdapter(names, requireActivity(), this);
+//        recycler.setAdapter(adapter);
+//
+//        recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
 
 
     }

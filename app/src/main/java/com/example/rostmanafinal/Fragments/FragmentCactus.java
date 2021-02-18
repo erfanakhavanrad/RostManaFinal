@@ -40,7 +40,7 @@ public class FragmentCactus extends Fragment implements ChangingFragmentsInterfa
 //        Navigation.findNavController(view).navigate(R.id.action_secondFragment2_to_fragmentGreenHouse);
 
         recycler = view.findViewById(R.id.recycler);
-        ArrayList<FlowerListClass> names = new ArrayList();
+   /*     ArrayList<FlowerListClass> names = new ArrayList();
         names.add(new FlowerListClass("اپونتیا", R.drawable.limo));
         names.add(new FlowerListClass("اچینو", R.drawable.benjamin));
         names.add(new FlowerListClass("استرافینوم", R.drawable.ic_seasonalflowers));
@@ -58,8 +58,9 @@ public class FragmentCactus extends Fragment implements ChangingFragmentsInterfa
         FlowersAdapter adapter = new FlowersAdapter(names, requireActivity(), this);
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+    */
     }
-
+    
     @Override
     public void onItemSelected() {
 

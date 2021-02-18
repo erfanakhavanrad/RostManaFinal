@@ -352,7 +352,7 @@ public class FragmentHome extends Fragment {
 
                 } else {
                     Toast.makeText(getContext(), "onResponseError", Toast.LENGTH_SHORT).show();
-                    saveRequest=0;
+                    saveRequest = 0;
 //                    number = true;
 //                    showLoading();
                 }
@@ -370,7 +370,6 @@ public class FragmentHome extends Fragment {
     }
 
 //    BottomNavigationItemView bottomNavigationItemView;
-
 
 
     //    val navView: BottomNavigationView = findViewById(R.id.nav_view)
