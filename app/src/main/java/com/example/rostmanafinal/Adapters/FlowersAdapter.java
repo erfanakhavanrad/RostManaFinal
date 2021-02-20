@@ -1,5 +1,6 @@
 package com.example.rostmanafinal.Adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +17,19 @@ import com.example.rostmanafinal.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.TViewHolder> {
 
 
     ChangingFragmentsInterface changingFragmentsInterface;
-    ArrayList<SeasonalModel> mylist;
+    List<SeasonalModel> mylist;
     FragmentActivity activity;
 
-    public FlowersAdapter(ArrayList<SeasonalModel> list, FragmentActivity activity, ChangingFragmentsInterface changingFragmentsInterface) {
+//    , ChangingFragmentsInterface changingFragmentsInterface
+    public FlowersAdapter(List<SeasonalModel> list, FragmentActivity activity) {
         mylist = list;
         this.activity = activity;
         this.changingFragmentsInterface = changingFragmentsInterface;
@@ -45,10 +50,10 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.TViewHol
         holder.flowerName.setText(flower.getName());
 //        holder.iamgeEach.setImageResource(flower.getPhoto());
 //        holder.iamgeEach.setImageResource(Integer.parseInt("http://192.168.88.134:8000/" + flower.getPhoto()));
-
+        Log.i(TAG, "onBindViewHolder: " + flower.getPhoto());
 //        Picasso.with(getContext()).load("http://192.168.88.134:8000/" + model.getPoster_path()).into(movieViewHolder.MoviePhoto);
         Picasso.get().
-                load("http://192.168.88.134:8000/" + flower.getPhoto())
+                load("http://192.168.88.134:8000" + flower.getPhoto())
                 .placeholder(R.drawable.logo).into(holder.iamgeEach);
 
     }

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="170dp"
@@ -66,9 +65,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/iransanpha"
-            android:singleLine="true"
             android:inputType="number"
-            android:maxLength="11" />
+            android:maxLength="11"
+            android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -149,9 +148,9 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/progressBar2"
-            android:src="@drawable/tenor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/tenor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

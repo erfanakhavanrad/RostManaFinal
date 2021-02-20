@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.rostmanafinal.Adapters.FlowersAdapter;
 import com.example.rostmanafinal.Interfaces.ChangingFragmentsInterface;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
+import com.example.rostmanafinal.Pojo.FlowerListClass;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
@@ -31,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+//
 public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmentsInterface {
     RecyclerView recycler;
     static String BASE_URL = "Mobile/Category/";
@@ -53,18 +54,19 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recycler = view.findViewById(R.id.recycler);
-        SURL = BASE_URL + SEASONAL_URL;
+        SURL = url + BASE_URL + SEASONAL_URL;
         sendRequest(SURL);
-        ArrayList<SeasonalModel> names = new ArrayList<>();
-//        ArrayList<FlowerListClass> names = new ArrayList();
-//        names.add(new FlowerListClass("اپونتیا", R.drawable.limo));
+
+//        ArrayList<FlowerListClass> names2 = new ArrayList();
+//        names2.add(new FlowerListClass("اپونتیا", R.drawable.limo));
 
 
         //Adapter
-        FlowersAdapter adapter = new FlowersAdapter(names, requireActivity(), this);
-        recycler.setAdapter(adapter);
+//        FlowersAdapter adapter = new FlowersAdapter(names, requireActivity(), this);
+//        recycler.setAdapter(adapter);
+//        recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
 
-        recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+
 
 
     }
@@ -75,7 +77,7 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
         navController.navigate(R.id.fragment_Plant_Details);
     }
 
-    public void sendRequest(String url) {
+    public void sendRequest(String getPageUrl) {
         userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
         token = userManagerSharedPrefs.getToken();
         TokenInterceptor interceptor = new TokenInterceptor(token);
@@ -92,7 +94,7 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
         request = retrofit.create(RetrofitApiService.class);
 
 
-        Call<List<SeasonalModel>> call = request.getPlantList(url);
+        Call<List<SeasonalModel>> call = request.getPlantList(getPageUrl);
         call.enqueue(new Callback<List<SeasonalModel>>() {
             @Override
             public void onResponse(Call<List<SeasonalModel>> call, Response<List<SeasonalModel>> response) {
@@ -104,8 +106,14 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
 //                    list<modelet>  a=response.body
                     List<SeasonalModel> seasonalModels = response.body();
 
+//Adapter
+//                    ArrayList<SeasonalModel> names = new ArrayList<>();
+//                    names.add(response.body());
+                    FlowersAdapter adapter = new FlowersAdapter(seasonalModels, requireActivity());
+                    recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+                    recycler.setAdapter(adapter);
 //                    seasonalModels.get
-                    Toast.makeText(getContext(), "model s" + seasonalModels.get(2), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "model s" + seasonalModels.get(2), Toast.LENGTH_SHORT).show();
                     //                    Toast.makeText(getContext(), "success " + seasonalModel.getName(), Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(getContext(), "success" + seasonalModel.getName(), Toast.LENGTH_SHORT).show();
                 } else {

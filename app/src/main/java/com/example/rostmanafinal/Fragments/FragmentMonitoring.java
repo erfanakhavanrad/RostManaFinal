@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.R;
@@ -33,11 +37,11 @@ public class FragmentMonitoring extends Fragment {
     LineChartView lineChartView, lineChartView2;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
-//    ImageView ;
+    //    ImageView ;
     TextView txtMoreDetails;
     ImageView imageLogo;
+    Button btn_fetch;
     private static final String TAG = "FragmentMonitoring";
-
     //    First Chart
     private HashMap<String, String[]> exampleDays = new HashMap<String, String[]>();
     private HashMap<String, float[]> exampleHum = new HashMap<String, float[]>();
@@ -60,8 +64,15 @@ public class FragmentMonitoring extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
+        btn_fetch = view.findViewById(R.id.btn_fetch);
+        btn_fetch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_firstFragment2);
+            }
+        });
         imageLogo = view.findViewById(R.id.imageLogo);
-
         lineChartView = view.findViewById(R.id.chart);
         lineChartView2 = view.findViewById(R.id.chart2);
         List yAxisValues = new ArrayList();
@@ -116,6 +127,25 @@ public class FragmentMonitoring extends Fragment {
                 public void onClick(View v) {
 //                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentTables);
                     Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentParent);
+//                    Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_fragmentParent);
+//                    Fragment fragment = new FragmentTables();
+//                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragmentMonitoring, fragment);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
+
+//                    Fragment FragmentMonitoring  = new FragmentMonitoring();
+//                    Fragment fragment = new FragmentTables();
+//                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragmentMonitoring, fragment);
+//                    fragmentTransaction.hide(FragmentMonitoring);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
+
+//                    getActivity().getFragmentManager().beginTransaction().replace(R.id.fragmentTables,
+//                            new FragmentMonitoring()).commit();
                 }
             });
 
@@ -174,7 +204,7 @@ public class FragmentMonitoring extends Fragment {
 
 
 //     2222222222222222222   END OF SECOND CHART
-        } else if ((userManagerSharedPrefs.getToken() == null)){
+        } else if ((userManagerSharedPrefs.getToken() == null)) {
             imageLogo.setVisibility(View.VISIBLE);
 //            lineChartView.setVisibility(View.GONE);
 //            lineChartView2.setVisibility(View.GONE);

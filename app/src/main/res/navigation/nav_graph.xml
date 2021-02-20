@@ -9,6 +9,7 @@
         android:id="@+id/firstFragment2"
         android:name="com.example.rostmanafinal.Fragments.FirstFragment"
         android:label="FirstFragment"
+
         tools:layout="@layout/fragment_first">
         <action
             android:id="@+id/action_firstFragment2_to_fragmentCactus"
@@ -70,9 +71,6 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentProfile"
             app:destination="@id/fragmentProfile" />
-        <action
-            android:id="@+id/action_fragmentHome_to_firstFragment2"
-            app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"
@@ -80,7 +78,7 @@
         android:label="FragmentEnterSerialNumber"
         tools:layout="@layout/fragment_enter_serialnumber">
         <action
-            android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment22"
+            android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment2"
             app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
@@ -185,6 +183,9 @@
         <action
             android:id="@+id/action_fragmentMonitoring_to_fragmentTables"
             app:destination="@id/fragmentTables" />
+        <action
+            android:id="@+id/action_fragmentMonitoring_to_firstFragment2"
+            app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTables"

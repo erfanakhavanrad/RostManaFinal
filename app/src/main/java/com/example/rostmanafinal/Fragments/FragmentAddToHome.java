@@ -48,7 +48,7 @@ public class FragmentAddToHome extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Toast.makeText(getContext(), "VISIBLE ADD", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "VISIBLE ADD", Toast.LENGTH_SHORT).show();
         setUpViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 

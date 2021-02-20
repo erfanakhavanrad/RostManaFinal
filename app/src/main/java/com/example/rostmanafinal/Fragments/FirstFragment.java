@@ -13,9 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
-import com.example.rostmanafinal.Options.SharedPrefHandler;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
@@ -56,7 +56,6 @@ public class FirstFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewFirst = inflater.inflate(R.layout.fragment_first, container, false);
 
-        SharedPrefHandler.setBooleanPreference(getContext(), SharedPrefHandler.HOW_TO_SHOW_HOME_FRAGMENT, false);
 
         return viewFirst;
     }
@@ -100,11 +99,12 @@ public class FirstFragment extends Fragment {
             public void onClick(View v) {
 //                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
 
-                requireActivity().getSupportFragmentManager();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentSeasonalFlowers fn = new FragmentSeasonalFlowers();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+//                requireActivity().getSupportFragmentManager();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                FragmentSeasonalFlowers fn = new FragmentSeasonalFlowers();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
+
 //                Toast.makeText(getContext(), "" + token, Toast.LENGTH_SHORT).show();
 
 
@@ -113,8 +113,8 @@ public class FirstFragment extends Fragment {
 
 //                Toast.makeText(getContext(), "" + SURL, Toast.LENGTH_SHORT).show();
 //                sendRequest(url);
-                fragmentTransaction.commit();
-//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentSeasonalFlowers);
+//                fragmentTransaction.commit();
+              Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentSeasonalFlowers);
             }
         });
         image_cactus.setOnClickListener(new View.OnClickListener() {
