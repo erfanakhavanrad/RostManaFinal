@@ -24,6 +24,7 @@ public class Fragment_Plant_Details extends Fragment {
 
     RecyclerView recyclerPlantDetail;
     ImageView image_check, image_cancel;
+    Bundle bundle = new Bundle();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +47,12 @@ public class Fragment_Plant_Details extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        /**
+         * get your id from previous fragment
+         */
+        bundle = this.getArguments();
+        String id = bundle.getString("your_key");
 
         image_cancel = view.findViewById(R.id.image_cancel);
         image_cancel.setOnClickListener(new View.OnClickListener() {

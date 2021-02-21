@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -19,20 +20,27 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+
 import static android.content.ContentValues.TAG;
 
 public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.TViewHolder> {
 
 
     ChangingFragmentsInterface changingFragmentsInterface;
-    List<SeasonalModel> mylist;
+    List<SeasonalModel> mylist = new ArrayList<>() ;
     FragmentActivity activity;
+    CallBack callBack;
 
 //    , ChangingFragmentsInterface changingFragmentsInterface
-    public FlowersAdapter(List<SeasonalModel> list, FragmentActivity activity) {
-        mylist = list;
-        this.activity = activity;
-        this.changingFragmentsInterface = changingFragmentsInterface;
+    public FlowersAdapter(CallBack callBack1) {
+        this.callBack = callBack1;
+    }
+
+    public void setList(List<SeasonalModel> list){
+                this.mylist = list;
+                notifyDataSetChanged();
     }
 
     @NonNull
@@ -79,9 +87,7 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.TViewHol
                 public void onClick(View v) {
                     SeasonalModel flowerClass = mylist.get(getAdapterPosition());
 
-//                    Navigation.findNavController(activity,R.id.navigationBottom);
-
-                    changingFragmentsInterface.onItemSelected();
+                    callBack.callBack(flowerClass);
 
 //                    Navigation.findNavController(activity, R.id.nav_graph).navigate(R.id.action_fragmentCactus_to_fragment_Plant_Details);
 //                    Navigation.findNavController(v).navigate(R.id.fragment_Plant_Details);
@@ -110,5 +116,8 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.TViewHol
         }
     }
 
+    public interface CallBack {
+        public void callBack (SeasonalModel seasonalModel);
+    }
 
 }

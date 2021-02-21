@@ -142,6 +142,9 @@
         <action
             android:id="@+id/action_fragmentSeasonalFlowers_to_fragment_Plant_Details"
             app:destination="@id/fragment_Plant_Details" />
+        <action
+            android:id="@+id/action_fragmentSeasonalFlowers_to_fragment_Plant_Details2"
+            app:destination="@id/fragment_Plant_Details" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGreenLeaf"

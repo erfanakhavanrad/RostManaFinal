@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,14 +33,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 //
-public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmentsInterface {
+public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmentsInterface, FlowersAdapter.CallBack {
     RecyclerView recycler;
     static String BASE_URL = "Mobile/Category/";
     UserManagerSharedPrefs userManagerSharedPrefs;
     RetrofitApiService request;
     String SURL, token, url = "http://192.168.88.134:8000/api/";
-    SeasonalModel seasonalModel = new SeasonalModel();
+    List<SeasonalModel> seasonalModels22 = new ArrayList<>();
+    FlowersAdapter adapter = new FlowersAdapter(this::callBack);
+//    List<SeasonalModel> seasonalModels = response.body();
+View secondView;
     static String SEASONAL_URL = "1";
 
     @Nullable
@@ -56,7 +61,8 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
         recycler = view.findViewById(R.id.recycler);
         SURL = url + BASE_URL + SEASONAL_URL;
         sendRequest(SURL);
-
+        initView();
+secondView = view;
 //        ArrayList<FlowerListClass> names2 = new ArrayList();
 //        names2.add(new FlowerListClass("اپونتیا", R.drawable.limo));
 
@@ -67,8 +73,14 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
 //        recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
 
 
+    }
+
+    private void initView() {
 
 
+         adapter = new FlowersAdapter(this);
+        recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        recycler.setAdapter(adapter);
     }
 
     @Override
@@ -104,14 +116,13 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
 //                    ArrayList<SeasonalModel> sml = new ArrayList<SeasonalModel>();
 //seasonalModel = response.body();
 //                    list<modelet>  a=response.body
-                    List<SeasonalModel> seasonalModels = response.body();
+                    seasonalModels22 = response.body();
+                    adapter.setList(seasonalModels22);
+
 
 //Adapter
 //                    ArrayList<SeasonalModel> names = new ArrayList<>();
 //                    names.add(response.body());
-                    FlowersAdapter adapter = new FlowersAdapter(seasonalModels, requireActivity());
-                    recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-                    recycler.setAdapter(adapter);
 //                    seasonalModels.get
 //                    Toast.makeText(getContext(), "model s" + seasonalModels.get(2), Toast.LENGTH_SHORT).show();
                     //                    Toast.makeText(getContext(), "success " + seasonalModel.getName(), Toast.LENGTH_SHORT).show();
@@ -128,4 +139,12 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
         });
     }
 
+    @Override
+    public void callBack(SeasonalModel seasonalModel) {
+        Toast.makeText(getContext(),seasonalModel.getSoilId().toString(),Toast.LENGTH_SHORT).show();
+        Bundle bundle = new Bundle();
+
+        bundle.putString("yout_key",seasonalModel.getSoilId().toString());
+        Navigation.findNavController(secondView).navigate(R.id.action_fragmentSeasonalFlowers_to_fragment_Plant_Details,bundle);
+    }
 }
