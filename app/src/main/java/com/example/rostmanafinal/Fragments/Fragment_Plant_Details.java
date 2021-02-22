@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +31,8 @@ public class Fragment_Plant_Details extends Fragment {
     Bundle bundle = new Bundle();
     TextView txtName, txtEName;
     String showPhoto, getPhoto;
+    Button btn_detail;
+//    CardView cardView_details;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +56,11 @@ public class Fragment_Plant_Details extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bundle = this.getArguments();
+//        cardView_details = view.findViewById(R.id.cardView_details);
+        btn_detail = view.findViewById(R.id.btn_detail);
+        String getDescription = bundle.getString("getDescription");
+        if(getDescription.equals(""))
+            btn_detail.setVisibility(View.INVISIBLE);
 
         /**
          * get your id from previous fragment
@@ -132,5 +142,11 @@ public class Fragment_Plant_Details extends Fragment {
 //        recyclerPlantDetail.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         recyclerPlantDetail.setLayoutManager(new LinearLayoutManager(getContext()
                 , RecyclerView.VERTICAL, false));
+        btn_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

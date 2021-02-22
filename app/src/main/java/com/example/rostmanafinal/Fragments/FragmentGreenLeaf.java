@@ -56,11 +56,11 @@ public class FragmentGreenLeaf extends Fragment implements ChangingFragmentsInte
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        recycler = view.findViewById(R.id.recycler);
         SURL = url + BASE_URL + SEASONAL_URL;
         sendRequest(SURL);
         initView();
         secondView = view;
-//        recycler = view.findViewById(R.id.recycler);
 //        ArrayList<FlowerListClass> names = new ArrayList();
 //        names.add(new FlowerListClass("اپونتیا", R.drawable.limo));
 //        names.add(new FlowerListClass("اچینو", R.drawable.benjamin));

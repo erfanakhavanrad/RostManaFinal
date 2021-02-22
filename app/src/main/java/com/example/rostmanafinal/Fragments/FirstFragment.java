@@ -121,7 +121,7 @@ public class FirstFragment extends Fragment {
 //                FragmentGreenLeaf fn = new FragmentGreenLeaf();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentGreenLeaf);
+                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentGreenLeaf);
             }
         });
         image_organic.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,7 @@ public class FirstFragment extends Fragment {
 //                FragmentOrganic fn = new FragmentOrganic();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentOrganic2);
+                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentOrganic2);
             }
         });
         image_shrub.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +145,7 @@ public class FirstFragment extends Fragment {
 //                FragmentGreenHouse fn = new FragmentGreenHouse();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-//                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentShrub);
+                Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentShrub);
             }
         });
     }

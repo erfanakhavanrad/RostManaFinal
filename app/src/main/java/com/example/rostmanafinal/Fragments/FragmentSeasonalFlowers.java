@@ -146,22 +146,21 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
 
         bundle.putString("getId", seasonalModel.getId().toString());
         bundle.putString("getName", seasonalModel.getName().toString());
+        bundle.putString("getDescription", seasonalModel.getDescription().toString());
         bundle.putString("getPhoto", seasonalModel.getPhoto().toString());
-        /**
-         bundle.putString("getEName", seasonalModel.getEName().toString());
-         bundle.putString("getPWaterS", seasonalModel.getPWaterS().toString());
-         bundle.putString("getPWaterW", seasonalModel.getPWaterW().toString());
-         bundle.putString("getTimeFertilizer", seasonalModel.getTimeFertilizer().toString());
-         bundle.putString("getPrune", seasonalModel.getPrune().toString());
-         bundle.putString("getPrune", seasonalModel.getPrune().toString());
-         bundle.putString("getPlanttype", seasonalModel.getPlanttype().toString());
-         bundle.putString("getTemp", seasonalModel.getTemp().toString());
-         bundle.putString("getLight", seasonalModel.getLight().toString());
-         bundle.putString("getHumiditySoil", seasonalModel.getHumiditySoil().toString());
-         bundle.putString("getHumidityAir", seasonalModel.getHumidityAir().toString());
-         bundle.putString("getSoilId", seasonalModel.getSoilId().toString());
-         bundle.putString("getFertilizerId", seasonalModel.getFertilizerId().toString());
-         */
+        bundle.putString("getEName", seasonalModel.getEName().toString());
+        bundle.putString("getPWaterS", seasonalModel.getPWaterS().toString());
+        bundle.putString("getPWaterW", seasonalModel.getPWaterW().toString());
+        bundle.putString("getTimeFertilizer", seasonalModel.getTimeFertilizer().toString());
+        bundle.putString("getPrune", seasonalModel.getPrune().toString());
+        bundle.putString("getPrune", seasonalModel.getPrune().toString());
+        bundle.putString("getPlanttype", seasonalModel.getPlanttype().toString());
+        bundle.putString("getTemp", seasonalModel.getTemp().toString());
+        bundle.putString("getLight", seasonalModel.getLight().toString());
+        bundle.putString("getHumiditySoil", seasonalModel.getHumiditySoil().toString());
+        bundle.putString("getHumidityAir", seasonalModel.getHumidityAir().toString());
+        bundle.putString("getSoilId", seasonalModel.getSoilId().toString());
+        bundle.putString("getFertilizerId", seasonalModel.getFertilizerId().toString());
 
         Navigation.findNavController(secondView).navigate(R.id.action_fragmentSeasonalFlowers_to_fragment_Plant_Details, bundle);
     }

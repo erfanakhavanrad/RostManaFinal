@@ -2,11 +2,11 @@
 package com.example.rostmanafinal.Pojo.ModelChoosePlant;
 
 import java.io.Serializable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SeasonalModel implements Serializable
-{
+public class SeasonalModel implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -75,7 +75,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Object getEName() {
-        return eName;
+        if (eName != null)
+            return eName;
+        else return "نامشخص";
     }
 
     public void setEName(Object eName) {
@@ -83,7 +85,9 @@ public class SeasonalModel implements Serializable
     }
 
     public String getPhoto() {
-        return photo;
+        if (photo != null)
+            return photo;
+        else return "نامشخص";
     }
 
     public void setPhoto(String photo) {
@@ -91,7 +95,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Object getPWaterS() {
-        return pWaterS;
+        if (pWaterS != null)
+            return pWaterS;
+        else return "نامشخص";
     }
 
     public void setPWaterS(Object pWaterS) {
@@ -99,7 +105,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Object getPWaterW() {
-        return pWaterW;
+        if (pWaterW != null)
+            return pWaterW;
+        else return "نامشخص";
     }
 
     public void setPWaterW(Object pWaterW) {
@@ -107,7 +115,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Object getTimeFertilizer() {
-        return timeFertilizer;
+        if (timeFertilizer != null)
+            return timeFertilizer;
+        else return "نامشخص";
     }
 
     public void setTimeFertilizer(Object timeFertilizer) {
@@ -115,7 +125,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Object getPrune() {
-        return prune;
+        if (prune != null)
+            return prune;
+        else return "نامشخص";
     }
 
     public void setPrune(Object prune) {
@@ -123,7 +135,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Object getDescription() {
-        return description;
+        if (description != null)
+            return description;
+        else return "نامشخص";
     }
 
     public void setDescription(Object description) {
@@ -131,7 +145,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Integer getPlanttype() {
-        return planttype;
+        if (planttype != null)
+            return planttype;
+        else return 0;
     }
 
     public void setPlanttype(Integer planttype) {
@@ -139,7 +155,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Integer getTemp() {
-        return temp;
+        if (temp != null)
+            return temp;
+        else return 0;
     }
 
     public void setTemp(Integer temp) {
@@ -147,7 +165,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Integer getLight() {
-        return light;
+        if (light != null)
+            return light;
+        else return 0;
     }
 
     public void setLight(Integer light) {
@@ -155,7 +175,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Integer getHumiditySoil() {
-        return humiditySoil;
+        if (humiditySoil != null)
+            return humiditySoil;
+        else return 0;
     }
 
     public void setHumiditySoil(Integer humiditySoil) {
@@ -163,7 +185,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Integer getHumidityAir() {
-        return humidityAir;
+        if (humidityAir != null)
+            return humidityAir;
+        else return 0;
     }
 
     public void setHumidityAir(Integer humidityAir) {
@@ -171,7 +195,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Integer getSoilId() {
-        return soilId;
+        if (soilId != null)
+            return soilId;
+        else return 0;
     }
 
     public void setSoilId(Integer soilId) {
@@ -179,7 +205,9 @@ public class SeasonalModel implements Serializable
     }
 
     public Integer getFertilizerId() {
-        return fertilizerId;
+        if (fertilizerId != null)
+            return fertilizerId;
+        else return 0;
     }
 
     public void setFertilizerId(Integer fertilizerId) {
