@@ -6,31 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
-import com.example.rostmanafinal.Interfaces.RetrofitApiService;
-import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.R;
-import com.example.rostmanafinal.Retrofit.TokenInterceptor;
-import com.example.rostmanafinal.UserManagerSharedPrefs;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.OkHttpClient;
-import okhttp3.internal.concurrent.Task;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class FirstFragment extends Fragment {
@@ -126,7 +108,7 @@ public class FirstFragment extends Fragment {
 //                FragmentCactus fn = new FragmentCactus();
 //                fragmentTransaction.replace(R.id.nav_host_fragment, fn);
 //                fragmentTransaction.commit();
-//     Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentCactus);
+     Navigation.findNavController(view).navigate(R.id.action_firstFragment2_to_fragmentCactus);
 
             }
         });

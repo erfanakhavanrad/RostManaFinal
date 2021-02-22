@@ -88,7 +88,7 @@ public class Fragment_Plant_Details extends Fragment {
 //                = new StructuresClass("first", "flower", R.drawable.s_two);
 
         ArrayList<SeasonalModel> seasonalModels = new ArrayList();
-        
+
         /** plantDetailListArray.add(new PlantDetailClass("rose", "12", R.drawable.ic_launcher_background, "native",
          12, "wet", "itSprinkles", "twice a month", "natural light",
          "soil", "potasium manure", "twice a week"));
