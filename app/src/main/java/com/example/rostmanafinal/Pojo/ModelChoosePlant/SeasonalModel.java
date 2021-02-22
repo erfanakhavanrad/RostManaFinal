@@ -8,12 +8,33 @@ import com.google.gson.annotations.SerializedName;
 public class SeasonalModel implements Serializable
 {
 
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("E_Name")
+    @Expose
+    private Object eName;
     @SerializedName("photo")
     @Expose
     private String photo;
+    @SerializedName("P_Water_S")
+    @Expose
+    private Object pWaterS;
+    @SerializedName("P_Water\u0640W")
+    @Expose
+    private Object pWaterW;
+    @SerializedName("time_fertilizer")
+    @Expose
+    private Object timeFertilizer;
+    @SerializedName("prune")
+    @Expose
+    private Object prune;
+    @SerializedName("description")
+    @Expose
+    private Object description;
     @SerializedName("planttype")
     @Expose
     private Integer planttype;
@@ -35,7 +56,15 @@ public class SeasonalModel implements Serializable
     @SerializedName("fertilizer_id")
     @Expose
     private Integer fertilizerId;
-    private final static long serialVersionUID = -4410410611087701739L;
+    private final static long serialVersionUID = 8074431600415594726L;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -45,12 +74,60 @@ public class SeasonalModel implements Serializable
         this.name = name;
     }
 
+    public Object getEName() {
+        return eName;
+    }
+
+    public void setEName(Object eName) {
+        this.eName = eName;
+    }
+
     public String getPhoto() {
         return photo;
     }
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Object getPWaterS() {
+        return pWaterS;
+    }
+
+    public void setPWaterS(Object pWaterS) {
+        this.pWaterS = pWaterS;
+    }
+
+    public Object getPWaterW() {
+        return pWaterW;
+    }
+
+    public void setPWaterW(Object pWaterW) {
+        this.pWaterW = pWaterW;
+    }
+
+    public Object getTimeFertilizer() {
+        return timeFertilizer;
+    }
+
+    public void setTimeFertilizer(Object timeFertilizer) {
+        this.timeFertilizer = timeFertilizer;
+    }
+
+    public Object getPrune() {
+        return prune;
+    }
+
+    public void setPrune(Object prune) {
+        this.prune = prune;
+    }
+
+    public Object getDescription() {
+        return description;
+    }
+
+    public void setDescription(Object description) {
+        this.description = description;
     }
 
     public Integer getPlanttype() {

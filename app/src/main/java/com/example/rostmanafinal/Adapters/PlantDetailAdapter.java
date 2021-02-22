@@ -9,22 +9,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rostmanafinal.Pojo.PlantDetailClass;
+import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.R;
 
 import java.util.ArrayList;
 
 public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostmanafinal.Adapters.PlantDetailAdapter.ViewHolder> {
-    ArrayList<PlantDetailClass> plantDetailsList2;
-
+    //    ArrayList<PlantDetailClass> plantDetailsList2;
+    ArrayList<SeasonalModel> seasonalModels;
 
     Context context;
 
-    public PlantDetailAdapter(ArrayList<PlantDetailClass> plantDetails1, Context context) {
-        plantDetailsList2 = plantDetails1;
+    public PlantDetailAdapter(ArrayList<SeasonalModel> plantDetails1, Context context) {
+//        plantDetailsList2 = plantDetails1;
+        seasonalModels = plantDetails1;
         this.context = context;
     }
 
@@ -44,10 +44,10 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        PlantDetailClass plantdetailsClass = plantDetailsList2.get(position);
+        SeasonalModel plantdetailsClass = seasonalModels.get(position);
         //        holder.imageView.setImageResource(R.drawable.s_one);
-        holder.imageView.setImageResource(plantdetailsClass.getPic());
-        holder.txtTitle.setText(plantdetailsClass.getpName());
+//        holder.imageView.setImageResource(plantdetailsClass.getPhoto());
+        holder.txtTitle.setText(plantdetailsClass.getName());
         holder.txtDescription.setText(plantdetailsClass.getLight());
 
 
@@ -64,7 +64,7 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
 
     @Override
     public int getItemCount() {
-        return plantDetailsList2.size();
+        return seasonalModels.size();
     }
 
 
@@ -80,7 +80,7 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PlantDetailClass item = plantDetailsList2.get(getAdapterPosition());
+                    SeasonalModel item = seasonalModels.get(getAdapterPosition());
                     Toast.makeText(itemView.getContext(), "position is " + item.getId(), Toast.LENGTH_SHORT).show();
                 }
             });
