@@ -12,22 +12,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
+import com.example.rostmanafinal.Pojo.ModelChoosePlant.SingleFlowerModel;
 import com.example.rostmanafinal.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostmanafinal.Adapters.PlantDetailAdapter.ViewHolder> {
     //    ArrayList<PlantDetailClass> plantDetailsList2;
-    ArrayList<SeasonalModel> seasonalModels;
+    ArrayList<SingleFlowerModel> seasonalModels;
 
     Context context;
 
-    public PlantDetailAdapter(ArrayList<SeasonalModel> plantDetails1, Context context) {
+    public PlantDetailAdapter(ArrayList<SingleFlowerModel> plantDetails1, Context context) {
 //        plantDetailsList2 = plantDetails1;
         seasonalModels = plantDetails1;
         this.context = context;
     }
 
+
+    public void setList(ArrayList<SingleFlowerModel> list){
+        this.seasonalModels = list;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -44,11 +51,11 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        SeasonalModel plantdetailsClass = seasonalModels.get(position);
+        SingleFlowerModel plantdetailsClass = seasonalModels.get(position);
         //        holder.imageView.setImageResource(R.drawable.s_one);
 //        holder.imageView.setImageResource(plantdetailsClass.getPhoto());
-        holder.txtTitle.setText(plantdetailsClass.getName());
-        holder.txtDescription.setText(plantdetailsClass.getLight());
+        holder.txtTitle.setText(plantdetailsClass.getPlant().getName());
+        holder.txtDescription.setText(plantdetailsClass.getPlant().getLight());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +87,8 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SeasonalModel item = seasonalModels.get(getAdapterPosition());
-                    Toast.makeText(itemView.getContext(), "position is " + item.getId(), Toast.LENGTH_SHORT).show();
+                    SingleFlowerModel item = seasonalModels.get(getAdapterPosition());
+                    Toast.makeText(itemView.getContext(), "position is " + item.getPlant().getId(), Toast.LENGTH_SHORT).show();
                 }
             });
 

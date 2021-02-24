@@ -50,7 +50,7 @@ public class RegisterFromActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         userManagerSharedPrefs = new UserManagerSharedPrefs(this);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.88.134:8000/api/")
+                .baseUrl("http://rostmana.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         retrofitApiService = retrofit.create(RetrofitApiService.class);

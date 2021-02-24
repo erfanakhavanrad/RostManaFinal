@@ -64,7 +64,7 @@ public class FragmentEnterSerialNumber extends Fragment {
 //                Toast.makeText(getContext(), "until", Toast.LENGTH_SHORT).show();
 
 //                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
-//                Navigation.findNavController(view).navigate(R.id.action_fragmentViewPagerTabbed23_to_fragmentEnterSerialNumber);
+                Navigation.findNavController(view).navigate(R.id.action_fragmentViewPagerTabbed23_to_fragmentEnterSerialNumber);
 //                Navigation.findNavController(view).navigate(R.id.action_fragmentEnterSerialNumber_to_firstFragment22);
 //                Navigation.findNavController(view).navigate(R.id.action_fragmentEnterSerialNumber_to_firstFragment22);
 //                Navigation.findNavController(view).navigate(R.id.action_fragmentEnterSerialNumber_to_firstFragment2);
@@ -93,12 +93,13 @@ public class FragmentEnterSerialNumber extends Fragment {
                  fragmentTransaction.addToBackStack(null);
                  fragmentTransaction.commit(); */
 
-                FirstFragment nextFrag= new FirstFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
 
+//                FirstFragment nextFrag= new FirstFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.nav_host_fragment, nextFrag, "findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+                Navigation.findNavController(view).navigate(R.id.action_fragmentEnterSerialNumber_to_firstFragment2);
             }
         });
 

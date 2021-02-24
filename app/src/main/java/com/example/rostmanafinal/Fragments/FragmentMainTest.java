@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FragmentMainTest extends Fragment {
     TextView txtError;
 
-   private static final String BASE_URL = "http://192.168.88.134:8000/api/";
+   private static final String BASE_URL = "http://rostmana.com/api/";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

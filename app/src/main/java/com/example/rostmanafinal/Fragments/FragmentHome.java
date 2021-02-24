@@ -79,7 +79,7 @@ public class FragmentHome extends Fragment {
     ImageView menuIconImage, imageClose, imageAddUser, image1;
     LinearLayout firstItem, secondItem, fourthItem, fifthItem;
     boolean doubleBackToExitPressedOnce = false;
-    String token, url = "http://192.168.88.134:8000/api/";
+    String token, url = "http://rostmana.com/api/";
     RetrofitApiService request;
     Boolean number = true;
     ConstraintLayout constraintProgress;
@@ -154,7 +154,8 @@ public class FragmentHome extends Fragment {
         imageAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentProfile);
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentProfile);
+                Toast.makeText(getContext(), "به زودی...", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -2,6 +2,7 @@ package com.example.rostmanafinal.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ir.hamsaa.persiandatepicker.Listener;
+import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
+import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Line;
@@ -37,15 +41,17 @@ public class FragmentMonitoring extends Fragment {
     LineChartView lineChartView, lineChartView2;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
+    String endForPass;
     //    ImageView ;
     TextView txtMoreDetails;
     ImageView imageLogo;
     Button btn_fetch;
+    TextView txtStart, txtEnd;
     private static final String TAG = "FragmentMonitoring";
     //    First Chart
     private HashMap<String, String[]> exampleDays = new HashMap<String, String[]>();
     private HashMap<String, float[]> exampleHum = new HashMap<String, float[]>();
-
+    private PersianDatePickerDialog picker;
     //    Second Chart
 //    private HashMap<String, String[]> exampleDaysSecond = new HashMap<String, String[]>();
 //    private HashMap<String, float[]> exampleHumSecond = new HashMap<String, float[]>();
@@ -64,6 +70,80 @@ public class FragmentMonitoring extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
+        PersianCalendar initDate = new PersianCalendar();
+        txtStart = view.findViewById(R.id.txtStart);
+        txtStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                initDate.setPersianDate(1370, 3, 13);
+
+                picker = new PersianDatePickerDialog(getContext())
+                        .setPositiveButtonString("تایید")
+                        .setNegativeButton("لغو")
+                        .setTodayButtonVisible(false)
+                        .setMinYear(1300)
+                        .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+                        .setInitDate(initDate)
+                        .setActionTextColor(Color.BLACK)
+//                        .setTypeFace(typeface)
+                        .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+                        .setShowInBottomSheet(false)
+                        .setListener(new Listener() {
+                            @Override
+                            public void onDateSelected(PersianCalendar persianCalendar) {
+//                                Toast.makeText(getContext(), persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
+                                txtStart.setText(persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay());
+                            }
+
+                            @Override
+                            public void onDismissed() {
+
+                            }
+                        });
+
+                picker.show();
+
+            }
+        });
+
+        txtEnd = view.findViewById(R.id.txtEnd);
+        txtEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDate.setPersianDate(1370, 3, 13);
+
+                picker = new PersianDatePickerDialog(getContext())
+                        .setPositiveButtonString("تایید")
+                        .setNegativeButton("لغو")
+                        .setTodayButtonVisible(false)
+                        .setMinYear(1300)
+                        .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+                        .setInitDate(initDate)
+                        .setActionTextColor(Color.BLACK)
+//                        .setTypeFace(typeface)
+                        .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+                        .setShowInBottomSheet(false)
+                        .setListener(new Listener() {
+                            @Override
+                            public void onDateSelected(PersianCalendar persianCalendar) {
+//                                Toast.makeText(getContext(), persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
+                                endForPass = persianCalendar.getPersianYear() + "/" + persianCalendar
+                                        .getPersianMonth() + "/" + persianCalendar.getPersianDay();
+                                txtEnd.setText(endForPass);
+
+                                Log.d(TAG, "onDateSelected: " + endForPass);
+                            }
+
+                            @Override
+                            public void onDismissed() {
+
+                            }
+                        });
+
+                picker.show();
+            }
+        });
         btn_fetch = view.findViewById(R.id.btn_fetch);
         btn_fetch.setOnClickListener(new View.OnClickListener() {
             @Override

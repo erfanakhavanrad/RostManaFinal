@@ -39,7 +39,7 @@ public class FragmentGreenLeaf extends Fragment implements ChangingFragmentsInte
     static String BASE_URL = "Mobile/Category/";
     UserManagerSharedPrefs userManagerSharedPrefs;
     RetrofitApiService request;
-    String SURL, token, url = "http://192.168.88.134:8000/api/";
+    String SURL, token, url = "http://rostmana.com/api/";
     List<SeasonalModel> seasonalModels22 = new ArrayList<>();
     FlowersAdapter adapter = new FlowersAdapter(this::callBack);
     static String SEASONAL_URL = "3";

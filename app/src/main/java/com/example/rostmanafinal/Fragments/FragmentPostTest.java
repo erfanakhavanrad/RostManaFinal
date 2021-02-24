@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FragmentPostTest extends Fragment {
     TextView txtPost;
 
-    private static final String BASE_URL = "http://192.168.88.134:8000/api/";
+    private static final String BASE_URL = "http://rostmana.com/api/";
 
     @Nullable
     @Override

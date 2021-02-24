@@ -64,7 +64,7 @@ public class FragmentProfile extends Fragment {
     String imageb64, lastName, token;
     boolean gender;
     //    RetrofitApiService request;
-    private static final String BASE_URL = "http://192.168.88.134:8000/api/Mobile/";
+    private static final String BASE_URL = "http://rostmana.com/api/Mobile/";
     UserManagerSharedPrefs userManagerSharedPrefs;
 
     @Nullable

@@ -39,7 +39,7 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
     static String BASE_URL = "Mobile/Category/";
     UserManagerSharedPrefs userManagerSharedPrefs;
     RetrofitApiService request;
-    String SURL, token, url = "http://192.168.88.134:8000/api/";
+    String SURL, token, url = "http://rostmana.com/api/";
     List<SeasonalModel> seasonalModels22 = new ArrayList<>();
     FlowersAdapter adapter = new FlowersAdapter(this::callBack);
     static String SEASONAL_URL = "1";
@@ -142,25 +142,35 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
     public void callBack(SeasonalModel seasonalModel) {
 //        Toast.makeText(getContext(),seasonalModel.getSoilId().toString(),Toast.LENGTH_SHORT).show();
 //        Toast.makeText(getContext(), seasonalModel.getId().toString(), Toast.LENGTH_SHORT).show();
-        Bundle bundle = new Bundle();
 
-        bundle.putString("getId", seasonalModel.getId().toString());
-        bundle.putString("getName", seasonalModel.getName().toString());
-        bundle.putString("getDescription", seasonalModel.getDescription().toString());
-        bundle.putString("getPhoto", seasonalModel.getPhoto().toString());
-        bundle.putString("getEName", seasonalModel.getEName().toString());
-        bundle.putString("getPWaterS", seasonalModel.getPWaterS().toString());
-        bundle.putString("getPWaterW", seasonalModel.getPWaterW().toString());
-        bundle.putString("getTimeFertilizer", seasonalModel.getTimeFertilizer().toString());
-        bundle.putString("getPrune", seasonalModel.getPrune().toString());
-        bundle.putString("getPrune", seasonalModel.getPrune().toString());
-        bundle.putString("getPlanttype", seasonalModel.getPlanttype().toString());
-        bundle.putString("getTemp", seasonalModel.getTemp().toString());
-        bundle.putString("getLight", seasonalModel.getLight().toString());
-        bundle.putString("getHumiditySoil", seasonalModel.getHumiditySoil().toString());
-        bundle.putString("getHumidityAir", seasonalModel.getHumidityAir().toString());
-        bundle.putString("getSoilId", seasonalModel.getSoilId().toString());
-        bundle.putString("getFertilizerId", seasonalModel.getFertilizerId().toString());
+ Bundle bundle = new Bundle();
+
+ bundle.putString("getId", seasonalModel.getId().toString());
+ bundle.putString("getName", seasonalModel.getName().toString());
+ bundle.putString("getDescription", seasonalModel.getDescription().toString());
+ bundle.putString("getPhoto", seasonalModel.getPhoto().toString());
+ bundle.putString("getEName", seasonalModel.getEName().toString());
+ bundle.putString("getPWaterS", seasonalModel.getPWaterS().toString());
+ bundle.putString("getPWaterW", seasonalModel.getPWaterW().toString());
+ bundle.putString("getTimeFertilizer", seasonalModel.getTimeFertilizer().toString());
+ bundle.putString("getPrune", seasonalModel.getPrune().toString());
+ bundle.putString("getPrune", seasonalModel.getPrune().toString());
+ bundle.putString("getPlanttype", seasonalModel.getPlanttype().toString());
+ bundle.putString("getTemp", seasonalModel.getTemp().toString());
+ bundle.putString("getLight", seasonalModel.getLight().toString());
+ bundle.putString("getHumiditySoil", seasonalModel.getHumiditySoil().toString());
+ bundle.putString("getHumidityAir", seasonalModel.getHumidityAir().toString());
+ bundle.putString("getSoilId", seasonalModel.getSoilId().toString());
+ bundle.putString("getFertilizerId", seasonalModel.getFertilizerId().toString());
+
+//        Fragment_Plant_Details fragmentPlantDetails = new Fragment_Plant_Details();
+//        fragmentPlantDetails.setArguments(bundle);
+//        ft.replace(android.R.id.content, fragment2);
+//        ft.addToBackStack(null);
+//        ft.commit();
+//        Bundle bundle2 = new Bundle();
+        SeasonalModel obj = new SeasonalModel();
+        bundle.putSerializable("seasonalBundle", obj);
 
         Navigation.findNavController(secondView).navigate(R.id.action_fragmentSeasonalFlowers_to_fragment_Plant_Details, bundle);
     }

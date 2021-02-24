@@ -38,7 +38,7 @@ public class FragmentAboutUs extends Fragment {
         imageTwitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-String url = "https://twitter.com/rostmana/";
+                String url = "https://twitter.com/rostmana/";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);

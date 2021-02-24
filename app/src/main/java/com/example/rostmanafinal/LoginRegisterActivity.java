@@ -41,7 +41,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     Button btnEnter, btnGuest, btnRegister;
     TextInputEditText edtUsername, edtPassword;
     UserManagerSharedPrefs userManagerSharedPrefs;
-    String token, verifiedAt, url = "http://192.168.88.134:8000/api/";
+    String token, verifiedAt, url = "http://rostmana.com/api/";
 //    SharedPreferences sharedPreferences;
     RetrofitApiService request;
     private String TAG;

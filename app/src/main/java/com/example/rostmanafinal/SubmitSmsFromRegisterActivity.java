@@ -29,7 +29,7 @@ public class SubmitSmsFromRegisterActivity extends AppCompatActivity {
     Button btnConfirmActivity;
     //    UserManagerSharedPrefs userManagerSharedPrefs;
     RetrofitApiService request;
-    String url = "http://192.168.88.134:8000/api/";
+    String url = "http://rostmana.com/api/";
     //    RetrofitApiService retrofitApiService;
     TextView txtSmsTest;
 ConstraintLayout constraintLoading;
