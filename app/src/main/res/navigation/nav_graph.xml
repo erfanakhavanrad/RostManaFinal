@@ -71,6 +71,18 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentProfile"
             app:destination="@id/fragmentProfile" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentTicket2"
+            app:destination="@id/fragmentTicket" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentGetDate2"
+            app:destination="@id/fragmentGetDate" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmnetNotifs"
+            app:destination="@id/fragmentNotifs" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentMonitorsContainer"
+            app:destination="@id/fragmentMonitorsContainer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"
@@ -214,4 +226,36 @@
             android:id="@+id/action_fragmentProfile_to_fragmentHome"
             app:destination="@id/fragmentHome" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentTicket"
+        android:name="com.example.rostmanafinal.Fragments.FragmentTicket"
+        android:label="FragmentTicket" />
+    <fragment
+        android:id="@+id/fragmentGetDate"
+        android:name="com.example.rostmanafinal.Fragments.FragmentGetDate"
+        android:label="FragmentGetDate" >
+        <action
+            android:id="@+id/action_fragmentGetDate_to_fragmentMonitoring"
+            app:destination="@id/fragmentMonitoring" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNotifs"
+        android:name="com.example.rostmanafinal.Fragments.FragmnetNotifs"
+        android:label="FragmnetNotifs" />
+    <fragment
+        android:id="@+id/fragmentHumidity"
+        android:name="com.example.rostmanafinal.Fragments.FragmentHumidity"
+        android:label="FragmentHumidity" />
+    <fragment
+        android:id="@+id/fragmentMonitorsContainer"
+        android:name="com.example.rostmanafinal.Fragments.FragmentMonitorsContainer"
+        android:label="FragmentMonitorsContainer" />
+    <fragment
+        android:id="@+id/fragmentTemperature"
+        android:name="com.example.rostmanafinal.Fragments.FragmentTemperature"
+        android:label="FragmentTemperature" />
+    <fragment
+        android:id="@+id/fragmentWeather"
+        android:name="com.example.rostmanafinal.Fragments.FragmentWeather"
+        android:label="FragmentWeather" />
 </navigation>

@@ -2,22 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
-    app:menu="@menu/bottom_navigation"
-    app:itemIconSize="@dimen/bottom_navigation_icon_size">
-
+    app:itemIconSize="@dimen/bottom_navigation_icon_size"
+    app:menu="@menu/bottom_navigation">
     <item
-        android:id="@+id/fragmentMonitoring"
-        android:icon="@drawable/ic_monitoring"
-
-        android:title="Monitoring" />
+        android:id="@+id/fragmentMonitorsContainer"
+        android:icon="@drawable/ic_moitoring"
+        android:title="مانیتورینگ" />
+    <item
+        android:id="@+id/fragmentTicket"
+        android:icon="@drawable/ic_notification"
+        android:title="درخواست" />
     <item
         android:id="@+id/fragmentViewPagerTabbed23"
-        android:icon="@drawable/ic_baseline_add_24"
-        android:title="Add" />
+        android:icon="@drawable/ic_add"
+        android:title="افزودن" />
+    <item
+        android:id="@+id/fragmentNotifs"
+        android:icon="@drawable/ic_donenotification"
+        android:title="اعلان" />
     <item
         android:id="@+id/fragmentHome"
         android:icon="@drawable/ic_home"
-        android:title="home" />
-
+        android:title="خانه" />
 
 </menu>

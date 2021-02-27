@@ -286,7 +286,7 @@ public class FragmentHome extends Fragment {
 
                     Example example;
                     example = response.body();
-                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
                     number = true;
                     showLoading();
                     imageView2.setOnClickListener(new View.OnClickListener() {
