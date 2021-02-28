@@ -6,7 +6,7 @@
     app:menu="@menu/bottom_navigation">
     <item
         android:id="@+id/fragmentGetDate"
-        android:icon="@drawable/ic_amirali_monitoring_to_queue_24"
+        android:icon="@drawable/ic_monitoringwhite"
         android:title="مانیتورینگ" />
     <item
         android:id="@+id/fragmentTicket"

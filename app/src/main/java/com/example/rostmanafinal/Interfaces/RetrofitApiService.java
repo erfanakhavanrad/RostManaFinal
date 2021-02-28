@@ -4,6 +4,7 @@ import com.example.rostmanafinal.Pojo.GetHello;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SingleFlowerModel;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
+import com.example.rostmanafinal.Pojo.ModelMonitoring.ChartModel;
 import com.example.rostmanafinal.Pojo.ModelRegister;
 import com.example.rostmanafinal.Pojo.ModelSMS.VerifyModel;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
@@ -68,13 +69,22 @@ public interface RetrofitApiService {
 //            @Path("number") String number
 //    );
 
-//    This is for the plants list
+    //    This is for the plants list
     @GET()
     Call<List<SeasonalModel>> getPlantList(
             @Url String number
     );
 
-//    This is for plant's details using id
+    //    This is for the Temperature Chart POST
+    @FormUrlEncoded
+    @POST()
+    Call<ChartModel> postForCharts(@Url Integer builderId,
+                                   @Field("date1") String date1,
+                                   @Field("date2") String date2
+    );
+
+
+    //    This is for plant's details using id
     @FormUrlEncoded
     @POST("rostmana.com/api/Mobile/Plant/")
     Call<SingleFlowerModel> postIdForDetails(@Url String id);

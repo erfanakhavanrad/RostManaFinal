@@ -8,12 +8,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.rostmanafinal.Adapters.FlowersAdapter;
+import com.example.rostmanafinal.Interfaces.RetrofitApiService;
+import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
+import com.example.rostmanafinal.Pojo.ModelMonitoring.ChartModel;
 import com.example.rostmanafinal.R;
+import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
 
 import java.util.ArrayList;
@@ -27,10 +33,24 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentTemperature extends Fragment {
-    LineChartView lineChartView, lineChartView2;
+
+    static String BASE_URL = "Mobile/Category/";
     UserManagerSharedPrefs userManagerSharedPrefs;
+    RetrofitApiService request;
+    String SURL, token, url = "http://rostmana.com/api/";
+//    List<SeasonalModel> seasonalModels22 = new ArrayList<>();
+//    FlowersAdapter adapter = new FlowersAdapter(this::callBack);
+    static String SEASONAL_URL = "3";
+
+
+    LineChartView lineChartView, lineChartView2;
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
     //    ImageView ;
     TextView txtMoreDetails;
@@ -55,6 +75,10 @@ public class FragmentTemperature extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
+
+        SURL = url + BASE_URL + SEASONAL_URL;
+        sendRequest(SURL);
+
         imageLogo = view.findViewById(R.id.imageLogo);
         lineChartView = view.findViewById(R.id.chart);
 //        lineChartView2 = view.findViewById(R.id.chart2);
@@ -100,64 +124,56 @@ public class FragmentTemperature extends Fragment {
             viewport.top = 100;
             lineChartView.setMaximumViewport(viewport);
             lineChartView.setCurrentViewport(viewport);
-
-
-
-
-            /**
-            List yAxisValues2 = new ArrayList();
-            List axisValues2 = new ArrayList();
-
-
-            exampleTemp.put("temp", new float[]{4, 95, 76, 3, 90, 20, 10});
-
-            Line line2 = new Line(yAxisValues2).setColor(Color.parseColor("#ff0000"));
-
-            for (int i = 0; i < axisDataDays.length; i++) {
-                axisValues2.add(i, new AxisValue(i).setLabel(axisDataDays[i]));
-            }
-
-            for (int i = 0; i < exampleTemp.get("temp").length; i++) {
-                yAxisValues2.add(new PointValue(i, exampleTemp.get("temp")[i]));
-
-            }
-
-            List lines2 = new ArrayList();
-            lines2.add(line2);
-
-            LineChartData data2 = new LineChartData();
-            data2.setLines(lines2);
-
-            Axis axis2 = new Axis();
-
-            axis2.setValues(axisValues2);
-            axis2.setName("دما");
-            axis2.setTextSize(16);
-            axis2.setTextColor(Color.parseColor("#000000"));
-            data2.setAxisXBottom(axis2);
-
-            Axis yAxis2 = new Axis();
-//        yAxis2.setName("رطوبت");
-            yAxis2.setTextColor(Color.parseColor("#000000"));
-//        yAxis2.setTextSize(16);
-            data2.setAxisYLeft(yAxis2);
-
-//            lineChartView2.setLineChartData(data2);
-//            Viewport viewport2 = new Viewport(lineChartView2.getMaximumViewport());
-//            viewport2.top = 100;
-//            lineChartView2.setMaximumViewport(viewport2);
-//            lineChartView2.setCurrentViewport(viewport2);
-
-
-
-//     2222222222222222222   END OF SECOND CHART
-//        } else if ((userManagerSharedPrefs.getToken() == null)) {
-//            imageLogo.setVisibility(View.VISIBLE);
-//            lineChartView.setVisibility(View.GONE);
-//            lineChartView2.setVisibility(View.GONE);
-//            txtMoreDetails.setVisibility(View.GONE);
- */
         }
 
+    }
+    public void sendRequest(String getPageUrl) {
+        userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
+        token = userManagerSharedPrefs.getToken();
+        TokenInterceptor interceptor = new TokenInterceptor(token);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        request = retrofit.create(RetrofitApiService.class);
+// TODO: 2/28/2021 Write POST for charts 
+//Call<ChartModel> call = request.postForCharts(getPageUrl, date1, date2);
+//        Call<List<SeasonalModel>> call = request.getPlantList(getPageUrl);
+//        call.enqueue(new Callback<List<SeasonalModel>>() {
+//            @Override
+//            public void onResponse(Call<List<SeasonalModel>> call, Response<List<SeasonalModel>> response) {
+//                if (response.isSuccessful()) {
+//                    ArrayList<SeasonalModel> seasonalModels = new ArrayList<>();
+//                    ArrayList<Task> tmp = new ArrayList<Task>(mTrackytAdapter.getAllTasks(token));
+//                    ArrayList<SeasonalModel> sml = new ArrayList<SeasonalModel>();
+//seasonalModel = response.body();
+//                    list<modelet>  a=response.body
+//                    seasonalModels22 = response.body();
+//                    adapter.setList(seasonalModels22);
+
+
+//Adapter
+//                    ArrayList<SeasonalModel> names = new ArrayList<>();
+//                    names.add(response.body());
+//                    seasonalModels.get
+//                    Toast.makeText(getContext(), "model s" + seasonalModels.get(2), Toast.LENGTH_SHORT).show();
+                    //                    Toast.makeText(getContext(), "success " + seasonalModel.getName(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "success" + seasonalModel.getName(), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getContext(), " else" + response.body(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<SeasonalModel>> call, Throwable t) {
+//                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }

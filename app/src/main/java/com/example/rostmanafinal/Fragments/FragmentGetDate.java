@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,12 @@ import androidx.navigation.Navigation;
 
 import com.example.rostmanafinal.R;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import ir.hamsaa.persiandatepicker.Listener;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
@@ -26,7 +33,7 @@ public class FragmentGetDate extends Fragment {
     TextView txtStart, txtEnd;
     private PersianDatePickerDialog picker;
     String txtShow2, txtShow1;
-    Button btn_check;
+    ImageView btn_check;
     Integer startForPass, endForPass;
 
     @Nullable
@@ -39,7 +46,18 @@ public class FragmentGetDate extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+//        String yourDate = "23/2/2010";
+//     String fd =    new SimpleDateFormat("EE").format(yourDate);
+//        Toast.makeText(getContext(), "" + fd, Toast.LENGTH_SHORT).show();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", java.util.Locale.ENGLISH);
+        Date myDate = null;
+        try {
+            myDate = sdf.parse("28/2/2021");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        sdf.applyPattern("EEE, d MMM yyyy");
+        String sMyDate = sdf.format(myDate);
         btn_check = view.findViewById(R.id.btn_check);
         txtStart = view.findViewById(R.id.txtStart);
         txtStart.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +150,11 @@ public class FragmentGetDate extends Fragment {
 //                Toast.makeText(getContext(), endForPass, Toast.LENGTH_SHORT).show();
                 if (startForPass != null && endForPass != null) {
                     if (endForPass > startForPass) {
+                        Bundle bundle = new Bundle();
+
+//                        bundle.putString("getId", seasonalModel.getId().toString());
+                        bundle.putInt("endForPass", endForPass);
+                        bundle.putInt("startForPass", startForPass);
                         Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
                         startForPass = null;
                         endForPass = null;

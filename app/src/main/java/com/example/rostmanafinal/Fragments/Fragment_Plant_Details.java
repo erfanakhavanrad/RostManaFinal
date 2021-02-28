@@ -35,7 +35,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Fragment_Plant_Details extends Fragment {
+public class  Fragment_Plant_Details extends Fragment {
     private static final String TAG = "Fragment_Plant_Details";
     RecyclerView recyclerPlantDetail;
     ImageView image_check, image_cancel, imagePlant;
@@ -63,6 +63,7 @@ public class Fragment_Plant_Details extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bundle = this.getArguments();
+        String ssd = "daw" + "dawd";
         SURL = url + BASE_URL + SEASONAL_URL;
         sendRequest(SURL);
         initView();
