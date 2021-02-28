@@ -57,7 +57,7 @@ public class FragmentTemperature extends Fragment {
         userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
         imageLogo = view.findViewById(R.id.imageLogo);
         lineChartView = view.findViewById(R.id.chart);
-        lineChartView2 = view.findViewById(R.id.chart2);
+//        lineChartView2 = view.findViewById(R.id.chart2);
         List yAxisValues = new ArrayList();
         List axisValues = new ArrayList();
         if (userManagerSharedPrefs.getToken() != null) {
@@ -65,8 +65,7 @@ public class FragmentTemperature extends Fragment {
 
             exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
 
-            Line line = new Line(yAxisValues).setColor(Color.parseColor("#018786"));
-
+            Line line = new Line(yAxisValues).setColor(Color.parseColor("#ff0000"));
             for (int i = 0; i < axisDataDays.length; i++) {
                 axisValues.add(i, new AxisValue(i).setLabel(axisDataDays[i]));
             }
@@ -101,6 +100,11 @@ public class FragmentTemperature extends Fragment {
             viewport.top = 100;
             lineChartView.setMaximumViewport(viewport);
             lineChartView.setCurrentViewport(viewport);
+
+
+
+
+            /**
             List yAxisValues2 = new ArrayList();
             List axisValues2 = new ArrayList();
 
@@ -138,20 +142,22 @@ public class FragmentTemperature extends Fragment {
 //        yAxis2.setTextSize(16);
             data2.setAxisYLeft(yAxis2);
 
-            lineChartView2.setLineChartData(data2);
-            Viewport viewport2 = new Viewport(lineChartView2.getMaximumViewport());
-            viewport2.top = 100;
-            lineChartView2.setMaximumViewport(viewport2);
-            lineChartView2.setCurrentViewport(viewport2);
+//            lineChartView2.setLineChartData(data2);
+//            Viewport viewport2 = new Viewport(lineChartView2.getMaximumViewport());
+//            viewport2.top = 100;
+//            lineChartView2.setMaximumViewport(viewport2);
+//            lineChartView2.setCurrentViewport(viewport2);
 
 
 
 //     2222222222222222222   END OF SECOND CHART
-        } else if ((userManagerSharedPrefs.getToken() == null)) {
-            imageLogo.setVisibility(View.VISIBLE);
+//        } else if ((userManagerSharedPrefs.getToken() == null)) {
+//            imageLogo.setVisibility(View.VISIBLE);
 //            lineChartView.setVisibility(View.GONE);
 //            lineChartView2.setVisibility(View.GONE);
 //            txtMoreDetails.setVisibility(View.GONE);
+ */
         }
+
     }
 }

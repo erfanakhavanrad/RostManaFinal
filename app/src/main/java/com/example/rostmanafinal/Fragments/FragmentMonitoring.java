@@ -70,17 +70,17 @@ public class FragmentMonitoring extends Fragment {
 
         userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
 
-        btn_fetch = view.findViewById(R.id.btn_fetch);
-        btn_fetch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_firstFragment2);
-            }
-        });
+//        btn_fetch = view.findViewById(R.id.btn_fetch);
+//        btn_fetch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+//                Navigation.findNavController(view).navigate(R.id.action_fragmentMonitoring_to_firstFragment2);
+//            }
+//        });
         imageLogo = view.findViewById(R.id.imageLogo);
         lineChartView = view.findViewById(R.id.chart);
-        lineChartView2 = view.findViewById(R.id.chart2);
+//        lineChartView2 = view.findViewById(R.id.chart2);
         List yAxisValues = new ArrayList();
         List axisValues = new ArrayList();
 
@@ -127,7 +127,7 @@ public class FragmentMonitoring extends Fragment {
             lineChartView.setCurrentViewport(viewport);
 
 
-            txtMoreDetails = view.findViewById(R.id.txtMoreDetails);
+//            txtMoreDetails = view.findViewById(R.id.txtMoreDetails);
             txtMoreDetails.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

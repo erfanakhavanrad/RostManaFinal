@@ -80,9 +80,6 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmnetNotifs"
             app:destination="@id/fragmentNotifs" />
-        <action
-            android:id="@+id/action_fragmentHome_to_fragmentMonitorsContainer"
-            app:destination="@id/fragmentMonitorsContainer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"
@@ -235,8 +232,8 @@
         android:name="com.example.rostmanafinal.Fragments.FragmentGetDate"
         android:label="FragmentGetDate" >
         <action
-            android:id="@+id/action_fragmentGetDate_to_fragmentMonitoring"
-            app:destination="@id/fragmentMonitoring" />
+            android:id="@+id/action_fragmentGetDate_to_fragmentMonitorsContainer"
+            app:destination="@id/fragmentMonitorsContainer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentNotifs"

@@ -2,6 +2,7 @@ package com.example.rostmanafinal.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -44,6 +45,7 @@ public class FragmentMonitorsContainer extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 //        Toast.makeText(getContext(), "VISIBLE ADD", Toast.LENGTH_SHORT).show();
+
         setUpViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -72,10 +74,9 @@ public class FragmentMonitorsContainer extends Fragment {
 //        adapter.addFragment(new FragmentHu(),"اسکن بارکد");
 //        adapter.addFragment(new FragmentEnterSerialNumber(),"دستی");
 //        adapter.addFragment(new Fragment3(),"Fragment3");
-        adapter.addFragment(new FragmentWeather(), "khak");
-        adapter.addFragment(new FragmentHumidity(), "rotobathava");
-        adapter.addFragment(new FragmentTemperature(), "dama");
-
+        adapter.addFragment(new FragmentWeather(), "رطوبت هوا");
+        adapter.addFragment(new FragmentHumidity(), "رطوبت خاک");
+        adapter.addFragment(new FragmentTemperature(), "دما");
 
 
 

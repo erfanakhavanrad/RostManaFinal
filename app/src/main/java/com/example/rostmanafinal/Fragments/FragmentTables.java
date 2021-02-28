@@ -149,11 +149,11 @@ public class FragmentTables extends Fragment {
 //        Object water=row.get("watering");
 
 
-            TableRow rowTable = new TableRow(getContext());
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-            rowTable.setLayoutParams(lp);
-            TextView textView = new TextView(getContext());
-            textView.setText("          " + water + "               " + fan + "                " + element + "                " + light + "               " + fogger + "\n");
+        TableRow rowTable = new TableRow(getContext());
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+        rowTable.setLayoutParams(lp);
+        TextView textView = new TextView(getContext());
+        textView.setText("          " + water + "               " + fan + "                " + element + "                " + light + "               " + fogger + "\n");
 
 //            watering
 //            fan":75s
@@ -163,10 +163,9 @@ public class FragmentTables extends Fragment {
 //            textView.setText("watering" + " " + j + "fan" + "   " + row.get("fan") + "   " + row.get("element") + "    "
 //                    + row.get("thlight") + "   " + row.get("sfogger"));
 //
-            EditText editText = new EditText(getContext());
-            rowTable.addView(textView);
-            tableLayout.addView(rowTable);
-
+        EditText editText = new EditText(getContext());
+        rowTable.addView(textView);
+        tableLayout.addView(rowTable);
 
 
     }

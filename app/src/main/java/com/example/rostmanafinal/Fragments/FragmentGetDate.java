@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,8 +25,10 @@ public class FragmentGetDate extends Fragment {
     PersianCalendar initDate = new PersianCalendar();
     TextView txtStart, txtEnd;
     private PersianDatePickerDialog picker;
-    String endForPass, startForPass;
+    String txtShow2, txtShow1;
     Button btn_check;
+    Integer startForPass, endForPass;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,9 +62,15 @@ public class FragmentGetDate extends Fragment {
                         .setListener(new Listener() {
                             @Override
                             public void onDateSelected(PersianCalendar persianCalendar) {
-                                startForPass = persianCalendar.getPersianYear() + "-" + persianCalendar
+//                                startForPass = persianCalendar.getPersianYear() + "-" + persianCalendar
+//                                        .getPersianMonth() + "-" + persianCalendar.getPersianDay();
+//                                txtStart.setText(startForPass);
+
+                                startForPass = persianCalendar.getPersianYear() + persianCalendar
+                                        .getPersianMonth() + persianCalendar.getPersianDay();
+                                txtShow1 = persianCalendar.getPersianYear() + "-" + persianCalendar
                                         .getPersianMonth() + "-" + persianCalendar.getPersianDay();
-                                txtStart.setText(startForPass);
+                                txtStart.setText(txtShow1);
                             }
 
                             @Override
@@ -96,9 +105,11 @@ public class FragmentGetDate extends Fragment {
                             @Override
                             public void onDateSelected(PersianCalendar persianCalendar) {
 //                                Toast.makeText(getContext(), persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
-                                endForPass = persianCalendar.getPersianYear() + "-" + persianCalendar
+                                endForPass = persianCalendar.getPersianYear() + persianCalendar
+                                        .getPersianMonth() + persianCalendar.getPersianDay();
+                                txtShow2 = persianCalendar.getPersianYear() + "-" + persianCalendar
                                         .getPersianMonth() + "-" + persianCalendar.getPersianDay();
-                                txtEnd.setText(endForPass);
+                                txtEnd.setText(txtShow2);
 
                             }
 
@@ -114,10 +125,23 @@ public class FragmentGetDate extends Fragment {
         btn_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitoring);
+//                String str = startForPass;
+//                String str2 = endForPass;
+//                int inum = Integer.parseInt(str);
+//                int inum2 = Integer.parseInt(str2);
+//                Toast.makeText(getContext(), endForPass, Toast.LENGTH_SHORT).show();
+                if (startForPass != null && endForPass != null) {
+                    if (endForPass > startForPass) {
+                        Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
+                        startForPass = null;
+                        endForPass = null;
+                    } else
+                        Toast.makeText(getContext(), "بازه زمانی معتبر انتخاب کنید", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "هر دو تاریخ را انتخاب کنید", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
 
 
     }
