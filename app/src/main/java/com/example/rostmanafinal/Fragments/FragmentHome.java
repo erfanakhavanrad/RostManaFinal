@@ -33,13 +33,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Adapters.MainPage.DifferentViewsAdapter;
 import com.example.rostmanafinal.Adapters.MainPage.MainPageAdapter;
+import com.example.rostmanafinal.Fragments.dialogs.LoadingDialogFragment;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.LoginRegisterActivity;
+import com.example.rostmanafinal.MainActivity;
 import com.example.rostmanafinal.Pojo.HeydariTest;
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
 import com.example.rostmanafinal.Pojo.ModelMainPage.Car;
@@ -81,13 +85,14 @@ public class FragmentHome extends Fragment {
     boolean doubleBackToExitPressedOnce = false;
     String token, url = "http://rostmana.com/api/";
     RetrofitApiService request;
-    Boolean number = true;
     ConstraintLayout constraintProgress;
     RecyclerView recylcerView1;
     ImageView imageView2, imageViewtest;
     int saveRequest = 0;
     View _view;
+    LoadingDialogFragment loadingDialogFragment = LoadingDialogFragment.newInstance(false);
     private DifferentViewsAdapter differentViewsAdapter;
+//    MainActivity mainActivity = new MainActivity();
 
     @Nullable
     @Override
@@ -241,16 +246,6 @@ public class FragmentHome extends Fragment {
     }
 
 
-    private void showLoading() {
-
-        if (number) {
-            constraintProgress.setVisibility(View.GONE);
-
-        } else {
-            constraintProgress.setVisibility(View.VISIBLE);
-        }
-    }
-
     public void sendRequest(View view) {
 //        Toast.makeText(getContext(), "ye chizi", Toast.LENGTH_SHORT).show();
         token = userManagerSharedPrefs.getToken();
@@ -267,17 +262,18 @@ public class FragmentHome extends Fragment {
                 .build();
         request = retrofit.create(RetrofitApiService.class);
 
-        number = false;
 //        showLoading();
         Call<Example> call = request.postLoggedInUser();
-
+//        mainActivity.showLoading(true);
+        loadingDialogFragment.show(getFragmentManager(), LoadingDialogFragment.TAG);
+        // inja shorro she
+//        BottomNavigationView bottomNavigationView = view.findViewById(R.id.navigationBottom);
+//        bottomNavigationView.getMenu().findItem(3).setEnabled(false);
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 if (response.isSuccessful()) {
                     saveRequest = 1;
-//                    number = true;
-//                    showLoading();
                     /**
                      *
                      * End of success
@@ -287,8 +283,6 @@ public class FragmentHome extends Fragment {
                     Example example;
                     example = response.body();
 //                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
-                    number = true;
-                    showLoading();
                     imageView2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -342,7 +336,17 @@ public class FragmentHome extends Fragment {
 
 //                    number = false;
 //                    showLoading();
-                    constraintProgress.setVisibility(View.GONE);
+//                    NavigationView.
+//                    constraintProgress.setVisibility(View.GONE);
+
+
+//                    NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.nav_host_fragment);
+//                    NavController navController = navHostFragment.getNavController();
+//                    NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+//                    NavigationView navigationView = null;
+//                    navigationView.getMenu().findItem(R.id.fragmentGetDate).setEnabled(false);
+//                    Navigation.findNavController(view).navigate();
                     if (example.getProfile() == null) {
                         Toast.makeText(getContext(), "nistg", Toast.LENGTH_SHORT).show();
 //                        number = true;
@@ -357,6 +361,9 @@ public class FragmentHome extends Fragment {
 //                    number = true;
 //                    showLoading();
                 }
+//            mainActivity.showLoading(false);
+//                inja tamom she
+                loadingDialogFragment.dismiss();
             }
 
             @Override
@@ -364,6 +371,7 @@ public class FragmentHome extends Fragment {
                 Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
 //                number = true;
 //                showLoading();
+//                mainActivity.showLoading(false);
             }
         });
 
