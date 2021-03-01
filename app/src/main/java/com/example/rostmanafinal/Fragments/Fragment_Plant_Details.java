@@ -16,41 +16,25 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rostmanafinal.Adapters.FlowersAdapter;
-import com.example.rostmanafinal.Adapters.PlantDetailAdapter;
-import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SingleFlowerModel;
 import com.example.rostmanafinal.R;
-import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public class  Fragment_Plant_Details extends Fragment {
+public class Fragment_Plant_Details extends Fragment {
     private static final String TAG = "Fragment_Plant_Details";
     RecyclerView recyclerPlantDetail;
     ImageView image_check, image_cancel, imagePlant;
-    Bundle bundle = new Bundle();
     TextView txtName, txtEName;
-    String showPhoto, getPhoto, getDescription, id, SURL, token, url = "http://rostmana.com/api/";
+    String showPhoto, getPhoto, getDescription, id;
     Button btn_detail;
-    static String BASE_URL = "Mobile/Category/";
     UserManagerSharedPrefs userManagerSharedPrefs;
-    RetrofitApiService request;
-//    List<SingleFlowerModel> singleFlowerModelArrayList = new ArrayList<>();
+
+    //    List<SingleFlowerModel> singleFlowerModelArrayList = new ArrayList<>();
 //    SingleFlowerModel singleFlowerModel = new SingleFlowerModel();
     SingleFlowerModel singleFlowerModelArrayList = new SingleFlowerModel();
-//    PlantDetailAdapter adapter = new PlantDetailAdapter(singleFlowerModelArrayList,getContext());
-    static String SEASONAL_URL = "1";
+    //    PlantDetailAdapter adapter = new PlantDetailAdapter(singleFlowerModelArrayList,getContext());
+    Bundle bundle = new Bundle();
 
     @Nullable
     @Override
@@ -63,10 +47,7 @@ public class  Fragment_Plant_Details extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bundle = this.getArguments();
-        String ssd = "daw" + "dawd";
-        SURL = url + BASE_URL + SEASONAL_URL;
-        sendRequest(SURL);
-        initView();
+
         recyclerPlantDetail = view.findViewById(R.id.recyclerPlantDetail);
         btn_detail = view.findViewById(R.id.btn_detail);
         imagePlant = view.findViewById(R.id.imagePlant);
@@ -113,63 +94,8 @@ public class  Fragment_Plant_Details extends Fragment {
         });
     }
 
-    private void initView() {
-
-
-//        adapter = new FlowersAdapter(this);
-//        recycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-//        recycler.setAdapter(adapter);
-    }
-
-    public void sendRequest(String getPageUrl) {
-        userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
-        token = userManagerSharedPrefs.getToken();
-        TokenInterceptor interceptor = new TokenInterceptor(token);
-
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-                .build();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .client(client)
-                .baseUrl(url)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        request = retrofit.create(RetrofitApiService.class);
-
-
-        Call<SingleFlowerModel> call = request.postIdForDetails(getPageUrl);
-        call.enqueue(new Callback<SingleFlowerModel>() {
-            @Override
-            public void onResponse(Call<SingleFlowerModel> call, Response<SingleFlowerModel> response) {
-                if (response.isSuccessful()) {
-                    singleFlowerModelArrayList = response.body();
-//                    adapter.setList();
-                } else {
-                    Toast.makeText(getContext(), " else" + response.body(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SingleFlowerModel> call, Throwable t) {
-                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
 
-
-//        ArrayList plantDetailListArray = new ArrayList();
-//        Arrays.asList(seasonalModel);
-//        PlantDetailAdapter plantDetailAdapter = new PlantDetailAdapter(mydataList, getActivity());
-
-//        recyclerPlantDetail.setAdapter(plantDetailAdapter);
-//        recyclerPlantDetail.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-
-//        PlantDetailClass plantDetailClass;
-//                = new StructuresClass("first", "flower", R.drawable.s_two);
-
-//        ArrayList<SeasonalModel> seasonalModels = new ArrayList();
 
 /**
  * plantDetailListArray.add(new PlantDetailClass("rose", "12", R.drawable.ic_launcher_background, "native",

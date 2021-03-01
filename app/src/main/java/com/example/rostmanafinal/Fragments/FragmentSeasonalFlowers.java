@@ -163,15 +163,16 @@ public class FragmentSeasonalFlowers extends Fragment implements ChangingFragmen
  bundle.putString("getSoilId", seasonalModel.getSoilId().toString());
  bundle.putString("getFertilizerId", seasonalModel.getFertilizerId().toString());
 
-//        Fragment_Plant_Details fragmentPlantDetails = new Fragment_Plant_Details();
-//        fragmentPlantDetails.setArguments(bundle);
-//        ft.replace(android.R.id.content, fragment2);
-//        ft.addToBackStack(null);
-//        ft.commit();
-//        Bundle bundle2 = new Bundle();
         SeasonalModel obj = new SeasonalModel();
         bundle.putSerializable("seasonalBundle", obj);
 
         Navigation.findNavController(secondView).navigate(R.id.action_fragmentSeasonalFlowers_to_fragment_Plant_Details, bundle);
     }
 }
+
+//        Fragment_Plant_Details fragmentPlantDetails = new Fragment_Plant_Details();
+//        fragmentPlantDetails.setArguments(bundle);
+//        ft.replace(android.R.id.content, fragment2);
+//        ft.addToBackStack(null);
+//        ft.commit();
+//        Bundle bundle2 = new Bundle();

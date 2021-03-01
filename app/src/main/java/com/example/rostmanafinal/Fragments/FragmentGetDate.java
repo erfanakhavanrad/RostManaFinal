@@ -148,21 +148,29 @@ public class FragmentGetDate extends Fragment {
 //                int inum = Integer.parseInt(str);
 //                int inum2 = Integer.parseInt(str2);
 //                Toast.makeText(getContext(), endForPass, Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
+
+                /**
+                Bundle bundle = new Bundle();
                 if (startForPass != null && endForPass != null) {
                     if (endForPass > startForPass) {
-                        Bundle bundle = new Bundle();
+
 
 //                        bundle.putString("getId", seasonalModel.getId().toString());
-                        bundle.putInt("endForPass", endForPass);
-                        bundle.putInt("startForPass", startForPass);
-                        Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
-                        startForPass = null;
-                        endForPass = null;
+//                        bundle.putInt("endForPass", endForPass);
+//                        bundle.putInt("startForPass", startForPass);
+                        bundle.putString("txtShow1", txtShow1);
+                        bundle.putString("txtShow2", txtShow2);
+//                        startForPass = null;
+//                        endForPass = null;
                     } else
                         Toast.makeText(getContext(), "بازه زمانی معتبر انتخاب کنید", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "هر دو تاریخ را انتخاب کنید", Toast.LENGTH_SHORT).show();
                 }
+                */
+
+
             }
         });
 

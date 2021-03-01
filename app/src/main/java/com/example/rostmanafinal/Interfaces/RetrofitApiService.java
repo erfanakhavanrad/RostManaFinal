@@ -1,10 +1,10 @@
 package com.example.rostmanafinal.Interfaces;
 
 import com.example.rostmanafinal.Pojo.GetHello;
+import com.example.rostmanafinal.Pojo.ModelChartsTables.ChartsModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SingleFlowerModel;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
-import com.example.rostmanafinal.Pojo.ModelMonitoring.ChartModel;
 import com.example.rostmanafinal.Pojo.ModelRegister;
 import com.example.rostmanafinal.Pojo.ModelSMS.VerifyModel;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
@@ -13,10 +13,12 @@ import com.example.rostmanafinal.Pojo.Users;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Url;
 
@@ -76,12 +78,27 @@ public interface RetrofitApiService {
     );
 
     //    This is for the Temperature Chart POST
-    @FormUrlEncoded
+
+    //    @FormUrlEncoded
+//    @POST()
+//    Call<ChartsModel> postForCharts(@Url String builderId),
+//    @POST()
+//    Call<ChartsModel> postforCharts(@Body List<Day> dayList);
+
+    @Multipart
     @POST()
-    Call<ChartModel> postForCharts(@Url Integer builderId,
-                                   @Field("date1") String date1,
-                                   @Field("date2") String date2
+    Call<ChartsModel> postForCharts(@Url String builderId,
+                                    @Body String date1,
+                                    @Body String date2
     );
+
+
+//    @FormUrlEncoded
+//    @POST()
+//    Call<ChartsModel> postForCharts(@Url String builderId,
+//                                    @Field("date1") String date1,
+//                                    @Field("date2") String date2
+//    );
 
 
     //    This is for plant's details using id

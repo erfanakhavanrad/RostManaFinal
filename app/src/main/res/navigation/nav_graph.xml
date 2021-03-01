@@ -48,9 +48,6 @@
         android:label="FragmentHome"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_fragmentHome_to_fragmentViewPagerTabbed23"
-            app:destination="@id/fragmentViewPagerTabbed23" />
-        <action
             android:id="@+id/action_fragmentHome_to_fragmentAboutUs"
             app:destination="@id/fragmentAboutUs" />
         <action
@@ -80,25 +77,20 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmnetNotifs"
             app:destination="@id/fragmentNotifs" />
+        <action
+            android:id="@+id/action_fragmentHome_to_firstFragment2"
+            app:destination="@id/firstFragment2" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"
         android:name="com.example.rostmanafinal.Fragments.FragmentEnterSerialNumber"
         android:label="FragmentEnterSerialNumber"
-        tools:layout="@layout/fragment_enter_serialnumber">
-        <action
-            android:id="@+id/action_fragmentEnterSerialNumber_to_firstFragment2"
-            app:destination="@id/firstFragment2" />
-    </fragment>
+        tools:layout="@layout/fragment_enter_serialnumber"/>
     <fragment
         android:id="@+id/fragmentScanQR"
         android:name="com.example.rostmanafinal.Fragments.FragmentScanQR"
         android:label="FragmentScanQR"
-        tools:layout="@layout/fragment_scan_qr">
-        <action
-            android:id="@+id/action_fragmentScanQR_to_firstFragment2"
-            app:destination="@id/firstFragment2" />
-    </fragment>
+        tools:layout="@layout/fragment_scan_qr"/>
     <fragment
         android:id="@+id/fragmentCactus"
         android:name="com.example.rostmanafinal.Fragments.FragmentCactus"
@@ -135,14 +127,7 @@
         android:id="@+id/fragmentViewPagerTabbed23"
         android:name="com.example.rostmanafinal.Fragments.FragmentAddToHome"
         android:label="FragmentAddToHome"
-        tools:layout="@layout/fragment_viewpager_tabbed">
-        <action
-            android:id="@+id/action_fragmentViewPagerTabbed23_to_fragmentScanQR"
-            app:destination="@id/fragmentScanQR" />
-        <action
-            android:id="@+id/action_fragmentViewPagerTabbed23_to_fragmentEnterSerialNumber"
-            app:destination="@id/fragmentEnterSerialNumber" />
-    </fragment>
+        tools:layout="@layout/fragment_viewpager_tabbed"/>
     <fragment
 
         android:id="@+id/fragmentSeasonalFlowers"
