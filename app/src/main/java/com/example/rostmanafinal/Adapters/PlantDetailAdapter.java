@@ -20,18 +20,18 @@ import java.util.List;
 
 public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostmanafinal.Adapters.PlantDetailAdapter.ViewHolder> {
     //    ArrayList<PlantDetailClass> plantDetailsList2;
-    ArrayList<SingleFlowerModel> seasonalModels;
+    List<SeasonalModel> seasonalModels;
 
     Context context;
 
-    public PlantDetailAdapter(ArrayList<SingleFlowerModel> plantDetails1, Context context) {
+    public PlantDetailAdapter(List<SeasonalModel> plantDetails1, Context context) {
 //        plantDetailsList2 = plantDetails1;
         seasonalModels = plantDetails1;
         this.context = context;
     }
 
 
-    public void setList(ArrayList<SingleFlowerModel> list){
+    public void setList(List<SeasonalModel> list){
         this.seasonalModels = list;
         notifyDataSetChanged();
     }
@@ -51,11 +51,11 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        SingleFlowerModel plantdetailsClass = seasonalModels.get(position);
+        SeasonalModel plantdetailsClass = seasonalModels.get(position);
         //        holder.imageView.setImageResource(R.drawable.s_one);
 //        holder.imageView.setImageResource(plantdetailsClass.getPhoto());
-        holder.txtTitle.setText(plantdetailsClass.getPlant().getName());
-        holder.txtDescription.setText(plantdetailsClass.getPlant().getLight());
+        holder.txtTitle.setText(plantdetailsClass.getName());
+        holder.txtDescription.setText(plantdetailsClass.getName());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -87,8 +87,8 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SingleFlowerModel item = seasonalModels.get(getAdapterPosition());
-                    Toast.makeText(itemView.getContext(), "position is " + item.getPlant().getId(), Toast.LENGTH_SHORT).show();
+                    SeasonalModel item = seasonalModels.get(getAdapterPosition());
+                    Toast.makeText(itemView.getContext(), "position is " + item.getId(), Toast.LENGTH_SHORT).show();
                 }
             });
 

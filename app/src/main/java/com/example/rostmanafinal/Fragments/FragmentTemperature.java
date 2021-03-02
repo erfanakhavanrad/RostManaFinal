@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,10 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.rostmanafinal.Adapters.FlowersAdapter;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.Pojo.ModelChartsTables.ChartsModel;
-import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
@@ -45,13 +44,13 @@ public class FragmentTemperature extends Fragment {
     static String BASE_URL = "Mobile/histort/";
     UserManagerSharedPrefs userManagerSharedPrefs;
     RetrofitApiService request;
-    String date1, date2, SURL, token, url = "http://192.168.88.134:8000/api/";
+    String date1, date2, SURL, token, url = "http://rostmana.com/api/";
     //    url = "http://rostmana.com/api/"
     //    List<SeasonalModel> seasonalModels22 = new ArrayList<>();
 //    FlowersAdapter adapter = new FlowersAdapter(this::callBack);
     static String SEASONAL_URL = "7";
 
-
+    String[] dawdd;
     LineChartView lineChartView, lineChartView2;
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
     //    ImageView ;
@@ -95,7 +94,7 @@ public class FragmentTemperature extends Fragment {
         if (userManagerSharedPrefs.getToken() != null) {
 //            imageLogo.setVisibility(View.VISIBLE);
 
-            exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+//            exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
 
             Line line = new Line(yAxisValues).setColor(Color.parseColor("#ff0000"));
             for (int i = 0; i < axisDataDays.length; i++) {
@@ -151,24 +150,66 @@ public class FragmentTemperature extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         request = retrofit.create(RetrofitApiService.class);
-        Call<ChartsModel> call = request.postForCharts(getPageUrl, date1, date2);
-        call.enqueue(new Callback<ChartsModel>() {
+
+
+        Call<List<ChartsModel>> call = request.postForCharts(getPageUrl, date1, date2);
+        call.enqueue(new Callback<List<ChartsModel>>() {
             @Override
-            public void onResponse(Call<ChartsModel> call, Response<ChartsModel> response) {
+            public void onResponse(Call<List<ChartsModel>> call, Response<List<ChartsModel>> response) {
                 if (response.isSuccessful()) {
-                    ChartsModel chartsModels = new ChartsModel();
-                    chartsModels = response.body();
-                    String sfsfsfsf = chartsModels.getDay();
-                } else if (response.code() == 400) {
-                    Toast.makeText(getContext(), "4000", Toast.LENGTH_SHORT).show();
-                } else Toast.makeText(getContext(), "onResponse error", Toast.LENGTH_SHORT).show();
+                    ChartsModel chartsModel = new ChartsModel();
+//                    List<ChartsModel> chartsModelList = new List<>;
+//                    chartsModel = response.body();
+
+                    ArrayList<ChartsModel> chartsModelArrayList = new ArrayList<>();
+//                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+//                    chartsModel = response.body();
+//                    chartsModelArrayList = response.body();
+//                    dawdd = response.body().get(1).getDay();
+                    ArrayList<ChartsModel> arrayList = new ArrayList();
+                    arrayList.addAll(response.body());
+                    for (int i = 0; i < arrayList.size(); i++) {
+//                        arrayList.indexOf(i);
+                        arrayList.get(i).getDay();
+//                        float afa[] = arrayList.get(i).getNumOFFLight();
+//                                    exampleHum.put("hum", afa);
+//            exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+Float[] daw;
+//daw = arrayList.get(i).getNumOFFLight();
+//exampleHum.put("num",arrayList.get(i).getNumOFFLight());
+                        Toast.makeText(getContext(), arrayList.get(i).getNumOFFLight().toString(), Toast.LENGTH_SHORT).show();
+                        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+                    }
+                } else if (response.code() == 404) {
+                    Toast.makeText(getContext(), "404", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "on resonse" + response.message(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<ChartsModel> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<ChartsModel>> call, Throwable t) {
+                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        /**
+         Call<ChartsModel> call = request.postForCharts(getPageUrl,date1, date2);
+         call.enqueue(new Callback<ChartsModel>() {
+        @Override public void onResponse(Call<ChartsModel> call, Response<ChartsModel> response) {
+        if (response.isSuccessful()) {
+        ChartsModel chartsModels = new ChartsModel();
+        chartsModels = response.body();
+        String sfsfsfsf = chartsModels.getDay();
+        } else if (response.code() == 400) {
+        Toast.makeText(getContext(), "4000", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(getContext(), "onResponse error", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override public void onFailure(Call<ChartsModel> call, Throwable t) {
+        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        }); */
 //Call<ChartModel> call = request.postForCharts(getPageUrl, date1, date2);
 //        Call<List<SeasonalModel>> call = request.getPlantList(getPageUrl);
 //        call.enqueue(new Callback<List<SeasonalModel>>() {

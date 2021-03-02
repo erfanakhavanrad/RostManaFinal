@@ -13,12 +13,10 @@ import com.example.rostmanafinal.Pojo.Users;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Url;
 
@@ -85,13 +83,22 @@ public interface RetrofitApiService {
 //    @POST()
 //    Call<ChartsModel> postforCharts(@Body List<Day> dayList);
 
-    @Multipart
+    //    @Multipart
+//    @POST()
+//    Call<ChartsModel> postForCharts(@Url String builderId,
+//                                    @Body String date1,
+//                                    @Body String date2
+//    );
+    @FormUrlEncoded
     @POST()
-    Call<ChartsModel> postForCharts(@Url String builderId,
-                                    @Body String date1,
-                                    @Body String date2
-    );
-
+    Call<List<ChartsModel>> postForCharts(@Url String builderId,
+                                          @Field ("date1") String date1,
+                                          @Field("date2") String date2
+                                    );
+//    @Field("date1")
+//    String day1,
+//    @Field("date2")
+//    String day 2
 
 //    @FormUrlEncoded
 //    @POST()
