@@ -41,7 +41,7 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.sweeping_plant_recycler, parent, false);
+        View view = inflater.inflate(R.layout.recycler_item_plant_details, parent, false);
         com.example.rostmanafinal.Adapters.PlantDetailAdapter.ViewHolder holder = new ViewHolder(view);
         return holder;
 
@@ -81,9 +81,9 @@ public class PlantDetailAdapter extends RecyclerView.Adapter<com.example.rostman
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
-            txtDescription = itemView.findViewById(R.id.txtDescription);
+            txtDescription = itemView.findViewById(R.id.txtValue);
             txtTitle = itemView.findViewById(R.id.txtTitle);
-            imageView = itemView.findViewById(R.id.imageCard);
+            imageView = itemView.findViewById(R.id.imageIcon);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

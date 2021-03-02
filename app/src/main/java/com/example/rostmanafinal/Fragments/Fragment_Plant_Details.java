@@ -12,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Adapters.PlantDetailAdapter;
+import com.example.rostmanafinal.Adapters.SecondPlantDetailAdapter;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SecondSeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SingleFlowerModel;
@@ -23,6 +25,7 @@ import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
 import com.squareup.picasso.Picasso;
 
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,15 +34,17 @@ public class Fragment_Plant_Details extends Fragment {
     RecyclerView recyclerPlantDetail;
     ImageView image_check, image_cancel, imagePlant;
     TextView txtName, txtEName;
-    String showPhoto, getPhoto, getDescription, id;
+    String showPhoto, id;
     Button btn_detail;
     UserManagerSharedPrefs userManagerSharedPrefs;
     //    List<Mydata> mydataList = new ArrayList<>();
-    List<SeasonalModel> seasonalModels = new ArrayList<>();
+//    List<SeasonalModel> seasonalModels = new ArrayList<>();
+    ArrayList<SecondSeasonalModel> secondSeasonalModels = new ArrayList<>();
     //    List<SingleFlowerModel> singleFlowerModelArrayList = new ArrayList<>();
 //    SingleFlowerModel singleFlowerModel = new SingleFlowerModel();
     SingleFlowerModel singleFlowerModelArrayList = new SingleFlowerModel();
-    PlantDetailAdapter adapter;
+    //    PlantDetailAdapter adapter;
+    SecondPlantDetailAdapter adapter;
     Bundle bundle = new Bundle();
 
     @Nullable
@@ -59,38 +64,115 @@ public class Fragment_Plant_Details extends Fragment {
         txtName = view.findViewById(R.id.txtName);
         txtEName = view.findViewById(R.id.txtEName);
         if (bundle != null) {
-            String nameExtra = bundle.getString("nameKey");
-            String amountExtra = bundle.getString("amountKey");
-            String getEName = bundle.getString("getEName");
+            String getIdgetName, getEName, getPWaterS, getPWaterW, getTimeFertilizer, getPrune,
+                    getPlanttype, getTemp, getLight, getHumiditySoil, getHumidityAir, getSoilId, getFertilizerId,
+                    getPhoto, getDescription, nameExtra, amountExtra;
+            nameExtra = bundle.getString("nameKey");
+            amountExtra = bundle.getString("amountKey");
+            getEName = bundle.getString("getEName");
+            id = bundle.getString("getId");
+            getTemp = bundle.getString("getTemp");
+            getPhoto = bundle.getString("getPhoto");
+            showPhoto = "http://rostmana.com" + getPhoto;
+            getHumiditySoil = bundle.getString("getHumiditySoil");
+            getLight = bundle.getString("getLight");
+            getPWaterS = bundle.getString("getPWaterS");
+            getPWaterW = bundle.getString("getPWaterW");
+            getDescription = bundle.getString("getDescription");
+            txtEName.setText(getEName);
 
             //Just add your data in list
 //            Mydata mydata = new Mydata();  // object of Model Class
 //            mydata.setAmountExtra(amountExtra );
 //            mydata.setNameExtra(nameExtra);
 //            mydataList.add(mydata);
-            SeasonalModel seasonalModel = new SeasonalModel();
-            seasonalModel.setEName(getEName);
-            seasonalModels.add(seasonalModel);
-            String ssf = seasonalModel.getEName().toString();
-            txtEName.setText(ssf);
-            adapter = new PlantDetailAdapter(seasonalModels, getContext());
+//            SeasonalModel seasonalModel = new SeasonalModel();
+            if (getDescription == null)
+                btn_detail.setVisibility(View.INVISIBLE);
 
+            SecondSeasonalModel secondSeasonalModel = new SecondSeasonalModel(2, "دما", "333333333"
+                    , R.drawable.ic_temperatureicon_svg, R.drawable.ic_seasonalflowers, "ddaddad", getTemp, "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532, 222);
+            secondSeasonalModels.add(secondSeasonalModel);
+
+            SecondSeasonalModel secondSeasonalModel2 = new SecondSeasonalModel(2, "رطوبت هوا", "55555555555"
+                    , R.drawable.ic_humidity_svg, R.drawable.ic_humidity_svg, "ddaddad",
+                    "", "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel2);
+
+            SecondSeasonalModel secondSeasonalModel3 = new SecondSeasonalModel(2, "نور", "bnvnvbcb"
+                    , R.drawable.ic_light_svg, R.drawable.ic_seasonalflowers, "ddaddad",
+                    getLight.toString(), "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel3);
+
+            SecondSeasonalModel secondSeasonalModel4 = new SecondSeasonalModel(2, "آبیاری در تابستان", "bnvnvbcb"
+                    , R.drawable.ic_watering_svg, R.drawable.ic_seasonalflowers, "ddaddad",
+                    getPWaterS.toString(), "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel4);
+/*
+
+            SecondSeasonalModel secondSeasonalModel5 = new SecondSeasonalModel(2, "آبیاری در زمستان", "bnvnvbcb"
+                    , R.drawable.ic_fog_svg, R.drawable.ic_seasonalflowers, "ddaddad",
+                    getPWaterW.toString(), "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel5);
+
+            SecondSeasonalModel secondSeasonalModel6 = new SecondSeasonalModel(2, "کوددهی", "bnvnvbcb"
+                    , R.drawable.ic_vaporizer_svg, R.drawable.ic_seasonalflowers, "ddaddad",
+                    "fddfddf", "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel6);
+
+            SecondSeasonalModel secondSeasonalModel7 = new SecondSeasonalModel(2, "سم پاشی", "bnvnvbcb"
+                    , R.drawable.ic_spraying, R.drawable.ic_seasonalflowers, "ddaddad",
+                    "fddfddf", "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel7);
+
+            SecondSeasonalModel secondSeasonalModel8 = new SecondSeasonalModel(2, "هرس", "bnvnvbcb"
+                    , R.drawable.ic_prune, R.drawable.ic_seasonalflowers, "ddaddad",
+                    "fddfddf", "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel8);
+
+            SecondSeasonalModel secondSeasonalModel9 = new SecondSeasonalModel(2, "برداشت", "bnvnvbcb"
+                    , R.drawable.ic_harvest, R.drawable.ic_seasonalflowers, "ddaddad",
+                    "fddfddf", "fsfesfsf", "fsefsff",
+                    52, 12, 532, 87,
+                    85, 31, 532);
+            secondSeasonalModels.add(secondSeasonalModel9);
+*/
+
+//            seasonalModel.setEName(getEName);
+
+//            seasonalModels.add(seasonalModel);
+//            String ssf = seasonalModel.getEName().toString();
+//            txtEName.setText(ssf);
+//            adapter = new PlantDetailAdapter(secondSeasonalModel, getContext());
+            adapter = new SecondPlantDetailAdapter(secondSeasonalModels, getContext());
         }
 //txtEName.setText();
 
 //        SeasonalModel seasonalModel = (SeasonalModel) bundle.getSerializable("seasonalBundle");
-        id = bundle.getString("getId");
-        getDescription = bundle.getString("getDescription");
-        if (getDescription == null)
-            btn_detail.setVisibility(View.INVISIBLE);
+
+
 // else if (getDescription == null)
 //     btn_detail.setVisibility(View.VISIBLE);
         /**
          * get your id from previous fragment
          */
         String getName = bundle.getString("getName");
-        getPhoto = bundle.getString("getPhoto");
-        showPhoto = "http://rostmana.com" + getPhoto;
         Picasso.get().load(showPhoto).placeholder(R.drawable.logo).into(imagePlant);
         txtName.setText(getName);
         SeasonalModel seasonalModel;
@@ -103,32 +185,11 @@ public class Fragment_Plant_Details extends Fragment {
 //                "34322", "244", "42344"
 //        ));
 
-
-        image_cancel = view.findViewById(R.id.image_cancel);
-        image_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_firstFragment2);
-            }
-        });
-
-        image_check = view.findViewById(R.id.image_check);
-        image_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_fragmentGreenHouse2);
-            }
-        });
-
-        recyclerPlantDetail.setLayoutManager(new LinearLayoutManager(getContext()
-                , RecyclerView.VERTICAL, false));
+        recyclerPlantDetail.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//        recyclerPlantDetail.setLayoutManager(new GridLayoutManager(getContext()
+//                , RecyclerView.VERTICAL, false));
         recyclerPlantDetail.setAdapter(adapter);
-        btn_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
 }

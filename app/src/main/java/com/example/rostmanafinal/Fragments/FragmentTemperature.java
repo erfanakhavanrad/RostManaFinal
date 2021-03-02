@@ -50,20 +50,17 @@ public class FragmentTemperature extends Fragment {
 //    FlowersAdapter adapter = new FlowersAdapter(this::callBack);
     static String SEASONAL_URL = "7";
 
-    String[] dawdd;
-    LineChartView lineChartView, lineChartView2;
+//    String[] dawdd;
+    LineChartView lineChartView;
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
-    //    ImageView ;
-    TextView txtMoreDetails;
     ImageView imageLogo;
-    Button btn_fetch;
     private static final String TAG = "FragmentMonitoring";
     //    First Chart
     private HashMap<String, String[]> exampleDays = new HashMap<String, String[]>();
     private HashMap<String, float[]> exampleHum = new HashMap<String, float[]>();
-
+//private HashMap<String, Integer[]> exampleHum = new HashMap<>(String, Integer[]);
     //    Second Chart
-    private HashMap<String, float[]> exampleTemp = new HashMap<String, float[]>();
+//    private HashMap<String, float[]> exampleTemp = new HashMap<String, float[]>();
     Bundle bundle = new Bundle();
 
     @Nullable
@@ -78,19 +75,24 @@ public class FragmentTemperature extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
         bundle = this.getArguments();
+        imageLogo = view.findViewById(R.id.imageLogo);
+        lineChartView = view.findViewById(R.id.chart);
         SURL = url + BASE_URL + SEASONAL_URL;
+        List yAxisValues = new ArrayList();
+        List axisValues = new ArrayList();
 //        date1 = bundle.getString("txtShow1");
 //        date2 = bundle.getString("txtShow2");
+        //        String all = SURL + date1 + date2;
+//        System.out.println(all);
+        //        lineChartView2 = view.findViewById(R.id.chart2);
         date1 = "1399-01-20";
         date2 = "1399-12-01";
         sendRequest(SURL, date1, date2);
-        String all = SURL + date1 + date2;
-        System.out.println(all);
-        imageLogo = view.findViewById(R.id.imageLogo);
-        lineChartView = view.findViewById(R.id.chart);
-//        lineChartView2 = view.findViewById(R.id.chart2);
-        List yAxisValues = new ArrayList();
-        List axisValues = new ArrayList();
+
+
+
+        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+
         if (userManagerSharedPrefs.getToken() != null) {
 //            imageLogo.setVisibility(View.VISIBLE);
 
@@ -173,12 +175,21 @@ public class FragmentTemperature extends Fragment {
                         arrayList.get(i).getDay();
 //                        float afa[] = arrayList.get(i).getNumOFFLight();
 //                                    exampleHum.put("hum", afa);
-//            exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
 Float[] daw;
 //daw = arrayList.get(i).getNumOFFLight();
 //exampleHum.put("num",arrayList.get(i).getNumOFFLight());
                         Toast.makeText(getContext(), arrayList.get(i).getNumOFFLight().toString(), Toast.LENGTH_SHORT).show();
-                        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+//exampleHum.put("num", arrayList.get(i).getNumOFFLight());
+                        Integer floatList = arrayList.get(i).getNumOFFLight();
+
+//                        float[] floatArray = new float[floatList.size()];
+//                        int i = 0;
+//
+//                        for (Float f : floatList) {
+//                            floatArray[i++] = (f != null ? f : Float.NaN); // Or whatever default you want.
+//                        }
+
+//                        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
                     }
                 } else if (response.code() == 404) {
                     Toast.makeText(getContext(), "404", Toast.LENGTH_SHORT).show();

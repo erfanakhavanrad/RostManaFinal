@@ -10,7 +10,7 @@ public class SecondSeasonalModel implements Serializable {
     @Expose
     private Integer id;
 
-    public SecondSeasonalModel(Integer id, String name, Object eName, String photo, Object pWaterS, Object pWaterW, Object timeFertilizer, Object prune, Object description, Integer planttype, Integer temp, Integer light, Integer humiditySoil, Integer humidityAir, Integer soilId, Integer fertilizerId) {
+    public SecondSeasonalModel(Integer id, String name, Object eName, Integer photo, Object pWaterS, Object pWaterW, Object timeFertilizer, Object prune, Object description, Integer planttype, Integer temp, Integer light, Integer humiditySoil, Integer humidityAir, Integer soilId, Integer fertilizerId) {
         this.id = id;
         this.name = name;
         this.eName = eName;
@@ -37,7 +37,7 @@ public class SecondSeasonalModel implements Serializable {
     private Object eName;
     @SerializedName("photo")
     @Expose
-    private String photo;
+    private Integer photo;
     @SerializedName("P_Water_S")
     @Expose
     private Object pWaterS;
@@ -102,13 +102,13 @@ public class SecondSeasonalModel implements Serializable {
         this.eName = eName;
     }
 
-    public String getPhoto() {
+    public Integer getPhoto() {
         if (photo != null)
             return photo;
-        else return "نامشخص";
+        else return 0;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(Integer photo) {
         this.photo = photo;
     }
 
