@@ -24,20 +24,20 @@
     <string name="supportTeamTicket">پس از درخواست تعویض گیاهان و یا حذف گیاهان درون سازه
         تیم پشتیبان در اسرع وقت با شما تماس می‌گیرند.</string>
 
-<!--    <string name="status_stop"><font </string>-->
-<!--    <string-array name="brew_array">-->
-<!--        <item>Cappuccino</item>-->
-<!--        <item>Espresso</item>-->
-<!--        <item>Mocha</item>-->
-<!--        <item>Caffè Americano</item>-->
-<!--        <item>Cafe Zorro</item>-->
-<!--    </string-array>-->
-
-    <string-array name="brew_array" >
-        <item ><FONT COLOR="#ff0000">Demo Mode</FONT></item>
-        <item ><FONT COLOR="#006600"><b>Inbox</b></FONT></item>
-        <item ><FONT COLOR="#006600"><b>Sent Items</b></FONT></item>
-        <item ><FONT COLOR="#006600"><b>Filing History</b></FONT></item>
+    <!--    <string name="status_stop"><font </string>-->
+    <string-array name="subjectArray">
+        <item>حذف گیاه</item>
+        <item>تعویض گیاه</item>
+        <item>درج گیاه</item>
+        <!--        <item>Caffè Americano</item>-->
+        <!--        <item>Cafe Zorro</item>-->
     </string-array>
+
+    <!--    <string-array name="brew_array" >-->
+    <!--        <item ><FONT COLOR="#ff0000">Demo Mode</FONT></item>-->
+    <!--        <item ><FONT COLOR="#006600"><b>Inbox</b></FONT></item>-->
+    <!--        <item ><FONT COLOR="#006600"><b>Sent Items</b></FONT></item>-->
+    <!--        <item ><FONT COLOR="#006600"><b>Filing History</b></FONT></item>-->
+    <!--    </string-array>-->
 
 </resources>

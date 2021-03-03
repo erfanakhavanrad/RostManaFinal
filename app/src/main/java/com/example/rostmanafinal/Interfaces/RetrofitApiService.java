@@ -8,7 +8,9 @@ import com.example.rostmanafinal.Pojo.ModelEditProfile;
 import com.example.rostmanafinal.Pojo.ModelRegister;
 import com.example.rostmanafinal.Pojo.ModelSMS.VerifyModel;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
+import com.example.rostmanafinal.Pojo.TicketModel;
 import com.example.rostmanafinal.Pojo.Users;
+import com.google.gson.JsonArray;
 
 import java.util.List;
 
@@ -92,9 +94,9 @@ public interface RetrofitApiService {
     @FormUrlEncoded
     @POST()
     Call<List<ChartsModel>> postForCharts(@Url String builderId,
-                                          @Field ("date1") String date1,
+                                          @Field("date1") String date1,
                                           @Field("date2") String date2
-                                    );
+    );
 //    @Field("date1")
 //    String day1,
 //    @Field("date2")
@@ -119,10 +121,26 @@ public interface RetrofitApiService {
     @POST("Mobile/vitrifiedChk")
     Call<VerifyModel> post6DigitsCode(@Field("vcode") Integer vCode
     );
-//    @Header("access_token") String token
+
+    //    @Header("access_token") String token
     //    @FormUrlEncoded
 //    @POST("Mobile/User")
 //    Call<List<ModelLogedinUser>> postLoggedInUser(@Header("access_token") String token);
 //    @FormUrlEncoded
 //    @POST(URL) Call<ResponseBody> getdata(@Field("jdata") String jdata);
+
+    //    This is for tickets page
+    @FormUrlEncoded
+    @POST("Mobile/Ticket")
+    Call<TicketModel> postTicket(@Field("type_tiket") String type_tiket
+            , @Field("subject") String subject,
+                                 @Field("description") String description
+    );
+
+    // This is for add Plant
+    @FormUrlEncoded
+    @POST("Mobile/addPlant")
+    Call<TicketModel> postPlantId(@Field("plant_id") String plant_id);
+
+
 }

@@ -120,7 +120,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 }
 //                else if (edtPassword.getText().toString() >)
                 number = false;
-                showLoading();
+//                showLoading();
                 Call<Users> call = request.getUserPostToken(user, pass);
                 call.enqueue(new Callback<Users>() {
                     @Override
@@ -162,7 +162,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                     public void onFailure(Call<Users> call, Throwable t) {
                         Toast.makeText(LoginRegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                         number = true;
-                        showLoading();
+//                        showLoading();
                     }
                 });
 
@@ -203,7 +203,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
             }
         }, 2000);
     }
-
+/*
     private void showLoading() {
 
         if (number) {
@@ -212,7 +212,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
         } else {
             constraintProgress.setVisibility(View.VISIBLE);
         }
-    }
+    } */
 
 
 }
