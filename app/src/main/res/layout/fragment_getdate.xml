@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerLayout"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="40dp"
         android:background="@color/lGreen2"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,11 +17,12 @@
 
         <ImageView
             android:id="@+id/btn_check"
-            android:layout_width="25dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
             android:background="@drawable/ic_whitecheck"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,28 +30,25 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="136dp"
             android:background="@color/lGreen2"
             android:fontFamily="@font/iransans"
             android:gravity="center"
-            android:padding="5dp"
             android:text="انتخاب بازه زمانی"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_backwhite_svg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

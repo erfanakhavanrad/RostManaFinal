@@ -34,7 +34,7 @@ public class FragmentGetDate extends Fragment {
     private PersianDatePickerDialog picker;
     String txtShow2, txtShow1;
     ImageView btn_check;
-    Integer startForPass, endForPass;
+    Integer startForPass = null, endForPass = null;
 
     @Nullable
     @Override
@@ -64,7 +64,7 @@ public class FragmentGetDate extends Fragment {
             @Override
             public void onClick(View v) {
 
-                initDate.setPersianDate(1370, 3, 13);
+                initDate.setPersianDate(1399, 12, 12);
 
                 picker = new PersianDatePickerDialog(getContext())
                         .setPositiveButtonString("تایید")
@@ -101,12 +101,12 @@ public class FragmentGetDate extends Fragment {
 
             }
         });
-
+PersianCalendar persianCalendar;
         txtEnd = view.findViewById(R.id.txtEnd);
         txtEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initDate.setPersianDate(1370, 3, 13);
+                initDate.setPersianDate(1399, 12, 12);
 
                 picker = new PersianDatePickerDialog(getContext())
                         .setPositiveButtonString("تایید")
@@ -148,9 +148,8 @@ public class FragmentGetDate extends Fragment {
 //                int inum = Integer.parseInt(str);
 //                int inum2 = Integer.parseInt(str2);
 //                Toast.makeText(getContext(), endForPass, Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
 
-                /**
+
                 Bundle bundle = new Bundle();
                 if (startForPass != null && endForPass != null) {
                     if (endForPass > startForPass) {
@@ -161,6 +160,8 @@ public class FragmentGetDate extends Fragment {
 //                        bundle.putInt("startForPass", startForPass);
                         bundle.putString("txtShow1", txtShow1);
                         bundle.putString("txtShow2", txtShow2);
+                        Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
+
 //                        startForPass = null;
 //                        endForPass = null;
                     } else
@@ -168,8 +169,6 @@ public class FragmentGetDate extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "هر دو تاریخ را انتخاب کنید", Toast.LENGTH_SHORT).show();
                 }
-                */
-
 
             }
         });

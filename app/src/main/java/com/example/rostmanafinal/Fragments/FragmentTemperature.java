@@ -21,6 +21,8 @@ import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
 
+import java.lang.reflect.Array;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,15 +52,16 @@ public class FragmentTemperature extends Fragment {
 //    FlowersAdapter adapter = new FlowersAdapter(this::callBack);
     static String SEASONAL_URL = "7";
 
-//    String[] dawdd;
+    //    String[] dawdd;
     LineChartView lineChartView;
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
     ImageView imageLogo;
     private static final String TAG = "FragmentMonitoring";
     //    First Chart
     private HashMap<String, String[]> exampleDays = new HashMap<String, String[]>();
-    private HashMap<String, float[]> exampleHum = new HashMap<String, float[]>();
-//private HashMap<String, Integer[]> exampleHum = new HashMap<>(String, Integer[]);
+    //        private HashMap<String, float[]> exampleHum = new HashMap<String, float[]>();
+//    private HashMap<String, Integer[]> exampleHum = new HashMap<String, Integer[]>();
+    int[] exampleHum = new int[10];
     //    Second Chart
 //    private HashMap<String, float[]> exampleTemp = new HashMap<String, float[]>();
     Bundle bundle = new Bundle();
@@ -90,8 +93,7 @@ public class FragmentTemperature extends Fragment {
         sendRequest(SURL, date1, date2);
 
 
-
-        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+//        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
 
         if (userManagerSharedPrefs.getToken() != null) {
 //            imageLogo.setVisibility(View.VISIBLE);
@@ -103,9 +105,12 @@ public class FragmentTemperature extends Fragment {
                 axisValues.add(i, new AxisValue(i).setLabel(axisDataDays[i]));
             }
 
-            for (int i = 0; i < exampleHum.get("hum").length; i++) {
-                yAxisValues.add(new PointValue(i, exampleHum.get("hum")[i]));
-
+//            for (int i = 0; i < exampleHum.get("hum").length; i++) {
+//                yAxisValues.add(new PointValue(i, exampleHum.get("hum")[i]));
+//
+//            }
+            for (int i = 0; i < exampleHum.length; i++) {
+                yAxisValues.add(new PointValue(i, exampleHum.length));
             }
 
             List lines = new ArrayList();
@@ -175,12 +180,29 @@ public class FragmentTemperature extends Fragment {
                         arrayList.get(i).getDay();
 //                        float afa[] = arrayList.get(i).getNumOFFLight();
 //                                    exampleHum.put("hum", afa);
-Float[] daw;
+                        Float[] daw;
 //daw = arrayList.get(i).getNumOFFLight();
-//exampleHum.put("num",arrayList.get(i).getNumOFFLight());
-                        Toast.makeText(getContext(), arrayList.get(i).getNumOFFLight().toString(), Toast.LENGTH_SHORT).show();
+
+
+//                        int[] num = new int[args.length];
+//                        for (int i = 0; i < args.length; i++) {
+//                            int neki = Integer.parseInt(args[i]);
+//                            num[i] = neki;
+//                        }
+
+
+//                        Toast.makeText(getContext(), arrayList.get(i).getNumOFFLight().toString(), Toast.LENGTH_SHORT).show();
+                        for (int j = 0; j < arrayList.get(i).getTemp(); j++) {
+//                            exampleHum.put("num",arrayList.get(i).getNumOFFLight());
+//                            int adawd = arrayList.get(i).getTemp();
+                            
+//                            int[] daawd = new int[];
+
+                        }
+
+
 //exampleHum.put("num", arrayList.get(i).getNumOFFLight());
-                        Integer floatList = arrayList.get(i).getNumOFFLight();
+//                        Integer floatList = arrayList.get(i).getNumOFFLight();
 
 //                        float[] floatArray = new float[floatList.size()];
 //                        int i = 0;
@@ -190,6 +212,16 @@ Float[] daw;
 //                        }
 
 //                        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+                        int[] nueem = new int[arrayList.size()];
+                        for (int j = 0; j < nueem.length; j++) {
+                            nueem[j] = arrayList.get(i).getTemp();
+//                            exampleHum = nueem[j];
+//                            exampleHum = arrayList.get(i).getNumOFFPumpW();
+//                            exampleHum.put("num", nueem[j]);
+//                            *****
+                            Toast.makeText(getContext(), nueem.toString(), Toast.LENGTH_SHORT).show();
+                        }
+//                        nueem = arrayList.get(i).getNumOFFFogger();
                     }
                 } else if (response.code() == 404) {
                     Toast.makeText(getContext(), "404", Toast.LENGTH_SHORT).show();
