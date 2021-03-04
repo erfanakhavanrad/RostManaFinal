@@ -37,7 +37,7 @@ public class FragmentTicket extends Fragment {
     TextView txtMessage;
     Button btn_send;
     String spinnerValue, description, token, type_tiket = "1", url = "http://192.168.88.134:8000/api/";
-//    Integer type_tiket = 1;
+    //    Integer type_tiket = 1;
     UserManagerSharedPrefs userManagerSharedPrefs;
     RetrofitApiService request;
 
@@ -122,8 +122,10 @@ public class FragmentTicket extends Fragment {
         call.enqueue(new Callback<TicketModel>() {
             @Override
             public void onResponse(Call<TicketModel> call, Response<TicketModel> response) {
-                if (response.isSuccessful()) Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
-            else Toast.makeText(getContext(), "on respnse "+ response.message(), Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful())
+                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getContext(), "on respnse " + response.message(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

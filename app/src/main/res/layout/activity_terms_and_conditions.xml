@@ -1,60 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".TermsAndConditionsActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/lGreen2"
+        android:fontFamily="@font/iransans"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="شرایط و مقررات استفاده از اپلیکیشن"
+        android:textColor="@color/white"
+        android:textSize="17sp"/>
 
-        <WebView
-            android:id="@+id/webView"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="650dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
-        <CheckBox
-            android:id="@+id/materialCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/webView" />
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="650dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/iransans"
-            android:padding="5dp"
-            android:text="قوانین و شرایط را خوانده، با آنها موافقم."
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/materialCheckBox"
-            app:layout_constraintTop_toBottomOf="@+id/webView" />
+            <CheckBox
+                android:id="@+id/materialCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/webView" />
 
-        <Button
-            android:id="@+id/btnAgree"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="152dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="159dp"
-            android:backgroundTint="@color/lGreen2OnSelected"
-            android:fontFamily="@font/iransans"
-            android:padding="5dp"
-            android:text="تایید"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/iransans"
+                android:padding="5dp"
+                android:text="قوانین و شرایط را خوانده، با آنها موافقم."
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/materialCheckBox"
+                app:layout_constraintTop_toBottomOf="@+id/webView" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/btnAgree"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="152dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="159dp"
+                android:backgroundTint="@color/lGreen2OnSelected"
+                android:fontFamily="@font/iransans"
+                android:padding="5dp"
+                android:text="تایید"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

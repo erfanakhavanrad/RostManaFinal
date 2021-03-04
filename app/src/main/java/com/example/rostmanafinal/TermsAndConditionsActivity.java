@@ -2,6 +2,7 @@ package com.example.rostmanafinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
     WebView webView;
     CheckBox materialCheckBox;
     Button btnAgree;
+    UserManagerSharedPrefs userManagerSharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +29,13 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         webView = findViewById(R.id.webView);
         materialCheckBox = findViewById(R.id.materialCheckBox);
         btnAgree = findViewById(R.id.btnAgree);
+        userManagerSharedPrefs = new UserManagerSharedPrefs(this);
 
 
         WebSettings wbset = webView.getSettings();
         wbset.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        String url = "http://www.google.com";
+        String url = "http://rostmana.com/";
 
 //        System.out.println(getdeviceid());
         webView.getSettings().setJavaScriptEnabled(true);
@@ -46,8 +49,13 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                     btnAgree.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(TermsAndConditionsActivity.this, "clicked", Toast.LENGTH_SHORT).show();
 
+                            Toast.makeText(TermsAndConditionsActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                            userManagerSharedPrefs.saveAgree(true);
+
+                            Intent intent = new Intent(TermsAndConditionsActivity.this, LoginRegisterActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     });
                 } else {

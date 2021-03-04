@@ -75,6 +75,13 @@ public class Fragment_Plant_Details extends Fragment {
         imagePlant = view.findViewById(R.id.imagePlant);
         txtName = view.findViewById(R.id.txtName);
         txtEName = view.findViewById(R.id.txtEName);
+        image_cancel = view.findViewById(R.id.image_cancel);
+        image_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragment_Plant_Details_to_firstFragment2);
+            }
+        });
         image_check = view.findViewById(R.id.image_check);
         if (bundle != null) {
             String getIdgetName, getEName, getPWaterS, getPWaterW, getTimeFertilizer, getPrune,
@@ -92,6 +99,7 @@ public class Fragment_Plant_Details extends Fragment {
             getPWaterS = bundle.getString("getPWaterS");
             getPWaterW = bundle.getString("getPWaterW");
             getDescription = bundle.getString("getDescription");
+            getHumidityAir = bundle.getString("getHumidityAir");
             txtEName.setText(getEName);
 
             //Just add your data in list
@@ -111,7 +119,7 @@ public class Fragment_Plant_Details extends Fragment {
 
             SecondSeasonalModel secondSeasonalModel2 = new SecondSeasonalModel(2, "رطوبت هوا", "55555555555"
                     , R.drawable.ic_humidity_svg, R.drawable.ic_humidity_svg, "ddaddad",
-                    "", "fsfesfsf", "fsefsff",
+                    getHumidityAir.toString(), "fsfesfsf", "fsefsff",
                     52, 12, 532, 87,
                     85, 31, 532);
             secondSeasonalModels.add(secondSeasonalModel2);

@@ -2,6 +2,7 @@ package com.example.rostmanafinal;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.BoringLayout;
 
 public class UserManagerSharedPrefs {
     private SharedPreferences sharedPreferences;
@@ -18,8 +19,15 @@ public class UserManagerSharedPrefs {
         editor.putString("verifiedAt", verifiedAt);
         editor.apply();
     }
+    public void saveAgree(Boolean AgreeToTerms){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("AgreeToTerms", AgreeToTerms);
+        editor.apply();
+    }
 
-
+public Boolean getAgreeToTerms(){
+        return sharedPreferences.getBoolean("AgreeToTerms", false);
+}
     public String getVerifiedAt() {
         return sharedPreferences.getString("verifiedAt", null);
     }

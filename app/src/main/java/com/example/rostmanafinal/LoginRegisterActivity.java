@@ -38,11 +38,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginRegisterActivity extends AppCompatActivity {
-    Button btnEnter, btnGuest, btnRegister;
+    Button btnEnter, btnRegister;
     TextInputEditText edtUsername, edtPassword;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String token, verifiedAt, url = "http://rostmana.com/api/";
-//    SharedPreferences sharedPreferences;
+    //    SharedPreferences sharedPreferences;
     RetrofitApiService request;
     private String TAG;
     Users users;
@@ -94,17 +94,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.edtUsername);
         request = APIClient.getApiClient(url).create(RetrofitApiService.class);
         userManagerSharedPrefs = new UserManagerSharedPrefs(this);
-        btnGuest = findViewById(R.id.btnGuest);
-        btnGuest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-
-            }
-        });
-
 
         btnEnter = findViewById(R.id.btnEnter);
         btnEnter.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +120,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                         Log.e("keshav", "loginResponse 1 --> " + users);
                         if (users != null) {
 //                           Log.e("keshav", "getUserId          -->  " + users.getAccess_token());
-                      /** here you get token and do shit */
+                            /** here you get token and do shit */
 //                            Toast.makeText(LoginRegisterActivity.this, "خوش آمدید", Toast.LENGTH_SHORT).show();
 //                            Toast.makeText(LoginRegisterActivity.this, "" + users.getAccess_token(), Toast.LENGTH_SHORT).show();
 //                           String responseCode = users.getResponseCode();

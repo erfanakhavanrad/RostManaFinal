@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.BoringLayout;
 import android.util.Pair;
 import android.view.View;
 import android.view.animation.Animation;
@@ -23,6 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     TextView textSlogan;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String token, verifiedAt;
+    Boolean agreed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +48,25 @@ public class SplashScreenActivity extends AppCompatActivity {
                 Intent intentSplash = new Intent(SplashScreenActivity.this, LoginRegisterActivity.class);
 //                startActivity(intent1);
 //                finish();
-
-                if (token != null && verifiedAt != null) {
-                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                if (!agreed) {
+                    Intent intent = new Intent(SplashScreenActivity.this, TermsAndConditionsActivity.class);
                     startActivity(intent);
                     finish();
-                } else {
-                    Pair[] pairs = new Pair[2];
-                    pairs[0] = new Pair<View, String>(imageSplash1, "logo_image");
-                    pairs[1] = new Pair<View, String>(textSlogan, "logo_text");
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreenActivity.this, pairs);
-                    startActivity(intentSplash, options.toBundle());
-                    finish();
-                }
 
+                } else {
+                    if (token != null && verifiedAt != null) {
+                        Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Pair[] pairs = new Pair[2];
+                        pairs[0] = new Pair<View, String>(imageSplash1, "logo_image");
+                        pairs[1] = new Pair<View, String>(textSlogan, "logo_text");
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreenActivity.this, pairs);
+                        startActivity(intentSplash, options.toBundle());
+                        finish();
+                    }
+                }
 //Intent intent = new Intent(OldActivity.this, NewActivity.class);
 // set the new task and clear flags
 //                intent .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -73,5 +80,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         this.userManagerSharedPrefs = new UserManagerSharedPrefs(this);
         token = userManagerSharedPrefs.getFullName();
         verifiedAt = userManagerSharedPrefs.getVerifiedAt();
+        agreed = userManagerSharedPrefs.getAgreeToTerms();
     }
 }
