@@ -5,6 +5,7 @@ import com.example.rostmanafinal.Pojo.ModelChartsTables.ChartsModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SingleFlowerModel;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
+import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
 import com.example.rostmanafinal.Pojo.ModelRegister;
 import com.example.rostmanafinal.Pojo.ModelSMS.VerifyModel;
 import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
@@ -62,8 +63,12 @@ public interface RetrofitApiService {
 
     // This is for logged in User to receive data
 //    @FormUrlEncoded
+//    @POST("Mobile/User")
+//    Call<Example> postLoggedInUser();
+
     @POST("Mobile/User")
-    Call<Example> postLoggedInUser();
+    Call<AllUserInfoModel> postLoggedInUser();
+
 
 //    Get Flowers list pic and name
 //    @GET("Category/{number}")

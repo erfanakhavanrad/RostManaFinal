@@ -148,8 +148,9 @@ PersianCalendar persianCalendar;
 //                int inum = Integer.parseInt(str);
 //                int inum2 = Integer.parseInt(str2);
 //                Toast.makeText(getContext(), endForPass, Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
 
-
+/*
                 Bundle bundle = new Bundle();
                 if (startForPass != null && endForPass != null) {
                     if (endForPass > startForPass) {
@@ -160,7 +161,6 @@ PersianCalendar persianCalendar;
 //                        bundle.putInt("startForPass", startForPass);
                         bundle.putString("txtShow1", txtShow1);
                         bundle.putString("txtShow2", txtShow2);
-                        Navigation.findNavController(view).navigate(R.id.action_fragmentGetDate_to_fragmentMonitorsContainer);
 
 //                        startForPass = null;
 //                        endForPass = null;
@@ -168,7 +168,7 @@ PersianCalendar persianCalendar;
                         Toast.makeText(getContext(), "بازه زمانی معتبر انتخاب کنید", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "هر دو تاریخ را انتخاب کنید", Toast.LENGTH_SHORT).show();
-                }
+                } */
 
             }
         });

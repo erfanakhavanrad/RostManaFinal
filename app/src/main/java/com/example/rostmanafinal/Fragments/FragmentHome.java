@@ -45,6 +45,7 @@ import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.LoginRegisterActivity;
 import com.example.rostmanafinal.MainActivity;
 import com.example.rostmanafinal.Pojo.HeydariTest;
+import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
 import com.example.rostmanafinal.Pojo.ModelLogedinUser;
 import com.example.rostmanafinal.Pojo.ModelMainPage.Car;
 import com.example.rostmanafinal.Pojo.ModelMainPage.Item;
@@ -116,7 +117,9 @@ public class FragmentHome extends Fragment {
         constraintProgress = view.findViewById(R.id.constraintLoading);
         imageView2 = view.findViewById(R.id.imageView2);
         imageViewtest = view.findViewById(R.id.imageViewtest);
-
+        menuIconImage = view.findViewById(R.id.menuIconImage);
+        fifthItem = view.findViewById(R.id.fifthItem);
+        imageAddUser = view.findViewById(R.id.imageAddUser);
 //        BottomNavigationView bottomNavigationView = null;
 //                bottomNavigationView.getMenu().getItem(1).setEnabled(false);
 
@@ -127,122 +130,7 @@ public class FragmentHome extends Fragment {
         if (saveRequest < 1)
             sendRequest(view);
         saveRequest++;
-        fourthItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userManagerSharedPrefs.clearAllInformation();
 
-                Intent i = new Intent(getActivity(), LoginRegisterActivity.class);
-                Toast.makeText(getContext(), "از حساب خود خارج شدید", Toast.LENGTH_SHORT).show();
-                getActivity().finish();
-                startActivity(i);
-                ((Activity) getActivity()).overridePendingTransition(0, 0);
-
-            }
-        });
-
-
-        fifthItem = view.findViewById(R.id.fifthItem);
-        fifthItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_MAIN);
-//                intent.addCategory(Intent.CATEGORY_HOME);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-                System.exit(0);
-
-            }
-        });
-
-        imageAddUser = view.findViewById(R.id.imageAddUser);
-        imageAddUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentProfile);
-                Toast.makeText(getContext(), "به زودی...", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        menuIconImage = view.findViewById(R.id.menuIconImage);
-        menuIconImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                containerd.openDrawer(GravityCompat.START);
-            }
-        });
-
-        imageClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                containerd.closeDrawer(Gravity.LEFT);
-            }
-        });
-
-        firstItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmnetCallUs);
-            }
-        });
-
-        secondItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentAboutUs);
-            }
-        });
-
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        Log.i(TAG, "onAttach: ");
-
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.i(TAG, "onActivityCreated: ");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart: ");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause: ");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop: ");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i(TAG, "onDestroyView: ");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy: ");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i(TAG, "onDetach: ");
     }
 
 
@@ -262,132 +150,32 @@ public class FragmentHome extends Fragment {
                 .build();
         request = retrofit.create(RetrofitApiService.class);
 
-//        showLoading();
-        Call<Example> call = request.postLoggedInUser();
-//        mainActivity.showLoading(true);
+//        Call<Example> call = request.postLoggedInUser();
+        Call<AllUserInfoModel> call = request.postLoggedInUser();
+        /** inja shorro she*/
         loadingDialogFragment.show(getFragmentManager(), LoadingDialogFragment.TAG);
-        // inja shorro she
-//        BottomNavigationView bottomNavigationView = view.findViewById(R.id.navigationBottom);
-//        bottomNavigationView.getMenu().findItem(3).setEnabled(false);
-        call.enqueue(new Callback<Example>() {
+        call.enqueue(new Callback<AllUserInfoModel>() {
             @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
+            public void onResponse(Call<AllUserInfoModel> call, Response<AllUserInfoModel> response) {
                 if (response.isSuccessful()) {
-                    saveRequest = 1;
-                    /**
-                     *
-                     * End of success
-                     *
-                     * */
+                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                    AllUserInfoModel allUserInfoModel;
+                    allUserInfoModel = response.body();
 
-                    Example example;
-                    example = response.body();
-//                    Toast.makeText(getContext(), "" + example.getUser().getPhonenumber(), Toast.LENGTH_SHORT).show();
-                    imageView2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-//                                String data = "192.168.88.134:8000" + example.getProfile().getAvatar();
-//                                Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
-//
-                            Picasso.get().load("https://raw.githubusercontent.com/square/picasso/master/website/static/sample.png").placeholder(R.drawable.logo).into(imageViewtest);
-                            Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    recylcerView1 = view.findViewById(R.id.recylcerView1);
-                    recylcerView1.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
-//        HeydariTest heydariTest2 = new HeydariTest(R.drawable.benjamin);
-//        HeydariTest heydariTest3 = new HeydariTest(R.drawable.limo);
-//        recylcerView1.setAdapter(new MainPageAdapter(array_image));
-//        HeydariTest heydariTest = new HeydariTest(R.drawable.limo);
-                    /**
-                     ArrayList<HeydariTest> heydariTests = new ArrayList<>();
-                     heydariTests.add(new HeydariTest(R.drawable.limo));
-                     heydariTests.add(new HeydariTest(R.drawable.benjamin));
-                     MainPageAdapter mainPageAdapter = new MainPageAdapter(heydariTests);
-                     */
-                    List<Item> items = new ArrayList<>();
-//         ModelClass1 modelClass1= new fsdfsfffsf;
-//         modelClass1.add(new Item(1, modelClass1));
-                    ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
-                    items.add(new Item(0, modelFlowersMainPage));
-
-
-//                    items.add(new Item(0, data));
-//                  ModelFlowersMainPage modelFlowersMainPage = new ModelFlowersMainPage(R.drawable.limo);
-//                  items.add(0, modelFlowersMainPage);
-
-                    ModelAddItem modelAddItem = new ModelAddItem(R.drawable.ic_baseline_add_24);
-                    items.add(new Item(1, modelAddItem));
-
-//        Car car = new Car();
-                    List<Car> cars = new ArrayList<>();
-//       cars.set()
-                    cars.add(new Car(R.drawable.benjamin));
-                    recylcerView1.setAdapter(new DifferentViewsAdapter(items, cars));
-//         recylcerView1.setAdapter(mainPageAdapter);
-                    /**
-                     *
-                     * End of onSuccess
-                     *
-                     * */
-
-                    Picasso.get().load("https://static.farakav.com/files/pictures/thumb/01572384.jpg").placeholder(R.drawable.logo).into(image1);
-
-//                    number = false;
-//                    showLoading();
-//                    NavigationView.
-//                    constraintProgress.setVisibility(View.GONE);
-
-
-//                    NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.nav_host_fragment);
-//                    NavController navController = navHostFragment.getNavController();
-//                    NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
-//                    NavigationView navigationView = null;
-//                    navigationView.getMenu().findItem(R.id.fragmentGetDate).setEnabled(false);
-//                    Navigation.findNavController(view).navigate();
-                    if (example.getProfile() == null) {
-                        Toast.makeText(getContext(), "nistg", Toast.LENGTH_SHORT).show();
-//                        number = true;
-//                        showLoading();
-                    } else if (response.code() == 400) {
-                        Toast.makeText(getContext(), "user exists", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Toast.makeText(getContext(), "onResponseError", Toast.LENGTH_SHORT).show();
-                    saveRequest = 0;
-//                    number = true;
-//                    showLoading();
-                }
-//            mainActivity.showLoading(false);
-//                inja tamom she
-                loadingDialogFragment.dismiss();
+                } else if (response.code() == 400) {
+                    Toast.makeText(getContext(), "400", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getContext(), "onResponse" + response.message(), Toast.LENGTH_SHORT).show();
+         loadingDialogFragment.dismiss();
             }
 
             @Override
-            public void onFailure(Call<Example> call, Throwable t) {
-                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-//                number = true;
-//                showLoading();
-//                mainActivity.showLoading(false);
+            public void onFailure(Call<AllUserInfoModel> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
-
-//    BottomNavigationItemView bottomNavigationItemView;
-
-
-    //    val navView: BottomNavigationView = findViewById(R.id.nav_view)
-//BottomNavigationView bottomNavigationView = _view.findViewById(R.id.navigationBottom)
-    // Find the menu item and then disable it
-//    navView.menu.findItem(R.id.navigation_home).isEnabled = false
-
-//    onBackpressed
-//    getActivity().moveTaskToBack(true);
-//    getActivity().finish();
 }
 
