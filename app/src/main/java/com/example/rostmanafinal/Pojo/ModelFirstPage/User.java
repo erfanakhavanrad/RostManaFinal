@@ -15,6 +15,7 @@ public class User implements Serializable, Parcelable
     @SerializedName("id")
     @Expose
     private Integer id;
+
     @SerializedName("phonenumber")
     @Expose
     private String phonenumber;

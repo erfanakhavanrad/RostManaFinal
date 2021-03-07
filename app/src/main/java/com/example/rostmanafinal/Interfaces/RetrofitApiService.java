@@ -66,9 +66,10 @@ public interface RetrofitApiService {
 //    @POST("Mobile/User")
 //    Call<Example> postLoggedInUser();
 
+    //    @POST("Mobile/User")
+//    Call<AllUserInfoModel> postLoggedInUser();
     @POST("Mobile/User")
     Call<AllUserInfoModel> postLoggedInUser();
-
 
 //    Get Flowers list pic and name
 //    @GET("Category/{number}")

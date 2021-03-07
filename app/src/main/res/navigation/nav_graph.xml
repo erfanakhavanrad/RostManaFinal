@@ -83,6 +83,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_firstFragment2"
             app:destination="@id/firstFragment2" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentGreenHouse"
+            app:destination="@id/fragmentGreenHouse" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEnterSerialNumber"

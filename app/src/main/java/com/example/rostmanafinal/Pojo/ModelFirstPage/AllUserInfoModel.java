@@ -11,6 +11,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class AllUserInfoModel implements Serializable, Parcelable
 {
+    public AllUserInfoModel(User user, List<Builder> builder) {
+        this.user = user;
+        this.builder = builder;
+    }
 
     @SerializedName("user")
     @Expose
@@ -18,6 +22,9 @@ public class AllUserInfoModel implements Serializable, Parcelable
     @SerializedName("builder")
     @Expose
     private List<Builder> builder = null;
+    @SerializedName("plants")
+    @Expose
+    private List<Plant> plants = null;
     public final static Creator<AllUserInfoModel> CREATOR = new Creator<AllUserInfoModel>() {
 
 
@@ -58,6 +65,14 @@ public class AllUserInfoModel implements Serializable, Parcelable
 
     public void setBuilder(List<Builder> builder) {
         this.builder = builder;
+    }
+
+    public List<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(List<Plant> plants) {
+        this.plants = plants;
     }
 
     public void writeToParcel(Parcel dest, int flags) {

@@ -116,6 +116,7 @@ public class Fragment_Plant_Details extends Fragment {
                     52, 12, 532, 87,
                     85, 31, 532, 222);
             secondSeasonalModels.add(secondSeasonalModel);
+//            SecondSeasonalModel secondSeasonalModel222 = new SecondSeasonalModel();
 
             SecondSeasonalModel secondSeasonalModel2 = new SecondSeasonalModel(2, "رطوبت هوا", "55555555555"
                     , R.drawable.ic_humidity_svg, R.drawable.ic_humidity_svg, "ddaddad",
@@ -243,7 +244,7 @@ public class Fragment_Plant_Details extends Fragment {
             public void onResponse(Call<TicketModel> call, Response<TicketModel> response) {
                 if (response.isSuccessful())
                     Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
-                else Toast.makeText(getContext(), "on respnse", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getContext(), "on response", Toast.LENGTH_SHORT).show();
             }
 
             @Override
