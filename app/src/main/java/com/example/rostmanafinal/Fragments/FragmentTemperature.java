@@ -54,6 +54,7 @@ public class FragmentTemperature extends Fragment {
 
     //    String[] dawdd;
     LineChartView lineChartView;
+//    in neveshte paiien nemodare
     String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
     ImageView imageLogo;
     private static final String TAG = "FragmentMonitoring";
@@ -92,7 +93,7 @@ public class FragmentTemperature extends Fragment {
         date2 = "1399-12-01";
         sendRequest(SURL, date1, date2);
 
-
+//in ham megdari ke bayad pass bedim be nemodar ta neshon bede bayad inja bdim behesh
 //        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
 
         if (userManagerSharedPrefs.getToken() != null) {

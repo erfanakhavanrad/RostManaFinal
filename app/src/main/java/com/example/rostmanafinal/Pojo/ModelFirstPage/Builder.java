@@ -6,8 +6,6 @@ import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -76,7 +74,7 @@ public class Builder implements Serializable, Parcelable
         this.picture = ((String) in.readValue((String.class.getClassLoader())));
         this.qrcode = ((String) in.readValue((String.class.getClassLoader())));
         this.status = ((String) in.readValue((String.class.getClassLoader())));
-        in.readList(this.plant, (Plant_.class.getClassLoader()));
+//        in.readList(this.plant, (com.example.Plant_.class.getClassLoader()));
     }
 
     public Builder() {

@@ -1,6 +1,5 @@
 package com.example.rostmanafinal.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,20 +21,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.rostmanafinal.Adapters.MainPage.DifferentViewsAdapter;
 import com.example.rostmanafinal.Adapters.MainPage.MainPageFinalAdapter;
 import com.example.rostmanafinal.Fragments.dialogs.LoadingDialogFragment;
-import com.example.rostmanafinal.Interfaces.FragmentCommunication;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
-import com.example.rostmanafinal.MainActivity;
-import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Builder;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Plant;
-import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -108,7 +101,7 @@ public class FragmentHome extends Fragment {
         message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse,bundle5);
+                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse, bundle5);
             }
         });
     }
@@ -153,14 +146,14 @@ public class FragmentHome extends Fragment {
 
                     mainPageFinalAdapter = new MainPageFinalAdapter(getContext(), response.body()).setOnItemClickListener(new MainPageFinalAdapter.OnItemClickListener() {
                         @Override
-                        public void onItemClick(int position, Builder builder, Plant plant) {
-                            String serialize = new Gson().toJson(builder); //Serialize
-                            Builder unSerialize = new Gson().fromJson(serialize, Builder.class); // UnSerialize
-//                            Bundle bundle = new Bundle();
+                        public void onItemClick(int position, Builder builder) {
+                            String builderSerialize = new Gson().toJson(builder); //Serialize
+ //                           Builder unSerialize = new Gson().fromJson(serialize, Builder.class); // UnSerialize
+                            Bundle bundle = new Bundle();
 //                            AllUserInfoModel allUserInfoModel = response.body();
-//                            bundle.putString("getNameMain", allUserInfoModel.getBuilder().get(position).getName());
+                            bundle.putString("BUILDER", builderSerialize);
 //
-
+                            Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse, bundle);
 //                            Intent theIntent = new Intent(getContext(), FragmentGreenHouse.class);
 //                            theIntent.putExtra("name", allUserInfoModel.getBuilder().get(position).getName());
 //                            startActivity(theIntent);

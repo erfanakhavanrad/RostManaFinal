@@ -8,10 +8,8 @@ import com.example.rostmanafinal.Pojo.ModelEditProfile;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
 import com.example.rostmanafinal.Pojo.ModelRegister;
 import com.example.rostmanafinal.Pojo.ModelSMS.VerifyModel;
-import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.Pojo.TicketModel;
 import com.example.rostmanafinal.Pojo.Users;
-import com.google.gson.JsonArray;
 
 import java.util.List;
 

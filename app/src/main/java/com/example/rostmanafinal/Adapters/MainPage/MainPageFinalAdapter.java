@@ -12,15 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rostmanafinal.Interfaces.FragmentCommunication;
-import com.example.rostmanafinal.Pojo.ModelChoosePlant.SecondSeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Builder;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Plant;
 import com.example.rostmanafinal.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 public class MainPageFinalAdapter extends RecyclerView.Adapter<MainPageFinalAdapter.MainPageFinalAdapterViewHolder> {
     View v;
@@ -106,29 +102,28 @@ public class MainPageFinalAdapter extends RecyclerView.Adapter<MainPageFinalAdap
             thirdFlower = itemView.findViewById(R.id.thirdFlower);
 //            mCommunication = communicator;
 //            firstFlower
-            bigImage.setOnClickListener(new View.OnClickListener() {
+          //  bigImage.setOnClickListener(new View.OnClickListener() {
+         //       @Override
+           //     public void onClick(View v) {
+//
+////                    Toast.makeText(context, "big", Toast.LENGTH_SHORT).show();
+    //                Navigation.findNavController(v).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse, bundle5);
+      //          }
+        //    });
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-//                    Toast.makeText(context, "big", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(v).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse, bundle5);
+                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                    onItemClickListener.onItemClick(getAdapterPosition()
+                            , allUserInfoModel.getBuilder().get(getAdapterPosition()));
                 }
             });
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
-//                    onItemClickListener.onItemClick(getAdapterPosition()
-//                            , allUserInfoModel.getBuilder().get(getAdapterPosition())
-//                            , allUserInfoModel.getPlants().get(getAdapterPosition()));
-//                }
-//            });
 
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position, Builder builder, Plant plant);
+        void onItemClick(int position, Builder builder);
     }
 
     public MainPageFinalAdapter setOnItemClickListener(OnItemClickListener onItemClickListener) {

@@ -1,6 +1,5 @@
 package com.example.rostmanafinal.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +26,8 @@ import java.util.List;
 
 public class FragmentGreenHouse extends Fragment {
     RecyclerView recyclerView;
-        Bundle bundle = new Bundle();
+    Bundle bundle = new Bundle();
+    Builder builder;
     TextView textview;
     TextView textview2;
     String name;
@@ -63,11 +63,14 @@ public class FragmentGreenHouse extends Fragment {
 //        name = getArguments().getString("Name");
 //        Toast.makeText(getContext(), name.toString(), Toast.LENGTH_SHORT).show();
         bundle = this.getArguments();
+        builder = new Gson().fromJson( bundle.getString("BUILDER"),Builder.class);
+
+
 //        Bundle bundle = getArguments();
-        int username2 = bundle.getInt("username");
-        String fsffsf = String.valueOf(username2);
+//        int username2 = bundle.getInt("username");
+//        String fsffsf = String.valueOf(username2);
 //        String token = bundle.getString("token");
-        Toast.makeText(getContext(), fsffsf, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), fsffsf, Toast.LENGTH_SHORT).show();
 //        Intent i= getIntent();
 //        i.getStringExtra("name");
 //        if (bundle != null) {
@@ -80,7 +83,7 @@ public class FragmentGreenHouse extends Fragment {
 //        Here types are: 0 = Trip, 1 =Ads, 2 = News
 
 //        Trip
-        FogFunctionByUser fogFunctionByUser1 = new FogFunctionByUser(R.drawable.limo, "banafshe", "روشن خاموش کردن مه ساز");
+        FogFunctionByUser fogFunctionByUser1 = new FogFunctionByUser(R.drawable.limo, builder.getName(), "روشن خاموش کردن مه ساز");
         items.add(new GreenHouseItems(0, fogFunctionByUser1));
 //        Trip trip2 = new Trip(R.drawable.secondphoto, "banafshe", "قرمزه");
 //        items.add(new Item(0, trip2));
@@ -88,7 +91,7 @@ public class FragmentGreenHouse extends Fragment {
 //        items.add(new Item(0, trip3));
 
 //        Ads
-        SwitchStatusGreenHouse ads1 = new SwitchStatusGreenHouse("ad: christmas", "گلایل", R.drawable.benjamin, true);
+        SwitchStatusGreenHouse ads1 = new SwitchStatusGreenHouse("ad: christmas", builder.getName(), R.drawable.benjamin, true);
         items.add(new GreenHouseItems(1, ads1));
         SwitchStatusGreenHouse ads2 = new SwitchStatusGreenHouse("ad: christmas", "رزماری", R.drawable.ic_cactus, false);
         items.add(new GreenHouseItems(1, ads2));

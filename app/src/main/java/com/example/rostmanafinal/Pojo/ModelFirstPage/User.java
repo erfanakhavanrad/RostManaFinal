@@ -6,6 +6,7 @@ import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,7 +16,6 @@ public class User implements Serializable, Parcelable
     @SerializedName("id")
     @Expose
     private Integer id;
-
     @SerializedName("phonenumber")
     @Expose
     private String phonenumber;
