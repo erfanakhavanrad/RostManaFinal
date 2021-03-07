@@ -1,11 +1,13 @@
 package com.example.rostmanafinal.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,16 +15,21 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Adapters.MainPage.DifferentViewsAdapter;
 import com.example.rostmanafinal.Adapters.MainPage.MainPageFinalAdapter;
 import com.example.rostmanafinal.Fragments.dialogs.LoadingDialogFragment;
+import com.example.rostmanafinal.Interfaces.FragmentCommunication;
 import com.example.rostmanafinal.Interfaces.RetrofitApiService;
+import com.example.rostmanafinal.MainActivity;
+import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Builder;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Plant;
+import com.example.rostmanafinal.Pojo.PojoEnterPost.Example;
 import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
@@ -53,6 +60,9 @@ public class FragmentHome extends Fragment {
     LoadingDialogFragment loadingDialogFragment = LoadingDialogFragment.newInstance(false);
     private DifferentViewsAdapter differentViewsAdapter;
     MainPageFinalAdapter mainPageFinalAdapter;
+    TextView message;
+    AllUserInfoModel allUserInfoModel5 = new AllUserInfoModel();
+    Bundle bundle5 = new Bundle();
 //    SecondMainPageFinalAdapter secondMainPageFinalAdapter;
 //    MainActivity mainActivity = new MainActivity();
 
@@ -82,6 +92,7 @@ public class FragmentHome extends Fragment {
         fifthItem = view.findViewById(R.id.fifthItem);
         imageAddUser = view.findViewById(R.id.imageAddUser);
         recylcerView1 = view.findViewById(R.id.mainPageRecycler);
+        message = view.findViewById(R.id.message);
 //        BottomNavigationView bottomNavigationView = null;
 //                bottomNavigationView.getMenu().getItem(1).setEnabled(false);
 
@@ -92,13 +103,18 @@ public class FragmentHome extends Fragment {
 //        if (saveRequest < 1)
         sendRequest(view);
 //        saveRequest++;
-
-
+//        Intent i = new Intent(getContext(), FragmentGreenHouse.class);
+//        i.putExtra("MYKEY", "MYKEY");
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse,bundle5);
+            }
+        });
     }
 
 
     public void sendRequest(View view) {
-//        Toast.makeText(getContext(), "ye chizi", Toast.LENGTH_SHORT).show();
         token = userManagerSharedPrefs.getToken();
         TokenInterceptor interceptor = new TokenInterceptor(token);
 
@@ -123,6 +139,7 @@ public class FragmentHome extends Fragment {
                     Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
 
 
+//                    startActivity(intent);
                     //   ArrayList<AllUserInfoModel> allUserInfoModelArrayList = new ArrayList<>();
                     //  allUserInfoModelArrayList.addAll(response.body());
 //                    allUserInfoModel.setBuilder(allUserInfoModel.getBuilder());
@@ -133,15 +150,46 @@ public class FragmentHome extends Fragment {
 
 //                    mainPageFinalAdapter = new MainPageFinalAdapter(allUserInfoModel);
                     recylcerView1.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
                     mainPageFinalAdapter = new MainPageFinalAdapter(getContext(), response.body()).setOnItemClickListener(new MainPageFinalAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position, Builder builder, Plant plant) {
-
                             String serialize = new Gson().toJson(builder); //Serialize
                             Builder unSerialize = new Gson().fromJson(serialize, Builder.class); // UnSerialize
+//                            Bundle bundle = new Bundle();
+//                            AllUserInfoModel allUserInfoModel = response.body();
+//                            bundle.putString("getNameMain", allUserInfoModel.getBuilder().get(position).getName());
+//
+
+//                            Intent theIntent = new Intent(getContext(), FragmentGreenHouse.class);
+//                            theIntent.putExtra("name", allUserInfoModel.getBuilder().get(position).getName());
+//                            startActivity(theIntent);
+//                            Intent mIntent = new Intent(getContext(), FragmentGreenHouse.class);
+//                            SeasonalModel obj = new SeasonalModel();
+//                            bundle.putSerializable("seasonalBundle", obj);
+
                         }
                     });
                     recylcerView1.setAdapter(mainPageFinalAdapter);
+
+
+                    allUserInfoModel5 = response.body();
+//                    FragmentHome fragmentHome = new FragmentHome();
+
+//                    bundle5.putString("username", allUserInfoModel5.getBuilder().get(1).getName());
+//                    Toast.makeText(getContext(), allUserInfoModel5.getBuilder().get(1).getName(), Toast.LENGTH_SHORT).show();
+//                    bundle.putString("token", token);
+//                    fragmentHome.setArguments(bundle);
+
+//                    message.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse, bundle);
+//                        }
+//                    });
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.your_container,carFragment).commit();
+
+
                 } else if (response.code() == 400) {
                     Toast.makeText(getContext(), "400", Toast.LENGTH_SHORT).show();
                 } else

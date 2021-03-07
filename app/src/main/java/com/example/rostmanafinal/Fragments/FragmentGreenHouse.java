@@ -1,9 +1,12 @@
 package com.example.rostmanafinal.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,29 +16,66 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.rostmanafinal.Adapters.GreenHouseAdapter;
 import com.example.rostmanafinal.Pojo.FogFunctionByUser;
 import com.example.rostmanafinal.Pojo.GreenHouseItems;
+import com.example.rostmanafinal.Pojo.ModelFirstPage.Builder;
 import com.example.rostmanafinal.Pojo.StringStatusGreenHouse;
 import com.example.rostmanafinal.Pojo.SwitchStatusGreenHouse;
 import com.example.rostmanafinal.R;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentGreenHouse extends Fragment {
     RecyclerView recyclerView;
+        Bundle bundle = new Bundle();
+    TextView textview;
+    TextView textview2;
+    String name;
+    String job;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewGreenHouse = inflater.inflate(R.layout.fragment_greenhouse, container, false);
-
         return viewGreenHouse;
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+//        Intent intent = getIntent();
+//        MessageID = intent.getStringExtra("message_id");
+
+//        Bundle extras = intent.getIntent().getExtras();
+//        String MYKEY = (extras != null) ? extras.getString("MYKEY"):"";
+
+
+//         extras = getIntent().getExtras();
+//        String MYKEY = (extras != null) ? extras.getString("MYKEY"):"";
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerView);
-
+//        name = getArguments().getString("Name");
+//        Toast.makeText(getContext(), name.toString(), Toast.LENGTH_SHORT).show();
+        bundle = this.getArguments();
+//        Bundle bundle = getArguments();
+        int username2 = bundle.getInt("username");
+        String fsffsf = String.valueOf(username2);
+//        String token = bundle.getString("token");
+        Toast.makeText(getContext(), fsffsf, Toast.LENGTH_SHORT).show();
+//        Intent i= getIntent();
+//        i.getStringExtra("name");
+//        if (bundle != null) {
+//            String getName = bundle.getString("getNameMain");
+//            Intent intent2 = new Intent();
+//            String getName2  = intent2.getStringExtra("getNameMain");
+//            Toast.makeText(getContext(), getName2.toString(), Toast.LENGTH_SHORT).show();
+//        }
         List<GreenHouseItems> items = new ArrayList<>();
 //        Here types are: 0 = Trip, 1 =Ads, 2 = News
 

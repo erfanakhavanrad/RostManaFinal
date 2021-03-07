@@ -1,6 +1,7 @@
 package com.example.rostmanafinal.Adapters.MainPage;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rostmanafinal.Interfaces.FragmentCommunication;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SecondSeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Builder;
@@ -25,10 +27,14 @@ public class MainPageFinalAdapter extends RecyclerView.Adapter<MainPageFinalAdap
     OnItemClickListener onItemClickListener;
     Context context;
     AllUserInfoModel allUserInfoModel;
+    Bundle bundle5 = new Bundle();
+//    private FragmentCommunication mCommunication;
 
     public MainPageFinalAdapter(Context context, AllUserInfoModel allUserInfoModel) {
         this.context = context;
         this.allUserInfoModel = allUserInfoModel;
+//        , FragmentCommunication communication
+//        this.mCommunication = communication;
     }
 
 //    public void setList(ArrayList<AllUserInfoModel> list) {
@@ -48,6 +54,10 @@ public class MainPageFinalAdapter extends RecyclerView.Adapter<MainPageFinalAdap
         View v = inflater.inflate(R.layout.main_page_final_item, parent, false);
         MainPageFinalAdapterViewHolder mainPageFinalAdapterViewHolder = new MainPageFinalAdapterViewHolder(v);
         return mainPageFinalAdapterViewHolder;
+
+//        View view = inflater.inflate(R.layout.main_page_final_item, parent, false);
+//        MainPageFinalAdapterViewHolder holder = new MainPageFinalAdapterViewHolder(view, mCommunication);
+//        return holder;
     }
 
     @Override
@@ -70,6 +80,7 @@ public class MainPageFinalAdapter extends RecyclerView.Adapter<MainPageFinalAdap
 
         Picasso.get().load("http://rostmana.com" + builder.getIcon())
                 .placeholder(R.drawable.ic_logocirlce).into(holder.thirdFlower);
+        bundle5.putInt("username", allUserInfoModel.getUser().getId());
 
 //        Post model = mpost.get(position);
 //
@@ -86,18 +97,21 @@ public class MainPageFinalAdapter extends RecyclerView.Adapter<MainPageFinalAdap
     public class MainPageFinalAdapterViewHolder extends RecyclerView.ViewHolder {
         ImageView bigImage, firstFlower, secondFlower, thirdFlower;
 
+        //        FragmentCommunication mCommunication;
         public MainPageFinalAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             bigImage = itemView.findViewById(R.id.bigImage);
             firstFlower = itemView.findViewById(R.id.firstFlower);
             secondFlower = itemView.findViewById(R.id.secondFlower);
             thirdFlower = itemView.findViewById(R.id.thirdFlower);
+//            mCommunication = communicator;
 //            firstFlower
             bigImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
 //                    Toast.makeText(context, "big", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(v).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse);
+                    Navigation.findNavController(v).navigate(R.id.action_fragmentHome_to_fragmentGreenHouse, bundle5);
                 }
             });
 //            itemView.setOnClickListener(new View.OnClickListener() {
