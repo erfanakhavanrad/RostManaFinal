@@ -63,7 +63,7 @@ public class FragmentGreenHouse extends Fragment {
 //        name = getArguments().getString("Name");
 //        Toast.makeText(getContext(), name.toString(), Toast.LENGTH_SHORT).show();
         bundle = this.getArguments();
-        builder = new Gson().fromJson( bundle.getString("BUILDER"),Builder.class);
+        builder = new Gson().fromJson(bundle.getString("BUILDER"), Builder.class);
 
 
 //        Bundle bundle = getArguments();
@@ -91,7 +91,7 @@ public class FragmentGreenHouse extends Fragment {
 //        items.add(new Item(0, trip3));
 
 //        Ads
-        SwitchStatusGreenHouse ads1 = new SwitchStatusGreenHouse("ad: christmas", builder.getName(), R.drawable.benjamin, true);
+        SwitchStatusGreenHouse ads1 = new SwitchStatusGreenHouse("ad: christmas", "adwddw", R.drawable.benjamin, true);
         items.add(new GreenHouseItems(1, ads1));
         SwitchStatusGreenHouse ads2 = new SwitchStatusGreenHouse("ad: christmas", "رزماری", R.drawable.ic_cactus, false);
         items.add(new GreenHouseItems(1, ads2));

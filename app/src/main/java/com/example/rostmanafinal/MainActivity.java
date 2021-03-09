@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     final Fragment fragment2 = new FragmentAddToHome();
     final Fragment fragment3 = new FragmentMonitoring();
     final FragmentManager fm = getSupportFragmentManager();
+    Integer numberOfNotificationsInBadge = 5;
     Fragment active = fragment1;
     Boolean status = true;
 //    BottomNavigationView navigation;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        bottomNavigationView.getOrCreateBadge(R.id.fragmentNotifs).setNumber(numberOfNotificationsInBadge);
 //
 //        navigation = (BottomNavigationView) findViewById(R.id.navigationBottom);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

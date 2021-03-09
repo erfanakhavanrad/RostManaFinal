@@ -5,10 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,8 +18,6 @@ import com.example.rostmanafinal.R;
 import com.example.rostmanafinal.Retrofit.TokenInterceptor;
 import com.example.rostmanafinal.UserManagerSharedPrefs;
 
-import java.lang.reflect.Array;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,14 +50,17 @@ public class FragmentTemperature extends Fragment {
     //    String[] dawdd;
     LineChartView lineChartView;
 //    in neveshte paiien nemodare
-    String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
+//    khat paoen x
+ //   String[] axisDataDays = {"شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه"};
+    ArrayList<Float> temps = new ArrayList<>();
+    ArrayList<String > days = new ArrayList<>();
     ImageView imageLogo;
     private static final String TAG = "FragmentMonitoring";
     //    First Chart
     private HashMap<String, String[]> exampleDays = new HashMap<String, String[]>();
     //        private HashMap<String, float[]> exampleHum = new HashMap<String, float[]>();
-//    private HashMap<String, Integer[]> exampleHum = new HashMap<String, Integer[]>();
-    int[] exampleHum = new int[10];
+   // private HashMap<String, Float[]> exampleHum = new HashMap<String, Float[]>();
+//    int[] exampleHum = new int[10];
     //    Second Chart
 //    private HashMap<String, float[]> exampleTemp = new HashMap<String, float[]>();
     Bundle bundle = new Bundle();
@@ -94,7 +92,7 @@ public class FragmentTemperature extends Fragment {
         sendRequest(SURL, date1, date2);
 
 //in ham megdari ke bayad pass bedim be nemodar ta neshon bede bayad inja bdim behesh
-//        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
+    //    exampleHum.put("hum", temps);
 
         if (userManagerSharedPrefs.getToken() != null) {
 //            imageLogo.setVisibility(View.VISIBLE);
@@ -102,16 +100,16 @@ public class FragmentTemperature extends Fragment {
 //            exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
 
             Line line = new Line(yAxisValues).setColor(Color.parseColor("#ff0000"));
-            for (int i = 0; i < axisDataDays.length; i++) {
-                axisValues.add(i, new AxisValue(i).setLabel(axisDataDays[i]));
+            for (int i = 0; i < days.size(); i++) {
+                axisValues.add(i, new AxisValue(i).setLabel(days.get(i)));
             }
 
 //            for (int i = 0; i < exampleHum.get("hum").length; i++) {
 //                yAxisValues.add(new PointValue(i, exampleHum.get("hum")[i]));
 //
 //            }
-            for (int i = 0; i < exampleHum.length; i++) {
-                yAxisValues.add(new PointValue(i, exampleHum.length));
+            for (int i = 0; i < temps.size(); i++) {
+                yAxisValues.add(new PointValue(temps.get(i),temps.get(i)));
             }
 
             List lines = new ArrayList();
@@ -179,6 +177,8 @@ public class FragmentTemperature extends Fragment {
                     for (int i = 0; i < arrayList.size(); i++) {
 //                        arrayList.indexOf(i);
                         arrayList.get(i).getDay();
+                        days.add(arrayList.get(i).getDay());
+//                        temps.add(arrayList.get(i).getTemp())
 //                        float afa[] = arrayList.get(i).getNumOFFLight();
 //                                    exampleHum.put("hum", afa);
                         Float[] daw;
@@ -193,13 +193,13 @@ public class FragmentTemperature extends Fragment {
 
 
 //                        Toast.makeText(getContext(), arrayList.get(i).getNumOFFLight().toString(), Toast.LENGTH_SHORT).show();
-                        for (int j = 0; j < arrayList.get(i).getTemp(); j++) {
+//                        for (int j = 0; j < arrayList.get(i).getTemp(); j++) {
 //                            exampleHum.put("num",arrayList.get(i).getNumOFFLight());
 //                            int adawd = arrayList.get(i).getTemp();
                             
 //                            int[] daawd = new int[];
 
-                        }
+//                        }
 
 
 //exampleHum.put("num", arrayList.get(i).getNumOFFLight());
@@ -215,7 +215,7 @@ public class FragmentTemperature extends Fragment {
 //                        exampleHum.put("hum", new float[]{10, 0, 5, 40, 20, 60, 40});
                         int[] nueem = new int[arrayList.size()];
                         for (int j = 0; j < nueem.length; j++) {
-                            nueem[j] = arrayList.get(i).getTemp();
+//                            nueem[j] = arrayList.get(i).getTemp();
 //                            exampleHum = nueem[j];
 //                            exampleHum = arrayList.get(i).getNumOFFPumpW();
 //                            exampleHum.put("num", nueem[j]);
