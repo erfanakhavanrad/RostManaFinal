@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "533997044400",
+    "project_id": "rostmanafinal",
+    "storage_bucket": "rostmanafinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533997044400:android:281b2011b50823fce73175",
+        "android_client_info": {
+          "package_name": "com.example.rostmanafinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533997044400-drlbbmg4pk1i6nbdgjhm8bqih1ikcjg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcAcRItTbhC5BkRdP91d4pJW9lkJF3Gek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533997044400-drlbbmg4pk1i6nbdgjhm8bqih1ikcjg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

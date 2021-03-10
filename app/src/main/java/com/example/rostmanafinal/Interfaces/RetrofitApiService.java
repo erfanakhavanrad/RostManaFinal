@@ -6,6 +6,7 @@ import com.example.rostmanafinal.Pojo.ModelChoosePlant.SeasonalModel;
 import com.example.rostmanafinal.Pojo.ModelChoosePlant.SingleFlowerModel;
 import com.example.rostmanafinal.Pojo.ModelEditProfile;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.AllUserInfoModel;
+import com.example.rostmanafinal.Pojo.ModelFirstPage.BuilderStatusModel;
 import com.example.rostmanafinal.Pojo.ModelRegister;
 import com.example.rostmanafinal.Pojo.ModelSMS.VerifyModel;
 import com.example.rostmanafinal.Pojo.TicketModel;
@@ -146,5 +147,8 @@ public interface RetrofitApiService {
     @POST("Mobile/addPlant")
     Call<TicketModel> postPlantId(@Field("plant_id") String plant_id);
 
-
+    // This is for receiving rest of the information
+    @POST()
+    Call<BuilderStatusModel> postBuilderStatusData
+    (@Url String builderId);
 }

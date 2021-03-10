@@ -1,6 +1,7 @@
 package com.example.rostmanafinal.Fragments;
 
 import android.os.Bundle;
+import android.text.BoringLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,46 +14,49 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rostmanafinal.Adapters.GreenHouseAdapter;
+import com.example.rostmanafinal.Interfaces.RetrofitApiService;
 import com.example.rostmanafinal.Pojo.FogFunctionByUser;
 import com.example.rostmanafinal.Pojo.GreenHouseItems;
 import com.example.rostmanafinal.Pojo.ModelFirstPage.Builder;
+import com.example.rostmanafinal.Pojo.ModelFirstPage.BuilderStatusModel;
 import com.example.rostmanafinal.Pojo.StringStatusGreenHouse;
 import com.example.rostmanafinal.Pojo.SwitchStatusGreenHouse;
 import com.example.rostmanafinal.R;
+import com.example.rostmanafinal.Retrofit.TokenInterceptor;
+import com.example.rostmanafinal.UserManagerSharedPrefs;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BrokenBarrierException;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentGreenHouse extends Fragment {
     RecyclerView recyclerView;
     Bundle bundle = new Bundle();
     Builder builder;
-    TextView textview;
-    TextView textview2;
-    String name;
-    String job;
+    String SURL, token, url = "http://192.168.88.134:8000/api/";
+    UserManagerSharedPrefs userManagerSharedPrefs;
+    RetrofitApiService request;
+    static String BASE_URL = "Mobile/lastLog/";
+    static String SEASONAL_URL = "7";
+    BuilderStatusModel builderStatusModel;
+    Boolean builderStatus;
+    Boolean integerStatus;
+    Integer integerStatusFan, integerStatusElement, integerStatusLight, integerStatusWatering, integerStatusVaporizer,
+            integerStatusSprayer, integerStatusPower;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewGreenHouse = inflater.inflate(R.layout.fragment_greenhouse, container, false);
         return viewGreenHouse;
-
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        Intent intent = getIntent();
-//        MessageID = intent.getStringExtra("message_id");
-
-//        Bundle extras = intent.getIntent().getExtras();
-//        String MYKEY = (extras != null) ? extras.getString("MYKEY"):"";
-
-
-//         extras = getIntent().getExtras();
-//        String MYKEY = (extras != null) ? extras.getString("MYKEY"):"";
 
     }
 
@@ -65,7 +69,8 @@ public class FragmentGreenHouse extends Fragment {
         bundle = this.getArguments();
         builder = new Gson().fromJson(bundle.getString("BUILDER"), Builder.class);
 
-
+        SURL = url + BASE_URL + SEASONAL_URL;
+        sendRequest(SURL);
 //        Bundle bundle = getArguments();
 //        int username2 = bundle.getInt("username");
 //        String fsffsf = String.valueOf(username2);
@@ -90,10 +95,11 @@ public class FragmentGreenHouse extends Fragment {
 //        Trip trip3 = new Trip(R.drawable.limo, "banafshe", "لیمو");
 //        items.add(new Item(0, trip3));
 
+
 //        Ads
         SwitchStatusGreenHouse ads1 = new SwitchStatusGreenHouse("ad: christmas", "adwddw", R.drawable.benjamin, true);
         items.add(new GreenHouseItems(1, ads1));
-        SwitchStatusGreenHouse ads2 = new SwitchStatusGreenHouse("ad: christmas", "رزماری", R.drawable.ic_cactus, false);
+        SwitchStatusGreenHouse ads2 = new SwitchStatusGreenHouse("ad: christmas", "رزماری", R.drawable.ic_cactus, integerStatus);
         items.add(new GreenHouseItems(1, ads2));
         SwitchStatusGreenHouse ads3 = new SwitchStatusGreenHouse("ad: christmas", "درخت چینی", R.drawable.limo, true);
         items.add(new GreenHouseItems(1, ads3));
@@ -132,9 +138,55 @@ public class FragmentGreenHouse extends Fragment {
         recyclerView.setAdapter(new GreenHouseAdapter(items));
 
     }
-//    @Override
+
+    //    @Override
 //    public void onBackPressed(){
 //        super.onBackPressed();
 //        drawer.close();
 //    }
+    public void sendRequest(String getPageUrl) {
+        userManagerSharedPrefs = new UserManagerSharedPrefs(getContext());
+//        token = userManagerSharedPrefs.getToken();
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFjNjQ2MDAyYmFkZjI4ZjcwYThhYWY0MDFmNTMyNjE1ODc2MThiYTc4MTAzZTFhY2Q5Y2M4ODEwNzkyODFkNjhlMWVhZjE3M2U3ZTVmMTQiLCJpYXQiOiIxNjE1Mjg4MTA0Ljg5NTQ3OCIsIm5iZiI6IjE2MTUyODgxMDQuODk1NDgxIiwiZXhwIjoiMTY0NjgyNDEwNC44ODI2MzQiLCJzdWIiOiI1NSIsInNjb3BlcyI6W119.Z4Y183gJp4EvHpzqsVb8PPgx1P519CUMhOjQh04PzJetxtdcDJiXvHkO_9gJEyaF__cR0Iqoy3tRe5ND8R7BCjNrjhj-4otwiKgrCTY2xhRwSR3v-KLDQU-CgX1TPUTuZCjXpu5km2um69x-ux9HZxgEfurbNjzcHCPwyiZdblyiJHGJRp-sYUqGszeABFY31btFVbbVTG9Ow8soqJES32vvNl2lg6yDqYZVN2ugq1pbkr2WbBOF6WvEOc60dzaZ9SFDHzy7C1fexgPqzWgICLrsf_fQzpCGV2OXU0j8QNWB9QhAp1vT5oCyu75OM9ujIjAJDH_wa--MgL08es4Zb0kMPmWhS7WTyY8gh3j1Fkn6hmiP2Yl2gmh6XUeuIdc07T1g8uiDOpo49iq-jqT7m44F5-7hoAYhsZIHa9etG5RDy4sJcBo85vNWyLQ7jfQk_GKq_oz0b6YIVa5EjXs-_HYA4JJqU0PFFTPPCaXwX_3JQDMpERMUr_04HEoW9Q6_K_MT2YvjHmquQe5DVm2Ds0LHtTJyUSA8guiNNdrDLd8RWpoZfRY0_dR1hSBgv7pRLm-EXevSfEIprTC27HTXkSj" +
+                "ZrHD8bE0vI5xcXYI5UUAIjQ6yuU9SWOBItAt6tjBF-7QdQDeen7Ex7QWCYUKKE3H_KdEUcqW3Zo9cI60HDLw";
+        TokenInterceptor interceptor = new TokenInterceptor(token);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        request = retrofit.create(RetrofitApiService.class);
+        Call<BuilderStatusModel> call = request.postBuilderStatusData(getPageUrl);
+        call.enqueue(new Callback<BuilderStatusModel>() {
+            @Override
+            public void onResponse(Call<BuilderStatusModel> call, Response<BuilderStatusModel> response) {
+                if (response.isSuccessful()) {
+//                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                    builderStatusModel = response.body();
+                    integerStatus = intToBoolean(builderStatusModel.getTemp());
+
+                } else {
+                    Toast.makeText(getContext(), "onResponse" + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BuilderStatusModel> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public Boolean intToBoolean(Integer integerStatus) {
+
+        if (integerStatus == 1) {
+            return true;
+        } else
+            return false;
+    }
 }

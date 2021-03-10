@@ -113,7 +113,7 @@ public class MainPageFinalAdapter extends RecyclerView.Adapter<MainPageFinalAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                     onItemClickListener.onItemClick(getAdapterPosition()
                             , allUserInfoModel.getBuilder().get(getAdapterPosition()));
                 }

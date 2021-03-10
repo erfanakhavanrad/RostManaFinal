@@ -18,6 +18,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,32 +34,81 @@ import com.example.rostmanafinal.Fragments.FirstFragment;
 import com.example.rostmanafinal.Fragments.FragmentAddToHome;
 import com.example.rostmanafinal.Fragments.FragmentHome;
 import com.example.rostmanafinal.Fragments.FragmentMonitoring;
+import com.example.rostmanafinal.Singleton.NotificationSingleton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.pusher.client.Pusher;
+import com.pusher.client.PusherOptions;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.PusherEvent;
+import com.pusher.client.channel.SubscriptionEventListener;
+import com.pusher.client.connection.ConnectionEventListener;
+import com.pusher.client.connection.ConnectionState;
+import com.pusher.client.connection.ConnectionStateChange;
 
 import java.util.EmptyStackException;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean doubleBackToExitPressedOnce = false;
-    UserManagerSharedPrefs userManagerSharedPrefs;
-    private CardView cardView;
-    private int duration = Toast.LENGTH_SHORT;
-    final Fragment fragment1 = new FragmentHome();
-    final Fragment fragment2 = new FragmentAddToHome();
-    final Fragment fragment3 = new FragmentMonitoring();
-    final FragmentManager fm = getSupportFragmentManager();
-    Integer numberOfNotificationsInBadge = 5;
-    Fragment active = fragment1;
-    Boolean status = true;
+//    boolean doubleBackToExitPressedOnce = false;
+//    UserManagerSharedPrefs userManagerSharedPrefs;
+//    private CardView cardView;
+//    private int duration = Toast.LENGTH_SHORT;
+//    final Fragment fragment1 = new FragmentHome();
+//    final Fragment fragment2 = new FragmentAddToHome();
+//    final Fragment fragment3 = new FragmentMonitoring();
+//    final FragmentManager fm = getSupportFragmentManager();
+//    Fragment active = fragment1;
+//    Boolean status = true;
 //    BottomNavigationView navigation;
-
     //    @Override
 //            BottomNavigationView.OnNavigationItemReselectedListener();
+Integer numberOfNotificationsInBadge = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PusherOptions options = new PusherOptions();
+        options.setCluster("eu");
+
+        Pusher pusher = new Pusher("1127f2880259833320f3", options);
+
+        pusher.connect(new ConnectionEventListener() {
+            @Override
+            public void onConnectionStateChange(ConnectionStateChange change) {
+                Log.i("Pusher", "State changed from " + change.getPreviousState() +
+                        " to " + change.getCurrentState());
+            }
+
+            @Override
+            public void onError(String message, String code, Exception e) {
+                Log.i("Pusher", "There was a problem connecting! " +
+                        "\ncode: " + code +
+                        "\nmessage: " + message +
+                        "\nException: " + e
+                );
+            }
+        }, ConnectionState.ALL);
+
+        Channel channel = pusher.subscribe("my-Channel");
+
+        channel.bind("11", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(PusherEvent event) {
+                Log.i("Pusher", "Received event with data: " + event.getEventName().toString());
+                NotificationSingleton notificationSingleton = com.example.rostmanafinal.Singleton.NotificationSingleton.getInstance();
+                notificationSingleton.setText(event.toString());
+//                Toast.makeText(MainActivity.this, event.toString(), Toast.LENGTH_SHORT).show();
+//            notificationSingleton.setText("rrrrrrrr");
+
+//                String editValue = editText.getText().toString();
+//                Toast.makeText(MainActivity.this,notificationSingleton.getText(),Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
 //        constraintLoading = findViewById(R.id.constraintLoading);
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigationBottom);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);

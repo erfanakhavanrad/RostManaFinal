@@ -19,13 +19,13 @@ public class ChartsModel implements Serializable, Parcelable
     private String day;
     @SerializedName("temp")
     @Expose
-    private Integer temp;
+    private String temp;
     @SerializedName("humidity_air")
     @Expose
-    private Double humidityAir;
+    private String humidityAir;
     @SerializedName("humidity_soil")
     @Expose
-    private Integer humiditySoil;
+    private String humiditySoil;
     @SerializedName("Num_OFF_FAN")
     @Expose
     private Integer numOFFFAN;
@@ -57,14 +57,14 @@ public class ChartsModel implements Serializable, Parcelable
 
     }
     ;
-    private final static long serialVersionUID = 628033559526357051L;
+    private final static long serialVersionUID = -4169721022593303707L;
 
     protected ChartsModel(Parcel in) {
         this.time = ((String) in.readValue((String.class.getClassLoader())));
         this.day = ((String) in.readValue((String.class.getClassLoader())));
-        this.temp = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.humidityAir = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.humiditySoil = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.temp = ((String) in.readValue((String.class.getClassLoader())));
+        this.humidityAir = ((String) in.readValue((String.class.getClassLoader())));
+        this.humiditySoil = ((String) in.readValue((String.class.getClassLoader())));
         this.numOFFFAN = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.numOFFFogger = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.numOFFLight = ((Integer) in.readValue((Integer.class.getClassLoader())));
@@ -91,27 +91,27 @@ public class ChartsModel implements Serializable, Parcelable
         this.day = day;
     }
 
-    public Integer getTemp() {
+    public String getTemp() {
         return temp;
     }
 
-    public void setTemp(Integer temp) {
+    public void setTemp(String temp) {
         this.temp = temp;
     }
 
-    public Double getHumidityAir() {
+    public String getHumidityAir() {
         return humidityAir;
     }
 
-    public void setHumidityAir(Double humidityAir) {
+    public void setHumidityAir(String humidityAir) {
         this.humidityAir = humidityAir;
     }
 
-    public Integer getHumiditySoil() {
+    public String getHumiditySoil() {
         return humiditySoil;
     }
 
-    public void setHumiditySoil(Integer humiditySoil) {
+    public void setHumiditySoil(String humiditySoil) {
         this.humiditySoil = humiditySoil;
     }
 
