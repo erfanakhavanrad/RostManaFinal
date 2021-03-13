@@ -114,42 +114,31 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 call.enqueue(new Callback<Users>() {
                     @Override
                     public void onResponse(Call<Users> call, Response<Users> response) {
-//                        Toast.makeText(LoginRegisterActivity.this, "token" + response, Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()) {
+                            Users users = response.body();
+                            if (users != null) {
+                                token = users.getAccess_token();
+                                verifiedAt = users.getExpires_at();
+                                Log.d(TAG, "onResponse: " + token);
+                                userManagerSharedPrefs.saveUserInformation(edtUsername.getText().toString(),
+                                        edtPassword.getText().toString(),
+                                        token, verifiedAt);
 
-                        Users users = response.body();
-                        Log.e("keshav", "loginResponse 1 --> " + users);
-                        if (users != null) {
-//                           Log.e("keshav", "getUserId          -->  " + users.getAccess_token());
-                            /** here you get token and do shit */
-//                            Toast.makeText(LoginRegisterActivity.this, "خوش آمدید", Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(LoginRegisterActivity.this, "" + users.getAccess_token(), Toast.LENGTH_SHORT).show();
-//                           String responseCode = users.getResponseCode();
-//                           Log.e("keshav", "getResponseCode  -->  " + users.getResponseCode());
-//                           Log.e("keshav", "getResponseMessage  -->  " + users.getResponseMessage());
-//                           if (responseCode != null && responseCode.equals("404")) {
-//                               Toast.makeText(MainActivity.this, "Invalid Login Details \n Please try again", Toast.LENGTH_SHORT).show();
-//                           } else {
-//                               Toast.makeText(MainActivity.this, "Welcome " + loginResponse.getFirstName(), Toast.LENGTH_SHORT).show();
-//                           }
-//                          String token =   users.getAccess_token();
-
-                            token = users.getAccess_token();
-                            verifiedAt = users.getExpires_at();
-                            Log.d(TAG, "onResponse: " + token);
-                            userManagerSharedPrefs.saveUserInformation(edtUsername.getText().toString(),
-                                    edtPassword.getText().toString(),
-                                    token, verifiedAt);
-
-                            Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
-                            startActivity(i);
-                            finish();
+                                Intent i = new Intent(LoginRegisterActivity.this, MainActivity.class);
+                                startActivity(i);
+                                finish();
+                            } else if (response.code() == 404) {
+                                Toast.makeText(LoginRegisterActivity.this, "not found", Toast.LENGTH_SHORT).show();
+                            } else
+                                Toast.makeText(LoginRegisterActivity.this, "on response error", Toast.LENGTH_SHORT).show();
                         }
 
                     }
 
                     @Override
                     public void onFailure(Call<Users> call, Throwable t) {
-                        Toast.makeText(LoginRegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginRegisterActivity.this, "ابتدا باید ثبت نام کنید", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "onFailure: " + t.getMessage());
                         number = true;
 //                        showLoading();
                     }

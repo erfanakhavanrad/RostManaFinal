@@ -49,10 +49,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
                     btnAgree.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            Toast.makeText(TermsAndConditionsActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                             userManagerSharedPrefs.saveAgree(true);
-
                             Intent intent = new Intent(TermsAndConditionsActivity.this, LoginRegisterActivity.class);
                             startActivity(intent);
                             finish();
