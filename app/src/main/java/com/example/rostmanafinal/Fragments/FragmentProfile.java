@@ -193,7 +193,7 @@ public class FragmentProfile extends Fragment {
 //        imageViewReturn = view.findViewById(R.id.imageViewReturn);
 //        circularImageView2 = view.findViewById(R.id.circularImageView2);
 
-
+/*
         imgCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,7 +231,7 @@ public class FragmentProfile extends Fragment {
 
 
             }
-        });
+        }); */
 
 //        Call<ModelEditProfile> call = request.PostEditProfileAPIService(gender, image,
 //                firstName, lastName, phoneNumber, address, birth);

@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterFromActivity extends AppCompatActivity {
     EditText registerPhoneNumber, registerPassword, registerConfirmPassword;
     Button btnRegister;
-    String one, two, three;
+    String registerPhoneNumberValue, registerPasswordValue, registerConfirmPasswordValue;
     RetrofitApiService retrofitApiService;
     UserManagerSharedPrefs userManagerSharedPrefs;
     String token;
@@ -59,22 +59,25 @@ public class RegisterFromActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(RegisterFromActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-//                if (registerPhoneNumber.length() !=11 ) {
-//showMSG("difference");
-//                        return;
-//                }
-//                if(registerPassword!=registerConfirmPassword || registerPassword.length() <= 6) {
-//                    Toast.makeText(RegisterFromActivity.this, "must be longer", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-
+                if (registerPhoneNumber.length() != 11) {
+                    showMSG("شماره موبایل را به درستی وارد کنید");
+                    return;
+                }
+                if (!registerPassword.getText().toString().equals(registerConfirmPassword.getText().toString()) || registerPassword.getText().length() <= 5) {
+                    Toast.makeText(RegisterFromActivity.this, "رمز 6 حرفی و تایید آن را به درستی وارد کنید", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+//
 //                if (registerPassword.getText().toString().equals(registerConfirmPassword.getText().toString())) {
-//                    Toast.makeText(RegisterFromActivity.this, "the same", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(RegisterFromActivity.this, "کلمه عبور یکسانی را در هر دو کادر وارد کنید", Toast.LENGTH_SHORT).show();
 //                } else if (registerPassword.length() < 7 || registerConfirmPassword.length() < 7) {
-//                    Toast.makeText(RegisterFromActivity.this, "password too short", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(RegisterFromActivity.this, "کلمه عبور خیلی کوتاه است", Toast.LENGTH_SHORT).show();
 //                } else {
-//                    registerConfirmPassword.setError("doesn't match");
+//                    registerConfirmPassword.setError("عدم همخوانی");
 //                }
+                registerPhoneNumberValue = registerPhoneNumber.getText().toString();
+                registerPasswordValue = registerPassword.getText().toString();
+                registerConfirmPasswordValue = registerConfirmPassword.getText().toString();
                 number = false;
                 showLoading();
                 createPost();
@@ -95,7 +98,7 @@ public class RegisterFromActivity extends AppCompatActivity {
 
     private void createPost() {
 //        ModelRegister modelRegister = new ModelRegister("09353368421", "123456", "123456");
-        Call<ModelRegister> call = retrofitApiService.postRegisterPage("09151111264", "123456", "123456");
+        Call<ModelRegister> call = retrofitApiService.postRegisterPage(registerPhoneNumberValue, registerPasswordValue, registerConfirmPasswordValue);
         call.enqueue(new Callback<ModelRegister>() {
             @Override
             public void onResponse(Call<ModelRegister> call, Response<ModelRegister> response) {

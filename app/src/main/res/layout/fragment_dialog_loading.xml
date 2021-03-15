@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_loading"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:gravity="center">
 
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tenor" />
+        android:layout_height="match_parent"
+        android:src="@drawable/tenor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:text="dadawawdddaadw"
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="499dp"
         android:fontFamily="@font/iransans"
-        android:padding="1dp" />
+        android:padding="1dp"
+        android:textSize="17sp"
+        android:text="در حال دریافت اطلاعات"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

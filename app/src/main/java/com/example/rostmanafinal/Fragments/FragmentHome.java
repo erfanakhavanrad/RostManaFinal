@@ -121,8 +121,8 @@ public class FragmentHome extends Fragment {
         imageAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentProfile);
-                Toast.makeText(getContext(), "به زودی...", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.action_fragmentHome_to_fragmentProfile);
+//                Toast.makeText(getContext(), "به زودی...", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -32,7 +32,8 @@ public class SubmitSmsFromRegisterActivity extends AppCompatActivity {
     String url = "http://rostmana.com/api/";
     //    RetrofitApiService retrofitApiService;
     TextView txtSmsTest;
-ConstraintLayout constraintLoading;
+    ConstraintLayout constraintLoading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +95,7 @@ ConstraintLayout constraintLoading;
                     finish();
 
                 } else {
-                    Toast.makeText(SubmitSmsFromRegisterActivity.this, "onRespnse", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SubmitSmsFromRegisterActivity.this, "onRespnse" + response.message(), Toast.LENGTH_SHORT).show();
                     constraintLoading.setVisibility(View.GONE);
 
                 }
@@ -104,7 +105,7 @@ ConstraintLayout constraintLoading;
             public void onFailure(Call<VerifyModel> call, Throwable t) {
                 txtSmsTest.setText(t.getMessage());
                 constraintLoading.setVisibility(View.GONE);
-
+                Toast.makeText(SubmitSmsFromRegisterActivity.this, "on error" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
